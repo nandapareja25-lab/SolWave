@@ -4535,12 +4535,9 @@ function playArtistaTrack(idx) {
     el.querySelector('.artista-track-num').textContent = i === idx ? '▶' : i + 1;
   });
   // Tocar usando el sistema de player existente
-  if (t.audioUrl) {
-    state.currentAlbumId = t.albumId;
-    state.currentTrackNum = t.num;
-    state.playingFullAlbum = false;
-    openPlayer(t.albumId, t.num);
-  }
+  state.playingFullAlbum = false;
+  playTrack(t.albumId, t.num);
+  openPlayer();
 }
 
 // Inicializar Supabase auth
