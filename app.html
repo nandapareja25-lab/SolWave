@@ -1777,6 +1777,109 @@ body {
 /* ══════════════════════════════════════
    PANEL ARTISTA — Momentos capturados
 ══════════════════════════════════════ */
+
+/* ── PIN OVERLAY ── */
+.pin-overlay {
+  position: fixed; inset: 0; z-index: 1100;
+  background: var(--base);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 32px;
+  transform: translateY(100%);
+  transition: transform 0.35s var(--ease);
+}
+.pin-overlay.open { transform: translateY(0); }
+.pin-title {
+  font-family: var(--serif); font-size: 26px; font-weight: 300;
+  color: var(--text-1); margin-bottom: 8px; text-align: center;
+}
+.pin-sub { font-size: 14px; color: var(--text-2); margin-bottom: 40px; text-align: center; }
+.pin-dots {
+  display: flex; gap: 16px; margin-bottom: 48px;
+}
+.pin-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--s3); border: 1.5px solid var(--border);
+  transition: background 0.15s, border-color 0.15s;
+}
+.pin-dot.filled { background: var(--gold); border-color: var(--gold); }
+.pin-dot.error { background: var(--coral); border-color: var(--coral); }
+.pin-grid {
+  display: grid; grid-template-columns: repeat(3, 72px);
+  grid-template-rows: repeat(4, 72px); gap: 12px;
+}
+.pin-key {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--s2); border: none;
+  color: var(--text-1); font-size: 22px; font-weight: 400;
+  font-family: var(--sans); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.12s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.pin-key:active { background: var(--s3); transform: scale(0.93); }
+.pin-key.empty { background: transparent; pointer-events: none; }
+.pin-cancel {
+  margin-top: 32px; background: none; border: none;
+  color: var(--text-2); font-size: 14px; font-family: var(--sans);
+  cursor: pointer; padding: 8px 24px;
+}
+
+/* ── MODO ARTISTA ── */
+.artista-mode {
+  position: fixed; inset: 0; z-index: 1050;
+  background: var(--base);
+  display: flex; flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease);
+  overflow: hidden;
+}
+.artista-mode.open { transform: translateY(0); }
+.artista-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 56px 20px 16px;
+  flex-shrink: 0;
+}
+.artista-back {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--s2); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-1); flex-shrink: 0;
+}
+.artista-header-info { flex: 1; }
+.artista-header-title { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--text-1); }
+.artista-header-sub { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+.artista-shuffle-btn {
+  background: var(--gold); border: none; border-radius: 50px;
+  color: #111; font-size: 13px; font-weight: 600;
+  font-family: var(--sans); padding: 8px 16px; cursor: pointer;
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+}
+.artista-list {
+  flex: 1; overflow-y: auto; padding: 8px 0 120px;
+}
+.artista-track {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 20px; cursor: pointer;
+  transition: background 0.15s;
+}
+.artista-track:active { background: var(--s2); }
+.artista-track.playing { background: rgba(244,184,96,0.06); }
+.artista-track-num {
+  width: 28px; text-align: center;
+  font-size: 13px; color: var(--text-2); flex-shrink: 0;
+}
+.artista-track.playing .artista-track-num { color: var(--gold); }
+.artista-track-info { flex: 1; min-width: 0; }
+.artista-track-title {
+  font-size: 15px; color: var(--text-1); font-weight: 400;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.artista-track.playing .artista-track-title { color: var(--gold); }
+.artista-track-album {
+  font-size: 12px; color: var(--text-2); margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 .panel-artista {
   position: fixed; inset: 0; z-index: 900;
   background: var(--base);
@@ -1902,7 +2005,7 @@ body {
     <!-- ── HOME ── -->
     <div class="screen active" id="screen-home">
       <div class="app-header">
-        <div class="header-logo">Sol<span>wave</span></div>
+        <div class="header-logo" id="logo-tap" onclick="handleLogoTap()">Sol<span>wave</span></div>
         <div class="header-avatar" onclick="goToScreen('screen-profile')">V</div>
       </div>
 
@@ -2301,6 +2404,53 @@ body {
       <div class="related-grid" id="relatedAlbums"></div>
     </div>
     <div style="height:32px;"></div>
+  </div>
+
+  <!-- ══════════ PIN OVERLAY ══════════ -->
+  <div class="pin-overlay" id="pinOverlay">
+    <div class="pin-title">Modo artista</div>
+    <div class="pin-sub">Ingresá tu PIN para continuar</div>
+    <div class="pin-dots">
+      <div class="pin-dot" id="pd0"></div>
+      <div class="pin-dot" id="pd1"></div>
+      <div class="pin-dot" id="pd2"></div>
+      <div class="pin-dot" id="pd3"></div>
+    </div>
+    <div class="pin-grid">
+      <button class="pin-key" onclick="pinPress('1')">1</button>
+      <button class="pin-key" onclick="pinPress('2')">2</button>
+      <button class="pin-key" onclick="pinPress('3')">3</button>
+      <button class="pin-key" onclick="pinPress('4')">4</button>
+      <button class="pin-key" onclick="pinPress('5')">5</button>
+      <button class="pin-key" onclick="pinPress('6')">6</button>
+      <button class="pin-key" onclick="pinPress('7')">7</button>
+      <button class="pin-key" onclick="pinPress('8')">8</button>
+      <button class="pin-key" onclick="pinPress('9')">9</button>
+      <button class="pin-key empty"></button>
+      <button class="pin-key" onclick="pinPress('0')">0</button>
+      <button class="pin-key" onclick="pinDelete()">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 6L8 10l6 4M3 10h5"/></svg>
+      </button>
+    </div>
+    <button class="pin-cancel" onclick="closePinOverlay()">Cancelar</button>
+  </div>
+
+  <!-- ══════════ MODO ARTISTA ══════════ -->
+  <div class="artista-mode" id="artistaMode">
+    <div class="artista-header">
+      <button class="artista-back" onclick="closeArtistaMode()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 3L5 8l5 5"/></svg>
+      </button>
+      <div class="artista-header-info">
+        <div class="artista-header-title">Todas las canciones</div>
+        <div class="artista-header-sub" id="artistaCount">86 canciones · orden aleatorio</div>
+      </div>
+      <button class="artista-shuffle-btn" onclick="reshuffleArtista()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h2.5a4 4 0 014 4H10M10 4l2 2-2 2M1 10h2.5a4 4 0 004-4H9M11 10l2 2-2 2" opacity="0.6"/><path d="M10 2l2 2-2 2M10 10l2 2-2 2"/></svg>
+        Mezclar
+      </button>
+    </div>
+    <div class="artista-list" id="artistaList"></div>
   </div>
 
   <!-- ══════════ PANEL ARTISTA ══════════ -->
@@ -4243,6 +4393,144 @@ renderExploreGrid();
 
 // Default: chip de Desamor activo en Home
 document.querySelector('.emotion-chip.active').click();
+
+// ════════════════════════════════════════
+// MODO ARTISTA — PIN + PLAYLIST ALEATORIA
+// ════════════════════════════════════════
+let logoTapCount = 0, logoTapTimer = null;
+let pinBuffer = '';
+const PIN_SECRET = '0520';
+
+function handleLogoTap() {
+  logoTapCount++;
+  clearTimeout(logoTapTimer);
+  logoTapTimer = setTimeout(() => { logoTapCount = 0; }, 2000);
+  if (logoTapCount >= 5) {
+    logoTapCount = 0;
+    openPinOverlay();
+  }
+}
+
+function openPinOverlay() {
+  pinBuffer = '';
+  updatePinDots();
+  document.getElementById('pinOverlay').classList.add('open');
+}
+
+function closePinOverlay() {
+  document.getElementById('pinOverlay').classList.remove('open');
+  pinBuffer = '';
+  updatePinDots();
+}
+
+function pinPress(digit) {
+  if (pinBuffer.length >= 4) return;
+  pinBuffer += digit;
+  updatePinDots();
+  if (pinBuffer.length === 4) {
+    setTimeout(() => {
+      if (pinBuffer === PIN_SECRET) {
+        closePinOverlay();
+        openArtistaMode();
+      } else {
+        // Error shake
+        for (let i = 0; i < 4; i++) {
+          document.getElementById('pd' + i).classList.add('error');
+        }
+        setTimeout(() => {
+          pinBuffer = '';
+          updatePinDots();
+          for (let i = 0; i < 4; i++) {
+            document.getElementById('pd' + i).classList.remove('error');
+          }
+        }, 600);
+      }
+    }, 120);
+  }
+}
+
+function pinDelete() {
+  if (pinBuffer.length > 0) {
+    pinBuffer = pinBuffer.slice(0, -1);
+    updatePinDots();
+  }
+}
+
+function updatePinDots() {
+  for (let i = 0; i < 4; i++) {
+    const dot = document.getElementById('pd' + i);
+    dot.classList.toggle('filled', i < pinBuffer.length);
+    dot.classList.remove('error');
+  }
+}
+
+// Playlist aleatoria del modo artista
+let artistaPlaylist = [];
+let artistaCurrentIdx = -1;
+
+function buildArtistaPlaylist() {
+  const all = [];
+  CATALOG.albums.forEach(album => {
+    album.tracks.forEach(track => {
+      all.push({ ...track, albumTitle: album.title, albumId: album.id, albumColor: album.accentColor });
+    });
+  });
+  // Fisher-Yates shuffle
+  for (let i = all.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [all[i], all[j]] = [all[j], all[i]];
+  }
+  return all;
+}
+
+function openArtistaMode() {
+  artistaPlaylist = buildArtistaPlaylist();
+  artistaCurrentIdx = -1;
+  renderArtistaList();
+  document.getElementById('artistaMode').classList.add('open');
+}
+
+function closeArtistaMode() {
+  document.getElementById('artistaMode').classList.remove('open');
+}
+
+function reshuffleArtista() {
+  artistaPlaylist = buildArtistaPlaylist();
+  artistaCurrentIdx = -1;
+  renderArtistaList();
+  showToast('Lista mezclada de nuevo 🎲');
+}
+
+function renderArtistaList() {
+  const list = document.getElementById('artistaList');
+  document.getElementById('artistaCount').textContent = `${artistaPlaylist.length} canciones · orden aleatorio`;
+  list.innerHTML = artistaPlaylist.map((t, i) => `
+    <div class="artista-track ${i === artistaCurrentIdx ? 'playing' : ''}" onclick="playArtistaTrack(${i})" id="at-${i}">
+      <div class="artista-track-num">${i === artistaCurrentIdx ? '▶' : i + 1}</div>
+      <div class="artista-track-info">
+        <div class="artista-track-title">${t.title}</div>
+        <div class="artista-track-album">${t.albumTitle}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function playArtistaTrack(idx) {
+  artistaCurrentIdx = idx;
+  const t = artistaPlaylist[idx];
+  // Actualizar visual
+  document.querySelectorAll('.artista-track').forEach((el, i) => {
+    el.classList.toggle('playing', i === idx);
+    el.querySelector('.artista-track-num').textContent = i === idx ? '▶' : i + 1;
+  });
+  // Tocar usando el sistema de player existente
+  if (t.audioUrl) {
+    state.currentAlbumId = t.albumId;
+    state.currentTrackNum = t.num;
+    state.playingFullAlbum = false;
+    openPlayer(t.albumId, t.num);
+  }
+}
 
 // Inicializar Supabase auth
 initAuth();
