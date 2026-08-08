@@ -2443,7 +2443,7 @@ body {
       </button>
       <div class="artista-header-info">
         <div class="artista-header-title">Todas las canciones</div>
-        <div class="artista-header-sub" id="artistaCount">86 canciones · orden aleatorio</div>
+        <div class="artista-header-sub" id="artistaCount">canciones · orden aleatorio</div>
       </div>
       <button class="artista-shuffle-btn" onclick="reshuffleArtista()">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h2.5a4 4 0 014 4H10M10 4l2 2-2 2M1 10h2.5a4 4 0 004-4H9M11 10l2 2-2 2" opacity="0.6"/><path d="M10 2l2 2-2 2M10 10l2 2-2 2"/></svg>
@@ -3335,6 +3335,12 @@ function togglePlay() {
 }
 
 function nextTrack() {
+  // Si estamos en modo artista, avanzar en la playlist aleatoria
+  if (artistaCurrentIdx >= 0 && artistaPlaylist.length > 0) {
+    const nextIdx = artistaCurrentIdx + 1 < artistaPlaylist.length ? artistaCurrentIdx + 1 : 0;
+    playArtistaTrack(nextIdx);
+    return;
+  }
   const album = albumById[state.currentAlbumId];
   if (!album) return;
   if (state.currentTrackNum >= album.tracks.length) {
@@ -3349,6 +3355,11 @@ function nextTrack() {
 }
 
 function prevTrack() {
+  if (artistaCurrentIdx >= 0 && artistaPlaylist.length > 0) {
+    const prevIdx = artistaCurrentIdx > 0 ? artistaCurrentIdx - 1 : artistaPlaylist.length - 1;
+    playArtistaTrack(prevIdx);
+    return;
+  }
   const album = albumById[state.currentAlbumId];
   if (!album) return;
   const prev = state.currentTrackNum > 1 ? state.currentTrackNum - 1 : album.tracks.length;
