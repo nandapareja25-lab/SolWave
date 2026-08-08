@@ -1,0 +1,168 @@
+{
+  "archivo_original": "Si+Me+Escuchas+Mañana.mp3",
+  "nombre_limpio": "Si Me Escuchas Mañana",
+  "duracion": "3:16",
+  "bpm": 172,
+  "tonalidad": "G mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Salsa / Tropical",
+  "emocion_principal": "esperanza",
+  "emociones_secundarias": [
+    "paz / calma"
+  ],
+  "titulo_detectado_en_letra": [
+    "Si Me Escuchas Mañana",
+    "Todo Va A Estar Mejor Si Me Escuchas Mañana"
+  ],
+  "tags": [
+    "noche difícil",
+    "mañana",
+    "esperanza",
+    "abrazo",
+    "fuerza",
+    "seguir"
+  ],
+  "frases_clave": [
+    "Si me escuchas mañana, no tengas miedo La noche también termina en canción Aunque hoy el silencio pesa un poco Ya viene saliendo un nuevo sol No respondas todas las preguntas Dejas algunas para el corazón Hay caminos que nacen despacio Sin pedir ninguna explicación Si me escuchas mañana, todo va a estar mejor Si me escuchas mañana, no olvides quién eres hoy Guarda un abrazo para tus días Cuando la fuerza quiera descansar Las mejores partes de la vida A veces tardan en llegar No te compares con otras historias Cada quien tiene su despertar Lo que hoy parece una demora Mañana será libertad Si me escuchas mañana, todo va a estar mejor Si me escuchas mañana, no olvides quién eres hoy Ehh",
+    "Cuando esta canción termine Quiero que sonrías una vez más Porque lo mejor de este camino Todavía esta por comenzar Ehh",
+    "Si me escuchas mañana, ehh",
+    "Si me escuchas mañana, tu corazón conoce la dirección Si me escuchas mañana, que vas a su cuarte está en el fuselcón Si me escuchas mañana Si me escuchas mañana, tu corazón conoce la dirección"
+  ],
+  "letra_completa": "Si me escuchas mañana, no tengas miedo La noche también termina en canción Aunque hoy el silencio pesa un poco Ya viene saliendo un nuevo sol No respondas todas las preguntas Dejas algunas para el corazón Hay caminos que nacen despacio Sin pedir ninguna explicación Si me escuchas mañana, todo va a estar mejor Si me escuchas mañana, no olvides quién eres hoy Guarda un abrazo para tus días Cuando la fuerza quiera descansar Las mejores partes de la vida A veces tardan en llegar No te compares con otras historias Cada quien tiene su despertar Lo que hoy parece una demora Mañana será libertad Si me escuchas mañana, todo va a estar mejor Si me escuchas mañana, no olvides quién eres hoy Ehh... Cuando esta canción termine Quiero que sonrías una vez más Porque lo mejor de este camino Todavía esta por comenzar Ehh... Si me escuchas mañana, ehh... Si me escuchas mañana, tu corazón conoce la dirección Si me escuchas mañana, que vas a su cuarte está en el fuselcón Si me escuchas mañana Si me escuchas mañana, tu corazón conoce la dirección",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 26.4,
+      "text": "Si me escuchas mañana, no tengas miedo La noche también termina en canción"
+    },
+    {
+      "start": 26.4,
+      "end": 35.4,
+      "text": "Aunque hoy el silencio pesa un poco Ya viene saliendo un nuevo sol"
+    },
+    {
+      "start": 35.4,
+      "end": 46.92,
+      "text": "No respondas todas las preguntas Dejas algunas para el corazón"
+    },
+    {
+      "start": 46.92,
+      "end": 55.44,
+      "text": "Hay caminos que nacen despacio Sin pedir ninguna explicación"
+    },
+    {
+      "start": 55.44,
+      "end": 69.44,
+      "text": "Si me escuchas mañana, todo va a estar mejor Si me escuchas mañana, no olvides quién eres hoy"
+    },
+    {
+      "start": 69.44,
+      "end": 80.96,
+      "text": "Guarda un abrazo para tus días Cuando la fuerza quiera descansar"
+    },
+    {
+      "start": 80.96,
+      "end": 86.64,
+      "text": "Las mejores partes de la vida A veces tardan en llegar"
+    },
+    {
+      "start": 86.64,
+      "end": 92.32,
+      "text": "No te compares con otras historias Cada quien tiene su despertar"
+    },
+    {
+      "start": 92.32,
+      "end": 98.4,
+      "text": "Lo que hoy parece una demora Mañana será libertad"
+    },
+    {
+      "start": 98.4,
+      "end": 110.88,
+      "text": "Si me escuchas mañana, todo va a estar mejor Si me escuchas mañana, no olvides quién eres hoy"
+    },
+    {
+      "start": 110.96,
+      "end": 130.0,
+      "text": "Ehh..."
+    },
+    {
+      "start": 130.0,
+      "end": 136.08,
+      "text": "Cuando esta canción termine Quiero que sonrías una vez más"
+    },
+    {
+      "start": 136.8,
+      "end": 144.08,
+      "text": "Porque lo mejor de este camino Todavía esta por comenzar"
+    },
+    {
+      "start": 144.08,
+      "end": 155.36,
+      "text": "Ehh..."
+    },
+    {
+      "start": 155.36,
+      "end": 161.12,
+      "text": "Si me escuchas mañana, ehh..."
+    },
+    {
+      "start": 161.2,
+      "end": 170.8,
+      "text": "Si me escuchas mañana, tu corazón conoce la dirección"
+    },
+    {
+      "start": 170.8,
+      "end": 182.24,
+      "text": "Si me escuchas mañana, que vas a su cuarte está en el fuselcón"
+    },
+    {
+      "start": 182.24,
+      "end": 186.72,
+      "text": "Si me escuchas mañana"
+    },
+    {
+      "start": 191.12,
+      "end": 196.4,
+      "text": "Si me escuchas mañana, tu corazón conoce la dirección"
+    }
+  ],
+  "moment": "Es de noche. El silencio pesa. No tienes respuestas para todo lo que estás cargando, y no hace falta que las tengas. Si me escuchas mañana, tu corazón ya conoce la dirección.",
+  "sintiendo": "Hay noches donde el peso no tiene nombre exacto. No es un problema que puedas resolver — es el silencio que pesa cuando estás sola con todo lo que piensas.\n\nNo respondas todas las preguntas esta noche. Deja algunas para el corazón.\n\nGuarda un abrazo para ti — para los días donde la fuerza quiera descansar. Lo que hoy parece que no tiene salida, mañana será libertad. Tu corazón ya sabe hacia dónde ir. Solo tienes que llegar al mañana.",
+  "intencion": "Existe para acompañar a quien no sabe si va a cruzar la noche — y llevarle de la mano hasta el mañana.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Si Me Escuchas Mañana",
+  "frases_clave_editoriales": [
+    "Si me escuchas mañana, no tengas miedo, la noche también termina en canción",
+    "Si me escuchas mañana, todo va a estar mejor",
+    "Guarda un abrazo para tus días cuando la fuerza quiera descansar"
+  ],
+  "nota_mapeo": "Canción única en el catálogo — orientada a acompañar en un momento difícil, no en el proceso de crecimiento. Alta coincidencia con álbum Volví a escucharme o potencial track especial.",
+  "estado_editorial": "aprobado",
+  "recognition": "Lo que hoy parece una demora, mañana será libertad.",
+  "searchPhrases": [
+    "música para una noche muy difícil",
+    "canción para cuando no sabes si vas a estar bien",
+    "no puedo dejar de pensar y el silencio pesa",
+    "música para cuando estás sola en la noche con demasiados pensamientos",
+    "canciones para noches oscuras del alma",
+    "me siento perdida esta noche",
+    "música para cuando el peso es demasiado y no sabes por qué",
+    "canción para sobrevivir una noche difícil",
+    "no quiero pensar pero no puedo parar",
+    "música para cuando estás en tu punto más bajo",
+    "canción para cuando necesitas que alguien te acompañe en la oscuridad",
+    "necesito llegar hasta mañana"
+  ],
+  "semanticTags": "noche difícil, silencio que pesa, acompañamiento directo, no respondas todo, tu corazón conoce la dirección, guarda un abrazo para ti, lo mejor todavía está por comenzar, llegar al mañana, una sonrisa al terminar, no te compares, cada quien tiene su despertar, la noche también termina en canción",
+  "audioUrl": "audio/si-me-escuchas-manana.mp3"
+}

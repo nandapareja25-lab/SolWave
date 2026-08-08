@@ -1,0 +1,111 @@
+{
+  "archivo_original": "Que Nadie Me Pare.mp3",
+  "nombre_limpio": "Que Nadie Me Pare",
+  "duracion": "3:04",
+  "bpm": 136,
+  "tonalidad": "D mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 202,
+  "genero_detectado": "Salsa / Tropical",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "empoderamiento",
+    "crecimiento"
+  ],
+  "titulo_detectado_en_letra": [
+    "Si Nadie Me Pade",
+    "Que Nadie La Me Pade",
+    "Que La Noche Entre Los Dos"
+  ],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "energía alta",
+    "intenso",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Hoy no cargo penas viejas, las de héroes me se van, porque el que vive sonriendo siempre vuelve a ganar",
+    "Ya lloré lo que tenía y aprendí la lección, ahora quiero que la vida me encuentre bailando al sol",
+    "Si nadie me pade, que la noche entre los dos, hoy brindamos por la vida y que siga la celebración",
+    "Si nadie me pade, que la noche entre los dos, hoy brindamos por la vida y que siga la celebración",
+    "Hoy salí con el alma encendida, nadie me la va a pagar, traigo ganas de comerme el mundo de rey y de canter",
+    "Esta noche vine a gozar, que nadie la me pade, que nadie la me pade, que hoy no pienso descansar, cuando suenan los metales el cuerpo se empieza a soltar, que nadie la me pade, que la rumba va a empezar",
+    "¡Pase, agárrate a la espada",
+    "Si la vida me dio otra oportunidad, la voy a celebrar, que repique la campana, que responde el timbal, que la esconde, cuenten fuerte lo bonito que es bailar"
+  ],
+  "letra_completa": "Hoy salí con el alma encendida, nadie me la va a pagar, traigo ganas de comerme el mundo de rey y de canter. Ya lloré lo que tenía y aprendí la lección, ahora quiero que la vida me encuentre bailando al sol. ¡Oye! ¡Pase, agárrate a la espada! Esta noche vine a gozar, que nadie la me pade, que nadie la me pade, que hoy no pienso descansar, cuando suenan los metales el cuerpo se empieza a soltar, que nadie la me pade, que la rumba va a empezar. Si la vida me dio otra oportunidad, la voy a celebrar, que repique la campana, que responde el timbal, que la esconde, cuenten fuerte lo bonito que es bailar. Hoy no cargo penas viejas, las de héroes me se van, porque el que vive sonriendo siempre vuelve a ganar. Si nadie me pade, el nuevo bonito queda sabor, que nadie me pade, mientras tengas terlatido no se acaba el vacilón. Si nadie me pade, que la noche entre los dos, hoy brindamos por la vida y que siga la celebración. Pregón, que suene la orquesta, malduro excepción, las manos arriba, que nadie se quede excepción, azúcar. Si nadie me pade, la estación hasta apenas comenzó. Si nadie me pade, que la noche entre los dos, hoy brindamos por la vida y que siga la celebración.",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 28.0,
+      "text": "Hoy salí con el alma encendida, nadie me la va a pagar, traigo ganas de comerme el mundo de rey y de canter."
+    },
+    {
+      "start": 30.0,
+      "end": 48.0,
+      "text": "Ya lloré lo que tenía y aprendí la lección, ahora quiero que la vida me encuentre bailando al sol."
+    },
+    {
+      "start": 48.0,
+      "end": 53.0,
+      "text": "¡Oye! ¡Pase, agárrate a la espada!"
+    },
+    {
+      "start": 53.0,
+      "end": 80.0,
+      "text": "Esta noche vine a gozar, que nadie la me pade, que nadie la me pade, que hoy no pienso descansar, cuando suenan los metales el cuerpo se empieza a soltar, que nadie la me pade, que la rumba va a empezar."
+    },
+    {
+      "start": 80.0,
+      "end": 100.0,
+      "text": "Si la vida me dio otra oportunidad, la voy a celebrar, que repique la campana, que responde el timbal, que la esconde, cuenten fuerte lo bonito que es bailar."
+    },
+    {
+      "start": 101.0,
+      "end": 111.0,
+      "text": "Hoy no cargo penas viejas, las de héroes me se van, porque el que vive sonriendo siempre vuelve a ganar."
+    },
+    {
+      "start": 111.0,
+      "end": 123.0,
+      "text": "Si nadie me pade, el nuevo bonito queda sabor, que nadie me pade, mientras tengas terlatido no se acaba el vacilón."
+    },
+    {
+      "start": 125.0,
+      "end": 138.0,
+      "text": "Si nadie me pade, que la noche entre los dos, hoy brindamos por la vida y que siga la celebración."
+    },
+    {
+      "start": 141.0,
+      "end": 161.0,
+      "text": "Pregón, que suene la orquesta, malduro excepción, las manos arriba, que nadie se quede excepción, azúcar."
+    },
+    {
+      "start": 162.0,
+      "end": 167.0,
+      "text": "Si nadie me pade, la estación hasta apenas comenzó."
+    },
+    {
+      "start": 168.0,
+      "end": 179.0,
+      "text": "Si nadie me pade, que la noche entre los dos, hoy brindamos por la vida y que siga la celebración."
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

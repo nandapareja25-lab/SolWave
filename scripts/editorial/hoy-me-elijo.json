@@ -1,0 +1,238 @@
+{
+  "archivo_original": "Hoy+me+Elijo.mp3",
+  "nombre_limpio": "Hoy me Elijo",
+  "duracion": "3:00",
+  "bpm": 96,
+  "tonalidad": "A mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "empoderamiento",
+  "emociones_secundarias": [
+    "crecimiento",
+    "paz / calma"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "elegirse",
+    "autocuidado",
+    "validación",
+    "silencio",
+    "decisión",
+    "permiso"
+  ],
+  "frases_clave": [
+    "Hoy dejé el celular sobre la mesa Por primera vez el silencio me hizo compañía El café seguía caliente en la taza Y entendí que no tenía que correr Mire mi reflejo en la ventana Ya no buscaba la persona de ayer Había algo distinto en mi mirada Como quien por fin decidió volver Y de repente todo hizo sentido Como si la vida dijera mi nombre Por primera vez Hoy me dijo Sin pedir permiso a nadie más Hoy me dijo Y el miedo se quedó detrás Hoy me dijo Con todo lo que soy Si mi corazón ya encontró su voz Para que mirara atrás La ciudad seguía igual de deprisa Pero yo ya no quería competir Y ya no quería haber vacunado Descubrí que también existen victorias Que solo se celebran por dentro Guarda las dudas en el bolsillo Como quien ya no las piensa usar Hay caminos que empiezan despacio, pero nunca dejan de avanzar Y de repente todo hizo sentido Como si la vida dijera mi nombre por primera vez Hoy me dijo, sin pedir permiso a nadie más Hoy me dijo, y el miedo se quedó detrás Hoy me dijo, con todo lo que soy Si mi corazón ya encontró su voz Oh, oh, oh, oh, oh, oh, oh, oh, oh, oh"
+  ],
+  "letra_completa": "Hoy dejé el celular sobre la mesa Por primera vez el silencio me hizo compañía El café seguía caliente en la taza Y entendí que no tenía que correr Mire mi reflejo en la ventana Ya no buscaba la persona de ayer Había algo distinto en mi mirada Como quien por fin decidió volver Y de repente todo hizo sentido Como si la vida dijera mi nombre Por primera vez Hoy me dijo Sin pedir permiso a nadie más Hoy me dijo Y el miedo se quedó detrás Hoy me dijo Con todo lo que soy Si mi corazón ya encontró su voz Para que mirara atrás La ciudad seguía igual de deprisa Pero yo ya no quería competir Y ya no quería haber vacunado Descubrí que también existen victorias Que solo se celebran por dentro Guarda las dudas en el bolsillo Como quien ya no las piensa usar Hay caminos que empiezan despacio, pero nunca dejan de avanzar Y de repente todo hizo sentido Como si la vida dijera mi nombre por primera vez Hoy me dijo, sin pedir permiso a nadie más Hoy me dijo, y el miedo se quedó detrás Hoy me dijo, con todo lo que soy Si mi corazón ya encontró su voz Oh, oh, oh, oh, oh, oh, oh, oh, oh, oh",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 16.0,
+      "text": "Hoy dejé el celular sobre la mesa"
+    },
+    {
+      "start": 16.0,
+      "end": 22.0,
+      "text": "Por primera vez el silencio me hizo compañía"
+    },
+    {
+      "start": 22.0,
+      "end": 25.0,
+      "text": "El café seguía caliente en la taza"
+    },
+    {
+      "start": 25.0,
+      "end": 27.0,
+      "text": "Y entendí que no tenía que correr"
+    },
+    {
+      "start": 27.0,
+      "end": 30.0,
+      "text": "Mire mi reflejo en la ventana"
+    },
+    {
+      "start": 30.0,
+      "end": 32.0,
+      "text": "Ya no buscaba la persona de ayer"
+    },
+    {
+      "start": 32.0,
+      "end": 35.0,
+      "text": "Había algo distinto en mi mirada"
+    },
+    {
+      "start": 35.0,
+      "end": 38.0,
+      "text": "Como quien por fin decidió volver"
+    },
+    {
+      "start": 38.0,
+      "end": 43.0,
+      "text": "Y de repente todo hizo sentido"
+    },
+    {
+      "start": 43.0,
+      "end": 48.0,
+      "text": "Como si la vida dijera mi nombre"
+    },
+    {
+      "start": 48.0,
+      "end": 52.0,
+      "text": "Por primera vez"
+    },
+    {
+      "start": 52.0,
+      "end": 54.0,
+      "text": "Hoy me dijo"
+    },
+    {
+      "start": 54.0,
+      "end": 57.0,
+      "text": "Sin pedir permiso a nadie más"
+    },
+    {
+      "start": 57.0,
+      "end": 59.0,
+      "text": "Hoy me dijo"
+    },
+    {
+      "start": 59.0,
+      "end": 62.0,
+      "text": "Y el miedo se quedó detrás"
+    },
+    {
+      "start": 62.0,
+      "end": 67.0,
+      "text": "Hoy me dijo"
+    },
+    {
+      "start": 67.0,
+      "end": 69.0,
+      "text": "Con todo lo que soy"
+    },
+    {
+      "start": 69.0,
+      "end": 73.0,
+      "text": "Si mi corazón ya encontró su voz"
+    },
+    {
+      "start": 73.0,
+      "end": 75.0,
+      "text": "Para que mirara atrás"
+    },
+    {
+      "start": 75.0,
+      "end": 78.0,
+      "text": "La ciudad seguía igual de deprisa"
+    },
+    {
+      "start": 78.0,
+      "end": 82.0,
+      "text": "Pero yo ya no quería competir"
+    },
+    {
+      "start": 84.0,
+      "end": 90.0,
+      "text": "Y ya no quería haber vacunado"
+    },
+    {
+      "start": 94.0,
+      "end": 98.0,
+      "text": "Descubrí que también existen victorias"
+    },
+    {
+      "start": 98.0,
+      "end": 104.0,
+      "text": "Que solo se celebran por dentro"
+    },
+    {
+      "start": 104.0,
+      "end": 108.0,
+      "text": "Guarda las dudas en el bolsillo"
+    },
+    {
+      "start": 108.0,
+      "end": 111.0,
+      "text": "Como quien ya no las piensa usar"
+    },
+    {
+      "start": 111.0,
+      "end": 119.0,
+      "text": "Hay caminos que empiezan despacio, pero nunca dejan de avanzar"
+    },
+    {
+      "start": 119.0,
+      "end": 124.0,
+      "text": "Y de repente todo hizo sentido"
+    },
+    {
+      "start": 124.0,
+      "end": 133.0,
+      "text": "Como si la vida dijera mi nombre por primera vez"
+    },
+    {
+      "start": 133.0,
+      "end": 138.0,
+      "text": "Hoy me dijo, sin pedir permiso a nadie más"
+    },
+    {
+      "start": 138.0,
+      "end": 143.0,
+      "text": "Hoy me dijo, y el miedo se quedó detrás"
+    },
+    {
+      "start": 143.0,
+      "end": 150.0,
+      "text": "Hoy me dijo, con todo lo que soy"
+    },
+    {
+      "start": 150.0,
+      "end": 155.0,
+      "text": "Si mi corazón ya encontró su voz"
+    },
+    {
+      "start": 168.0,
+      "end": 179.0,
+      "text": "Oh, oh, oh, oh, oh, oh, oh, oh, oh, oh"
+    }
+  ],
+  "moment": "Dejaste el celular sobre la mesa. Por primera vez, el silencio te hizo compañía. Y en el reflejo de la ventana viste a alguien que por fin decidió volver.",
+  "sintiendo": "Llevas un tiempo mirando afuera para saber cómo estás. Las notificaciones, lo que dicen los demás, la ciudad que siempre va más rápido que tú. Como si hubiera una aprobación que todavía no llegó y que necesitas antes de poder ser tú.\n\nHoy dejaste el celular. El silencio entró. Y esta vez no dolió. Esta vez se sintió como compañía.\n\nMiraste el cristal. Había algo diferente en esa mirada. Alguien que por fin decidió volver. Sin pedir permiso a nadie más.",
+  "intencion": "Existe para el instante donde el silencio deja de sentirse como soledad y empieza a sentirse como tu propia presencia — y descubres que llevabas tiempo esperando un permiso que nunca necesitaste.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Hoy Me Elegí",
+  "frases_clave_editoriales": [
+    "Hoy me elegí, sin pedir permiso a nadie más",
+    "El miedo se quedó detrás",
+    "Mi corazón ya encontró su voz"
+  ],
+  "nota_mapeo": "Alta coincidencia con álbum Ya no vuelvo atrás o Volví a escucharme. Título probable de catálogo: 'Me elegí primero' o 'Sin pedir permiso'.",
+  "estado_editorial": "aprobado",
+  "recognition": "Descubrí que también existen victorias que solo se celebran por dentro.",
+  "searchPhrases": [
+    "música para cuando te das cuenta que no necesitas permiso de nadie",
+    "canción para el día que dejas el celular y el silencio te hace bien",
+    "siento que dependo de la validación de los demás música",
+    "música para encontrarte a ti misma sin aprobación externa",
+    "canción para cuando dejas de buscar validación",
+    "el día que decidí elegirme a mí misma",
+    "música para estar en silencio y sentirte completa",
+    "ya no necesito que nadie me diga que está bien ser yo",
+    "canción para cuando descubres tu propia voz",
+    "música para desconectarte del mundo y conectarte contigo",
+    "cansada de esperar que alguien me valide",
+    "victorias que solo se celebran por dentro canción"
+  ],
+  "semanticTags": "elegirse sin permiso, silencio como compañía, celular en la mesa, reflejo diferente, volver a sí misma, sin validación externa, victorias que se celebran por dentro, no competir con la ciudad, corazón que encontró su voz, presencia propia, no esperar aprobación, hay caminos que empiezan despacio y no dejan de avanzar",
+  "audioUrl": "audio/hoy-me-elijo.mp3"
+}

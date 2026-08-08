@@ -1,0 +1,249 @@
+{
+  "archivo_original": "Todavía+Hay+Camino.mp3",
+  "nombre_limpio": "Todavía Hay Camino",
+  "duracion": "2:51",
+  "bpm": 123,
+  "tonalidad": "C mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Dancehall / Pop Latino",
+  "emocion_principal": "crecimiento",
+  "emociones_secundarias": [
+    "alegría",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "camino",
+    "proceso",
+    "luz",
+    "incertidumbre",
+    "seguir",
+    "destino"
+  ],
+  "frases_clave": [
+    "Las llaves giraron, arrancó el motor La ciudad seguía con su propio reloj No llevaba prisa por llegar Solo quería volverme a escuchar Las luces pasaban una tras otra Como recuerdos diciendo adiós Baje un poco todas las ventanas Y también el peso del corazón Y de pronto todo empezó a cambiar La misma carretera se veía diferente Todavía hay camino, todavía queda luz No hace falta tenerlo todo Para volver a creer en ti Todavía hay camino, no terminó aquí Cada curva guarda una historia Que todavía quiere vivir Seguí cantando sin pensar Como cuando era más fácil soñar Había olvidado esa versión de mí Que sonreía por existir El horizonte seguía lejos Pero dejó de darme igual Porque entendí que lo importante Nunca fue llegar Y de pronto todo empezó a cambiar La misma carretera se veía diferente Todavía hay camino, todavía queda luz No hace falta tenerlo todo Para volver a creer en ti Todavía hay camino, mi corazón volvió Y mientras el mundo seguía girando Yo también volvió a ser yo Todavía hay camino Todavía hay camino Mi corazón volvió"
+  ],
+  "letra_completa": "Ah... Las llaves giraron, arrancó el motor La ciudad seguía con su propio reloj No llevaba prisa por llegar Solo quería volverme a escuchar Las luces pasaban una tras otra Como recuerdos diciendo adiós Baje un poco todas las ventanas Y también el peso del corazón Y de pronto todo empezó a cambiar La misma carretera se veía diferente Todavía hay camino, todavía queda luz No hace falta tenerlo todo Para volver a creer en ti Todavía hay camino, no terminó aquí Cada curva guarda una historia Que todavía quiere vivir Seguí cantando sin pensar Como cuando era más fácil soñar Había olvidado esa versión de mí Que sonreía por existir El horizonte seguía lejos Pero dejó de darme igual Porque entendí que lo importante Nunca fue llegar Y de pronto todo empezó a cambiar La misma carretera se veía diferente Todavía hay camino, todavía queda luz No hace falta tenerlo todo Para volver a creer en ti Todavía hay camino, mi corazón volvió Y mientras el mundo seguía girando Yo también volvió a ser yo Todavía hay camino Todavía hay camino Mi corazón volvió",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": "Ah..."
+    },
+    {
+      "start": 15.5,
+      "end": 20.5,
+      "text": "Las llaves giraron, arrancó el motor"
+    },
+    {
+      "start": 22.0,
+      "end": 26.0,
+      "text": "La ciudad seguía con su propio reloj"
+    },
+    {
+      "start": 27.0,
+      "end": 30.0,
+      "text": "No llevaba prisa por llegar"
+    },
+    {
+      "start": 32.0,
+      "end": 35.0,
+      "text": "Solo quería volverme a escuchar"
+    },
+    {
+      "start": 37.0,
+      "end": 40.0,
+      "text": "Las luces pasaban una tras otra"
+    },
+    {
+      "start": 42.0,
+      "end": 45.0,
+      "text": "Como recuerdos diciendo adiós"
+    },
+    {
+      "start": 47.0,
+      "end": 50.0,
+      "text": "Baje un poco todas las ventanas"
+    },
+    {
+      "start": 50.0,
+      "end": 54.0,
+      "text": "Y también el peso del corazón"
+    },
+    {
+      "start": 55.0,
+      "end": 59.0,
+      "text": "Y de pronto todo empezó a cambiar"
+    },
+    {
+      "start": 59.0,
+      "end": 64.0,
+      "text": "La misma carretera se veía diferente"
+    },
+    {
+      "start": 64.0,
+      "end": 68.0,
+      "text": "Todavía hay camino, todavía queda luz"
+    },
+    {
+      "start": 68.0,
+      "end": 71.0,
+      "text": "No hace falta tenerlo todo"
+    },
+    {
+      "start": 71.0,
+      "end": 73.0,
+      "text": "Para volver a creer en ti"
+    },
+    {
+      "start": 73.0,
+      "end": 78.0,
+      "text": "Todavía hay camino, no terminó aquí"
+    },
+    {
+      "start": 79.0,
+      "end": 82.0,
+      "text": "Cada curva guarda una historia"
+    },
+    {
+      "start": 82.0,
+      "end": 84.0,
+      "text": "Que todavía quiere vivir"
+    },
+    {
+      "start": 84.0,
+      "end": 86.0,
+      "text": "Seguí cantando sin pensar"
+    },
+    {
+      "start": 86.0,
+      "end": 89.0,
+      "text": "Como cuando era más fácil soñar"
+    },
+    {
+      "start": 89.0,
+      "end": 93.0,
+      "text": "Había olvidado esa versión de mí"
+    },
+    {
+      "start": 93.0,
+      "end": 96.0,
+      "text": "Que sonreía por existir"
+    },
+    {
+      "start": 98.0,
+      "end": 100.0,
+      "text": "El horizonte seguía lejos"
+    },
+    {
+      "start": 100.0,
+      "end": 102.0,
+      "text": "Pero dejó de darme igual"
+    },
+    {
+      "start": 102.0,
+      "end": 105.0,
+      "text": "Porque entendí que lo importante"
+    },
+    {
+      "start": 105.0,
+      "end": 108.0,
+      "text": "Nunca fue llegar"
+    },
+    {
+      "start": 108.0,
+      "end": 112.0,
+      "text": "Y de pronto todo empezó a cambiar"
+    },
+    {
+      "start": 112.0,
+      "end": 118.0,
+      "text": "La misma carretera se veía diferente"
+    },
+    {
+      "start": 118.0,
+      "end": 122.0,
+      "text": "Todavía hay camino, todavía queda luz"
+    },
+    {
+      "start": 122.0,
+      "end": 124.0,
+      "text": "No hace falta tenerlo todo"
+    },
+    {
+      "start": 124.0,
+      "end": 127.0,
+      "text": "Para volver a creer en ti"
+    },
+    {
+      "start": 127.0,
+      "end": 132.0,
+      "text": "Todavía hay camino, mi corazón volvió"
+    },
+    {
+      "start": 132.0,
+      "end": 139.0,
+      "text": "Y mientras el mundo seguía girando"
+    },
+    {
+      "start": 139.0,
+      "end": 144.0,
+      "text": "Yo también volvió a ser yo"
+    },
+    {
+      "start": 151.0,
+      "end": 153.0,
+      "text": "Todavía hay camino"
+    },
+    {
+      "start": 153.0,
+      "end": 155.0,
+      "text": "Todavía hay camino"
+    },
+    {
+      "start": 160.0,
+      "end": 164.0,
+      "text": "Mi corazón volvió"
+    }
+  ],
+  "moment": "Las luces de la ciudad pasaban una detrás de otra. No ibas hacia ningún lugar importante. Y en algún punto de la carretera recordaste que había una versión de ti que sonreía por existir.",
+  "sintiendo": "Llevas un tiempo sin reconocerte. No fue un día específico — fue gradual. Algo se fue apagando de una forma que no elegiste, y en algún punto dejaste de recordar cómo era sentirte tú.\n\nEsta noche no ibas a ningún lugar importante. Y sin buscarlo, en el movimiento, algo regresó.\n\nPensaste que te habías perdido. Solo hacía mucho que no te encontrabas.",
+  "intencion": "Existe para el momento en que algo regresa a ti en movimiento — sin que lo hayas buscado, sin que hayas llegado a ningún lugar.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Todavía Hay Camino",
+  "frases_clave_editoriales": [
+    "Todavía hay camino, todavía queda luz",
+    "No hace falta tenerlo todo para volver a creer en ti",
+    "Porque entendí que lo importante nunca fue llegar"
+  ],
+  "nota_mapeo": "Coincidencia con álbum Volví a escucharme. Canción de proceso y camino, no de llegada.",
+  "estado_editorial": "aprobado",
+  "recognition": "Pensaste que te habías perdido. Solo hacía mucho que no te encontrabas.",
+  "searchPhrases": [
+    "siento que perdí una versión de mí que ya no encuentro",
+    "música para manejar de noche cuando no sabes qué sientes",
+    "ya no me reconozco en el espejo",
+    "canción para cuando no sabes adónde vas pero necesitas moverte",
+    "me olvidé de quién era antes de todo esto",
+    "música para cuando extrañas la versión de ti que eras",
+    "siento que algo se fue perdiendo sin que me diera cuenta",
+    "canción para encontrarte a ti misma en la carretera",
+    "ya no sé cuándo fue la última vez que me sentí yo",
+    "música para conducir solo y llorar sin saber por qué",
+    "extraño sentirme liviana",
+    "canción para cuando el camino importa más que llegar",
+    "me perdí a mí misma sin darme cuenta"
+  ],
+  "semanticTags": "reencuentro, identidad perdida, movimiento sin destino, noche, carretera, volver a ser yo, olvidé quién era, proceso sin mapa, todavía hay luz, no hace falta llegar, recuperar una versión propia, tránsito emocional",
+  "audioUrl": "audio/todavia-hay-camino.mp3"
+}

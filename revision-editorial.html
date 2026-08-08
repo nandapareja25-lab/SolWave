@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solwave — Revisión Editorial · 20 canciones</title>
+<style>
+  :root {
+    --bg: #0E1118;
+    --surface: #1C1F28;
+    --surface2: #252830;
+    --gold: #F4B860;
+    --teal: #4DB6AC;
+    --text: #F5EFE6;
+    --text2: #8A8070;
+    --red: #F47C5C;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', system-ui, sans-serif; line-height: 1.6; }
+  
+  header { 
+    position: sticky; top: 0; z-index: 100;
+    background: #0E1118ee; backdrop-filter: blur(16px);
+    border-bottom: 1px solid #ffffff12;
+    padding: 16px 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; color: var(--gold); }
+  header .subtitle { font-size: 13px; color: var(--text2); }
+  header .count { margin-left: auto; font-size: 13px; color: var(--text2); }
+  
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+  
+  .intro { 
+    background: var(--surface); border-radius: var(--radius);
+    padding: 24px; margin-bottom: 32px;
+    border-left: 3px solid var(--gold);
+  }
+  .intro h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; margin-bottom: 8px; color: var(--gold); }
+  .intro p { font-size: 14px; color: var(--text2); line-height: 1.7; }
+  
+  table { width: 100%; border-collapse: collapse; margin-bottom: 40px; font-size: 13px; }
+  th { text-align: left; padding: 8px 12px; color: var(--text2); border-bottom: 1px solid #ffffff12; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; font-size: 11px; }
+  td { padding: 10px 12px; border-bottom: 1px solid #ffffff08; }
+  tr:hover td { background: var(--surface); }
+  
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 24px;
+    border: 1px solid #ffffff0a;
+  }
+  .card-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+  .num { 
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px; font-weight: 700; color: var(--gold);
+    opacity: .3; min-width: 48px; line-height: 1;
+  }
+  .card-title-block { flex: 1; }
+  h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+  .meta { font-size: 12px; color: var(--text2); }
+  
+  .badge { 
+    display: inline-block; padding: 4px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; letter-spacing: .04em; white-space: nowrap;
+  }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag { 
+    display: inline-block; padding: 3px 8px; border-radius: 6px;
+    font-size: 11px; background: #ffffff0a; color: var(--text2);
+    border: 1px solid #ffffff10;
+  }
+  
+  .warn {
+    background: #F47C5C18; border: 1px solid #F47C5C44;
+    color: #F47C5C; border-radius: 8px; padding: 10px 14px;
+    font-size: 13px; margin-bottom: 16px;
+  }
+  .mapeo {
+    font-size: 12px; color: var(--text2); 
+    background: #ffffff05; border-radius: 8px; padding: 10px 14px;
+    margin-bottom: 16px; border-left: 2px solid var(--teal);
+    font-style: italic;
+  }
+  
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .section { margin-bottom: 16px; }
+  .section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--text2); margin-bottom: 8px;
+  }
+  
+  p.editorial { font-size: 15px; line-height: 1.7; color: var(--text); }
+  p.moment-text { font-size: 17px; font-style: italic; color: var(--gold); font-family: 'Playfair Display', Georgia, serif; }
+  p.intencion-text { color: var(--teal); }
+  
+  ul.frases { padding-left: 16px; }
+  ul.frases li { font-size: 13px; color: var(--text2); margin-bottom: 4px; font-style: italic; }
+  
+  details { margin-top: 16px; }
+  summary { 
+    font-size: 13px; color: var(--text2); cursor: pointer;
+    padding: 8px 0; border-top: 1px solid #ffffff10;
+  }
+  summary:hover { color: var(--text); }
+  .letra {
+    font-size: 13px; color: var(--text2); white-space: pre-wrap;
+    margin-top: 12px; line-height: 1.8; max-height: 300px;
+    overflow-y: auto; padding: 16px; background: #ffffff04;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .card { padding: 20px 16px; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Solwave · Revisión Editorial</h1>
+    <div class="subtitle">20 canciones · Borradores basados en letras reales (Whisper small)</div>
+  </div>
+  <div class="count">agosto 2026</div>
+</header>
+
+<div class="container">
+
+<div class="intro">
+  <h2>Cómo usar este documento</h2>
+  <p>Cada tarjeta tiene tres campos editoriales: <strong style="color:var(--gold)">Moment</strong> (en itálica dorada — la esencia emocional de la canción), <strong style="color:var(--teal)">Lo que estás sintiendo</strong> (el estado emocional del oyente), y <strong>Intención</strong> (lo que la canción le quiere decir). Todo fue escrito basándose en la letra real transcrita con Whisper. Las <em>Frases clave</em> son de la letra, no inventadas. El mapeo al catálogo (qué álbum / qué track) está en la nota inferior de cada tarjeta.<br><br>
+  <strong>⚠️ Nota importante:</strong> el archivo <code>Ya Puedes Descansar.mp3</code> en realidad contiene una canción cuyo coro dice "Todo empieza hoy" — probablemente corresponde a <em>Hoy empieza todo</em> (track 11, álbum Volví a escucharme). Revisar con la artista.</p>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th><th>Canción</th><th>Emoción</th><th>Dur.</th><th>Moment (preview)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="document.getElementById('s1').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>01</td><td>A Mi Tiempo</td><td><span style="color:#4DB6AC">paz / calma</span></td><td>3:34</td><td style="font-style:italic;color:#ccc">Para cuando cansada de compararte con los demás descubres que llegar despacio ta…</td></tr><tr onclick="document.getElementById('s2').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>02</td><td>Hoy Elijo Paz</td><td><span style="color:#4DB6AC">paz / calma</span></td><td>3:03</td><td style="font-style:italic;color:#ccc">El día que decides no correr junto al mundo — y descubres que la paz no aparece …</td></tr><tr onclick="document.getElementById('s3').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>03</td><td>Hoy es un nuevo comienzo</td><td><span style="color:#FFB74D">alegría</span></td><td>2:33</td><td style="font-style:italic;color:#ccc">El primer día en que la esperanza llega sin que nadie la invite — y eliges queda…</td></tr><tr onclick="document.getElementById('s4').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>04</td><td>Hoy me Elijo</td><td><span style="color:#F4B860">empoderamiento</span></td><td>3:00</td><td style="font-style:italic;color:#ccc">Cuando dejas el celular sobre la mesa, te miras al espejo y decides que hoy eres…</td></tr><tr onclick="document.getElementById('s5').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>05</td><td>Hoy todo comienza</td><td><span style="color:#FFB74D">alegría</span></td><td>3:29</td><td style="font-style:italic;color:#ccc">Cuando abres la ventana y algo en el aire te dice que este día sí es diferente —…</td></tr><tr onclick="document.getElementById('s6').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>06</td><td>Me Elegi</td><td><span style="color:#F4B860">empoderamiento</span></td><td>3:47</td><td style="font-style:italic;color:#ccc">Para cuando te das cuenta de que la persona que más te ha fallado eras tú misma …</td></tr><tr onclick="document.getElementById('s7').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>07</td><td>Me Encontré Primero</td><td><span style="color:#81C784">crecimiento</span></td><td>3:22</td><td style="font-style:italic;color:#ccc">Cuando entiendes que lo que sentiste como pérdida fue, en realidad, el comienzo …</td></tr><tr onclick="document.getElementById('s8').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>08</td><td>Mi Ritmo también Cuenta</td><td><span style="color:#4DB6AC">paz / calma</span></td><td>3:26</td><td style="font-style:italic;color:#ccc">Para cuando dejas de comparar tu ritmo con el de todos los demás — y descubres q…</td></tr><tr onclick="document.getElementById('s9').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>09</td><td>No Tengo Que Saberlo Todo</td><td><span style="color:#4DB6AC">paz / calma</span></td><td>3:07</td><td style="font-style:italic;color:#ccc">Para cuando te cansas de querer tener todas las respuestas antes de dar el sigui…</td></tr><tr onclick="document.getElementById('s10').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>10</td><td>Respiro y Confío</td><td><span style="color:#4DB6AC">paz / calma</span></td><td>3:17</td><td style="font-style:italic;color:#ccc">Para cuando el único acto de valentía que puedes hacer es respirar — y confiar e…</td></tr><tr onclick="document.getElementById('s11').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>11</td><td>Si Me Escuchas Mañana</td><td><span style="color:#888">esperanza</span></td><td>3:16</td><td style="font-style:italic;color:#ccc">Para cuando la noche pesa y necesitas que alguien te recuerde que mañana también…</td></tr><tr onclick="document.getElementById('s12').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>12</td><td>Siempre vuelvo a mí</td><td><span style="color:#F4B860">empoderamiento</span></td><td>2:34</td><td style="font-style:italic;color:#ccc">Para cuando el mundo intenta apagarte — y algo dentro de ti dice, otra vez: aquí…</td></tr><tr onclick="document.getElementById('s13').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>13</td><td>Todavía Hay Camino</td><td><span style="color:#81C784">crecimiento</span></td><td>2:51</td><td style="font-style:italic;color:#ccc">Cuando vas manejando, pones música, miras la carretera y de repente entiendes qu…</td></tr><tr onclick="document.getElementById('s14').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>14</td><td>Todo florece cuando llega su tiempo</td><td><span style="color:#4DB6AC">paz / calma</span></td><td>3:53</td><td style="font-style:italic;color:#ccc">Para cuando el calendario te presiona pero la naturaleza te recuerda en silencio…</td></tr><tr onclick="document.getElementById('s15').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>15</td><td>Un Paso Más</td><td><span style="color:#81C784">crecimiento</span></td><td>3:17</td><td style="font-style:italic;color:#ccc">Para cuando el progreso parece invisible y aprendes que un solo paso también mer…</td></tr><tr onclick="document.getElementById('s16').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>16</td><td>Volví a Elegirme</td><td><span style="color:#F4B860">empoderamiento</span></td><td>3:10</td><td style="font-style:italic;color:#ccc">Para cuando apagaste el ruido, te miraste al espejo y encontraste ahí a alguien …</td></tr><tr onclick="document.getElementById('s17').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>17</td><td>Volví a Mí</td><td><span style="color:#F4B860">empoderamiento</span></td><td>2:35</td><td style="font-style:italic;color:#ccc">Para cuando dejas de caminar mirando al suelo — y te das cuenta de que tú eres t…</td></tr><tr onclick="document.getElementById('s18').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>18</td><td>Volví a Sonreír</td><td><span style="color:#FFB74D">alegría</span></td><td>3:23</td><td style="font-style:italic;color:#ccc">Cuando pasas por el mismo lugar donde antes dolía y te sorprendes cantando bajit…</td></tr><tr onclick="document.getElementById('s19').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>19</td><td>Ya No Vuelvo Atrás</td><td><span style="color:#F4B860">empoderamiento</span></td><td>2:40</td><td style="font-style:italic;color:#ccc">El día que decides que ya no le pides permiso a nadie — ni a quien se fue, ni al…</td></tr><tr onclick="document.getElementById('s20').scrollIntoView({behavior:'smooth',block:'start'})" style="cursor:pointer"><td>20</td><td>Ya Puedes Descansar</td><td><span style="color:#4DB6AC">paz / calma</span></td><td>2:53</td><td style="font-style:italic;color:#ccc">Para cuando la mañana llega en silencio y algo en ti sabe, antes de que la mente…</td></tr>
+  </tbody>
+</table>
+
+
+<div class="card" id="s1">
+  <div class="card-header">
+    <div class="num">01</div>
+    <div class="card-title-block">
+      <h2>A Mi Tiempo</h2>
+      <div class="meta">A+Mi+Tiempo.mp3 · 3:34 · 60 BPM · A mayor · alta · Pop / Canción de autor</div>
+    </div>
+    <span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span>
+  </div>
+  
+  <div class='mapeo'>Alta coincidencia temática con álbum Las pequeñas cosas o Volví a escucharme. Letra sobre timing, paciencia y no competir. Sin ruptura ni empoderamiento obvio.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando cansada de compararte con los demás descubres que llegar despacio también es llegar.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">El agotamiento de sentir que todos avanzan y tú te quedas. La presión de tener que llegar al mismo tiempo que el mundo. Y algo que empieza a soltarse cuando te permites ir a tu ritmo.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">No te pide que esperes sin hacer nada. Te recuerda que lo que es para ti no puede perderse — aunque llegue cuando menos lo esperas.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"a mi tiempo todo va a llegar"</li><li>"cada semilla conoce su lugar"</li><li>"no llego tarde, sólo llego cuando debo llegar"</li><li>"aprendí a no competir"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span><span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span><span class="badge" style="background:#A5D6A722;color:#A5D6A7;border:1px solid #A5D6A744">nostalgia</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">ritmo propio</span><span class="tag">comparación</span><span class="tag">paciencia</span><span class="tag">confianza</span><span class="tag">timing</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">🎵 Di pasa mil trenes por la estación pensé que el mío nunca iba a volver hoy entendí con el corazón que cada historia aprende a florecer Deje de mirar hacia los demás Deje de correr para demostrar la vida no empieza por llegar empieza cuando aprendes a esperar a mi tiempo todo va a llegar Cada semilla conoce su lugar a mi tiempo vuelvo a respirar lo que es para mí me encontrará Hoy la mañana me hablo bajito como quien conoce la dirección no necesito cambiar mi paso para escuchar mi corazón si otro celebra yo también sonrío porque aprendí a no competir cada destino tiene su ritmo el mío acaba de descubrirse aquí a mi tiempo todo va a llegar cada semilla conoce su lugar a mi tiempo vuelvo a respirar lo que es para mí me encontrará no llego tarde sólo llego cuando debo llegar a mi tiempo todo va a llegar a mi tiempo todo va a llegar cada latido me invita a confiar a mi tiempo ya puedo cantar porque mi historia acaba de empezar a mi tiempo</div>
+  </details>
+</div>
+
+<div class="card" id="s2">
+  <div class="card-header">
+    <div class="num">02</div>
+    <div class="card-title-block">
+      <h2>Hoy Elijo Paz</h2>
+      <div class="meta">Hoy+Elijo+Paz.mp3 · 3:03 · 57 BPM · A menor · alta · Pop / Canción de autor</div>
+    </div>
+    <span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span>
+  </div>
+  
+  <div class='mapeo'>Alta coincidencia con álbum Las pequeñas cosas. Canción sobre elegir la calma en medio del ruido. Energía íntima, introspectiva.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">El día que decides no correr junto al mundo — y descubres que la paz no aparece cuando todo está en orden, sino cuando decides elegirla.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">El agotamiento de siempre querer controlar lo que no puedes. Y la sorpresa de que cuando sueltas, aparece algo que no sabías que existía: la calma escondida en lo simple.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para recordarte que la paz no se encuentra — se elige. Aunque el mundo no se detenga. Aunque todavía queden cosas sin resolver.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Hoy elijo paz aunque el mundo no se detenga jamás"</li><li>"Las manos aprendieron a soltar despacio lo que durante años quise controlar"</li><li>"Hay una fuerza escondida en lo simple que solo aparece cuando dejo de empujar"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span><span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span><span class="badge" style="background:#A5D6A722;color:#A5D6A7;border:1px solid #A5D6A744">nostalgia</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">paz</span><span class="tag">soltar</span><span class="tag">control</span><span class="tag">calma</span><span class="tag">mindfulness</span><span class="tag">presente</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">El café quedó tibio sobre la mesa La mañana entró sin pedir permiso La ciudad seguía corriendo allá afuera Pero hoy no corría conmigo Habí la ventana sin mirar la hora Deje que el viento hablar primero Había respuesta en las hojas moviéndose Que nunca encontré mirando el reloj Hoy el hijo paz Aunque el mundo no se detenga jamás Hoy el hijo paz Y por primera vez me basta este lugar Lo que tenga que llegar llegará Hoy el hijo paz Las manos aprendieron a soltar despacio Lo que durante años quise controlar Hay una fuerza escondida en lo simple Que solo aparece cuando dejo de empujar No todo necesita una respuesta Ni cada silencio quiere explicar Hay días que simplemente florecen Cuando uno aprende a esperar Hoy el hijo paz Aunque el mundo no se detenga jamás Hoy el hijo paz Y por primera vez me basta este lugar Lo que tenga que llegar llegará Hoy el hijo paz Hoy el viento sabe mi nombre y el sol Entra sin preguntar No cambiá el mundo esta mañana Solo aprendí otra forma de mirar Hoy el hijo paz Sobre todo lo que no puedo cambiar Hoy el hijo paz Y eso ya es suficiente para avanzar Aquí me quedó un instante más en paz</div>
+  </details>
+</div>
+
+<div class="card" id="s3">
+  <div class="card-header">
+    <div class="num">03</div>
+    <div class="card-title-block">
+      <h2>Hoy es un nuevo comienzo</h2>
+      <div class="meta">Hoy+es+un+nuevo+comienzo.mp3 · 2:33 · 92 BPM · B mayor · alta · Pop / Canción de autor</div>
+    </div>
+    <span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span>
+  </div>
+  
+  <div class='mapeo'>Coincidencia con álbum Vuelvo a sentir la vida o Volví a escucharme. Canción de apertura o cierre de proceso.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">El primer día en que la esperanza llega sin que nadie la invite — y eliges quedarte con ella en vez de preguntarte si mereces que esté.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">Esa ligereza frágil que sientes cuando dejas de arrastrar el ayer. No todo está resuelto. Pero hoy algo en ti decidió empezar.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para el primer paso después de mucho tiempo quieta. Para que sientas que renacer es posible, aunque todavía no sea seguro.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Hoy es un nuevo comienzo, todo vuelve a florecer"</li><li>"Hoy abracé este momento y decido renacer"</li><li>"No hace falta mirar atrás, hoy prefiero volver a sentir"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#A5D6A722;color:#A5D6A7;border:1px solid #A5D6A744">nostalgia</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">nuevo comienzo</span><span class="tag">esperanza</span><span class="tag">renacer</span><span class="tag">fe</span><span class="tag">presente</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Respirar, todo comienza aquí Hoy despierto una nueva ilusión La mañana me invita a soñar La de fuerte mi corazón Porque todo puede cambiar Dejo atrás lo que ya se fue Como el viento que abraza el mar Cada paso me acerca la fe Y me enseña volver a empezar Hoy es un nuevo comienzo Todo vuelve a florecer Hoy abrazó este momento y decido renacer No hace falta mirar atrás Hoy prefiero volver a sentir Cada sueño flores en paz Cuando aprendo a sonreír Si el camino parece lento Yo confío un poco más Cada paso vence al tiempo Y me acerca donde quiero estar Hoy es un nuevo comienzo Todo vuelve a florecer Hoy abrazó este momento y decido renacer Respirar, confía Hoy comienza una nueva historia</div>
+  </details>
+</div>
+
+<div class="card" id="s4">
+  <div class="card-header">
+    <div class="num">04</div>
+    <div class="card-title-block">
+      <h2>Hoy me Elijo</h2>
+      <div class="meta">Hoy+me+Elijo.mp3 · 3:00 · 96 BPM · A mayor · alta · Pop / Pop Soul</div>
+    </div>
+    <span class="badge" style="background:#F4B86022;color:#F4B860;border:1px solid #F4B86044">empoderamiento</span>
+  </div>
+  
+  <div class='mapeo'>Alta coincidencia con álbum Ya no vuelvo atrás o Volví a escucharme. Título probable de catálogo: 'Me elegí primero' o 'Sin pedir permiso'.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Cuando dejas el celular sobre la mesa, te miras al espejo y decides que hoy eres tú quien manda — sin pedir permiso a nadie.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">El silencio raro de quien por fin dejó de buscar validación afuera. No es vacío — es espacio. La calma nueva de quien descubrió que no necesita que el mundo le diga que está bien.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para que la primera persona que elijas hoy seas tú. Sin explicaciones. Sin condiciones.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Hoy me elegí, sin pedir permiso a nadie más"</li><li>"El miedo se quedó detrás"</li><li>"Mi corazón ya encontró su voz"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span><span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">elegirse</span><span class="tag">autocuidado</span><span class="tag">validación</span><span class="tag">silencio</span><span class="tag">decisión</span><span class="tag">permiso</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Hoy dejé el celular sobre la mesa Por primera vez el silencio me hizo compañía El café seguía caliente en la taza Y entendí que no tenía que correr Mire mi reflejo en la ventana Ya no buscaba la persona de ayer Había algo distinto en mi mirada Como quien por fin decidió volver Y de repente todo hizo sentido Como si la vida dijera mi nombre Por primera vez Hoy me dijo Sin pedir permiso a nadie más Hoy me dijo Y el miedo se quedó detrás Hoy me dijo Con todo lo que soy Si mi corazón ya encontró su voz Para que mirara atrás La ciudad seguía igual de deprisa Pero yo ya no quería competir Y ya no quería haber vacunado Descubrí que también existen victorias Que solo se celebran por dentro Guarda las dudas en el bolsillo Como quien ya no las piensa usar Hay caminos que empiezan despacio, pero nunca dejan de avanzar Y de repente todo hizo sentido Como si la vida dijera mi nombre por primera vez Hoy me dijo, sin pedir permiso a nadie más Hoy me dijo, y el miedo se quedó detrás Hoy me dijo, con todo lo que soy Si mi corazón ya encontró su voz Oh, oh, oh, oh, oh, oh, oh, oh, oh, oh</div>
+  </details>
+</div>
+
+<div class="card" id="s5">
+  <div class="card-header">
+    <div class="num">05</div>
+    <div class="card-title-block">
+      <h2>Hoy todo comienza</h2>
+      <div class="meta">Hoy+todo+comienza.mp3 · 3:29 · 123 BPM · B menor · alta · Dancehall / Pop Latino</div>
+    </div>
+    <span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span>
+  </div>
+  
+  <div class='mapeo'>Coincidencia con álbum Vuelvo a sentir la vida. Canción de apertura, energía alta, celebratoria.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Cuando abres la ventana y algo en el aire te dice que este día sí es diferente — aunque no puedas explicar por qué.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">La esperanza frágil que aparece en un día normal. No gran revelación. Solo la sensación de que el corazón volvió a latir diferente y que eso, de alguna manera, importa.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para el día que decidiste confiar en que lo bueno está de camino — sin necesitar pruebas todavía.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Hoy todo comienza aquí, mi corazón vuelve a latir"</li><li>"Lo bueno ya viene hacia mí, porque aprendí a sonreír"</li><li>"No necesito mirar hacia atrás, lo que es para mí me encontrará"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">nuevo comienzo</span><span class="tag">esperanza</span><span class="tag">confianza</span><span class="tag">florecer</span><span class="tag">mañana</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Apro la ventana, entro a la luz El cielo me dice que todo es virtud Dejo el ayer donde debe quedar Hoy nace un camino por caminar Respiro profundo, despacio otra vez La calma abraza de pie salaciendo Tengo que correr para llegar Cada pequeño paso también es avanzar Hoy todo comienza aquí, mi corazón vuelve a lastir Lo bueno ya viene hacia mí, porque aprendí a sonreír Hoy todo comienza aquí, la vida flores en mí El sol conoce mi verdad y yo también vuelvo a brillar Si el viento cambia de dirección, camino ligero con el corazón No necesito mirar hacia atrás Lo que es para mí me encontrara Cada mañana me invita a creer Que siempre hay algo nuevo por ver La esperanza conoce mi voz Y hoy vuelve a cantar entre los dos Hoy todo comienza aquí, mi corazón vuelve a lastir Lo bueno ya viene hacia mí, porque aprendí a sonreír Hoy todo comienza aquí, la vida flores en mí No importa qué pasó, hoy vuelvo a empezar otra vez Respira, confía, sonríe Todo comienza aquí, todo comienza aquí Todo comienza aquí, todo comienza aquí Oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, …</div>
+  </details>
+</div>
+
+<div class="card" id="s6">
+  <div class="card-header">
+    <div class="num">06</div>
+    <div class="card-title-block">
+      <h2>Me Elegi</h2>
+      <div class="meta">Me+Elegi.mp3 · 3:47 · 78 BPM · E mayor · alta · Pop / Canción de autor</div>
+    </div>
+    <span class="badge" style="background:#F4B86022;color:#F4B860;border:1px solid #F4B86044">empoderamiento</span>
+  </div>
+  
+  <div class='mapeo'>Alta coincidencia con álbum Volví a escucharme o Ya no vuelvo atrás. Posibles tracks: 'Me elegí primero', 'Ya no me escondo'.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando te das cuenta de que la persona que más te ha fallado eras tú misma — y decides que eso cambia hoy.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">El peso de las heridas que cargaste sola durante años. Y la ligereza nueva de quien decidió que ya basta de falsas palabras — aunque vengan de adentro.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">No te pide que seas perfecta. Te pide que dejes de ser tu propio enemigo.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Hoy me elegí, me abrí las alas, rompí las jaulas de mi corazón"</li><li>"Ya no me digo falsas palabras, mi amor completo es mi canción"</li><li>"Cuántas tormentas tuve que cruzar, cuántas promesas se llevó el ayer"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#F4B86022;color:#F4B860;border:1px solid #F4B86044">empoderamiento</span><span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">elegirse</span><span class="tag">autoestima</span><span class="tag">heridas</span><span class="tag">liberación</span><span class="tag">alas</span><span class="tag">fuerza</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Hoy desperté sin miedo a mi reflejo Deje el pasado donde debes estar rompí el silencio, solte aquel complejo Y vi que el cielo me quería abrazar Si alguna herida quiso detenerme Hoy es la fuerza que me hace volar Ya no le temo al mundo ni a perderme Porque aprendí primero a despertar Cuantas tormentas tuve que cruzarte Cuantas promesas se llevó layer Busqué respuestas lejos de mi alma Sin comprender que estaban en mi piel Hoy cada lágrima florece en calma Cada caída me enseñó a crecer Ya no persigo lo que no me llama Porque encontré la luz de mi querer Hoy me elegí, me abrí las alas Rompí las jaulas de mi corazón Ya no me digo falsas palabras Mi amor completo es mi canción Hoy me elegí, nadie me frena Brillo más fuerte que cualquier dolor Si el mundo cambia yo sigo firme Porque aprendí a quererme yo No necesito que alguien me rescate Llevo el valor latiendo en mi interior Cada mañana vuelvo a enamorarme De la mujer que vive en mi canción Y si la vida vuelve a desafiarme Ah, voy a mirarla siempre con valor Porque el milagro nunca estuvo afuera Siempre vivía dentro de un corazón Porque solo llenva los clave</div>
+  </details>
+</div>
+
+<div class="card" id="s7">
+  <div class="card-header">
+    <div class="num">07</div>
+    <div class="card-title-block">
+      <h2>Me Encontré Primero</h2>
+      <div class="meta">Me+Encontré+Primero.mp3 · 3:22 · 123 BPM · A mayor · alta · Dancehall / Pop Latino</div>
+    </div>
+    <span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span>
+  </div>
+  
+  <div class='mapeo'>Alta coincidencia con álbum Volví a escucharme. Posible track: 'Me elegí primero' (track 2) — emoción de post-ruptura vista desde el crecimiento, no desde el dolor.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Cuando entiendes que lo que sentiste como pérdida fue, en realidad, el comienzo de encontrarte.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">La paz tranquila de quien ya no espera que alguien llegue a salvarla. La certeza nueva de que un corazón completo late distinto — más suave, más propio.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para que la próxima historia de amor empiece desde un lugar diferente: desde ti.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Nunca fui perderte, fui encontrarme primero"</li><li>"Aprendí que un corazón completo late mucho más"</li><li>"Hoy ya no espero que alguien me salve"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#A5D6A722;color:#A5D6A7;border:1px solid #A5D6A744">nostalgia</span><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">encontrarse</span><span class="tag">amor propio</span><span class="tag">post-ruptura</span><span class="tag">completitud</span><span class="tag">nuevo comienzo</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Hoy sueno tu nombre en una canción y ya no cambio mi respiración Antes dolía mirar hacia atrás Hoy solo sonrío y sigo en paz Guardé las cartas que nunca envié Y aún no hace falta volver a leer Hay despedidas que saben mejor Cuando las firma el corazón Nunca fui perderte Fui encontrarme primero Mientras buscaba respuestas Me descubrí por dentro Me encontré primero Antes de volver a amar Aprendí que un corazón completo Laté mucho más Me encontré primero Y todo cambió de lugar Hoy ya no espero que alguien me salve Porque aprendí a caminar Pase de largo por aquel café Donde juraba volver otra vez La vida puso otro rumbo después Y qué bonito me queda este tren Ya no me asustan los días de lluvia Ni las promesas que no volverán Hay puertas que cuando se cierran También enseñan a respirar Nunca fui perderte Fui encontrarme primero Mientras buscaba respuestas Me descubrí por dentro Me encontré primero Antes de volver a amar Aprendí que un corazón completo Laté mucho más Me encontré primero Ya no pienso regresar La mejor versión de mi historia Apenas va a comenzar Me encontré primero Y qué bonito volver a empezar Me encontré primero Y qué bonito volver a empezar Subtítulos por la comunidad …</div>
+  </details>
+</div>
+
+<div class="card" id="s8">
+  <div class="card-header">
+    <div class="num">08</div>
+    <div class="card-title-block">
+      <h2>Mi Ritmo también Cuenta</h2>
+      <div class="meta">Mi+Ritmo+también+Cuenta.mp3 · 3:26 · 123 BPM · G mayor · alta · Dancehall / Pop Latino</div>
+    </div>
+    <span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span>
+  </div>
+  
+  <div class='mapeo'>Coincidencia con álbum Las pequeñas cosas o Volví a escucharme. Temática de ritmo propio, naturaleza, sin urgencia.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando dejas de comparar tu ritmo con el de todos los demás — y descubres que el tuyo siempre tuvo sentido.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">El cansancio de competir con un ritmo que no es el tuyo. La presión de avanzar al paso del mundo cuando tu paso es otro. Y la calma nueva de quien se da permiso de ir despacio.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para recordarte que el sol no te pregunta a qué hora saliste. Simplemente vuelve a brillar. Tú también puedes.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Mi ritmo también cuenta, nadie me puede apagar"</li><li>"Ya no quiero demostrar, todo lo que buscaba siempre estuvo en mi lugar"</li><li>"Cada semilla bajo la piel guarda un jardín por florecer"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#F4B86022;color:#F4B860;border:1px solid #F4B86044">empoderamiento</span><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span><span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">ritmo propio</span><span class="tag">comparación</span><span class="tag">naturaleza</span><span class="tag">paciencia</span><span class="tag">brillo</span><span class="tag">sin competir</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Hoy la mañana volvió a cantar La brisa prendió mi verdad El sol no pregunta cuándo salí Simplemente vuelve a existir Las hojas no corren por florecer El río tampoco por llegar Si la vida conoce el compás ¿Por qué tendría que acelerar? Y siento que el cielo empieza a respirar Mi corazón ya no se esconde es momento de volar Mi ritmo también cuenta Nadie me puede apagar Hoy el sol lleva mi nombre y me vuelve iluminar Mi ritmo también cuenta Ya no quiero demostrar Todo lo que estaba buscando Siempre estuvo en mi lugar Hoy la montaña es mirar el mar Sin preguntarle cuándo llega Cada semilla bajo la piel Guarda un jardín por florecer Si el viento cambia de dirección También aprende mi corazón Cada latido vuelve a decir que todo empieza dentro de mí Y siento que el cielo empieza a respirar Mi corazón ya no se esconde es momento de volar Mi ritmo también cuenta Nadie me puede apagar Hoy mi alma toca las nubes y no piensa regresar Mi ritmo también cuenta Puedo al fin respirar Todo lo bueno me encontró Porque aprendí a confiar Mi ritmo también cuenta</div>
+  </details>
+</div>
+
+<div class="card" id="s9">
+  <div class="card-header">
+    <div class="num">09</div>
+    <div class="card-title-block">
+      <h2>No Tengo Que Saberlo Todo</h2>
+      <div class="meta">No+Tengo+Que+Saberlo+Todo.mp3 · 3:07 · 89 BPM · F# menor · alta · Pop / Canción de autor</div>
+    </div>
+    <span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span>
+  </div>
+  
+  <div class='mapeo'>Coincidencia con álbum Las pequeñas cosas o Volví a escucharme. Canción sobre soltar el control y confiar en el proceso.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando te cansas de querer tener todas las respuestas antes de dar el siguiente paso.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">La ansiedad de quien necesita saber el final antes de empezar. El control que cuesta tanto. Y la extraña ligereza que llega cuando te permites no saber.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">No te pide que confíes a ciegas. Solo que des el paso siguiente sin necesitar ver todos los demás.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"No tengo que saberlo todo para volver a respirar"</li><li>"Hoy dejo a la vida hablar"</li><li>"A veces el rumbo aparece cuando decide solo seguir"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#A5D6A722;color:#A5D6A7;border:1px solid #A5D6A744">nostalgia</span><span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">soltar el control</span><span class="tag">incertidumbre</span><span class="tag">proceso</span><span class="tag">confiar</span><span class="tag">presente</span><span class="tag">respirar</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Mmm... Mmm... Abro la puerta comienza el ruido La ciudad despierta antes que yo Llevo mis planes en los bolsillos Pero hoy ninguno manda mi voz Quise adivinar cada respuesta Antes si quiera decaminar La vida sonríe cuando la dejas Escribir lo que quiere contar No tengo que saberlo todo Para volver a respirar Mmm... No tengo que saberlo todo Hoy dejo a la vida hablar El semáforo cambia de pronto También los caminos del corazón Hay cosas que llegan despacio Sin pedir ninguna explicación Hoy no persigo las certezas Ni las promesas por cumplir A veces el rumbo aparece Cuando decide solo seguir No tengo que saberlo todo Para volver a respirar Mmm... No tengo que saberlo todo Hoy dejo a la vida hablar Si mañana cambia la historia También cambiaré junto a ella No vine a controlar el tiempo Vine a disfrutar el viaje No tengo que saberlo todo Ya puedo volver a confiar Mmm... No tengo que saberlo todo Y eso me devuelve la paz No tengo que saberlo todo Para volver a confiar Mmm...</div>
+  </details>
+</div>
+
+<div class="card" id="s10">
+  <div class="card-header">
+    <div class="num">10</div>
+    <div class="card-title-block">
+      <h2>Respiro y Confío</h2>
+      <div class="meta">Respiro+y+Confío.mp3 · 3:17 · 92 BPM · Ab menor · alta · Pop / Canción de autor</div>
+    </div>
+    <span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span>
+  </div>
+  
+  <div class='mapeo'>Coincidencia con álbum Las pequeñas cosas. Canción muy íntima, de respiración y quietud.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando el único acto de valentía que puedes hacer es respirar — y confiar en que algo está en orden aunque no lo veas.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">La dificultad de confiar cuando no tienes evidencia. El esfuerzo que cuesta soltar el control. Y el alivio pequeño pero real que llega cuando por fin lo haces.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para que en ese momento en que todo parece incierto, puedas encontrar aunque sea un segundo de paz.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Respiro y todo vuelve a su lugar, la calma me vuelve a abrazar"</li><li>"Si cierro los ojos puedo sentir que lo mejor ya viene hacia mí"</li><li>"Descubro la paz de confiar"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">respirar</span><span class="tag">confiar</span><span class="tag">incertidumbre</span><span class="tag">calma</span><span class="tag">fe</span><span class="tag">soltar</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Oye el sol, dibuja otro color La brisa caricia al corazón Dejo que el viento marque el compás Todo encuentra siempre su lugar Las nubes aprendieron a pasar También mis miedos saben descansar Yo necesito verlo para creer Cada amanecer me enseña a renacer Respiro y todo vuelve a su lugar La calma me vuelve a abrazar Si cierro los ojos puedo sentir Que lo mejor ya viene hacia mi Respiro y todo vuelve a su lugar Mi corazón aprende a confiar El cielo me recuerda al despertar Que siempre hay luz para comenzar Hoy camino sin mirar atrás La vida conoce dónde va Cada paso florece a andar Todo llega cuando debe llegar Si la lluvia decida aparecer También las flores vuelven a crecer Hoy dejo que el río siga el mar Y descubro la paz de confiar Respiro Respiro y todo vuelve a su lugar</div>
+  </details>
+</div>
+
+<div class="card" id="s11">
+  <div class="card-header">
+    <div class="num">11</div>
+    <div class="card-title-block">
+      <h2>Si Me Escuchas Mañana</h2>
+      <div class="meta">Si+Me+Escuchas+Mañana.mp3 · 3:16 · 172 BPM · G mayor · alta · Salsa / Tropical</div>
+    </div>
+    <span class="badge" style="background:#88822;color:#888;border:1px solid #88844">esperanza</span>
+  </div>
+  
+  <div class='mapeo'>Canción única en el catálogo — orientada a acompañar en un momento difícil, no en el proceso de crecimiento. Alta coincidencia con álbum Volví a escucharme o potencial track especial.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando la noche pesa y necesitas que alguien te recuerde que mañana también existe — y que tú mereces estar en él.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">El agotamiento de los días en que la fuerza no llega. La necesidad de que alguien te diga, aunque sea una canción, que esto también pasa.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Esta canción es ese abrazo para tus días difíciles. No promete que todo será perfecto — promete que mañana también hay luz.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Si me escuchas mañana, no tengas miedo, la noche también termina en canción"</li><li>"Si me escuchas mañana, todo va a estar mejor"</li><li>"Guarda un abrazo para tus días cuando la fuerza quiera descansar"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">noche difícil</span><span class="tag">mañana</span><span class="tag">esperanza</span><span class="tag">abrazo</span><span class="tag">fuerza</span><span class="tag">seguir</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Si me escuchas mañana, no tengas miedo La noche también termina en canción Aunque hoy el silencio pesa un poco Ya viene saliendo un nuevo sol No respondas todas las preguntas Dejas algunas para el corazón Hay caminos que nacen despacio Sin pedir ninguna explicación Si me escuchas mañana, todo va a estar mejor Si me escuchas mañana, no olvides quién eres hoy Guarda un abrazo para tus días Cuando la fuerza quiera descansar Las mejores partes de la vida A veces tardan en llegar No te compares con otras historias Cada quien tiene su despertar Lo que hoy parece una demora Mañana será libertad Si me escuchas mañana, todo va a estar mejor Si me escuchas mañana, no olvides quién eres hoy Ehh... Cuando esta canción termine Quiero que sonrías una vez más Porque lo mejor de este camino Todavía esta por comenzar Ehh... Si me escuchas mañana, ehh... Si me escuchas mañana, tu corazón conoce la dirección Si me escuchas mañana, que vas a su cuarte está en el fuselcón Si me escuchas mañana Si me escuchas mañana, tu corazón conoce la dirección</div>
+  </details>
+</div>
+
+<div class="card" id="s12">
+  <div class="card-header">
+    <div class="num">12</div>
+    <div class="card-title-block">
+      <h2>Siempre vuelvo a mí</h2>
+      <div class="meta">Siempre+vuelvo+a+mí.mp3 · 2:34 · 129 BPM · Eb menor · alta · Dancehall / Pop Latino</div>
+    </div>
+    <span class="badge" style="background:#F4B86022;color:#F4B860;border:1px solid #F4B86044">empoderamiento</span>
+  </div>
+  
+  <div class='mapeo'>Coincidencia con álbum Volví a escucharme o Ya no vuelvo atrás. Canción de resiliencia profunda.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando el mundo intenta apagarte — y algo dentro de ti dice, otra vez: aquí sigo.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">El cansancio de caer y levantarse y caer otra vez. Y la certeza que se gana a golpes: siempre encuentras el camino de regreso a ti misma.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para que cuando el mundo se ponga pesado, recuerdes que siempre vuelves. Aunque cueste. Siempre.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Siempre vuelvo a mí, siempre vuelvo aquí, cuando el mundo me quiera apagar"</li><li>"Si me caigo me vuelvo a levantar, porque aprendí a confiar"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span><span class="badge" style="background:#A5D6A722;color:#A5D6A7;border:1px solid #A5D6A744">nostalgia</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">resistencia</span><span class="tag">volver a sí misma</span><span class="tag">caídas</span><span class="tag">fuerza</span><span class="tag">identidad</span><span class="tag">perseverar</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Mmm... Mmm... Dicen que el tiempo lo cura todo Pero pregni que me curo, yo fui recogiendo pedazos pedazos Solo que el miedo nunca rompió Mire mi historia sin dar un paso atrás Abraza la serida sin mirar Hoy entendí que perde también Es otra forma de comenzar Siempre vuelvo a mí, siempre vuelvo aquí Cuando el mundo me quiera apagar Mi corazón vuelve a mi piel Siempre vuelvo a mí, siempre vuelvo a mi piel Siempre vuelvo a sentir Aunque llueva sobre mi piel Siempre vuelva sobre mi piel Siempre vuelve la manesella No persigo lo que se fue Ni las promesas que se llevo Hoy mis pasos conocen el camino Que luego un día me encontró Si me cago me vuelvo a levantar Porque aprendí a confiar No necesito un mirar sobre mi piel Siempre vuelve la manesella No persigo lo que se fue Ni las promesas que se llevo Hoy mis pasos conocen el camino Que algún día me encontró Si me cago me vuelvo a levantar Porque aprendí a confiar No necesito un mirar sobre mi piel Siempre vuelve a maneser Y se me vuelvo otra vez Cien o noche quiere vencer Siempre vuelve a maneser Siempre vuelve a maneser Siempre vuelve a maneser Y siempre vuelvo a mí Si la noche quiere vencer Siempre vuelvo a maneser Siempre vuelve a mane…</div>
+  </details>
+</div>
+
+<div class="card" id="s13">
+  <div class="card-header">
+    <div class="num">13</div>
+    <div class="card-title-block">
+      <h2>Todavía Hay Camino</h2>
+      <div class="meta">Todavía+Hay+Camino.mp3 · 2:51 · 123 BPM · C mayor · alta · Dancehall / Pop Latino</div>
+    </div>
+    <span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span>
+  </div>
+  
+  <div class='mapeo'>Coincidencia con álbum Volví a escucharme. Canción de proceso y camino, no de llegada.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Cuando vas manejando, pones música, miras la carretera y de repente entiendes que todavía queda luz — y que eso es suficiente para seguir.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">La sensación de estar en movimiento sin saber exactamente hacia dónde. Y algo que empieza a cambiar: la certeza de que el camino mismo importa tanto como el destino.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para recordarte que todavía hay camino. No hace falta tenerlo todo claro para seguir avanzando.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Todavía hay camino, todavía queda luz"</li><li>"No hace falta tenerlo todo para volver a creer en ti"</li><li>"Porque entendí que lo importante nunca fue llegar"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span><span class="badge" style="background:#A5D6A722;color:#A5D6A7;border:1px solid #A5D6A744">nostalgia</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">camino</span><span class="tag">proceso</span><span class="tag">luz</span><span class="tag">incertidumbre</span><span class="tag">seguir</span><span class="tag">destino</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Ah... Las llaves giraron, arrancó el motor La ciudad seguía con su propio reloj No llevaba prisa por llegar Solo quería volverme a escuchar Las luces pasaban una tras otra Como recuerdos diciendo adiós Baje un poco todas las ventanas Y también el peso del corazón Y de pronto todo empezó a cambiar La misma carretera se veía diferente Todavía hay camino, todavía queda luz No hace falta tenerlo todo Para volver a creer en ti Todavía hay camino, no terminó aquí Cada curva guarda una historia Que todavía quiere vivir Seguí cantando sin pensar Como cuando era más fácil soñar Había olvidado esa versión de mí Que sonreía por existir El horizonte seguía lejos Pero dejó de darme igual Porque entendí que lo importante Nunca fue llegar Y de pronto todo empezó a cambiar La misma carretera se veía diferente Todavía hay camino, todavía queda luz No hace falta tenerlo todo Para volver a creer en ti Todavía hay camino, mi corazón volvió Y mientras el mundo seguía girando Yo también volvió a ser yo Todavía hay camino Todavía hay camino Mi corazón volvió</div>
+  </details>
+</div>
+
+<div class="card" id="s14">
+  <div class="card-header">
+    <div class="num">14</div>
+    <div class="card-title-block">
+      <h2>Todo florece cuando llega su tiempo</h2>
+      <div class="meta">Todo+florece+cuando+llega+su+tiempo.mp3 · 3:53 · 92 BPM · G mayor · alta · Pop / Pop Soul</div>
+    </div>
+    <span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span>
+  </div>
+  
+  <div class='mapeo'>Alta coincidencia con álbum Las pequeñas cosas. Posible track 2: 'Todo florece a su tiempo'.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando el calendario te presiona pero la naturaleza te recuerda en silencio que cada cosa florece exactamente cuando debe.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">La impaciencia de quien siente que el tiempo pasa y las cosas no llegan. Y la calma que empieza a crecer cuando aceptas que lo que es tuyo no puede perderse.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para aprender a confiar en el tiempo sin rendirse. Para entender que esperar también es crecer.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Todo florece cuando llega su tiempo, como la lluvia besando el desierto"</li><li>"Nada se pierde, nada se quedó, todo está creciendo alrededor"</li><li>"Hoy ya no tengo miedo de esperar"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span><span class="badge" style="background:#A5D6A722;color:#A5D6A7;border:1px solid #A5D6A744">nostalgia</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">paciencia</span><span class="tag">timing</span><span class="tag">florecer</span><span class="tag">naturaleza</span><span class="tag">confiar</span><span class="tag">proceso</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">El viento nunca corre hacia el mar Y aún así consigue y ya no te pones Y aún así consigue y ya no te pones Cada hoja conoce su estación Cada amanecer tiene su canción Hoy el cielo me volvió a enseñar Que hasta la lluvia sabe esperar No todo rota bajo el mismo sol Cada jardín florece su color Todo florece cuando llega su tiempo Como la lluvia besando el desierto Nada se pierde, nada se quedó Todo está creciendo alrededor Todo florece cuando llega su tiempo También mi alma conoce el momento Hoy ya no tengo miedo de esperar Porque la vida sabe dónde llevar Las estrellas no salen a la vez Cada una ilumina cuando es El río nunca deja de avanzar Aunque despacio llegue hasta el mar Si hoy la calma decidió quedarse También los sueños vendrán a buscarme Lo que hoy no alcanzó a descubrir Mañana encontrará la forma de abrir Todo florece cuando llega su tiempo Como la lluvia besando el desierto Nada se pierde, nada se quedó Todo está creciendo alrededor Respira Confía florece Confía florece, tú llega cuando dedica Todo florece cuando llega su tiempo</div>
+  </details>
+</div>
+
+<div class="card" id="s15">
+  <div class="card-header">
+    <div class="num">15</div>
+    <div class="card-title-block">
+      <h2>Un Paso Más</h2>
+      <div class="meta">Un+Paso+Más.mp3 · 3:17 · 89 BPM · G mayor · alta · Pop / Canción de autor</div>
+    </div>
+    <span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span>
+  </div>
+  
+  <div class='mapeo'>Coincidencia con álbum Volví a escucharme o Las pequeñas cosas. Canción de progreso gradual.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando el progreso parece invisible y aprendes que un solo paso también merece ser celebrado.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">La frustración de sentir que no llegas. De comparar tu avance con algún estándar que te pesa. Y la liberación pequeña de celebrar lo que sí hiciste hoy.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para que el paso de hoy sea suficiente. Aunque sea uno solo. Aunque nadie más lo vea.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Un paso más ya casi puedo llegar, cada latido me enseña a confiar"</li><li>"Cada pequeño paso que doy hoy también merece celebración"</li><li>"Los grandes cambios empiezan dentro del corazón"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span><span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">un paso</span><span class="tag">progreso</span><span class="tag">celebrar lo pequeño</span><span class="tag">confianza</span><span class="tag">proceso</span><span class="tag">sin prisa</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Carde el miedo junto a la ventana Teje la prisa sobre el sillón Hoy la mañana se siente liviana La te distinto mi corazón No necesito correr primero Todo florece a su dirección Cada pequeño paso que doy hoy También merece celebración Un paso más ya casi puedo llegar Cada latido me enseña a confiar Un paso más no voy a mirar atrás Todo lo bueno me viene a encontrar Hoy el café sabe diferente Ya no lo tomo con ansiedad Miro mi vida mucho más de frente Sin pedirle permiso al mañana Si el horizonte tarda un poquito Yo seguiré con la misma canción Porque aprendí que los grandes cambios Empiezan dentro del corazón Un paso más ya casi puedo llegar Cada latido me enseña a confiar Un paso más no voy a mirar atrás Todo lo bueno me viene a encontrar No hace falta saber el final Para seguir caminando igual Hoy me regalo tranquilidad Eso también es avanzar Un paso más ya casi puedo llegar Cada latido me enseña a confiar Un paso más hoy vuelvo a respirar Todo comienza cuando decido caminar Un paso más</div>
+  </details>
+</div>
+
+<div class="card" id="s16">
+  <div class="card-header">
+    <div class="num">16</div>
+    <div class="card-title-block">
+      <h2>Volví a Elegirme</h2>
+      <div class="meta">Volví+a+Elegirme.mp3 · 3:10 · 60 BPM · G mayor · alta · Pop / Canción de autor</div>
+    </div>
+    <span class="badge" style="background:#F4B86022;color:#F4B860;border:1px solid #F4B86044">empoderamiento</span>
+  </div>
+  
+  <div class='mapeo'>Alta coincidencia con álbum Volví a escucharme. Posibles tracks: 'Volví a escucharme' (track 1), 'Ya no me escondo', 'Ahora sí soy yo'.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando apagaste el ruido, te miraste al espejo y encontraste ahí a alguien que hacía tiempo no veías.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">El silencio extraño de volver a escucharte. De descubrir que la paz que buscabas afuera siempre estuvo esperándote adentro.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">No es una declaración grande. Es simple: elegirte otra vez. Y que eso sea suficiente.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Volví a elegirme, ya nadie me puede cambiar"</li><li>"No es grandioso, es simple, es mi verdad"</li><li>"Apagué el mundo por un instante, dejé que hable mi interior"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span><span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">elegirse</span><span class="tag">silencio</span><span class="tag">interior</span><span class="tag">paz</span><span class="tag">identidad</span><span class="tag">volver a sí misma</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah Hoy me encontré frente al cristal Y una mirada volver a creer Deje de huir para empezar Volví despacio a renacer Guarda el ruido fuera de mí Cerré la puerta de la hierba La paz que tanto perseguí Siempre esperaba el volver Volví a elegirme Ya nadie me puede cambiar No es grandioso, es simple Es mi verdad Volví a elegirme Hoy vuelvo a respirar Cada latido me enseña libertad Apagué el mundo por un instante Dejé que hablar a mi interior No hizo falta seguir luchando Cuando escuché mi corazón Ya no le temo el calendario Ya lo que falta por llegar Hoy cada paso que yo doy Me recuerda quién quiero ser Volví a elegirme Ya nadie me puede cambiar No es grandioso, es simple Es mi verdad Volví a elegirme Hoy vuelvo a respirar Cada latido me enseña libertad Ya puedo descansar El peso quedó detrás Ya puedo descansar Mi alma encontró su lugar Volví a elegirme Ya nadie me puede cambiar No es grandioso, es simple Es mi verdad Volví a elegirme Hoy vuelvo a caminar Porque la mejor parte de mí Acaba de despertar Volví a elegirme Mmm... Ah, eso es que irá Mmm...</div>
+  </details>
+</div>
+
+<div class="card" id="s17">
+  <div class="card-header">
+    <div class="num">17</div>
+    <div class="card-title-block">
+      <h2>Volví a Mí</h2>
+      <div class="meta">Volví+a+Mí.mp3 · 2:35 · 123 BPM · A mayor · alta · Dancehall / Pop Latino</div>
+    </div>
+    <span class="badge" style="background:#F4B86022;color:#F4B860;border:1px solid #F4B86044">empoderamiento</span>
+  </div>
+  
+  <div class='mapeo'>Alta coincidencia con álbum Ya no vuelvo atrás. Energía alta, Dancehall. Posibles tracks: 'Ya no vuelvo atrás', 'Esta soy yo', 'Más fuerte que ayer'.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando dejas de caminar mirando al suelo — y te das cuenta de que tú eres tu propia revolución.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">El fuego nuevo de quien por fin se cansó de dudar. La energía de quien entiende que la fuerza siempre estuvo ahí y decidió usarla.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para el día que decides encenderte. No mañana. Hoy.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Ya no camino mirando al suelo, hoy cada paso me hace volar"</li><li>"La suerte cambia cuando decides que nadie te va a detener jamás"</li><li>"Hoy soy mi fuerza, mi revolución"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">fuerza</span><span class="tag">revolución</span><span class="tag">encenderse</span><span class="tag">decisión</span><span class="tag">poder propio</span><span class="tag">sin miedo</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Ya no camino mirando al suelo, hoy cada paso me hace volar Cambié mis dudas por nuevos sueños, y no hay quien pueda hacerme parar El miedo quiso cerrar mis puertas, pero aprendí cómo atravesar Ahora mi vida se siente despierta, como un incendio frente al mar Si caigo vuelvo mucho más fuerte, si pierdo vuelvo a comenzar La suerte cambia cuando decides que nadie te va a detener jamás Voy encendiendo la ciudad, con cada paso siento libertad Mi corazón marca el compás, hoy brillo tanto que no puedo parar Voy, voy, voy sin mirar atrás, nada me frena quiero despegar Hoy soy mi fuerza, mi revolución, la tema es fuerte en mi corazón Que hablen si quieren yo sigo bailando La vida es corta para dudar, hoy cada espejo me está mostrando La mejor versión de mi verdad, no necesito ninguna corona Ya descubrí mi propio valor, porque la reina nunca se esconde Camina siempre con decisión Voy encendiendo la ciudad, con cada paso siento libertad Mi corazón marca el compás, hoy brillo tanto que no puedo parar Voy, voy, voy sin mirar atrás, todo el universo empieza jitar Si el mundo entero quiere correr, yo voy primero porque aprendí a creer Hey, esta es mi vida, hey, hey, hey Nadie la va a escribir por…</div>
+  </details>
+</div>
+
+<div class="card" id="s18">
+  <div class="card-header">
+    <div class="num">18</div>
+    <div class="card-title-block">
+      <h2>Volví a Sonreír</h2>
+      <div class="meta">Volví+a+Sonreír.mp3 · 3:23 · 129 BPM · G mayor · alta · Dancehall / Pop Latino</div>
+    </div>
+    <span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span>
+  </div>
+  
+  <div class='mapeo'>Alta coincidencia con álbum Vuelvo a sentir la vida o Volví a escucharme. Posibles tracks: 'Volví a sonreír' (si existe), 'Vuelvo a sentir la vida'.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Cuando pasas por el mismo lugar donde antes dolía y te sorprendes cantando bajito — y entiendes que algo en ti sanó sin que lo notaras.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">La sorpresa de sanar sin darte cuenta. De pasar por un lugar cargado de memoria y descubrir que ya no pesa igual. El cuerpo que sana antes de que la mente lo procese.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para que celebres que volviste a sonreír. Aunque sea bajito. Aunque nadie lo vea.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Hoy pasé por la misma calle donde un día me di caer"</li><li>"Me sorprendí cantando bajito, sin darme cuenta empecé a reír"</li><li>"Volví a sonreír como si fuera la primera vez"</li><li>"Era yo quien no podía verme"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span><span class="badge" style="background:#CE93D822;color:#CE93D8;border:1px solid #CE93D844">liberación</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">sanar</span><span class="tag">sorpresa</span><span class="tag">sonreír</span><span class="tag">memoria</span><span class="tag">sanación</span><span class="tag">retorno</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Ah... Ah... Hoy pasé por la misma calle Donde un día me di caer Pensé que iba a doler mirarla Pero ya no fue como ayer Me sorprendí cantando bajito Sin darme cuenta empecé a reír Hay heridas que cierran solas Cuando dejas de perseguir Y entendí que la vida nunca se fue Era yo quien no podía verme Volví a sonreír Como si fuera la primera vez Volví a mirarme Sin esconder lo que llegué a hacer Volví a sonreír Sin esperar que alguien me salvara Hoy mi corazón baila despacio Porque aprendió a quedarse en casa Ya no cargo tantas maletas Ni preguntas que no hablan de mí Hay caminos que se iluminan Cuando decides seguir aquí Si mañana cambia la historia La volveré a escribir Porque ahora sé que la fuerza Siempre vivió dentro de mí Volví a sonreír Como si fuera la primera vez Volví a abrazarme Y todo empezó a florecer Volví a sonreír Mieda volver a empezar Hoy la vida me encontró bailando Y no te pienso dejar Volví a sonreír Como si fuera la primera vez Volví a sonreír Ah, valía a sonreír Volví a sonreír Volví a sonreír Volví a sonreír</div>
+  </details>
+</div>
+
+<div class="card" id="s19">
+  <div class="card-header">
+    <div class="num">19</div>
+    <div class="card-title-block">
+      <h2>Ya No Vuelvo Atrás</h2>
+      <div class="meta">Ya+No+Vuelvo+Atrás.mp3 · 2:40 · 99 BPM · G mayor · alta · Pop / Pop Soul</div>
+    </div>
+    <span class="badge" style="background:#F4B86022;color:#F4B860;border:1px solid #F4B86044">empoderamiento</span>
+  </div>
+  
+  <div class='mapeo'>Coincidencia directa con álbum 'Ya no vuelvo atrás', track 1 del mismo nombre. Confianza: muy alta.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">El día que decides que ya no le pides permiso a nadie — ni a quien se fue, ni al miedo — para ser exactamente quien eres.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">Esa mezcla de alivio y euforia que llega cuando dejas de pedirle permiso a alguien que ya no está. El cuerpo que quiere moverse. La certeza de que esto ya no tiene vuelta atrás.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">No está aquí para que llores lo que perdiste. Está para que bailes lo que ya eres.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Desperté bailando con el sol, dejé las penas bajo el colchón"</li><li>"Ya no le pide permiso al corazón"</li><li>"Todo lo que un día me dolió se convirtió en mi mejor canción"</li><li>"La felicidad siempre estuvo en mi voz"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#F4B86022;color:#F4B860;border:1px solid #F4B86044">empoderamiento</span><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span><span class="badge" style="background:#CE93D822;color:#CE93D8;border:1px solid #CE93D844">liberación</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">empoderamiento</span><span class="tag">baile</span><span class="tag">liberación</span><span class="tag">decisión</span><span class="tag">autosuficiencia</span><span class="tag">sin permiso</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Uh-huh uh-huh uh-huh uh-huh Uh-huh uh-huh uh-huh Desperte bailando con el sol, deje las penas bajo el colchón Hoy mi sonrisa cambió de dirección, ya no le pide permiso al corazón Todo lo que un día me dolió, se convirtió en mi mejor canción Ahora camino con otra intención, viviendo libre sin explicación Ya no me pesa lo que perdí Todo lo bueno empezó aquí La vida cambia cuando decides Que creer un poquito más en ti Porque ya no vuelvo atrás Nadie me puede apagar Hoy mi alma quiere bailar Y el miedo se quedó detrás Voy brillando sin parar Como la luna sobre el mar Hoy mi corazón entendió Que la felicidad Siempre estuvo en mi voz Si mañana cambia la dirección Yo sigo firme con mi convicción No necesito otra aprobación Soy suficiente, es mi canción Cada caída me hizo crecer Cada mañana me vi orden hacer Hoy celebro lo que llegué a hacer Y todavía falta por volver Porque ya no vuelvo atrás Nadie me puede apagar Hoy mi alma quiere bailar Y el miedo se quedó detrás Voy brillando sin parar Como la luna sobre el mar Si la vida me vuelve a probar Voy sonriendo porque aprendí a volar Baila, siente, vive Que la vida no espera Hoy comienza una historia nueva Y esta vez soy la primera A comienz…</div>
+  </details>
+</div>
+
+<div class="card" id="s20">
+  <div class="card-header">
+    <div class="num">20</div>
+    <div class="card-title-block">
+      <h2>Ya Puedes Descansar</h2>
+      <div class="meta">Ya+Puedes+Descansar.mp3 · 2:53 · 83 BPM · A menor · alta · Pop / Canción de autor</div>
+    </div>
+    <span class="badge" style="background:#4DB6AC22;color:#4DB6AC;border:1px solid #4DB6AC44">paz / calma</span>
+  </div>
+  
+  <div class='warn'>⚠️ ⚠️ DISCREPANCIA: el nombre del archivo es 'Ya Puedes Descansar' pero el coro de la canción dice 'Todo Empieza Hoy'. Título probable en el catálogo: 'Hoy empieza todo' (track 11 de Volví a escucharme). Confianza: alta. Verificar con la artista.</div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">MOMENT</div>
+      <p class="editorial moment-text">Para cuando la mañana llega en silencio y algo en ti sabe, antes de que la mente despierte, que hoy algo florece aunque todavía no puedas nombrarlo.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">LO QUE ESTÁS SINTIENDO</div>
+      <p class="editorial">La quietud frágil de un nuevo comienzo que todavía no hace ruido. No entusiasmo todavía. Solo la sensación suave de que algo está despertando dentro de ti.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-label">INTENCIÓN</div>
+    <p class="editorial intencion-text">Para los comienzos que no anuncian. Para los días en que todavía no lo ves pero ya puedes sentirlo.</p>
+  </div>
+  
+  <div class="grid-2">
+    <div class="section">
+      <div class="section-label">FRASES CLAVE (de la letra)</div>
+      <ul class="frases"><li>"Todo empieza hoy, aunque todavía no lo vea"</li><li>"Ya puedo sentir que algo va a florecer"</li><li>"Ya no tengo miedo de volver a creer"</li><li>"Lo que hoy parece quieto también está aprendiendo a despertar"</li></ul>
+    </div>
+    <div class="section">
+      <div class="section-label">EMOCIONES SECUNDARIAS</div>
+      <div class="badge-row"><span class="badge" style="background:#81C78422;color:#81C784;border:1px solid #81C78444">crecimiento</span><span class="badge" style="background:#FFB74D22;color:#FFB74D;border:1px solid #FFB74D44">alegría</span><span class="badge" style="background:#A5D6A722;color:#A5D6A7;border:1px solid #A5D6A744">nostalgia</span></div>
+      <div class="section-label" style="margin-top:12px">TAGS</div>
+      <div class="badge-row"><span class="tag">nuevo comienzo</span><span class="tag">silencio</span><span class="tag">despertar</span><span class="tag">fe</span><span class="tag">florecer</span><span class="tag">hoy</span></div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Ver letra completa (transcripción Whisper)</summary>
+    <div class="letra">Eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh. Abro los ojos sin pedir respuestas, la mañana no tiene prisa por hablar, Algo pequeño cambia por dentro Aunque todavía no lo pueda nombrar No hace falta correr detrás del tiempo Cada paso también sabe llegar Todo empieza hoy Aunque todavía no lo vea Ya puedo sentir que algo va a florecer Todo empieza hoy Aunque todavía no lo vea Ya no tengo miedo de volver a creer A veces el silencio construye caminos Que los ojos todavía no alcanzan a mirar Lo que hoy parece quieto También está aprendiendo a despertar Ya no pegueo contra las horas Aprendí que todo encuentra su lugar Todo empieza hoy Aunque todavía no lo vea Ya puedo sentir que algo va a florecer Todo empieza hoy Aunque todavía no lo vea Ya no tengo miedo de volver a creer Ya puedes descansar Lo que sembras te sigue Ya puedes descansar La vida también trabaja en silencio Todo empieza hoy Aunque todavía no lo vea Cada latido me invita a confiar Todo empieza hoy Aunque todavía no lo vea Lo mejor de mi historia ya quiere empezar Todo empieza hoy Aunque todavía no lo vea Aunque todavía no lo vea</div>
+  </details>
+</div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "archivo_original": "Ya+No+Pido+Permiso.mp3",
+  "nombre_limpio": "Ya No Pido Permiso",
+  "duracion": "2:59",
+  "bpm": 123,
+  "tonalidad": "E mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "empoderamiento",
+  "emociones_secundarias": [
+    "liberación",
+    "alegría"
+  ],
+  "titulo_detectado_en_letra": [
+    "Ya No Pido Permiso"
+  ],
+  "tags": [
+    "empoderamiento",
+    "voz propia",
+    "liberación",
+    "brillar",
+    "despegar"
+  ],
+  "frases_clave_editoriales": [
+    "Tantas veces bajé la voz por miedo a no encajar",
+    "Vestí los sueños de alguien más buscando aprobación",
+    "Ya no pido permiso para volver a brillar",
+    "No necesito demostrar lo que ya vive en mi interior",
+    "Si alguna puerta se cerró otra me invita a pasar",
+    "Ya no pido permiso para vivir mi verdad",
+    "Mi voz encontró libertad"
+  ],
+  "letra_completa": "Tantas veces bajé la voz por miedo a no encajar / Hoy me acompaña el corazón / Vestí los sueños de alguien más buscando aprobación / Hoy me prefiero de verdad con toda mi intención / Ya no pido permiso para volver a brillar / Ya no pido permiso. Hoy aprendí a despegar / No necesito demostrar lo que ya vive en mi interior / Algo me vino a recordar que mi verdad tiene valor / Si alguien decide no entender no cambia mi dirección / La luz que nace de mi ser también me acompañó / Ya no pido permiso para volver a brillar / Ya no pido permiso. Hoy aprendí a despegar / Si alguna puerta se cerró otra me invita a pasar / La vida siempre tiene espacio para quien decide confiar / Ya no pido permiso para vivir mi verdad / Ya no pido permiso. Mi voz encontró libertad",
+  "nota_mapeo": "Canción nueva — no estaba en el catálogo previo. 123 BPM, E mayor. Transcripción base Whisper: algunas líneas de verso con incertidumbre (marcadas), coro perfectamente claro. Territorio único: la persona que bajó la voz para encajar y vistió sueños de otros.",
+  "moment": "Tantas veces bajaste la voz para encajar. Tantos sueños vestiste que no eran los tuyos.\nHoy no ajustaste el volumen. Hoy tu voz encontró el espacio que llevaba tiempo buscando.\nY cuando una puerta se cerró, viste que otra te invitaba a pasar.",
+  "sintiendo": "Llevas un tiempo achicándote. No de un golpe — poco a poco. Bajando la voz aquí, ajustando lo que decías allá, vistiendo sueños que no eran exactamente los tuyos pero que hacían que cabieras mejor.\n\nY en algún punto te diste cuenta de que la voz que tenías ya no era la tuya.\n\nHoy no ajustaste el volumen. Simplemente — no lo hiciste.\n\nNo necesitas demostrar lo que ya vive adentro. Si una puerta se cerró, otra te invita a pasar. La vida tiene espacio para quien decide confiar. Y tu voz encontró libertad.",
+  "intencion": "Existe para la persona que bajó la voz para encajar — y el día que dejó de ajustar el volumen y descubrió que su verdad ya tenía valor desde antes de que alguien más lo dijera.",
+  "recognition": "Ya no pido permiso para vivir mi verdad. Mi voz encontró libertad.",
+  "searchPhrases": [
+    "música para cuando dejas de necesitar la aprobación de los demás",
+    "canción para cuando ya no te achicas para encajar",
+    "siempre estoy ajustando lo que digo para que los demás no se molesten",
+    "música para cuando decides dejar de pedir permiso para ser tú",
+    "canción para brillar sin disculparte",
+    "siempre pongo los sueños de otros antes que los míos",
+    "música para recuperar tu voz propia",
+    "aprendí a despegar canción",
+    "ya no me achico para que otros estén cómodos",
+    "canción para cuando tu voz encuentra libertad",
+    "dejé de vestir sueños que no eran míos",
+    "música para empoderamiento femenino latina"
+  ],
+  "semanticTags": "bajé la voz para encajar, vestí sueños de alguien más, buscando aprobación, ya no pido permiso, volver a brillar, aprendí a despegar, mi verdad tiene valor, la luz nace de mi ser, si una puerta se cerró otra abre, mi voz encontró libertad, vivir mi verdad, no demostrar lo que ya vivo adentro, 123 bpm declaración pública",
+  "estado_editorial": "NEW_DISCOVERY",
+  "pipeline_version": "1.0",
+  "modelo_whisper": "base",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "audioUrl": "audio/ya-no-pido-permiso.mp3"
+}

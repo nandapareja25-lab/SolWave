@@ -1,0 +1,150 @@
+{
+  "archivo_original": "Dejé la puerta abierta.mp3",
+  "nombre_limpio": "Dejé la puerta abierta",
+  "duracion": "2:19",
+  "bpm": 99,
+  "tonalidad": "B menor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 188,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "crecimiento",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [
+    "Dejé La Puerta Abierta",
+    "Por Si La Vida Quiere Entrar",
+    "Hace Tiempo Entendí Que Lo Bonito No Se Puede Planear"
+  ],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "tonalidad oscura",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Saque fotos de los cajones, cartas que ya no hablan de mí",
+    "Hoy moví los muebles del lugar, entró más luz al comedor",
+    "Hoy me basta abrir la puerta y dejar la vida volver",
+    "Hoy la mesa tiene flores y canciones al despertar",
+    "Dejé la puerta abierta y el miedo decidió salir",
+    "Dejé la puerta abierta y el miedo decidió salir",
+    "Abre las ventanas de la casa y también del corazón",
+    "Me quedé con lo que hace bien, lo demás lo dejé partir"
+  ],
+  "letra_completa": "Hoy moví los muebles del lugar, entró más luz al comedor. Abre las ventanas de la casa y también del corazón. Saque fotos de los cajones, cartas que ya no hablan de mí. Me quedé con lo que hace bien, lo demás lo dejé partir. Dejé la puerta abierta, por si la vida quiere entrar. Hace tiempo entendí que lo bonito no se puede planear. Dejé la puerta abierta y el miedo decidió salir. Desde que hice espacio adentro todo empezó a sonreír. No cambié toda mi historia, solo la forma de mirar. Hay milagros que hacen ruido y otros llegan sin avisar. Hoy la mesa tiene flores y canciones al despertar. Las pequeñas alegrías también saben abrazar. Dejé la puerta abierta, por si la vida quiere entrar. Hace tiempo entendí que lo bonito no se puede planear. Dejé la puerta abierta y el miedo decidió salir. Porque cuando hace ese espacio adentro algo bueno quiere vivir. No sé todo lo que viene y tampoco quiero saber. Hoy me basta abrir la puerta y dejar la vida volver. Y dejar la vida volver.",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 17.0,
+      "text": "Hoy moví los muebles del lugar, entró más luz al comedor."
+    },
+    {
+      "start": 17.0,
+      "end": 26.0,
+      "text": "Abre las ventanas de la casa y también del corazón."
+    },
+    {
+      "start": 26.0,
+      "end": 35.0,
+      "text": "Saque fotos de los cajones, cartas que ya no hablan de mí."
+    },
+    {
+      "start": 35.0,
+      "end": 44.0,
+      "text": "Me quedé con lo que hace bien, lo demás lo dejé partir."
+    },
+    {
+      "start": 45.0,
+      "end": 50.0,
+      "text": "Dejé la puerta abierta, por si la vida quiere entrar."
+    },
+    {
+      "start": 50.0,
+      "end": 60.0,
+      "text": "Hace tiempo entendí que lo bonito no se puede planear."
+    },
+    {
+      "start": 60.0,
+      "end": 65.0,
+      "text": "Dejé la puerta abierta y el miedo decidió salir."
+    },
+    {
+      "start": 65.0,
+      "end": 73.0,
+      "text": "Desde que hice espacio adentro todo empezó a sonreír."
+    },
+    {
+      "start": 74.0,
+      "end": 79.0,
+      "text": "No cambié toda mi historia, solo la forma de mirar."
+    },
+    {
+      "start": 79.0,
+      "end": 84.0,
+      "text": "Hay milagros que hacen ruido y otros llegan sin avisar."
+    },
+    {
+      "start": 84.0,
+      "end": 89.0,
+      "text": "Hoy la mesa tiene flores y canciones al despertar."
+    },
+    {
+      "start": 89.0,
+      "end": 94.0,
+      "text": "Las pequeñas alegrías también saben abrazar."
+    },
+    {
+      "start": 94.0,
+      "end": 99.0,
+      "text": "Dejé la puerta abierta, por si la vida quiere entrar."
+    },
+    {
+      "start": 99.0,
+      "end": 103.0,
+      "text": "Hace tiempo entendí que lo bonito no se puede planear."
+    },
+    {
+      "start": 103.0,
+      "end": 110.0,
+      "text": "Dejé la puerta abierta y el miedo decidió salir."
+    },
+    {
+      "start": 110.0,
+      "end": 117.0,
+      "text": "Porque cuando hace ese espacio adentro algo bueno quiere vivir."
+    },
+    {
+      "start": 117.0,
+      "end": 123.0,
+      "text": "No sé todo lo que viene y tampoco quiero saber."
+    },
+    {
+      "start": 123.0,
+      "end": 130.0,
+      "text": "Hoy me basta abrir la puerta y dejar la vida volver."
+    },
+    {
+      "start": 130.0,
+      "end": 133.0,
+      "text": "Y dejar la vida volver."
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

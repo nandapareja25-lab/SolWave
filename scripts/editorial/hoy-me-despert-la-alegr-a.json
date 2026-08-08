@@ -1,0 +1,192 @@
+{
+  "archivo_original": "Hoy me despertó la alegría.mp3",
+  "nombre_limpio": "Hoy me despertó la alegría",
+  "duracion": "3:34",
+  "bpm": 117,
+  "tonalidad": "G menor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 193,
+  "genero_detectado": "Dancehall / Pop Latino",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "crecimiento",
+    "paz / calma"
+  ],
+  "titulo_detectado_en_letra": [
+    "Me Dijo Ven"
+  ],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "tonalidad oscura",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Hoy me despertó la alegría, sin avisar, sin explicación Entro bailando por la ventana y se quedó en mi habitación Me puso música en las manos, me devolvió las ganas de cantar Y hasta los días más cansados parecen nuevos al comenzar Hoy me despertó la alegría, me dijo ven, vamos a bailar Que la tristeza no es para siempre y el corazón puede regresar Hoy me despertó la alegría con una fiesta dentro de mí Yo no sabía cuándo te extrañaba sentirme vivo otra vez así Hoy me despertó la alegría y no la pienso dejar salir Me preparé un café despacio, dejé el teléfono sin contestar Puse flores sobre la mesa y abrí la puerta de par en par No sucedió nada extraordinario, no sé de tu o la ciudad Pero entendí que lo necesario también se esconde lo habitual Hoy me despertó la alegría, me dijo ven, vamos a bailar Que la tristeza no es para siempre y el corazón puede regresar Hoy me despertó la alegría con una fiesta dentro de mí Yo no sabía cuándo te extrañaba sentirme vivo otra vez así Hoy me despertó la alegría y no la pienso dejar salir Que suene el cuero, que habla el timbal, que entre las trompetas por toda la ciudad Que sigue el piano, que en mar que el son Hoy tengo primavera dentro del corazón Alegría, quédate un rato que yo te quiero acompañar Hoy no pregunto cuánto duras, solo te quiero disfrutar Hoy me despertó la alegría, me encontró lista para sentir Con mis heridas todavía pero con ganas de sonreír Hoy me despertó la alegría y yo también desperte con ella Que no pare, que siga el son, que baile el alma Que mande el corazón, hoy me despertó la alegría Y le abrí la puerta de par en par"
+  ],
+  "letra_completa": "Hoy me despertó la alegría, sin avisar, sin explicación Entro bailando por la ventana y se quedó en mi habitación Me puso música en las manos, me devolvió las ganas de cantar Y hasta los días más cansados parecen nuevos al comenzar Hoy me despertó la alegría, me dijo ven, vamos a bailar Que la tristeza no es para siempre y el corazón puede regresar Hoy me despertó la alegría con una fiesta dentro de mí Yo no sabía cuándo te extrañaba sentirme vivo otra vez así Hoy me despertó la alegría y no la pienso dejar salir Me preparé un café despacio, dejé el teléfono sin contestar Puse flores sobre la mesa y abrí la puerta de par en par No sucedió nada extraordinario, no sé de tu o la ciudad Pero entendí que lo necesario también se esconde lo habitual Hoy me despertó la alegría, me dijo ven, vamos a bailar Que la tristeza no es para siempre y el corazón puede regresar Hoy me despertó la alegría con una fiesta dentro de mí Yo no sabía cuándo te extrañaba sentirme vivo otra vez así Hoy me despertó la alegría y no la pienso dejar salir Que suene el cuero, que habla el timbal, que entre las trompetas por toda la ciudad Que sigue el piano, que en mar que el son Hoy tengo primavera dentro del corazón Alegría, quédate un rato que yo te quiero acompañar Hoy no pregunto cuánto duras, solo te quiero disfrutar Hoy me despertó la alegría, me encontró lista para sentir Con mis heridas todavía pero con ganas de sonreír Hoy me despertó la alegría y yo también desperte con ella Que no pare, que siga el son, que baile el alma Que mande el corazón, hoy me despertó la alegría Y le abrí la puerta de par en par",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 15.78,
+      "text": "Hoy me despertó la alegría, sin avisar, sin explicación"
+    },
+    {
+      "start": 15.78,
+      "end": 20.92,
+      "text": "Entro bailando por la ventana y se quedó en mi habitación"
+    },
+    {
+      "start": 20.92,
+      "end": 26.5,
+      "text": "Me puso música en las manos, me devolvió las ganas de cantar"
+    },
+    {
+      "start": 26.5,
+      "end": 33.76,
+      "text": "Y hasta los días más cansados parecen nuevos al comenzar"
+    },
+    {
+      "start": 33.76,
+      "end": 39.28,
+      "text": "Hoy me despertó la alegría, me dijo ven, vamos a bailar"
+    },
+    {
+      "start": 39.28,
+      "end": 44.74,
+      "text": "Que la tristeza no es para siempre y el corazón puede regresar"
+    },
+    {
+      "start": 44.74,
+      "end": 49.98,
+      "text": "Hoy me despertó la alegría con una fiesta dentro de mí"
+    },
+    {
+      "start": 49.98,
+      "end": 55.36,
+      "text": "Yo no sabía cuándo te extrañaba sentirme vivo otra vez así"
+    },
+    {
+      "start": 55.36,
+      "end": 66.6,
+      "text": "Hoy me despertó la alegría y no la pienso dejar salir"
+    },
+    {
+      "start": 66.6,
+      "end": 71.96,
+      "text": "Me preparé un café despacio, dejé el teléfono sin contestar"
+    },
+    {
+      "start": 71.96,
+      "end": 77.24,
+      "text": "Puse flores sobre la mesa y abrí la puerta de par en par"
+    },
+    {
+      "start": 77.24,
+      "end": 82.48,
+      "text": "No sucedió nada extraordinario, no sé de tu o la ciudad"
+    },
+    {
+      "start": 82.48,
+      "end": 89.96,
+      "text": "Pero entendí que lo necesario también se esconde lo habitual"
+    },
+    {
+      "start": 89.96,
+      "end": 95.26,
+      "text": "Hoy me despertó la alegría, me dijo ven, vamos a bailar"
+    },
+    {
+      "start": 95.26,
+      "end": 100.76,
+      "text": "Que la tristeza no es para siempre y el corazón puede regresar"
+    },
+    {
+      "start": 100.76,
+      "end": 105.96,
+      "text": "Hoy me despertó la alegría con una fiesta dentro de mí"
+    },
+    {
+      "start": 105.96,
+      "end": 111.38,
+      "text": "Yo no sabía cuándo te extrañaba sentirme vivo otra vez así"
+    },
+    {
+      "start": 111.38,
+      "end": 122.34,
+      "text": "Hoy me despertó la alegría y no la pienso dejar salir"
+    },
+    {
+      "start": 122.34,
+      "end": 132.7,
+      "text": "Que suene el cuero, que habla el timbal, que entre las trompetas por toda la ciudad"
+    },
+    {
+      "start": 132.7,
+      "end": 138.1,
+      "text": "Que sigue el piano, que en mar que el son"
+    },
+    {
+      "start": 138.1,
+      "end": 146.74,
+      "text": "Hoy tengo primavera dentro del corazón"
+    },
+    {
+      "start": 146.74,
+      "end": 152.06,
+      "text": "Alegría, quédate un rato que yo te quiero acompañar"
+    },
+    {
+      "start": 152.06,
+      "end": 159.46,
+      "text": "Hoy no pregunto cuánto duras, solo te quiero disfrutar"
+    },
+    {
+      "start": 159.46,
+      "end": 165.06,
+      "text": "Hoy me despertó la alegría, me encontró lista para sentir"
+    },
+    {
+      "start": 165.06,
+      "end": 170.1,
+      "text": "Con mis heridas todavía pero con ganas de sonreír"
+    },
+    {
+      "start": 170.1,
+      "end": 182.26,
+      "text": "Hoy me despertó la alegría y yo también desperte con ella"
+    },
+    {
+      "start": 182.26,
+      "end": 190.34,
+      "text": "Que no pare, que siga el son, que baile el alma"
+    },
+    {
+      "start": 190.42,
+      "end": 198.82,
+      "text": "Que mande el corazón, hoy me despertó la alegría"
+    },
+    {
+      "start": 198.82,
+      "end": 207.22,
+      "text": "Y le abrí la puerta de par en par"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

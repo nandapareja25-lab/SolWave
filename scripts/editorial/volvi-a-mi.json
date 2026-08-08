@@ -1,0 +1,181 @@
+{
+  "archivo_original": "Volví+a+Mí.mp3",
+  "nombre_limpio": "Volví a Mí",
+  "duracion": "2:35",
+  "bpm": 123,
+  "tonalidad": "A mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Dancehall / Pop Latino",
+  "emocion_principal": "empoderamiento",
+  "emociones_secundarias": [
+    "crecimiento"
+  ],
+  "titulo_detectado_en_letra": [
+    "Con Cada Paso Siento Libertad Mi Corazón Marca El Compás",
+    "Hoy Brillo Tanto Que No Puedo Parar Voy",
+    "Voy Sin Mirar Atrás"
+  ],
+  "tags": [
+    "fuerza",
+    "revolución",
+    "encenderse",
+    "decisión",
+    "poder propio",
+    "sin miedo"
+  ],
+  "frases_clave": [
+    "Ya no camino mirando al suelo, hoy cada paso me hace volar Cambié mis dudas por nuevos sueños, y no hay quien pueda hacerme parar El miedo quiso cerrar mis puertas, pero aprendí cómo atravesar Ahora mi vida se siente despierta, como un incendio frente al mar Si caigo vuelvo mucho más fuerte, si pierdo vuelvo a comenzar La suerte cambia cuando decides que nadie te va a detener jamás Voy encendiendo la ciudad, con cada paso siento libertad Mi corazón marca el compás, hoy brillo tanto que no puedo parar Voy, voy, voy sin mirar atrás, nada me frena quiero despegar Hoy soy mi fuerza, mi revolución, la tema es fuerte en mi corazón Que hablen si quieren yo sigo bailando La vida es corta para dudar, hoy cada espejo me está mostrando La mejor versión de mi verdad, no necesito ninguna corona Ya descubrí mi propio valor, porque la reina nunca se esconde Camina siempre con decisión Voy encendiendo la ciudad, con cada paso siento libertad Mi corazón marca el compás, hoy brillo tanto que no puedo parar Voy, voy, voy sin mirar atrás, todo el universo empieza jitar Si el mundo entero quiere correr, yo voy primero porque aprendí a creer Hey, esta es mi vida, hey, hey, hey Nadie la va a escribir por mí, hoy comienza la mejor historia Porque nací para ser feliz"
+  ],
+  "letra_completa": "Ya no camino mirando al suelo, hoy cada paso me hace volar Cambié mis dudas por nuevos sueños, y no hay quien pueda hacerme parar El miedo quiso cerrar mis puertas, pero aprendí cómo atravesar Ahora mi vida se siente despierta, como un incendio frente al mar Si caigo vuelvo mucho más fuerte, si pierdo vuelvo a comenzar La suerte cambia cuando decides que nadie te va a detener jamás Voy encendiendo la ciudad, con cada paso siento libertad Mi corazón marca el compás, hoy brillo tanto que no puedo parar Voy, voy, voy sin mirar atrás, nada me frena quiero despegar Hoy soy mi fuerza, mi revolución, la tema es fuerte en mi corazón Que hablen si quieren yo sigo bailando La vida es corta para dudar, hoy cada espejo me está mostrando La mejor versión de mi verdad, no necesito ninguna corona Ya descubrí mi propio valor, porque la reina nunca se esconde Camina siempre con decisión Voy encendiendo la ciudad, con cada paso siento libertad Mi corazón marca el compás, hoy brillo tanto que no puedo parar Voy, voy, voy sin mirar atrás, todo el universo empieza jitar Si el mundo entero quiere correr, yo voy primero porque aprendí a creer Hey, esta es mi vida, hey, hey, hey Nadie la va a escribir por mí, hoy comienza la mejor historia Porque nací para ser feliz",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 7.06,
+      "text": "Ya no camino mirando al suelo, hoy cada paso me hace volar"
+    },
+    {
+      "start": 7.06,
+      "end": 15.44,
+      "text": "Cambié mis dudas por nuevos sueños, y no hay quien pueda hacerme parar"
+    },
+    {
+      "start": 15.44,
+      "end": 23.2,
+      "text": "El miedo quiso cerrar mis puertas, pero aprendí cómo atravesar"
+    },
+    {
+      "start": 23.2,
+      "end": 31.0,
+      "text": "Ahora mi vida se siente despierta, como un incendio frente al mar"
+    },
+    {
+      "start": 31.0,
+      "end": 38.88,
+      "text": "Si caigo vuelvo mucho más fuerte, si pierdo vuelvo a comenzar"
+    },
+    {
+      "start": 38.88,
+      "end": 47.16,
+      "text": "La suerte cambia cuando decides que nadie te va a detener jamás"
+    },
+    {
+      "start": 47.32,
+      "end": 54.84,
+      "text": "Voy encendiendo la ciudad, con cada paso siento libertad"
+    },
+    {
+      "start": 54.84,
+      "end": 62.16,
+      "text": "Mi corazón marca el compás, hoy brillo tanto que no puedo parar"
+    },
+    {
+      "start": 62.16,
+      "end": 70.24,
+      "text": "Voy, voy, voy sin mirar atrás, nada me frena quiero despegar"
+    },
+    {
+      "start": 70.24,
+      "end": 74.88,
+      "text": "Hoy soy mi fuerza, mi revolución, la tema es fuerte en mi corazón"
+    },
+    {
+      "start": 74.96,
+      "end": 78.8,
+      "text": "Que hablen si quieren yo sigo bailando"
+    },
+    {
+      "start": 78.8,
+      "end": 85.88,
+      "text": "La vida es corta para dudar, hoy cada espejo me está mostrando"
+    },
+    {
+      "start": 85.88,
+      "end": 93.68,
+      "text": "La mejor versión de mi verdad, no necesito ninguna corona"
+    },
+    {
+      "start": 93.68,
+      "end": 101.56,
+      "text": "Ya descubrí mi propio valor, porque la reina nunca se esconde"
+    },
+    {
+      "start": 101.56,
+      "end": 105.84,
+      "text": "Camina siempre con decisión"
+    },
+    {
+      "start": 105.84,
+      "end": 113.48,
+      "text": "Voy encendiendo la ciudad, con cada paso siento libertad"
+    },
+    {
+      "start": 113.48,
+      "end": 120.76,
+      "text": "Mi corazón marca el compás, hoy brillo tanto que no puedo parar"
+    },
+    {
+      "start": 120.76,
+      "end": 129.28,
+      "text": "Voy, voy, voy sin mirar atrás, todo el universo empieza jitar"
+    },
+    {
+      "start": 129.36,
+      "end": 137.28,
+      "text": "Si el mundo entero quiere correr, yo voy primero porque aprendí a creer"
+    },
+    {
+      "start": 137.28,
+      "end": 141.64,
+      "text": "Hey, esta es mi vida, hey, hey, hey"
+    },
+    {
+      "start": 141.64,
+      "end": 149.48,
+      "text": "Nadie la va a escribir por mí, hoy comienza la mejor historia"
+    },
+    {
+      "start": 149.48,
+      "end": 154.48,
+      "text": "Porque nací para ser feliz"
+    }
+  ],
+  "moment": "Ya no caminas mirando al suelo. No lo decidiste. Simplemente pasó. Y tu vida se siente despierta — como un incendio frente al mar.",
+  "sintiendo": "Hubo un tiempo donde el miedo quiso cerrar tus puertas. Donde caminabas con los ojos hacia abajo.\n\nNo sabes exactamente cuándo cambió. Pero hoy cada paso que das enciende algo. La ciudad. El aire. Algo adentro que llevaba tiempo esperando salir.\n\nEsta es tu vida. Nadie la va a escribir por ti. Voy encendiendo la ciudad. Hoy brillo tanto que no puedo parar.",
+  "intencion": "Existe para el instante donde algo se enciende — sin que lo planearas, sin proceso — y de repente ya no puedes caminar de la misma manera.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Volví a Mí",
+  "frases_clave_editoriales": [
+    "Ya no camino mirando al suelo, hoy cada paso me hace volar",
+    "La suerte cambia cuando decides que nadie te va a detener jamás",
+    "Hoy soy mi fuerza, mi revolución"
+  ],
+  "nota_mapeo": "Alta coincidencia con álbum Ya no vuelvo atrás. Energía alta, Dancehall. Posibles tracks: 'Ya no vuelvo atrás', 'Esta soy yo', 'Más fuerte que ayer'.",
+  "estado_editorial": "aprobado",
+  "recognition": "Esta es mi vida. Nadie la va a escribir por mí.",
+  "searchPhrases": [
+    "música para sentirte imparable",
+    "canción para cuando algo se enciende dentro de ti",
+    "ya no camino mirando al suelo música",
+    "canción para el día que decides que nadie te va a detener",
+    "música para encenderte cuando estás apagada",
+    "empowerment music en español latina",
+    "canción para cuando recuperas tu fuerza de verdad",
+    "música para bailar y sentirte libre",
+    "la reina nunca se esconde canción",
+    "ya no tengo miedo de ser yo misma música",
+    "canción para el momento donde todo cambia de golpe",
+    "voy encendiendo la ciudad con cada paso"
+  ],
+  "semanticTags": "encenderse, incendio frente al mar, ya no miro al suelo, brillar sin parar, esta es mi vida, nadie la escribe por mí, la reina camina con decisión, empoderamiento explosivo, sin mirar atrás, nadie me detiene, retorno como fuego, la vida se siente despierta",
+  "audioUrl": "audio/volvi-a-mi.mp3"
+}

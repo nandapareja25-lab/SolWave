@@ -1,0 +1,134 @@
+{
+  "archivo_original": "Qué bonito es volver a mí.mp3",
+  "nombre_limpio": "Qué bonito es volver a mí",
+  "duracion": "3:19",
+  "bpm": 96,
+  "tonalidad": "G mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 186,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "crecimiento",
+    "paz / calma",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Hoy pase frente al mismo espejo donde un día no me quise mirar Y sin buscar ninguna respuesta me encontré sonriendo de verdad La ciudad siguió haciendo ruido pero algo cambió dentro de mí Ya no espero que el mundo me diga cuando tengo que ser feliz Qué bonito es volver a mí después de tanto caminar descubrí que el lugar que buscaba siempre fue mi hogar Qué bonito es volver a mí con el alma mirando al sol Hoy entiendo que todos los caminos me trajeron al corazón No me llevo todas las certezas, solo ganas de seguir así Porque aprendí que las cosas simples también saben hacerte feliz Si mañana vuelve otro comienzo ya no le voy a atender temor Ahora sé qué pase, lo que pase nunca me abandono yo Qué bonito es volver a mí después de tanto caminar descubrí que el lugar que buscaba siempre fue mi hogar Qué bonito es volver a mí y sentirme completo al fin La mejor parte de esta historia es la mujer que vive en mí Hoy termina esta canción pero mi camino no terminó Porque cada mañana que despierto empieza otra vez mi canción"
+  ],
+  "letra_completa": "Hoy pase frente al mismo espejo donde un día no me quise mirar Y sin buscar ninguna respuesta me encontré sonriendo de verdad La ciudad siguió haciendo ruido pero algo cambió dentro de mí Ya no espero que el mundo me diga cuando tengo que ser feliz Qué bonito es volver a mí después de tanto caminar descubrí que el lugar que buscaba siempre fue mi hogar Qué bonito es volver a mí con el alma mirando al sol Hoy entiendo que todos los caminos me trajeron al corazón No me llevo todas las certezas, solo ganas de seguir así Porque aprendí que las cosas simples también saben hacerte feliz Si mañana vuelve otro comienzo ya no le voy a atender temor Ahora sé qué pase, lo que pase nunca me abandono yo Qué bonito es volver a mí después de tanto caminar descubrí que el lugar que buscaba siempre fue mi hogar Qué bonito es volver a mí y sentirme completo al fin La mejor parte de esta historia es la mujer que vive en mí Hoy termina esta canción pero mi camino no terminó Porque cada mañana que despierto empieza otra vez mi canción",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 20.0,
+      "text": "Hoy pase frente al mismo espejo donde un día no me quise mirar"
+    },
+    {
+      "start": 20.0,
+      "end": 30.0,
+      "text": "Y sin buscar ninguna respuesta me encontré sonriendo de verdad"
+    },
+    {
+      "start": 30.0,
+      "end": 40.0,
+      "text": "La ciudad siguió haciendo ruido pero algo cambió dentro de mí"
+    },
+    {
+      "start": 40.0,
+      "end": 50.0,
+      "text": "Ya no espero que el mundo me diga cuando tengo que ser feliz"
+    },
+    {
+      "start": 50.0,
+      "end": 60.0,
+      "text": "Qué bonito es volver a mí después de tanto caminar"
+    },
+    {
+      "start": 60.0,
+      "end": 70.0,
+      "text": "descubrí que el lugar que buscaba siempre fue mi hogar"
+    },
+    {
+      "start": 70.0,
+      "end": 79.0,
+      "text": "Qué bonito es volver a mí con el alma mirando al sol"
+    },
+    {
+      "start": 79.0,
+      "end": 89.0,
+      "text": "Hoy entiendo que todos los caminos me trajeron al corazón"
+    },
+    {
+      "start": 89.0,
+      "end": 98.0,
+      "text": "No me llevo todas las certezas, solo ganas de seguir así"
+    },
+    {
+      "start": 98.0,
+      "end": 108.0,
+      "text": "Porque aprendí que las cosas simples también saben hacerte feliz"
+    },
+    {
+      "start": 108.0,
+      "end": 118.0,
+      "text": "Si mañana vuelve otro comienzo ya no le voy a atender temor"
+    },
+    {
+      "start": 118.0,
+      "end": 129.0,
+      "text": "Ahora sé qué pase, lo que pase nunca me abandono yo"
+    },
+    {
+      "start": 129.0,
+      "end": 137.0,
+      "text": "Qué bonito es volver a mí después de tanto caminar"
+    },
+    {
+      "start": 137.0,
+      "end": 149.0,
+      "text": "descubrí que el lugar que buscaba siempre fue mi hogar"
+    },
+    {
+      "start": 149.0,
+      "end": 157.0,
+      "text": "Qué bonito es volver a mí y sentirme completo al fin"
+    },
+    {
+      "start": 158.0,
+      "end": 168.0,
+      "text": "La mejor parte de esta historia es la mujer que vive en mí"
+    },
+    {
+      "start": 168.0,
+      "end": 177.0,
+      "text": "Hoy termina esta canción pero mi camino no terminó"
+    },
+    {
+      "start": 177.0,
+      "end": 187.0,
+      "text": "Porque cada mañana que despierto empieza otra vez mi canción"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

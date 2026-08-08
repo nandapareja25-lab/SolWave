@@ -1,0 +1,154 @@
+{
+  "archivo_original": "Sin Miedo a Sonreír.mp3",
+  "nombre_limpio": "Sin Miedo a Sonreír",
+  "duracion": "3:23",
+  "bpm": 99,
+  "tonalidad": "Bb mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 198,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "crecimiento",
+    "liberación"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Hoy me levanté temprano con ganas de vivir Sin pensar en lo que falta disfrutando lo que está aquí Ya no cuento las heridas, ahora cuento bendiciones Porque aprendí que la alegría también sana corazones Y mírame, que diferente sabe el camino Sin miedo a sonreír, sin miedo a volver a empezar Que la vida está esperando a quien se atreve a bailar Sin miedo a sonreír, sin miedo a sentir demás Porque el corazón lo vino a esconderse, vino a amar Que suene fuerte la orquesta que no parece sabor Hoy quiero llenar el alma de ritmo y de ilusión Si el ayer dejó sus huellas, que también dejé la enseñanza Porque hasta la noche más larga termina con la mañana Sin miedo a sonreír, hoy me vuelvo a elegir Y si la vida me sorprende que me encuentre siendo feliz Sin miedo a sonreír, con el corazón abierto Porque los mejores días siempre empiezan por dentro Suele, suele, que todavía No queda mucho por ser verdad Suele, suele, que todavía Si me quiesan, si me quiesan por dentro Si me quiesan"
+  ],
+  "letra_completa": "Hoy me levanté temprano con ganas de vivir Sin pensar en lo que falta disfrutando lo que está aquí Ya no cuento las heridas, ahora cuento bendiciones Porque aprendí que la alegría también sana corazones Y mírame, que diferente sabe el camino Sin miedo a sonreír, sin miedo a volver a empezar Que la vida está esperando a quien se atreve a bailar Sin miedo a sonreír, sin miedo a sentir demás Porque el corazón lo vino a esconderse, vino a amar Que suene fuerte la orquesta que no parece sabor Hoy quiero llenar el alma de ritmo y de ilusión Si el ayer dejó sus huellas, que también dejé la enseñanza Porque hasta la noche más larga termina con la mañana Sin miedo a sonreír, hoy me vuelvo a elegir Y si la vida me sorprende que me encuentre siendo feliz Sin miedo a sonreír, con el corazón abierto Porque los mejores días siempre empiezan por dentro Suele, suele, que todavía No queda mucho por ser verdad Suele, suele, que todavía Si me quiesan, si me quiesan por dentro Si me quiesan",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 18.0,
+      "text": "Hoy me levanté temprano con ganas de vivir"
+    },
+    {
+      "start": 18.0,
+      "end": 29.0,
+      "text": "Sin pensar en lo que falta disfrutando lo que está aquí"
+    },
+    {
+      "start": 29.0,
+      "end": 39.0,
+      "text": "Ya no cuento las heridas, ahora cuento bendiciones"
+    },
+    {
+      "start": 40.0,
+      "end": 48.0,
+      "text": "Porque aprendí que la alegría también sana corazones"
+    },
+    {
+      "start": 48.0,
+      "end": 52.0,
+      "text": "Y mírame, que diferente sabe el camino"
+    },
+    {
+      "start": 52.0,
+      "end": 57.0,
+      "text": "Sin miedo a sonreír, sin miedo a volver a empezar"
+    },
+    {
+      "start": 57.0,
+      "end": 62.0,
+      "text": "Que la vida está esperando a quien se atreve a bailar"
+    },
+    {
+      "start": 62.0,
+      "end": 67.0,
+      "text": "Sin miedo a sonreír, sin miedo a sentir demás"
+    },
+    {
+      "start": 67.0,
+      "end": 75.0,
+      "text": "Porque el corazón lo vino a esconderse, vino a amar"
+    },
+    {
+      "start": 84.0,
+      "end": 91.0,
+      "text": "Que suene fuerte la orquesta que no parece sabor"
+    },
+    {
+      "start": 91.0,
+      "end": 100.0,
+      "text": "Hoy quiero llenar el alma de ritmo y de ilusión"
+    },
+    {
+      "start": 103.0,
+      "end": 112.0,
+      "text": "Si el ayer dejó sus huellas, que también dejé la enseñanza"
+    },
+    {
+      "start": 112.0,
+      "end": 120.0,
+      "text": "Porque hasta la noche más larga termina con la mañana"
+    },
+    {
+      "start": 120.0,
+      "end": 125.0,
+      "text": "Sin miedo a sonreír, hoy me vuelvo a elegir"
+    },
+    {
+      "start": 125.0,
+      "end": 130.0,
+      "text": "Y si la vida me sorprende que me encuentre siendo feliz"
+    },
+    {
+      "start": 130.0,
+      "end": 135.0,
+      "text": "Sin miedo a sonreír, con el corazón abierto"
+    },
+    {
+      "start": 135.0,
+      "end": 148.0,
+      "text": "Porque los mejores días siempre empiezan por dentro"
+    },
+    {
+      "start": 150.0,
+      "end": 161.0,
+      "text": "Suele, suele, que todavía"
+    },
+    {
+      "start": 161.0,
+      "end": 186.0,
+      "text": "No queda mucho por ser verdad"
+    },
+    {
+      "start": 186.0,
+      "end": 191.0,
+      "text": "Suele, suele, que todavía"
+    },
+    {
+      "start": 191.0,
+      "end": 198.0,
+      "text": "Si me quiesan, si me quiesan por dentro"
+    },
+    {
+      "start": 198.0,
+      "end": 201.0,
+      "text": "Si me quiesan"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

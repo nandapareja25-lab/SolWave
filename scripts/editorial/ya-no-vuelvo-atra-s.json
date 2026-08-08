@@ -1,0 +1,291 @@
+{
+  "archivo_original": "Ya+No+Vuelvo+Atrás.mp3",
+  "nombre_limpio": "Ya No Vuelvo Atrás",
+  "duracion": "2:40",
+  "bpm": 99,
+  "tonalidad": "G mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "empoderamiento",
+  "emociones_secundarias": [
+    "empoderamiento",
+    "crecimiento",
+    "liberación"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "empoderamiento",
+    "baile",
+    "liberación",
+    "decisión",
+    "autosuficiencia",
+    "sin permiso"
+  ],
+  "frases_clave": [
+    "Uh-huh uh-huh uh-huh uh-huh Uh-huh uh-huh uh-huh Desperte bailando con el sol, deje las penas bajo el colchón Hoy mi sonrisa cambió de dirección, ya no le pide permiso al corazón Todo lo que un día me dolió, se convirtió en mi mejor canción Ahora camino con otra intención, viviendo libre sin explicación Ya no me pesa lo que perdí Todo lo bueno empezó aquí La vida cambia cuando decides Que creer un poquito más en ti Porque ya no vuelvo atrás Nadie me puede apagar Hoy mi alma quiere bailar Y el miedo se quedó detrás Voy brillando sin parar Como la luna sobre el mar Hoy mi corazón entendió Que la felicidad Siempre estuvo en mi voz Si mañana cambia la dirección Yo sigo firme con mi convicción No necesito otra aprobación Soy suficiente, es mi canción Cada caída me hizo crecer Cada mañana me vi orden hacer Hoy celebro lo que llegué a hacer Y todavía falta por volver Porque ya no vuelvo atrás Nadie me puede apagar Hoy mi alma quiere bailar Y el miedo se quedó detrás Voy brillando sin parar Como la luna sobre el mar Si la vida me vuelve a probar Voy sonriendo porque aprendí a volar Baila, siente, vive Que la vida no espera Hoy comienza una historia nueva Y esta vez soy la primera A comienza una historia nueva Y esta vez soy la primera Tata ya no vuelvo atrás Nadie me puede apagar Hoy mi alma quiere bailar Y el miedo se quedó detrás"
+  ],
+  "letra_completa": "Uh-huh uh-huh uh-huh uh-huh Uh-huh uh-huh uh-huh Desperte bailando con el sol, deje las penas bajo el colchón Hoy mi sonrisa cambió de dirección, ya no le pide permiso al corazón Todo lo que un día me dolió, se convirtió en mi mejor canción Ahora camino con otra intención, viviendo libre sin explicación Ya no me pesa lo que perdí Todo lo bueno empezó aquí La vida cambia cuando decides Que creer un poquito más en ti Porque ya no vuelvo atrás Nadie me puede apagar Hoy mi alma quiere bailar Y el miedo se quedó detrás Voy brillando sin parar Como la luna sobre el mar Hoy mi corazón entendió Que la felicidad Siempre estuvo en mi voz Si mañana cambia la dirección Yo sigo firme con mi convicción No necesito otra aprobación Soy suficiente, es mi canción Cada caída me hizo crecer Cada mañana me vi orden hacer Hoy celebro lo que llegué a hacer Y todavía falta por volver Porque ya no vuelvo atrás Nadie me puede apagar Hoy mi alma quiere bailar Y el miedo se quedó detrás Voy brillando sin parar Como la luna sobre el mar Si la vida me vuelve a probar Voy sonriendo porque aprendí a volar Baila, siente, vive Que la vida no espera Hoy comienza una historia nueva Y esta vez soy la primera A comienza una historia nueva Y esta vez soy la primera Tata ya no vuelvo atrás Nadie me puede apagar Hoy mi alma quiere bailar Y el miedo se quedó detrás",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 9.9,
+      "text": "Uh-huh uh-huh uh-huh uh-huh Uh-huh uh-huh uh-huh"
+    },
+    {
+      "start": 9.9,
+      "end": 13.82,
+      "text": "Desperte bailando con el sol, deje las penas bajo el colchón"
+    },
+    {
+      "start": 13.82,
+      "end": 18.86,
+      "text": "Hoy mi sonrisa cambió de dirección, ya no le pide permiso al corazón"
+    },
+    {
+      "start": 18.86,
+      "end": 23.8,
+      "text": "Todo lo que un día me dolió, se convirtió en mi mejor canción"
+    },
+    {
+      "start": 23.8,
+      "end": 28.86,
+      "text": "Ahora camino con otra intención, viviendo libre sin explicación"
+    },
+    {
+      "start": 28.86,
+      "end": 31.36,
+      "text": "Ya no me pesa lo que perdí"
+    },
+    {
+      "start": 31.36,
+      "end": 33.66,
+      "text": "Todo lo bueno empezó aquí"
+    },
+    {
+      "start": 33.66,
+      "end": 35.92,
+      "text": "La vida cambia cuando decides"
+    },
+    {
+      "start": 35.92,
+      "end": 38.3,
+      "text": "Que creer un poquito más en ti"
+    },
+    {
+      "start": 38.3,
+      "end": 40.7,
+      "text": "Porque ya no vuelvo atrás"
+    },
+    {
+      "start": 40.7,
+      "end": 43.4,
+      "text": "Nadie me puede apagar"
+    },
+    {
+      "start": 43.4,
+      "end": 45.8,
+      "text": "Hoy mi alma quiere bailar"
+    },
+    {
+      "start": 45.8,
+      "end": 48.2,
+      "text": "Y el miedo se quedó detrás"
+    },
+    {
+      "start": 48.2,
+      "end": 50.3,
+      "text": "Voy brillando sin parar"
+    },
+    {
+      "start": 50.3,
+      "end": 53.04,
+      "text": "Como la luna sobre el mar"
+    },
+    {
+      "start": 53.04,
+      "end": 55.38,
+      "text": "Hoy mi corazón entendió"
+    },
+    {
+      "start": 55.38,
+      "end": 57.78,
+      "text": "Que la felicidad"
+    },
+    {
+      "start": 57.82,
+      "end": 59.66,
+      "text": "Siempre estuvo en mi voz"
+    },
+    {
+      "start": 68.16,
+      "end": 70.56,
+      "text": "Si mañana cambia la dirección"
+    },
+    {
+      "start": 70.56,
+      "end": 72.8,
+      "text": "Yo sigo firme con mi convicción"
+    },
+    {
+      "start": 72.8,
+      "end": 75.3,
+      "text": "No necesito otra aprobación"
+    },
+    {
+      "start": 75.3,
+      "end": 77.8,
+      "text": "Soy suficiente, es mi canción"
+    },
+    {
+      "start": 77.8,
+      "end": 80.08,
+      "text": "Cada caída me hizo crecer"
+    },
+    {
+      "start": 80.08,
+      "end": 82.64,
+      "text": "Cada mañana me vi orden hacer"
+    },
+    {
+      "start": 82.64,
+      "end": 84.94,
+      "text": "Hoy celebro lo que llegué a hacer"
+    },
+    {
+      "start": 84.94,
+      "end": 87.22,
+      "text": "Y todavía falta por volver"
+    },
+    {
+      "start": 87.22,
+      "end": 89.78,
+      "text": "Porque ya no vuelvo atrás"
+    },
+    {
+      "start": 89.78,
+      "end": 92.34,
+      "text": "Nadie me puede apagar"
+    },
+    {
+      "start": 92.34,
+      "end": 94.94,
+      "text": "Hoy mi alma quiere bailar"
+    },
+    {
+      "start": 94.94,
+      "end": 97.34,
+      "text": "Y el miedo se quedó detrás"
+    },
+    {
+      "start": 97.34,
+      "end": 99.46,
+      "text": "Voy brillando sin parar"
+    },
+    {
+      "start": 99.46,
+      "end": 102.14,
+      "text": "Como la luna sobre el mar"
+    },
+    {
+      "start": 102.14,
+      "end": 104.54,
+      "text": "Si la vida me vuelve a probar"
+    },
+    {
+      "start": 104.54,
+      "end": 107.94,
+      "text": "Voy sonriendo porque aprendí a volar"
+    },
+    {
+      "start": 115.94,
+      "end": 118.94,
+      "text": "Baila, siente, vive"
+    },
+    {
+      "start": 118.94,
+      "end": 120.94,
+      "text": "Que la vida no espera"
+    },
+    {
+      "start": 120.94,
+      "end": 123.94,
+      "text": "Hoy comienza una historia nueva"
+    },
+    {
+      "start": 123.94,
+      "end": 126.94,
+      "text": "Y esta vez soy la primera"
+    },
+    {
+      "start": 126.94,
+      "end": 130.94,
+      "text": "A comienza una historia nueva"
+    },
+    {
+      "start": 130.94,
+      "end": 136.94,
+      "text": "Y esta vez soy la primera"
+    },
+    {
+      "start": 136.94,
+      "end": 138.94,
+      "text": "Tata ya no vuelvo atrás"
+    },
+    {
+      "start": 138.94,
+      "end": 141.94,
+      "text": "Nadie me puede apagar"
+    },
+    {
+      "start": 141.94,
+      "end": 143.94,
+      "text": "Hoy mi alma quiere bailar"
+    },
+    {
+      "start": 143.94,
+      "end": 146.94,
+      "text": "Y el miedo se quedó detrás"
+    }
+  ],
+  "moment": "La mañana en que te despertaste moviéndote antes de recordar que tenías razones para quedarte quieta. No decidiste nada. El cuerpo simplemente ya no tenía peso que cargar.",
+  "sintiendo": "Llevas tanto tiempo cargando algo que ya no lo notabas como peso — lo notabas como tú. Y esa mañana no estaba.\n\nNo tomaste ninguna decisión grande. No hubo un momento de claridad. Solo abriste los ojos y algo que siempre estuvo ahí — simplemente ya no estaba.\n\nLa felicidad que buscabas en esa relación siempre estuvo en tu propia voz.",
+  "intencion": "Existe para la primera mañana en que tu cuerpo descubrió que algo cambió mientras dormías — antes de que tu mente lo procesara, antes de que lo entendieras, antes de que pudieras explicarlo.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Ya No Vuelvo Atrás",
+  "frases_clave_editoriales": [
+    "Desperté bailando con el sol, dejé las penas bajo el colchón",
+    "Ya no le pide permiso al corazón",
+    "Todo lo que un día me dolió se convirtió en mi mejor canción",
+    "La felicidad siempre estuvo en mi voz"
+  ],
+  "nota_mapeo": "Coincidencia directa con álbum 'Ya no vuelvo atrás', track 1 del mismo nombre. Confianza: muy alta.",
+  "estado_editorial": "aprobado",
+  "recognition": "La felicidad que buscabas en esa relación siempre estuvo en tu propia voz.",
+  "searchPhrases": [
+    "me desperté diferente y no sé por qué",
+    "siento que algo cambió pero no sé cuándo pasó",
+    "ya no siento el peso que cargaba antes",
+    "música para cuando ya no quieres volver y no te duele",
+    "me levanté con ganas sin razón",
+    "canciones para cuando por fin te sientes tú",
+    "ya no necesito que me digan que estoy bien",
+    "música para el día que ya no esperas nada de nadie",
+    "siento que algo se fue sin que yo lo decidiera",
+    "canción para cuando ya no extrañas y eso no te asusta",
+    "ya no pido permiso para estar bien",
+    "música para el primer día que eres tú sin explicación",
+    "por fin me desperté sin querer revisar el teléfono"
+  ],
+  "semanticTags": "empoderamiento, primera mañana libre, post-ruptura, liberación silenciosa, amor propio, cuerpo que sabe antes que la mente, dejar de pedir permiso, ya no necesito aprobación, identidad recuperada, ligereza, decisión que ya ocurrió, mañana nueva, sin peso, sin explicación",
+  "audioUrl": "audio/ya-no-vuelvo-atras.mp3"
+}

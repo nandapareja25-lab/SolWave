@@ -1,0 +1,195 @@
+{
+  "archivo_original": "Vuelvo a sentir la vida.mp3",
+  "nombre_limpio": "Vuelvo a sentir la vida",
+  "duracion": "4:16",
+  "bpm": 96,
+  "tonalidad": "E menor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 176,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "paz / calma",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "tonalidad oscura",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Abre las ventanas temprano, deje que entrara claridad Hacía tiempo que mis manos no saludaban la mañana en paz Guardé la pena en un rincón, no para fingir que no existía Sino para darle al corazón un poco de espacio y alegría Vuelvo a sentir la vida como un tambor dentro del pecho Como una luz recién encendida, como un abrazo que llega a tiempo Vuelvo a sentir la vida sin pedirle permiso al dolor Y cada paso me confirma que todavía queda sol Vuelvo a sentir la vida y la vida vuelve a mí Puse música en la sala, no vi los muebles del lugar Y entré a una risa inesperada, recordé cómo era disfrutar No todo tiene que estar reto ni el alma lista para entender A veces basta con mover el cuerpo para empezar a renacer Vuelvo a sentir la vida como un tambor dentro del pecho Como una luz recién encendida, como un abrazo que llega a tiempo Vuelvo a sentir la vida sin pedirle permiso al dolor Y cada paso me confirma que todavía queda sol Vuelvo a sentir la vida y la vida vuelve a mí Que suena el piano, que entre en los metales que a mis cicatrices también aprendan a bailar Que hablen las congas que responda el corazón Yo no borro lo vivido pero hoy el hijo otra canción Vuelvo a sentir la vida con más calma en la mirada Con la fuerza de quien sabe que no todo estaba perdido Vuelvo a sentir la vida, ya no espero una señal Hoy celebro estar presente, hoy me dejo disfrutar Vuelvo a sentir la vida y me quiero quedar aquí Que aman escapo a poco a poco que la luz me encuentre así Con el alma y movimiento y las ganas de seguir, vuelvo a sentir la vida Y esta vez la siento en mí Y esta vez la siento en mí"
+  ],
+  "letra_completa": "Abre las ventanas temprano, deje que entrara claridad Hacía tiempo que mis manos no saludaban la mañana en paz Guardé la pena en un rincón, no para fingir que no existía Sino para darle al corazón un poco de espacio y alegría Vuelvo a sentir la vida como un tambor dentro del pecho Como una luz recién encendida, como un abrazo que llega a tiempo Vuelvo a sentir la vida sin pedirle permiso al dolor Y cada paso me confirma que todavía queda sol Vuelvo a sentir la vida y la vida vuelve a mí Puse música en la sala, no vi los muebles del lugar Y entré a una risa inesperada, recordé cómo era disfrutar No todo tiene que estar reto ni el alma lista para entender A veces basta con mover el cuerpo para empezar a renacer Vuelvo a sentir la vida como un tambor dentro del pecho Como una luz recién encendida, como un abrazo que llega a tiempo Vuelvo a sentir la vida sin pedirle permiso al dolor Y cada paso me confirma que todavía queda sol Vuelvo a sentir la vida y la vida vuelve a mí Que suena el piano, que entre en los metales que a mis cicatrices también aprendan a bailar Que hablen las congas que responda el corazón Yo no borro lo vivido pero hoy el hijo otra canción Vuelvo a sentir la vida con más calma en la mirada Con la fuerza de quien sabe que no todo estaba perdido Vuelvo a sentir la vida, ya no espero una señal Hoy celebro estar presente, hoy me dejo disfrutar Vuelvo a sentir la vida y me quiero quedar aquí Que aman escapo a poco a poco que la luz me encuentre así Con el alma y movimiento y las ganas de seguir, vuelvo a sentir la vida Y esta vez la siento en mí Y esta vez la siento en mí",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 11.0,
+      "text": "Abre las ventanas temprano, deje que entrara claridad"
+    },
+    {
+      "start": 11.0,
+      "end": 21.0,
+      "text": "Hacía tiempo que mis manos no saludaban la mañana en paz"
+    },
+    {
+      "start": 21.0,
+      "end": 30.0,
+      "text": "Guardé la pena en un rincón, no para fingir que no existía"
+    },
+    {
+      "start": 30.0,
+      "end": 40.0,
+      "text": "Sino para darle al corazón un poco de espacio y alegría"
+    },
+    {
+      "start": 41.0,
+      "end": 50.0,
+      "text": "Vuelvo a sentir la vida como un tambor dentro del pecho"
+    },
+    {
+      "start": 50.0,
+      "end": 61.0,
+      "text": "Como una luz recién encendida, como un abrazo que llega a tiempo"
+    },
+    {
+      "start": 61.0,
+      "end": 71.0,
+      "text": "Vuelvo a sentir la vida sin pedirle permiso al dolor"
+    },
+    {
+      "start": 71.0,
+      "end": 77.0,
+      "text": "Y cada paso me confirma que todavía queda sol"
+    },
+    {
+      "start": 77.0,
+      "end": 83.0,
+      "text": "Vuelvo a sentir la vida y la vida vuelve a mí"
+    },
+    {
+      "start": 83.0,
+      "end": 93.0,
+      "text": "Puse música en la sala, no vi los muebles del lugar"
+    },
+    {
+      "start": 93.0,
+      "end": 103.0,
+      "text": "Y entré a una risa inesperada, recordé cómo era disfrutar"
+    },
+    {
+      "start": 103.0,
+      "end": 113.0,
+      "text": "No todo tiene que estar reto ni el alma lista para entender"
+    },
+    {
+      "start": 113.0,
+      "end": 123.0,
+      "text": "A veces basta con mover el cuerpo para empezar a renacer"
+    },
+    {
+      "start": 123.0,
+      "end": 133.0,
+      "text": "Vuelvo a sentir la vida como un tambor dentro del pecho"
+    },
+    {
+      "start": 133.0,
+      "end": 144.0,
+      "text": "Como una luz recién encendida, como un abrazo que llega a tiempo"
+    },
+    {
+      "start": 144.0,
+      "end": 154.0,
+      "text": "Vuelvo a sentir la vida sin pedirle permiso al dolor"
+    },
+    {
+      "start": 154.0,
+      "end": 160.0,
+      "text": "Y cada paso me confirma que todavía queda sol"
+    },
+    {
+      "start": 160.0,
+      "end": 168.0,
+      "text": "Vuelvo a sentir la vida y la vida vuelve a mí"
+    },
+    {
+      "start": 168.0,
+      "end": 178.0,
+      "text": "Que suena el piano, que entre en los metales que a mis cicatrices también aprendan a bailar"
+    },
+    {
+      "start": 178.0,
+      "end": 182.0,
+      "text": "Que hablen las congas que responda el corazón"
+    },
+    {
+      "start": 182.0,
+      "end": 187.0,
+      "text": "Yo no borro lo vivido pero hoy el hijo otra canción"
+    },
+    {
+      "start": 187.0,
+      "end": 192.0,
+      "text": "Vuelvo a sentir la vida con más calma en la mirada"
+    },
+    {
+      "start": 192.0,
+      "end": 197.0,
+      "text": "Con la fuerza de quien sabe que no todo estaba perdido"
+    },
+    {
+      "start": 197.0,
+      "end": 202.0,
+      "text": "Vuelvo a sentir la vida, ya no espero una señal"
+    },
+    {
+      "start": 202.0,
+      "end": 207.0,
+      "text": "Hoy celebro estar presente, hoy me dejo disfrutar"
+    },
+    {
+      "start": 207.0,
+      "end": 216.0,
+      "text": "Vuelvo a sentir la vida y me quiero quedar aquí"
+    },
+    {
+      "start": 216.0,
+      "end": 222.0,
+      "text": "Que aman escapo a poco a poco que la luz me encuentre así"
+    },
+    {
+      "start": 222.0,
+      "end": 237.0,
+      "text": "Con el alma y movimiento y las ganas de seguir, vuelvo a sentir la vida"
+    },
+    {
+      "start": 237.0,
+      "end": 245.0,
+      "text": "Y esta vez la siento en mí"
+    },
+    {
+      "start": 246.0,
+      "end": 256.0,
+      "text": "Y esta vez la siento en mí"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

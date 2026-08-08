@@ -1,0 +1,254 @@
+{
+  "archivo_original": "La Vida Me Encontró.mp3",
+  "nombre_limpio": "La Vida Me Encontró",
+  "duracion": "3:49",
+  "bpm": 103,
+  "tonalidad": "Bb mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 200,
+  "genero_detectado": "Dancehall / Pop Latino",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "crecimiento",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Música Dicen que la suerte llega cuando uno dejará querer Sin darme cuenta un día todo empezó a cambiar No fue magia, no fue el tiempo ni una estrella al pasar Fue que abrí mi corazón y aprendí a disfrutar Y mírame, qué bonito es sonreír La vida me encontró cuando dejé de correr me enseñó que los mejores sueños llegan sin hacer ruido también La vida me encontró bailando una canción y desde entonces cada día tiene un poquito más de sol Hoy camino más ligero sin cargar lo que ya fue Hay espacio para sueños y para volver a creer Que suenen fuerte los metales que no deje el piano de tocar Porque cuando el alma duela todo empieza a cambiar La vida me encontró y no la pienso soltar Después de tanta tormenta ya me tocaba celebrar La vida me encontró justo donde debí estar y ahora quiero que estás fiesta Nunca vaya a terminar Otra vueltadiempre Y vadila La vida me encontró y no la pienso soltar Tú vas, avi 9 y cadena Que no te, que no te"
+  ],
+  "letra_completa": "Música Dicen que la suerte llega cuando uno dejará querer Sin darme cuenta un día todo empezó a cambiar No fue magia, no fue el tiempo ni una estrella al pasar Fue que abrí mi corazón y aprendí a disfrutar Y mírame, qué bonito es sonreír La vida me encontró cuando dejé de correr me enseñó que los mejores sueños llegan sin hacer ruido también La vida me encontró bailando una canción y desde entonces cada día tiene un poquito más de sol Hoy camino más ligero sin cargar lo que ya fue Hay espacio para sueños y para volver a creer Que suenen fuerte los metales que no deje el piano de tocar Porque cuando el alma duela todo empieza a cambiar La vida me encontró y no la pienso soltar Después de tanta tormenta ya me tocaba celebrar La vida me encontró justo donde debí estar y ahora quiero que estás fiesta Nunca vaya a terminar Otra vueltadiempre Y vadila La vida me encontró y no la pienso soltar Tú vas, avi 9 y cadena Que no te, que no te",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 19.0,
+      "text": "Música"
+    },
+    {
+      "start": 19.0,
+      "end": 24.0,
+      "text": "Dicen que la suerte llega"
+    },
+    {
+      "start": 24.0,
+      "end": 29.0,
+      "text": "cuando uno dejará querer"
+    },
+    {
+      "start": 29.0,
+      "end": 32.0,
+      "text": "Sin darme cuenta un día"
+    },
+    {
+      "start": 32.0,
+      "end": 37.0,
+      "text": "todo empezó a cambiar"
+    },
+    {
+      "start": 37.0,
+      "end": 42.0,
+      "text": "No fue magia, no fue el tiempo"
+    },
+    {
+      "start": 42.0,
+      "end": 47.0,
+      "text": "ni una estrella al pasar"
+    },
+    {
+      "start": 47.0,
+      "end": 50.0,
+      "text": "Fue que abrí mi corazón"
+    },
+    {
+      "start": 50.0,
+      "end": 55.0,
+      "text": "y aprendí a disfrutar"
+    },
+    {
+      "start": 55.0,
+      "end": 59.0,
+      "text": "Y mírame, qué bonito es sonreír"
+    },
+    {
+      "start": 59.0,
+      "end": 61.0,
+      "text": "La vida me encontró"
+    },
+    {
+      "start": 61.0,
+      "end": 63.0,
+      "text": "cuando dejé de correr"
+    },
+    {
+      "start": 63.0,
+      "end": 67.0,
+      "text": "me enseñó que los mejores sueños"
+    },
+    {
+      "start": 67.0,
+      "end": 71.0,
+      "text": "llegan sin hacer ruido también"
+    },
+    {
+      "start": 71.0,
+      "end": 73.0,
+      "text": "La vida me encontró"
+    },
+    {
+      "start": 73.0,
+      "end": 75.0,
+      "text": "bailando una canción"
+    },
+    {
+      "start": 75.0,
+      "end": 81.0,
+      "text": "y desde entonces cada día"
+    },
+    {
+      "start": 81.0,
+      "end": 88.0,
+      "text": "tiene un poquito más de sol"
+    },
+    {
+      "start": 88.0,
+      "end": 93.0,
+      "text": "Hoy camino más ligero"
+    },
+    {
+      "start": 93.0,
+      "end": 98.0,
+      "text": "sin cargar lo que ya fue"
+    },
+    {
+      "start": 98.0,
+      "end": 101.0,
+      "text": "Hay espacio para sueños"
+    },
+    {
+      "start": 101.0,
+      "end": 106.0,
+      "text": "y para volver a creer"
+    },
+    {
+      "start": 106.0,
+      "end": 110.0,
+      "text": "Que suenen fuerte los metales"
+    },
+    {
+      "start": 110.0,
+      "end": 116.0,
+      "text": "que no deje el piano de tocar"
+    },
+    {
+      "start": 116.0,
+      "end": 119.0,
+      "text": "Porque cuando el alma duela"
+    },
+    {
+      "start": 119.0,
+      "end": 125.0,
+      "text": "todo empieza a cambiar"
+    },
+    {
+      "start": 125.0,
+      "end": 127.0,
+      "text": "La vida me encontró"
+    },
+    {
+      "start": 127.0,
+      "end": 130.0,
+      "text": "y no la pienso soltar"
+    },
+    {
+      "start": 130.0,
+      "end": 134.0,
+      "text": "Después de tanta tormenta"
+    },
+    {
+      "start": 134.0,
+      "end": 137.0,
+      "text": "ya me tocaba celebrar"
+    },
+    {
+      "start": 137.0,
+      "end": 139.0,
+      "text": "La vida me encontró"
+    },
+    {
+      "start": 139.0,
+      "end": 142.0,
+      "text": "justo donde debí estar"
+    },
+    {
+      "start": 142.0,
+      "end": 148.0,
+      "text": "y ahora quiero que estás fiesta"
+    },
+    {
+      "start": 148.0,
+      "end": 155.0,
+      "text": "Nunca vaya a terminar"
+    },
+    {
+      "start": 160.0,
+      "end": 162.0,
+      "text": "Otra vuelta"
+    },
+    {
+      "start": 167.0,
+      "end": 171.0,
+      "text": "diempre"
+    },
+    {
+      "start": 176.0,
+      "end": 179.16,
+      "text": "Y vadila"
+    },
+    {
+      "start": 184.0,
+      "end": 186.0,
+      "text": "La vida me encontró"
+    },
+    {
+      "start": 186.0,
+      "end": 190.0,
+      "text": "y no la pienso soltar"
+    },
+    {
+      "start": 190.0,
+      "end": 192.0,
+      "text": "Tú vas, avi 9"
+    },
+    {
+      "start": 192.0,
+      "end": 195.0,
+      "text": "y cadena"
+    },
+    {
+      "start": 195.0,
+      "end": 206.4,
+      "text": "Que no te, que no te"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

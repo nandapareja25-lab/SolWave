@@ -1,0 +1,29 @@
+# Entorno
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+dist/
+.next/
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Archivos de audio (van a Supabase Storage)
+audio/
+
+# Playwright
+.playwright-mcp/
+
+# Editores
+.vscode/
+*.swp

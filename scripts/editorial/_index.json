@@ -1,0 +1,458 @@
+{
+  "total": 20,
+  "canciones": [
+    {
+      "nombre_limpio": "A Mi Tiempo",
+      "duracion": "3:34",
+      "bpm": 60,
+      "tonalidad": "A mayor",
+      "energia": "alta",
+      "emocion_principal": "alegría",
+      "genero_detectado": "Pop / Canción de autor",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "alegría",
+        "celebración",
+        "baile",
+        "retorno",
+        "ritmo lento",
+        "intenso",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Hoy Elijo Paz",
+      "duracion": "3:03",
+      "bpm": 57,
+      "tonalidad": "A menor",
+      "energia": "alta",
+      "emocion_principal": "paz / calma",
+      "genero_detectado": "Pop / Canción de autor",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "calma",
+        "gratitud",
+        "presente",
+        "cotidiano",
+        "ritmo lento",
+        "intenso",
+        "tonalidad oscura",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Hoy es un nuevo comienzo",
+      "duracion": "2:33",
+      "bpm": 92,
+      "tonalidad": "B mayor",
+      "energia": "alta",
+      "emocion_principal": "paz / calma",
+      "genero_detectado": "Pop / Canción de autor",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "calma",
+        "gratitud",
+        "presente",
+        "cotidiano",
+        "intenso",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Hoy me Elijo",
+      "duracion": "3:00",
+      "bpm": 96,
+      "tonalidad": "A mayor",
+      "energia": "alta",
+      "emocion_principal": "alegría",
+      "genero_detectado": "Pop / Pop Soul",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "alegría",
+        "celebración",
+        "baile",
+        "retorno",
+        "intenso",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Hoy todo comienza",
+      "duracion": "3:29",
+      "bpm": 123,
+      "tonalidad": "B menor",
+      "energia": "alta",
+      "emocion_principal": "paz / calma",
+      "genero_detectado": "Dancehall / Pop Latino",
+      "titulo_detectado_en_letra": [
+        "Mi Corazón Vuelve A Lastir Lo Bueno Ya Viene Hacia Mí",
+        "Porque Aprendí A Sonreír Hoy Todo Comienza Aquí"
+      ],
+      "tags": [
+        "calma",
+        "gratitud",
+        "presente",
+        "cotidiano",
+        "energía alta",
+        "intenso",
+        "tonalidad oscura",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Me Elegi",
+      "duracion": "3:47",
+      "bpm": 78,
+      "tonalidad": "E mayor",
+      "energia": "alta",
+      "emocion_principal": "alegría",
+      "genero_detectado": "Pop / Canción de autor",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "alegría",
+        "celebración",
+        "baile",
+        "retorno",
+        "ritmo lento",
+        "intenso",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Me Encontré Primero",
+      "duracion": "3:22",
+      "bpm": 123,
+      "tonalidad": "A mayor",
+      "energia": "alta",
+      "emocion_principal": "alegría",
+      "genero_detectado": "Dancehall / Pop Latino",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "alegría",
+        "celebración",
+        "baile",
+        "retorno",
+        "energía alta",
+        "intenso",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Mi Ritmo también Cuenta",
+      "duracion": "3:26",
+      "bpm": 123,
+      "tonalidad": "G mayor",
+      "energia": "alta",
+      "emocion_principal": "alegría",
+      "genero_detectado": "Dancehall / Pop Latino",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "alegría",
+        "celebración",
+        "baile",
+        "retorno",
+        "energía alta",
+        "intenso",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "No Tengo Que Saberlo Todo",
+      "duracion": "3:07",
+      "bpm": 89,
+      "tonalidad": "F# menor",
+      "energia": "alta",
+      "emocion_principal": "alegría",
+      "genero_detectado": "Pop / Canción de autor",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "alegría",
+        "celebración",
+        "baile",
+        "retorno",
+        "intenso",
+        "tonalidad oscura",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Respiro y Confío",
+      "duracion": "3:17",
+      "bpm": 92,
+      "tonalidad": "Ab menor",
+      "energia": "alta",
+      "emocion_principal": "paz / calma",
+      "genero_detectado": "Pop / Canción de autor",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "calma",
+        "gratitud",
+        "presente",
+        "cotidiano",
+        "intenso",
+        "tonalidad oscura",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Si Me Escuchas Mañana",
+      "duracion": "3:16",
+      "bpm": 172,
+      "tonalidad": "G mayor",
+      "energia": "alta",
+      "emocion_principal": "alegría",
+      "genero_detectado": "Salsa / Tropical",
+      "titulo_detectado_en_letra": [
+        "Si Me Escuchas Mañana",
+        "Todo Va A Estar Mejor Si Me Escuchas Mañana"
+      ],
+      "tags": [
+        "alegría",
+        "celebración",
+        "baile",
+        "retorno",
+        "energía alta",
+        "intenso",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Siempre vuelvo a mí",
+      "duracion": "2:34",
+      "bpm": 129,
+      "tonalidad": "Eb menor",
+      "energia": "alta",
+      "emocion_principal": "alegría",
+      "genero_detectado": "Dancehall / Pop Latino",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "alegría",
+        "celebración",
+        "baile",
+        "retorno",
+        "energía alta",
+        "intenso",
+        "tonalidad oscura",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Todavía Hay Camino",
+      "duracion": "2:51",
+      "bpm": 123,
+      "tonalidad": "C mayor",
+      "energia": "alta",
+      "emocion_principal": "crecimiento",
+      "genero_detectado": "Dancehall / Pop Latino",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "crecimiento",
+        "autoestima",
+        "proceso",
+        "autoconocimiento",
+        "energía alta",
+        "intenso"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Todo florece cuando llega su tiempo",
+      "duracion": "3:53",
+      "bpm": 92,
+      "tonalidad": "G mayor",
+      "energia": "alta",
+      "emocion_principal": "paz / calma",
+      "genero_detectado": "Pop / Pop Soul",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "calma",
+        "gratitud",
+        "presente",
+        "cotidiano",
+        "intenso",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Un Paso Más",
+      "duracion": "3:17",
+      "bpm": 89,
+      "tonalidad": "G mayor",
+      "energia": "alta",
+      "emocion_principal": "paz / calma",
+      "genero_detectado": "Pop / Canción de autor",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "calma",
+        "gratitud",
+        "presente",
+        "cotidiano",
+        "intenso",
+        "para bailar",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Volví a Elegirme",
+      "duracion": "3:10",
+      "bpm": 60,
+      "tonalidad": "G mayor",
+      "energia": "alta",
+      "emocion_principal": "empoderamiento",
+      "genero_detectado": "Pop / Canción de autor",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "empoderamiento",
+        "fuerza",
+        "independencia",
+        "decisión",
+        "ritmo lento",
+        "intenso",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Volví a Mí",
+      "duracion": "2:35",
+      "bpm": 123,
+      "tonalidad": "A mayor",
+      "energia": "alta",
+      "emocion_principal": "alegría",
+      "genero_detectado": "Dancehall / Pop Latino",
+      "titulo_detectado_en_letra": [
+        "Con Cada Paso Siento Libertad Mi Corazón Marca El Compás",
+        "Hoy Brillo Tanto Que No Puedo Parar Voy",
+        "Voy Sin Mirar Atrás"
+      ],
+      "tags": [
+        "alegría",
+        "celebración",
+        "baile",
+        "retorno",
+        "energía alta",
+        "intenso",
+        "para bailar",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Volví a Sonreír",
+      "duracion": "3:23",
+      "bpm": 129,
+      "tonalidad": "G mayor",
+      "energia": "alta",
+      "emocion_principal": "paz / calma",
+      "genero_detectado": "Dancehall / Pop Latino",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "calma",
+        "gratitud",
+        "presente",
+        "cotidiano",
+        "energía alta",
+        "intenso",
+        "para bailar",
+        "soledad",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Ya No Vuelvo Atrás",
+      "duracion": "2:40",
+      "bpm": 99,
+      "tonalidad": "G mayor",
+      "energia": "alta",
+      "emocion_principal": "alegría",
+      "genero_detectado": "Pop / Pop Soul",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "alegría",
+        "celebración",
+        "baile",
+        "retorno",
+        "intenso",
+        "para bailar",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    },
+    {
+      "nombre_limpio": "Ya Puedes Descansar",
+      "duracion": "2:53",
+      "bpm": 83,
+      "tonalidad": "A menor",
+      "energia": "alta",
+      "emocion_principal": "paz / calma",
+      "genero_detectado": "Pop / Canción de autor",
+      "titulo_detectado_en_letra": [],
+      "tags": [
+        "calma",
+        "gratitud",
+        "presente",
+        "cotidiano",
+        "ritmo lento",
+        "intenso",
+        "tonalidad oscura",
+        "nuevo comienzo"
+      ],
+      "moment": "[DRAFT — revisar]",
+      "sintiendo": "[DRAFT — revisar]",
+      "intencion": "[DRAFT — revisar]"
+    }
+  ]
+}

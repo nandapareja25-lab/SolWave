@@ -1,0 +1,262 @@
+{
+  "archivo_original": "Hoy Empieza Algo Bueno.mp3",
+  "nombre_limpio": "Hoy Empieza Algo Bueno",
+  "duracion": "3:19",
+  "bpm": 99,
+  "tonalidad": "Bb mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 187,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Música Apague las dudas junto a la puerta No porque se fueran Ya no abren la vuelta Metí mis miedos dentro del bolsillo Esta vez no maneja en mi camino La calle huele a mañana nueva El corazón late sin dar respuestas No sé qué viene después de este paso Pero ya no quiero quedarme esperando Hoy empieza algo bueno Aunque todavía no lo pueda ver Hoy empieza algo bueno Y eso ya me hace volver a creer No se falta tener el mapantero Para empezar el viaje primero Si doy un paso, cambie al universo Hoy empieza algo bueno La vida nunca pidió permiso Solo esperaba que yo me decidiera Hay puertas que nacen abiertas Cuando uno deja de mirar hacia atrás No vine a ganarle el tiempo Ni a demostrarle nada al viento Solo quiero vivir este momento Como quien volvían a ser por dentro Hoy empieza algo bueno Aunque todavía no lo pueda ver Hoy empieza algo bueno Y eso ya me hace volver a creer No se falta tener el mapantero Para empezar el viaje primero Si doy un paso, cambie al universo Hoy empieza algo bueno Hoy no prometo llegar más lejos Solo prometo no volver a esconderme Porque el milagro de los caminos Empieza el día que decide desmoverte Hoy empieza algo bueno Lo siento en mi respiración No sé el nombre del destino Pero ya conozco mi dirección Hoy empieza algo bueno Hoy empieza algo bueno"
+  ],
+  "letra_completa": "Música Apague las dudas junto a la puerta No porque se fueran Ya no abren la vuelta Metí mis miedos dentro del bolsillo Esta vez no maneja en mi camino La calle huele a mañana nueva El corazón late sin dar respuestas No sé qué viene después de este paso Pero ya no quiero quedarme esperando Hoy empieza algo bueno Aunque todavía no lo pueda ver Hoy empieza algo bueno Y eso ya me hace volver a creer No se falta tener el mapantero Para empezar el viaje primero Si doy un paso, cambie al universo Hoy empieza algo bueno La vida nunca pidió permiso Solo esperaba que yo me decidiera Hay puertas que nacen abiertas Cuando uno deja de mirar hacia atrás No vine a ganarle el tiempo Ni a demostrarle nada al viento Solo quiero vivir este momento Como quien volvían a ser por dentro Hoy empieza algo bueno Aunque todavía no lo pueda ver Hoy empieza algo bueno Y eso ya me hace volver a creer No se falta tener el mapantero Para empezar el viaje primero Si doy un paso, cambie al universo Hoy empieza algo bueno Hoy no prometo llegar más lejos Solo prometo no volver a esconderme Porque el milagro de los caminos Empieza el día que decide desmoverte Hoy empieza algo bueno Lo siento en mi respiración No sé el nombre del destino Pero ya conozco mi dirección Hoy empieza algo bueno Hoy empieza algo bueno",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 13.0,
+      "text": "Música"
+    },
+    {
+      "start": 13.0,
+      "end": 17.0,
+      "text": "Apague las dudas junto a la puerta"
+    },
+    {
+      "start": 17.0,
+      "end": 20.0,
+      "text": "No porque se fueran"
+    },
+    {
+      "start": 20.0,
+      "end": 23.0,
+      "text": "Ya no abren la vuelta"
+    },
+    {
+      "start": 23.0,
+      "end": 27.0,
+      "text": "Metí mis miedos dentro del bolsillo"
+    },
+    {
+      "start": 27.0,
+      "end": 32.0,
+      "text": "Esta vez no maneja en mi camino"
+    },
+    {
+      "start": 32.0,
+      "end": 37.0,
+      "text": "La calle huele a mañana nueva"
+    },
+    {
+      "start": 37.0,
+      "end": 42.0,
+      "text": "El corazón late sin dar respuestas"
+    },
+    {
+      "start": 42.0,
+      "end": 45.0,
+      "text": "No sé qué viene después de este paso"
+    },
+    {
+      "start": 45.0,
+      "end": 51.0,
+      "text": "Pero ya no quiero quedarme esperando"
+    },
+    {
+      "start": 51.0,
+      "end": 55.0,
+      "text": "Hoy empieza algo bueno"
+    },
+    {
+      "start": 55.0,
+      "end": 60.0,
+      "text": "Aunque todavía no lo pueda ver"
+    },
+    {
+      "start": 60.0,
+      "end": 64.0,
+      "text": "Hoy empieza algo bueno"
+    },
+    {
+      "start": 64.0,
+      "end": 69.0,
+      "text": "Y eso ya me hace volver a creer"
+    },
+    {
+      "start": 69.0,
+      "end": 72.0,
+      "text": "No se falta tener el mapantero"
+    },
+    {
+      "start": 72.0,
+      "end": 74.0,
+      "text": "Para empezar el viaje primero"
+    },
+    {
+      "start": 74.0,
+      "end": 78.0,
+      "text": "Si doy un paso, cambie al universo"
+    },
+    {
+      "start": 78.0,
+      "end": 82.0,
+      "text": "Hoy empieza algo bueno"
+    },
+    {
+      "start": 82.0,
+      "end": 85.0,
+      "text": "La vida nunca pidió permiso"
+    },
+    {
+      "start": 85.0,
+      "end": 90.0,
+      "text": "Solo esperaba que yo me decidiera"
+    },
+    {
+      "start": 91.0,
+      "end": 95.0,
+      "text": "Hay puertas que nacen abiertas"
+    },
+    {
+      "start": 95.0,
+      "end": 100.0,
+      "text": "Cuando uno deja de mirar hacia atrás"
+    },
+    {
+      "start": 101.0,
+      "end": 103.0,
+      "text": "No vine a ganarle el tiempo"
+    },
+    {
+      "start": 103.0,
+      "end": 105.0,
+      "text": "Ni a demostrarle nada al viento"
+    },
+    {
+      "start": 105.0,
+      "end": 108.0,
+      "text": "Solo quiero vivir este momento"
+    },
+    {
+      "start": 108.0,
+      "end": 112.0,
+      "text": "Como quien volvían a ser por dentro"
+    },
+    {
+      "start": 113.0,
+      "end": 117.0,
+      "text": "Hoy empieza algo bueno"
+    },
+    {
+      "start": 117.0,
+      "end": 122.0,
+      "text": "Aunque todavía no lo pueda ver"
+    },
+    {
+      "start": 123.0,
+      "end": 126.0,
+      "text": "Hoy empieza algo bueno"
+    },
+    {
+      "start": 126.0,
+      "end": 131.0,
+      "text": "Y eso ya me hace volver a creer"
+    },
+    {
+      "start": 131.0,
+      "end": 134.0,
+      "text": "No se falta tener el mapantero"
+    },
+    {
+      "start": 134.0,
+      "end": 136.0,
+      "text": "Para empezar el viaje primero"
+    },
+    {
+      "start": 136.0,
+      "end": 140.0,
+      "text": "Si doy un paso, cambie al universo"
+    },
+    {
+      "start": 140.0,
+      "end": 143.0,
+      "text": "Hoy empieza algo bueno"
+    },
+    {
+      "start": 143.0,
+      "end": 147.0,
+      "text": "Hoy no prometo llegar más lejos"
+    },
+    {
+      "start": 147.0,
+      "end": 152.0,
+      "text": "Solo prometo no volver a esconderme"
+    },
+    {
+      "start": 152.0,
+      "end": 157.0,
+      "text": "Porque el milagro de los caminos"
+    },
+    {
+      "start": 157.0,
+      "end": 162.0,
+      "text": "Empieza el día que decide desmoverte"
+    },
+    {
+      "start": 163.0,
+      "end": 167.0,
+      "text": "Hoy empieza algo bueno"
+    },
+    {
+      "start": 167.0,
+      "end": 171.0,
+      "text": "Lo siento en mi respiración"
+    },
+    {
+      "start": 173.0,
+      "end": 176.0,
+      "text": "No sé el nombre del destino"
+    },
+    {
+      "start": 176.0,
+      "end": 183.0,
+      "text": "Pero ya conozco mi dirección"
+    },
+    {
+      "start": 186.0,
+      "end": 189.0,
+      "text": "Hoy empieza algo bueno"
+    },
+    {
+      "start": 192.0,
+      "end": 195.0,
+      "text": "Hoy empieza algo bueno"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

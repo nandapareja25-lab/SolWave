@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solwave — The soundtrack to your best moments.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ── TOKENS ── */
+:root {
+  --base:    #0E1118;
+  --s1:      #161B24;
+  --s2:      #1E242E;
+  --border:  rgba(245,239,230,0.07);
+  --gold:    #F4B860;
+  --coral:   #F47C5C;
+  --teal:    #4DB6AC;
+  --text-1:  #F5EFE6;
+  --text-2:  #8A8070;
+  --text-3:  rgba(245,239,230,0.3);
+  --serif:   'Playfair Display', Georgia, serif;
+  --sans:    'DM Sans', system-ui, sans-serif;
+}
+
+body {
+  background: var(--base);
+  color: var(--text-1);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── UTILITIES ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--text-3);
+}
+.label-gold { color: rgba(244,184,96,0.6); }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+nav.scrolled {
+  background: rgba(14,17,24,0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--text-1);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  list-style: none;
+  flex-shrink: 0;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text-1); }
+.nav-cta {
+  padding: 10px 22px;
+  border-radius: 24px;
+  background: rgba(244,184,96,0.9);
+  color: var(--base) !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ── §1 HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 120px 24px 100px;
+}
+
+/* Atardecer tropical como fondo */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 50% at 65% 15%, rgba(244,184,96,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 80%  40% at 20% 30%, rgba(244,124,92,0.16) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 45% at 50% 70%, rgba(77,182,172,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 60%  60% at 80% 80%, rgba(36,59,107,0.30) 0%, transparent 60%),
+    linear-gradient(170deg,
+      #060810 0%,
+      #0C0F1C 8%,
+      #141020 18%,
+      #1E1018 28%,
+      #3A1A0A 40%,
+      #6A3410 52%,
+      #8A5018 62%,
+      #6A3810 72%,
+      #1A2A38 84%,
+      #0E1C28 92%,
+      #080E18 100%
+    );
+}
+
+/* Grain sobre el hero */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Palmera decorativa */
+.hero-palm-left {
+  position: absolute;
+  bottom: -20px; left: -30px;
+  width: 220px; height: 380px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.hero-palm-right {
+  position: absolute;
+  bottom: -20px; right: -20px;
+  width: 180px; height: 320px;
+  opacity: 0.09;
+  pointer-events: none;
+  transform: scaleX(-1);
+}
+
+/* Gradiente: fade a base al final del hero */
+.hero-bottom-fade {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(to top, var(--base) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 8px 18px;
+  border: 1px solid rgba(244,184,96,0.2);
+  border-radius: 24px;
+  background: rgba(244,184,96,0.05);
+}
+.hero-eyebrow span { font-size: 12px; font-weight: 400; color: rgba(244,184,96,0.7); letter-spacing: 0.08em; }
+.hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); opacity: 0.7; }
+
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(42px, 7vw, 80px);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text-1);
+  margin-bottom: 10px;
+  text-wrap: balance;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245,239,230,0.5);
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+  text-wrap: balance;
+}
+
+.hero-body {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-2);
+  max-width: 500px;
+  margin: 0 auto 44px;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 32px;
+  background: rgba(244,184,96,0.92);
+  color: #0E1118;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 32px rgba(244,184,96,0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(244,184,96,0.35); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 32px;
+  border: 1px solid var(--border);
+  background: rgba(245,239,230,0.03);
+  color: var(--text-2);
+  font-size: 15px;
+  font-weight: 300;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover { border-color: rgba(245,239,230,0.2); color: var(--text-1); }
+
+.hero-microcopy {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-3);
+  margin-top: 16px;
+  letter-spacing: 0.04em;
+}
+
+.hero-proof {
+  position: relative;
+  z-index: 2;
+  margin-top: 64px;
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 680px;
+}
+.proof-item { text-align: center; flex: 1; padding: 0 16px; }
+.proof-number {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  display: block;
+  margin-bottom: 4px;
+}
+.proof-label { font-size: 12px; font-weight: 300; color: var(--text-3); }
+.proof-divider { width: 1px; background: var(--border); }
+
+/* ── §2 PROBLEMA ── */
+.section { padding: 120px 0; }
+.section-sm { padding: 80px 0; }
+
+.problema {
+  background: var(--base);
+}
+.problema-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 768px) { .problema-inner { grid-template-columns: 1fr; gap: 48px; } }
+
+.problema-text {}
+.problema-text .label { margin-bottom: 20px; display: block; }
+.problema-headline {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  margin-bottom: 24px;
+  text-wrap: balance;
+}
+.problema-headline em { font-style: italic; color: var(--coral); }
+.problema-body {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+.pain-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pain-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: rgba(244,124,92,0.05);
+  border: 1px solid rgba(244,124,92,0.1);
+  border-radius: 14px;
+}
+.pain-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; opacity: 0.7; }
+.pain-text { font-size: 14px; font-weight: 300; color: rgba(245,239,230,0.65); line-height: 1.5; font-style: italic; }
+
+/* Visual lado derecho: mockup del teléfono con la app */
+.problema-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.phone-preview {
+  width: 260px;
+  height: 520px;
+  border-radius: 36px;
+  background: #0C0910;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.07),
+    0 40px 80px rgba(0,0,0,0.6),
+    0 20px 40px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.pp-hero {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(170deg, #0A0800 0%, #3A1800 25%, #7A3808 48%, #C07018 65%, #E4A028 75%, #1A3838 85%, #0E1C28 100%);
+}
+.pp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, #0C0910 100%);
+}
+.pp-greeting {
+  position: absolute;
+  bottom: 16px; left: 20px;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-1);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.pp-sub {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(245,239,230,0.35);
+  margin-top: 3px;
+}
+.pp-section-label {
+  padding: 16px 20px 8px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,239,230,0.25);
+  font-weight: 500;
+}
+.pp-cards {
+  display: flex;
+  gap: 8px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.pp-card {
+  width: 90px;
+  height: 110px;
+  border-radius: 14px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+}
+.pp-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+}
+.pp-card-name {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--text-1);
+  position: relative; z-index: 1;
+  line-height: 1.2;
+}
+.pp-c1 { background: linear-gradient(145deg, #0D0500, #7A2A0A, #D46018, #F4B040); }
+.pp-c2 { background: linear-gradient(145deg, #011520, #083840, #1A8080, #4DCCC0); }
+.pp-nav {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60px;
+  background: rgba(12,9,16,0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 8px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.pp-nav-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+.pp-nav-icon { font-size: 16px; opacity: 0.3; }
+.pp-nav-icon.active { opacity: 1; color: var(--gold); }
+
+/* ── §3 AGITACIÓN ── */
+.agitacion {
+  background: linear-gradient(180deg, var(--base) 0%, #0A0C14 100%);
+  text-align: center;
+}
+.agitacion-headline {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  max-width: 680px;
+  margin: 0 auto 20px;
+  text-wrap: balance;
+}
+.agitacion-headline em { font-style: italic; color: rgba(244,124,92,0.8); }
+.agitacion-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-2);
+  max-width: 520px;
+  margin: 0 auto 60px;
+  line-height: 1.7;
+}
+.cost-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) { .cost-cards { grid-template-columns: 1fr; } }
+.cost-card {
+  padding: 28px 24px;
+  background: rgba(245,239,230,0.02);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  text-align: left;
+}
+.cost-number {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 300;
+  color: rgba(244,124,92,0.7);
+  letter-spacing: -0.03em;
+  display: block;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.cost-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+/* ── §4 SOLUCIÓN ── */
+.solucion {
+  background: var(--base);
+  overflow: hidden;
+}
+.solucion-intro {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.solucion-intro .label { display: block; margin-bottom: 20px; }
+.solucion-headline {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  max-width: 700px;
+  margin: 0 auto 20px;
+  text-wrap: balance;
+}
+.solucion-headline em { font-style: italic; color: var(--gold); }
+.solucion-body {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-2);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Feature 3-col grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 80px;
+}
+@media (max-width: 768px) { .features-grid { grid-template-columns: 1fr; } }
+.feature-card {
+  padding: 32px 28px;
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+.feature-icon {
+  font-size: 28px;
+  margin-bottom: 20px;
+  display: block;
+}
+.feature-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text-1);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.feature-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+
+/* ── §5 COLECCIONES (carrusel) ── */
+.colecciones {
+  background: linear-gradient(180deg, var(--base) 0%, #0A0C14 50%, var(--base) 100%);
+  overflow: hidden;
+}
+.colecciones-intro {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.colecciones-headline {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+.colecciones-headline em { font-style: italic; color: var(--gold); }
+.colecciones-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Grid de colecciones */
+.coll-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 16px;
+}
+@media (max-width: 768px) { .coll-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .coll-grid { grid-template-columns: 1fr; } }
+
+.coll-tile {
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px 22px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.coll-tile:first-child { grid-column: span 2; aspect-ratio: 16/7; }
+.coll-tile-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s ease;
+}
+.coll-tile:hover .coll-tile-bg { transform: scale(1.03); }
+.coll-tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, transparent 20%, rgba(0,0,0,0.55) 100%);
+}
+.coll-tile-content { position: relative; z-index: 2; }
+.coll-tile-mood {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: rgba(245,239,230,0.45);
+  margin-bottom: 5px;
+}
+.coll-tile-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text-1);
+  letter-spacing: -0.01em;
+}
+.coll-tile:first-child .coll-tile-name { font-size: 26px; }
+.coll-tile-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(245,239,230,0.45);
+  margin-top: 4px;
+}
+/* Gradientes por colección */
+.bg-sunrise { background: linear-gradient(145deg, #0D0500 0%, #7A2A0A 30%, #C46018 55%, #F0A828 80%, #ECA430 100%); }
+.bg-caribbean { background: linear-gradient(145deg, #011520 0%, #083840 30%, #1A8080 60%, #2ABCB4 85%, #4DCCC0 100%); }
+.bg-drive { background: linear-gradient(145deg, #0F0500 0%, #5A2000 30%, #A84800 60%, #D88020 85%, #F4A840 100%); }
+.bg-focus { background: linear-gradient(145deg, #050D10 0%, #0A2830 30%, #155060 60%, #2A8888 85%, #3A9898 100%); }
+.bg-midnight { background: linear-gradient(145deg, #040610 0%, #0A1030 30%, #182260 65%, #2A408C 85%, #3050A0 100%); }
+.bg-coffee { background: linear-gradient(145deg, #0A0602 0%, #2A1600 30%, #5A3010 60%, #9A6828 85%, #C08840 100%); }
+
+/* ── §6 OFERTA ── */
+.oferta {
+  background: var(--base);
+  text-align: center;
+}
+.oferta-headline {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+.oferta-headline em { font-style: italic; color: var(--gold); }
+.oferta-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  margin-bottom: 60px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 20px;
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+@media (max-width: 640px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+.price-card {
+  padding: 36px 32px;
+  border-radius: 24px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+.price-card-basic {
+  background: var(--s1);
+  border: 1px solid var(--border);
+}
+.price-card-pro {
+  background: linear-gradient(145deg, #1A1408 0%, #221A0A 50%, #2A2010 100%);
+  border: 1px solid rgba(244,184,96,0.25);
+  box-shadow: 0 0 0 1px rgba(244,184,96,0.1), 0 20px 60px rgba(244,184,96,0.08);
+}
+.price-card-pro::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 10%, var(--gold), transparent 90%);
+}
+.price-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(244,184,96,0.12);
+  border: 1px solid rgba(244,184,96,0.25);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+.price-plan {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 16px;
+}
+.price-amount {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: var(--text-1);
+  line-height: 1;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.price-amount sup { font-size: 22px; vertical-align: super; font-weight: 300; }
+.price-period {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-2);
+  margin-bottom: 24px;
+}
+.price-savings {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(77,182,172,0.8);
+  background: rgba(77,182,172,0.08);
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+.price-divider { height: 1px; background: var(--border); margin: 20px 0; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.price-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(245,239,230,0.65);
+  line-height: 1.4;
+}
+.price-features li::before { content: '✓'; color: var(--gold); font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.price-cta-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.price-cta-btn:hover { transform: translateY(-1px); opacity: 0.9; }
+.btn-outline { border: 1px solid var(--border); color: var(--text-2); background: transparent; }
+.btn-gold { background: rgba(244,184,96,0.9); color: var(--base); box-shadow: 0 4px 20px rgba(244,184,96,0.2); }
+
+.trial-note {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-3);
+}
+.trial-note strong { color: var(--text-2); font-weight: 400; }
+
+/* ── §7 GARANTÍA ── */
+.garantia {
+  background: linear-gradient(180deg, var(--base) 0%, #0A0C14 100%);
+}
+.garantia-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 768px) { .garantia-inner { grid-template-columns: 1fr; gap: 48px; } }
+.garantia-badge {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  border: 2px solid rgba(244,184,96,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background: rgba(244,184,96,0.04);
+  position: relative;
+  margin: 0 auto;
+}
+.garantia-badge::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(244,184,96,0.1);
+}
+.garantia-days {
+  font-family: var(--serif);
+  font-size: 46px;
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.garantia-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-2); }
+.garantia-text {}
+.garantia-text .label { display: block; margin-bottom: 16px; }
+.garantia-headline {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  margin-bottom: 16px;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.garantia-body {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* ── §7 GARANTÍA SIMPLIFICADA ── */
+.garantia-simple {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 40px 32px;
+  border: 1px solid rgba(244,184,96,0.15);
+  border-radius: 20px;
+  background: rgba(244,184,96,0.03);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.garantia-days-inline {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.garantia-simple-text {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* ── §8 FAQ ── */
+.faq { background: var(--base); }
+.faq-headline {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--text-1);
+  margin-bottom: 48px;
+}
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 20px 24px;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-1);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  letter-spacing: -0.01em;
+}
+.faq-q::after { content: '+'; font-size: 20px; font-weight: 300; color: var(--text-3); flex-shrink: 0; }
+.faq-a {
+  padding: 0 24px 20px;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+/* ── §9 CTA FINAL ── */
+.cta-final {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 160px 24px;
+}
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 100% 70% at 50% 50%, rgba(244,184,96,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(244,124,92,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 50% at 80% 60%, rgba(77,182,172,0.06) 0%, transparent 55%),
+    linear-gradient(170deg, #080A10 0%, #100C18 30%, #0E1A18 60%, #080E14 100%);
+}
+.cta-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+.cta-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+.cta-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,184,96,0.5); font-weight: 400; margin-bottom: 24px; }
+.cta-headline {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5.5vw, 66px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text-1);
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+.cta-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-2);
+  max-width: 480px;
+  margin: 0 auto 44px;
+  line-height: 1.7;
+}
+.cta-identity {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(244,184,96,0.6);
+  margin-top: 32px;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+  background: var(--base);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--text-2); }
+.footer-legal { font-size: 12px; font-weight: 300; color: var(--text-3); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 12px; font-weight: 300; color: var(--text-3); text-decoration: none; }
+.footer-links a:hover { color: var(--text-2); }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* A3 — prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .coll-tile-bg { transition: none; }
+  .btn-primary, .btn-secondary, .nav-cta, .price-cta-btn { transition: none; }
+}
+
+/* ── HORIZONTAL DIVIDER ── */
+.divider { height: 1px; background: var(--border); }
+
+/* ── A1 — FAQ ACCORDION ── */
+.faq-a { display: none; }
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-q { user-select: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Sol<span>wave</span></a>
+    <ul class="nav-links">
+      <li><a href="#colecciones">Colecciones</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#empieza" class="nav-cta">Empezar gratis</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- §1 HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <!-- Palmeras decorativas CSS -->
+  <svg class="hero-palm-left" viewBox="0 0 200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 340 C95 280 92 220 100 160" stroke="#4A7A40" stroke-width="10" stroke-linecap="round" opacity="0.6"/>
+    <path d="M100 160 C80 130 40 110 10 120" stroke="#3A6A30" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <path d="M100 160 C90 125 70 100 55 80" stroke="#3A6A30" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <path d="M100 170 C110 135 140 115 170 110" stroke="#3A6A30" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <path d="M100 170 C115 140 150 130 185 138" stroke="#3A6A30" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+    <path d="M100 165 C85 135 55 125 25 135" stroke="#3A6A30" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+    <path d="M100 155 C105 120 120 100 140 85" stroke="#3A6A30" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+  </svg>
+  <svg class="hero-palm-right" viewBox="0 0 200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 340 C95 280 92 220 100 160" stroke="#4A7A40" stroke-width="10" stroke-linecap="round" opacity="0.6"/>
+    <path d="M100 160 C80 130 40 110 10 120" stroke="#3A6A30" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <path d="M100 160 C90 125 70 100 55 80" stroke="#3A6A30" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <path d="M100 170 C110 135 140 115 170 110" stroke="#3A6A30" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <path d="M100 170 C115 140 150 130 185 138" stroke="#3A6A30" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+    <path d="M100 165 C85 135 55 125 25 135" stroke="#3A6A30" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+  </svg>
+  <div class="hero-bottom-fade"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-dot"></span>
+      <span>Música 100% original · Creada con IA · Curada por emoción</span>
+    </div>
+    <h1 class="hero-headline reveal">
+      La música que<br><em>siempre buscaste</em><br>ya existe.
+    </h1>
+    <p class="hero-sub reveal reveal-delay-1">The soundtrack to your best moments.</p>
+    <p class="hero-body reveal reveal-delay-2">
+      Solwave organiza la música por cómo quieres sentirte — no por artistas, no por géneros. Abre la app, elige tu momento, presiona play.
+    </p>
+    <div class="hero-actions reveal reveal-delay-3">
+      <a href="#empieza" class="btn-primary">
+        Prueba gratis 7 días
+        <span>→</span>
+      </a>
+      <a href="#colecciones" class="btn-secondary">
+        Ver colecciones
+      </a>
+    </div>
+    <p class="hero-microcopy reveal reveal-delay-3">Sin tarjeta · Sin compromisos · Cancelas cuando quieras</p>
+  </div>
+
+  <div class="hero-proof reveal">
+    <div class="proof-item">
+      <span class="proof-number">9</span>
+      <span class="proof-label">Territorios emocionales</span>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-item">
+      <span class="proof-number">80+</span>
+      <span class="proof-label">Tracks originales</span>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-item">
+      <span class="proof-number">100%</span>
+      <span class="proof-label">Música creada con IA</span>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-item">
+      <span class="proof-number">&lt;10s</span>
+      <span class="proof-label">De abrir a escuchar</span>
+    </div>
+  </div>
+</section>
+
+<!-- §2 PROBLEMA -->
+<section class="section problema">
+  <div class="container">
+    <div class="problema-inner">
+      <div class="problema-text">
+        <span class="label reveal">El problema</span>
+        <h2 class="problema-headline reveal">
+          Tienes Spotify.<br>
+          Tienes Calm.<br>
+          Y aún así <em>nada cuadra.</em>
+        </h2>
+        <p class="problema-body reveal">
+          No es que te falte música — es que ninguna app está construida para lo que realmente buscas: <strong>el ambiente sonoro perfecto para este momento exacto.</strong>
+        </p>
+        <div class="pain-list reveal">
+          <div class="pain-item">
+            <span class="pain-icon">⏳</span>
+            <span class="pain-text">"Paso más tiempo buscando qué poner que haciendo lo que tenía que hacer."</span>
+          </div>
+          <div class="pain-item">
+            <span class="pain-icon">🎵</span>
+            <span class="pain-text">"Spotify me distrae — termino cantando en vez de trabajando."</span>
+          </div>
+          <div class="pain-item">
+            <span class="pain-icon">😮‍💨</span>
+            <span class="pain-text">"Calm se siente muy espiritual. Yo no quiero meditar, quiero música de verdad."</span>
+          </div>
+          <div class="pain-item">
+            <span class="pain-icon">🔁</span>
+            <span class="pain-text">"Siempre termino en las mismas playlists genéricas de siempre."</span>
+          </div>
+        </div>
+      </div>
+      <div class="problema-visual reveal">
+        <div class="phone-preview">
+          <div class="pp-hero">
+            <div class="pp-hero-overlay"></div>
+            <div class="pp-greeting">
+              Good evening,<br>how do you<br>want to feel?
+              <div class="pp-sub">9 collections · 80+ tracks</div>
+            </div>
+          </div>
+          <div class="pp-section-label">Collections</div>
+          <div class="pp-cards">
+            <div class="pp-card pp-c1">
+              <span class="pp-card-name">Sunrise Sessions</span>
+            </div>
+            <div class="pp-card pp-c2">
+              <span class="pp-card-name">Caribbean Flow</span>
+            </div>
+          </div>
+          <nav class="pp-nav">
+            <span class="pp-nav-icon active">⊞</span>
+            <span class="pp-nav-dot"></span>
+            <span class="pp-nav-icon">⊙</span>
+            <span class="pp-nav-icon">◎</span>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §3 AGITACIÓN -->
+<section class="section agitacion">
+  <div class="container">
+    <span class="label label-gold reveal" style="display:block; margin-bottom:20px;">Lo que te cuesta cada día</span>
+    <h2 class="agitacion-headline reveal">
+      Cada vez que no encuentras<br>
+      la música correcta,<br>
+      <em>pierdes algo.</em>
+    </h2>
+    <p class="agitacion-sub reveal">
+      No parece grave. Pero suma. Y es todos los días.
+    </p>
+    <div class="cost-cards">
+      <div class="cost-card reveal">
+        <span class="cost-number">Minutos</span>
+        <p class="cost-desc">Que pierdes cada mañana buscando qué poner antes de poder empezar a trabajar.</p>
+      </div>
+      <div class="cost-card reveal reveal-delay-1">
+        <span class="cost-number">Cada día</span>
+        <p class="cost-desc">El ritual de buscar música interrumpe tu ritmo antes de que siquiera empieces.</p>
+      </div>
+      <div class="cost-card reveal reveal-delay-2">
+        <span class="cost-number">Siempre</span>
+        <p class="cost-desc">Terminas en las mismas playlists de siempre porque buscar algo nuevo cuesta demasiado esfuerzo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §4 SOLUCIÓN -->
+<section class="section solucion" id="solucion">
+  <div class="container">
+    <div class="solucion-intro">
+      <span class="label reveal" style="display:block; margin-bottom:20px;">La solución</span>
+      <h2 class="solucion-headline reveal">
+        El <em>Mapa de Momentos.</em><br>
+        Música organizada por cómo<br>te quieres sentir.
+      </h2>
+      <p class="solucion-body reveal">
+        Solwave no es un reproductor de música. Es un sistema emocional: 9 territorios sonoros diseñados alrededor de los momentos exactos de tu día. Abres la app, eliges tu momento, presionas play. En menos de 10 segundos.
+      </p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <span class="feature-icon">🎭</span>
+        <h3 class="feature-title">Navega por emociones</h3>
+        <p class="feature-desc">Cada colección responde una pregunta: ¿cómo quieres sentirte ahora? No por artista, no por género. Por momento.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <span class="feature-icon">✨</span>
+        <h3 class="feature-title">Música 100% original</h3>
+        <p class="feature-desc">Cada track fue creado con IA y curado a mano. No encontrarás esto en Spotify. Es exclusivo de Solwave.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <span class="feature-icon">🌅</span>
+        <h3 class="feature-title">Diseñado para el día</h3>
+        <p class="feature-desc">Desde el amanecer hasta la noche — cada parte del día tiene su territorio emocional, su música, su identidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §5 COLECCIONES -->
+<section class="section colecciones" id="colecciones">
+  <div class="container">
+    <div class="colecciones-intro">
+      <span class="label reveal" style="display:block; margin-bottom:20px;">9 territorios emocionales</span>
+      <h2 class="colecciones-headline reveal">
+        Cada colección es<br>un <em>universo sonoro</em>
+      </h2>
+      <p class="colecciones-sub reveal">No son playlists. Son experiencias completas con identidad propia.</p>
+    </div>
+    <div class="coll-grid">
+      <div class="coll-tile reveal">
+        <div class="coll-tile-bg bg-sunrise"></div>
+        <div class="coll-tile-overlay"></div>
+        <div class="coll-tile-content">
+          <div class="coll-tile-mood">Energía matutina</div>
+          <div class="coll-tile-name">Sunrise Sessions</div>
+          <div class="coll-tile-desc">Café, luz dorada, palmeras, aire fresco.</div>
+        </div>
+      </div>
+      <div class="coll-tile reveal reveal-delay-1">
+        <div class="coll-tile-bg bg-drive"></div>
+        <div class="coll-tile-overlay"></div>
+        <div class="coll-tile-content">
+          <div class="coll-tile-mood">Movimiento · Libertad</div>
+          <div class="coll-tile-name">Golden Drive</div>
+          <div class="coll-tile-desc">Carretera costera. Golden hour. Sin destino fijo.</div>
+        </div>
+      </div>
+      <div class="coll-tile reveal reveal-delay-2">
+        <div class="coll-tile-bg bg-caribbean"></div>
+        <div class="coll-tile-overlay"></div>
+        <div class="coll-tile-content">
+          <div class="coll-tile-mood">Good vibes</div>
+          <div class="coll-tile-name">Caribbean Flow</div>
+          <div class="coll-tile-desc">Isla. Agua. Positividad todo el día.</div>
+        </div>
+      </div>
+      <div class="coll-tile reveal">
+        <div class="coll-tile-bg bg-focus"></div>
+        <div class="coll-tile-overlay"></div>
+        <div class="coll-tile-content">
+          <div class="coll-tile-mood">Deep work</div>
+          <div class="coll-tile-name">Focus Waves</div>
+          <div class="coll-tile-desc">Ventanal, lluvia suave, escritorio despejado.</div>
+        </div>
+      </div>
+      <div class="coll-tile reveal reveal-delay-1">
+        <div class="coll-tile-bg bg-midnight"></div>
+        <div class="coll-tile-overlay"></div>
+        <div class="coll-tile-content">
+          <div class="coll-tile-mood">Descanso</div>
+          <div class="coll-tile-name">Midnight Calm</div>
+          <div class="coll-tile-desc">Luna. Azul profundo. Silencio elegante.</div>
+        </div>
+      </div>
+      <div class="coll-tile reveal reveal-delay-2">
+        <div class="coll-tile-bg bg-coffee"></div>
+        <div class="coll-tile-overlay"></div>
+        <div class="coll-tile-content">
+          <div class="coll-tile-mood">Pausa consciente</div>
+          <div class="coll-tile-name">Coffee Beats</div>
+          <div class="coll-tile-desc">Cafetería. Madera. Luz natural. Lectura.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §6 OFERTA -->
+<section class="section oferta" id="precios">
+  <div class="container">
+    <span class="label reveal" style="display:block; margin-bottom:20px;">Planes</span>
+    <h2 class="oferta-headline reveal">
+      Accede al <em>Mapa de Momentos</em> completo.
+    </h2>
+    <p class="oferta-sub reveal">7 días gratis. Sin tarjeta. Cancelas cuando quieras.</p>
+    <div class="pricing-grid">
+      <div class="price-card price-card-basic reveal">
+        <div class="price-plan">Mensual</div>
+        <div class="price-amount"><sup>$</sup>7<span style="font-size:24px">.99</span></div>
+        <div class="price-period">por mes · facturado mensualmente</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>9 colecciones completas</li>
+          <li>80+ tracks originales</li>
+          <li>Tracks · Mixes · Sessions</li>
+          <li>Sin anuncios</li>
+        </ul>
+        <a href="#empieza" class="price-cta-btn btn-outline">Empezar gratis →</a>
+      </div>
+      <div class="price-card price-card-pro reveal reveal-delay-1">
+        <div class="price-badge">MÁS POPULAR</div>
+        <div class="price-plan">Anual</div>
+        <div class="price-amount"><sup>$</sup>4<span style="font-size:24px">.99</span> <span class="price-savings">-38%</span></div>
+        <div class="price-period">por mes · $59.99 al año</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Todo lo del plan mensual</li>
+          <li>Acceso a todas las colecciones futuras</li>
+          <li>Ahorra $36 al año</li>
+        </ul>
+        <a href="#empieza" class="price-cta-btn btn-gold">Empezar — 7 días gratis →</a>
+      </div>
+    </div>
+    <p class="trial-note reveal"><strong>7 días completamente gratis</strong> — sin tarjeta, sin compromisos. Si no te encanta, cancelas con un clic.</p>
+  </div>
+</section>
+
+<!-- §7 GARANTÍA -->
+<section class="section-sm garantia">
+  <div class="container">
+    <div class="garantia-simple reveal">
+      <span class="garantia-days-inline">7 días gratis.</span>
+      <span class="garantia-simple-text">Sin tarjeta. Sin compromisos. Si Solwave no es para ti, no pagas nada.</span>
+    </div>
+  </div>
+</section>
+
+<!-- §8 FAQ -->
+<section class="section faq" id="faq">
+  <div class="container">
+    <h2 class="faq-headline reveal">Preguntas frecuentes</h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q">¿Por qué pagar si Spotify ya tiene playlists de mood?</div>
+        <div class="faq-a">Spotify organiza artistas — Solwave organiza cómo te quieres sentir. Es una diferencia filosófica completa. Además, toda la música de Solwave es 100% original y exclusiva: no la encontrarás en ninguna otra plataforma. No es competencia con Spotify; es algo diferente.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-q">¿Qué tipo de música es?</div>
+        <div class="faq-a">Afrobeat, Dancehall, Reggaetón Chill, Bachata Lounge, Pop Tropical — pero siempre en segundo plano. Lo primero es la emoción y el momento. Los géneros son el vehículo, no el destino.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <div class="faq-q">¿La música fue creada por personas reales?</div>
+        <div class="faq-a">Cada track es generado con IA de audio (Minimax) y curado manualmente por el equipo de Solwave antes de publicarse. No hay artistas humanos detrás — es música 100% original creada específicamente para estos momentos. Esto nos permite una identidad sonora consistente y sin dependencias de licencias.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-q">¿Cuánto cuesta realmente?</div>
+        <div class="faq-a">$7.99/mes en plan mensual, o $4.99/mes ($59.99 al año) en plan anual. Los 7 primeros días son completamente gratis, sin tarjeta. Si decides continuar, se te cobra al terminar el trial.</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <div class="faq-q">¿Puedo cancelar cuando quiera?</div>
+        <div class="faq-a">Absolutamente. Sin penalizaciones, sin períodos mínimos, sin letras pequeñas. Cancelas desde tu perfil en cualquier momento y no se te cobra más.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §9 CTA FINAL -->
+<section class="cta-final" id="empieza">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <div class="cta-eyebrow reveal">Solwave · The soundtrack to your best moments</div>
+    <h2 class="cta-headline reveal">
+      Tu día merece<br>una mejor<br>banda sonora.
+    </h2>
+    <p class="cta-sub reveal">
+      Empieza ahora. 7 días gratis. La música correcta, para el momento correcto, desde hoy.
+    </p>
+    <div class="reveal">
+      <a href="#precios" class="btn-primary" style="font-size:16px; padding:18px 40px;">
+        Empezar gratis — sin tarjeta
+        <span>→</span>
+      </a>
+    </div>
+    <p class="cta-identity reveal">Para las personas que <em>sienten</em> la música, no solo la escuchan.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-logo">Solwave</span>
+      <div class="footer-links">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Soporte</a>
+      </div>
+      <span class="footer-legal">© 2026 Solwave. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+reveals.forEach(el => io.observe(el));
+
+// Nav scroll state
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Trigger visible for above-fold reveals
+setTimeout(() => {
+  document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+}, 100);
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

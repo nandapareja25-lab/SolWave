@@ -1,0 +1,171 @@
+{
+  "archivo_original": "No+Tengo+Que+Saberlo+Todo.mp3",
+  "nombre_limpio": "No Tengo Que Saberlo Todo",
+  "duracion": "3:07",
+  "bpm": 89,
+  "tonalidad": "F# menor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "nostalgia",
+    "paz / calma"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "tonalidad oscura",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Hmm Hmm Abró la puerta, comienza el ruido La ciudad despierta antes que yo Llevo mis planes en los bolsillos Pero hoy ninguno manda mi voz Quise adivinar cada respuesta Antes si quiera decaminar La vida sonríe cuando la dejas Escribir lo que quiere contar No tengo que saberlo todo Para volver a respirar No tengo que saberlo todo Hoy dejo a la vida hablar El semáforo cambia de pronto Y también los caminos del corazón Hay cosas que llegan despacio Sin pedir ninguna explicación Hoy no persigo las certezas Ni las promesas por cumplir A veces el rumbo aparece Cuando decide solo seguir No tengo que saberlo todo Para volver a respirar No tengo que saberlo todo Hoy dejo a la vida hablar Si mañana cambia la historia También cambiaré junto a ella No vine a controlar el tiempo Vine a disfrutar el viaje No tengo que saberlo todo Ya puedo volver a confiar No tengo que saberlo todo Y eso me devuelve la paz No tengo que saberlo todo Para volver a confiar"
+  ],
+  "letra_completa": "Hmm Hmm Abró la puerta, comienza el ruido La ciudad despierta antes que yo Llevo mis planes en los bolsillos Pero hoy ninguno manda mi voz Quise adivinar cada respuesta Antes si quiera decaminar La vida sonríe cuando la dejas Escribir lo que quiere contar No tengo que saberlo todo Para volver a respirar No tengo que saberlo todo Hoy dejo a la vida hablar El semáforo cambia de pronto Y también los caminos del corazón Hay cosas que llegan despacio Sin pedir ninguna explicación Hoy no persigo las certezas Ni las promesas por cumplir A veces el rumbo aparece Cuando decide solo seguir No tengo que saberlo todo Para volver a respirar No tengo que saberlo todo Hoy dejo a la vida hablar Si mañana cambia la historia También cambiaré junto a ella No vine a controlar el tiempo Vine a disfrutar el viaje No tengo que saberlo todo Ya puedo volver a confiar No tengo que saberlo todo Y eso me devuelve la paz No tengo que saberlo todo Para volver a confiar",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 12.0,
+      "text": "Hmm Hmm"
+    },
+    {
+      "start": 12.0,
+      "end": 17.0,
+      "text": "Abró la puerta, comienza el ruido"
+    },
+    {
+      "start": 17.0,
+      "end": 23.0,
+      "text": "La ciudad despierta antes que yo"
+    },
+    {
+      "start": 23.0,
+      "end": 27.0,
+      "text": "Llevo mis planes en los bolsillos"
+    },
+    {
+      "start": 27.0,
+      "end": 34.04,
+      "text": "Pero hoy ninguno manda mi voz Quise adivinar cada respuesta"
+    },
+    {
+      "start": 34.04,
+      "end": 39.08,
+      "text": "Antes si quiera decaminar La vida sonríe cuando la dejas"
+    },
+    {
+      "start": 39.08,
+      "end": 47.32,
+      "text": "Escribir lo que quiere contar No tengo que saberlo todo"
+    },
+    {
+      "start": 47.32,
+      "end": 57.72,
+      "text": "Para volver a respirar No tengo que saberlo todo"
+    },
+    {
+      "start": 57.72,
+      "end": 70.44,
+      "text": "Hoy dejo a la vida hablar El semáforo cambia de pronto"
+    },
+    {
+      "start": 70.44,
+      "end": 79.32,
+      "text": "Y también los caminos del corazón Hay cosas que llegan despacio"
+    },
+    {
+      "start": 79.32,
+      "end": 84.76,
+      "text": "Sin pedir ninguna explicación Hoy no persigo las certezas"
+    },
+    {
+      "start": 84.76,
+      "end": 90.12,
+      "text": "Ni las promesas por cumplir A veces el rumbo aparece"
+    },
+    {
+      "start": 90.12,
+      "end": 100.36,
+      "text": "Cuando decide solo seguir No tengo que saberlo todo"
+    },
+    {
+      "start": 100.44,
+      "end": 111.08,
+      "text": "Para volver a respirar No tengo que saberlo todo"
+    },
+    {
+      "start": 111.08,
+      "end": 121.08,
+      "text": "Hoy dejo a la vida hablar Si mañana cambia la historia"
+    },
+    {
+      "start": 121.08,
+      "end": 126.44,
+      "text": "También cambiaré junto a ella No vine a controlar el tiempo"
+    },
+    {
+      "start": 126.44,
+      "end": 135.16,
+      "text": "Vine a disfrutar el viaje No tengo que saberlo todo"
+    },
+    {
+      "start": 135.16,
+      "end": 145.8,
+      "text": "Ya puedo volver a confiar No tengo que saberlo todo"
+    },
+    {
+      "start": 145.88,
+      "end": 162.12,
+      "text": "Y eso me devuelve la paz No tengo que saberlo todo"
+    },
+    {
+      "start": 162.12,
+      "end": 168.12,
+      "text": "Para volver a confiar"
+    }
+  ],
+  "moment": "Abriste la puerta. Comenzó el ruido. La ciudad ya estaba despierta.\nLlevabas los planes en los bolsillos — pero hoy ninguno mandaba tu voz.\nY en ese umbral, sin proponértelo, respiraste diferente.",
+  "sintiendo": "Eres de las que necesitan saber. Antes de dar el primer paso, ya querías tener la respuesta.\n\nEsta mañana abriste la puerta y el ruido entró. Los planes seguían en los bolsillos. Y esta vez — sin decidirlo — ninguno tomó el mando.\n\nLa vida sonríe cuando la dejas escribir lo que quiere contar. Hoy la dejaste.\n\nNo tengo que saberlo todo. Y eso me devuelve la paz.",
+  "intencion": "Existe para la persona que siempre tuvo que saber antes de moverse — y el día que abrió la puerta sin ese requisito, y descubrió que eso también es una forma de respirar.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "recognition": "No vine a controlar el tiempo. Vine a disfrutar el viaje.",
+  "searchPhrases": [
+    "música para cuando dejas de necesitar tener todo bajo control",
+    "siento ansiedad cuando no sé qué va a pasar",
+    "necesito saber todo antes de actuar",
+    "canción para cuando sueltas la necesidad de controlar",
+    "no puedo empezar sin tener el plan completo",
+    "música para soltar el control de los resultados",
+    "soy muy planificadora y eso me agota",
+    "canción para cuando entiendes que no necesitas saber todo",
+    "no vine a controlar vine a disfrutar",
+    "música para cuando aprendes a dejarte llevar",
+    "la incertidumbre me paraliza música",
+    "canción para cuando el no saber deja de dar miedo"
+  ],
+  "semanticTags": "no necesito saber antes de moverme, planes en los bolsillos, hoy ninguno manda mi voz, no vine a controlar el tiempo, vine a disfrutar el viaje, la vida escribe su propia letra, dejar de predecir, el rumbo aparece solo, certezas que suelto, paz del no-saber, semáforo que cambia, cambio junto a la historia, control como agotamiento, alivio de soltar",
+  "estado_editorial": "aprobado",
+  "titulo_en_cancion": "No Tengo Que Saberlo Todo",
+  "frases_clave_editoriales": [
+    "No tengo que saberlo todo para volver a respirar",
+    "Llevo mis planes en los bolsillos pero hoy ninguno manda mi voz",
+    "La vida sonríe cuando la dejas escribir lo que quiere contar",
+    "No vine a controlar el tiempo vine a disfrutar el viaje",
+    "Y eso me devuelve la paz"
+  ],
+  "nota_mapeo": "Letra clara. Transcripción limpia. Territorio único: alivio del no-saber para la persona que necesitaba predecir antes de actuar.",
+  "audioUrl": "audio/no-tengo-que-saberlo-todo.mp3"
+}

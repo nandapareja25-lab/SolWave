@@ -1,0 +1,243 @@
+{
+  "archivo_original": "La Vida También Sabe.mp3",
+  "nombre_limpio": "La Vida También Sabe",
+  "duracion": "3:02",
+  "bpm": 96,
+  "tonalidad": "C mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 185,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "nostalgia",
+    "crecimiento"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "ni una meta para alcanzar Las preguntas siguen conmigo pero ya no me hacen temblar Hay caminos que nacen solitos cuando aprendes a confiar La vida también sabe como llevarme hasta donde voy No tengo que empujar el tiempo para encontrar lo que es para mí La vida también sabe y hoy la dejo respirar lo que tenga mi nombre escrito Siempre me va a encontrar Antes quería respuestas Antes quería controlar Hoy me alcanza con dar un paso y volverme a escuchar No hace falta ver el destino para aprender a caminar Las mejores aventuras empiezan sin mirar atrás La vida también sabe como llevarme hasta donde voy No tengo que empujar el tiempo para encontrar lo que es para mí La vida también sabe y hoy la dejo respirar lo que tenga mi nombre escrito Siempre me va a encontrar Si mañana cambia el camino también cambiaré con él porque ya entendí que los milagros empiezan cuando sueltas el miedo otra vez",
+    "Y ahora, voy a ver cómo va",
+    "Ah, ah, ah, ah, ah",
+    "Voy a salir sin mirar el reloj",
+    "Dejé que el viento eligiera el lugar",
+    "Por primera vez no tuve prisa"
+  ],
+  "letra_completa": "Y ahora, voy a ver cómo va. Ah, ah, ah, ah, ah. Voy a salir sin mirar el reloj. Dejé que el viento eligiera el lugar. Por primera vez no tuve prisa. ni una meta para alcanzar Las preguntas siguen conmigo pero ya no me hacen temblar Hay caminos que nacen solitos cuando aprendes a confiar La vida también sabe como llevarme hasta donde voy No tengo que empujar el tiempo para encontrar lo que es para mí La vida también sabe y hoy la dejo respirar lo que tenga mi nombre escrito Siempre me va a encontrar Antes quería respuestas Antes quería controlar Hoy me alcanza con dar un paso y volverme a escuchar No hace falta ver el destino para aprender a caminar Las mejores aventuras empiezan sin mirar atrás La vida también sabe como llevarme hasta donde voy No tengo que empujar el tiempo para encontrar lo que es para mí La vida también sabe y hoy la dejo respirar lo que tenga mi nombre escrito Siempre me va a encontrar Si mañana cambia el camino también cambiaré con él porque ya entendí que los milagros empiezan cuando sueltas el miedo otra vez",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 4.36,
+      "text": "Y ahora, voy a ver cómo va."
+    },
+    {
+      "start": 4.36,
+      "end": 7.36,
+      "text": "Ah, ah, ah, ah, ah."
+    },
+    {
+      "start": 11.36,
+      "end": 16.06,
+      "text": "Voy a salir sin mirar el reloj."
+    },
+    {
+      "start": 16.06,
+      "end": 20.82,
+      "text": "Dejé que el viento eligiera el lugar."
+    },
+    {
+      "start": 20.82,
+      "end": 26.2,
+      "text": "Por primera vez no tuve prisa."
+    },
+    {
+      "start": 26.2,
+      "end": 29.2,
+      "text": "ni una meta para alcanzar"
+    },
+    {
+      "start": 31.2,
+      "end": 34.2,
+      "text": "Las preguntas siguen conmigo"
+    },
+    {
+      "start": 36.2,
+      "end": 39.2,
+      "text": "pero ya no me hacen temblar"
+    },
+    {
+      "start": 41.2,
+      "end": 44.2,
+      "text": "Hay caminos que nacen solitos"
+    },
+    {
+      "start": 46.2,
+      "end": 49.2,
+      "text": "cuando aprendes a confiar"
+    },
+    {
+      "start": 49.2,
+      "end": 52.2,
+      "text": "La vida también sabe"
+    },
+    {
+      "start": 53.2,
+      "end": 57.2,
+      "text": "como llevarme hasta donde voy"
+    },
+    {
+      "start": 58.2,
+      "end": 61.2,
+      "text": "No tengo que empujar el tiempo"
+    },
+    {
+      "start": 62.2,
+      "end": 66.2,
+      "text": "para encontrar lo que es para mí"
+    },
+    {
+      "start": 66.2,
+      "end": 69.2,
+      "text": "La vida también sabe"
+    },
+    {
+      "start": 69.2,
+      "end": 72.2,
+      "text": "y hoy la dejo respirar"
+    },
+    {
+      "start": 72.2,
+      "end": 77.2,
+      "text": "lo que tenga mi nombre escrito"
+    },
+    {
+      "start": 78.2,
+      "end": 81.2,
+      "text": "Siempre me va a encontrar"
+    },
+    {
+      "start": 82.2,
+      "end": 86.2,
+      "text": "Antes quería respuestas"
+    },
+    {
+      "start": 87.2,
+      "end": 91.2,
+      "text": "Antes quería controlar"
+    },
+    {
+      "start": 92.2,
+      "end": 96.2,
+      "text": "Hoy me alcanza con dar un paso"
+    },
+    {
+      "start": 97.2,
+      "end": 100.2,
+      "text": "y volverme a escuchar"
+    },
+    {
+      "start": 102.2,
+      "end": 106.2,
+      "text": "No hace falta ver el destino"
+    },
+    {
+      "start": 107.2,
+      "end": 111.2,
+      "text": "para aprender a caminar"
+    },
+    {
+      "start": 112.2,
+      "end": 116.2,
+      "text": "Las mejores aventuras"
+    },
+    {
+      "start": 116.2,
+      "end": 120.2,
+      "text": "empiezan sin mirar atrás"
+    },
+    {
+      "start": 121.2,
+      "end": 123.2,
+      "text": "La vida también sabe"
+    },
+    {
+      "start": 125.2,
+      "end": 129.2,
+      "text": "como llevarme hasta donde voy"
+    },
+    {
+      "start": 130.2,
+      "end": 133.2,
+      "text": "No tengo que empujar el tiempo"
+    },
+    {
+      "start": 133.2,
+      "end": 138.2,
+      "text": "para encontrar lo que es para mí"
+    },
+    {
+      "start": 138.2,
+      "end": 140.2,
+      "text": "La vida también sabe"
+    },
+    {
+      "start": 140.2,
+      "end": 143.2,
+      "text": "y hoy la dejo respirar"
+    },
+    {
+      "start": 143.2,
+      "end": 148.2,
+      "text": "lo que tenga mi nombre escrito"
+    },
+    {
+      "start": 149.2,
+      "end": 152.2,
+      "text": "Siempre me va a encontrar"
+    },
+    {
+      "start": 153.2,
+      "end": 157.2,
+      "text": "Si mañana cambia el camino"
+    },
+    {
+      "start": 158.2,
+      "end": 162.2,
+      "text": "también cambiaré con él"
+    },
+    {
+      "start": 162.2,
+      "end": 167.2,
+      "text": "porque ya entendí que los milagros"
+    },
+    {
+      "start": 168.2,
+      "end": 171.2,
+      "text": "empiezan cuando sueltas"
+    },
+    {
+      "start": 172.2,
+      "end": 175.2,
+      "text": "el miedo otra vez"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

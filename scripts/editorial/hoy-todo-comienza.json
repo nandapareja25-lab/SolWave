@@ -1,0 +1,205 @@
+{
+  "archivo_original": "Hoy+todo+comienza.mp3",
+  "nombre_limpio": "Hoy todo comienza",
+  "duracion": "3:29",
+  "bpm": 123,
+  "tonalidad": "B menor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Dancehall / Pop Latino",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "alegría",
+    "crecimiento"
+  ],
+  "titulo_detectado_en_letra": [
+    "Mi Corazón Vuelve A Lastir Lo Bueno Ya Viene Hacia Mí",
+    "Porque Aprendí A Sonreír Hoy Todo Comienza Aquí"
+  ],
+  "tags": [
+    "nuevo comienzo",
+    "esperanza",
+    "confianza",
+    "florecer",
+    "mañana"
+  ],
+  "frases_clave": [
+    "Apro la ventana, entro a la luz El cielo me dice que todo es virtud Dejo el ayer donde debe quedar Hoy nace un camino por caminar Respiro profundo, despacio otra vez La calma abraza de pie salaciendo Tengo que correr para llegar Cada pequeño paso también es avanzar Hoy todo comienza aquí, mi corazón vuelve a lastir Lo bueno ya viene hacia mí, porque aprendí a sonreír Hoy todo comienza aquí, la vida flores en mí El sol conoce mi verdad y yo también vuelvo a brillar Si el viento cambia de dirección, camino ligero con el corazón No necesito mirar hacia atrás Lo que es para mí me encontrara Cada mañana me invita a creer Que siempre hay algo nuevo por ver La esperanza conoce mi voz Y hoy vuelve a cantar entre los dos Hoy todo comienza aquí, mi corazón vuelve a lastir Lo bueno ya viene hacia mí, porque aprendí a sonreír Hoy todo comienza aquí, la vida flores en mí No importa qué pasó, hoy vuelvo a empezar otra vez Respira, confía, sonríe Todo comienza aquí, todo comienza aquí Todo comienza aquí, todo comienza aquí Oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh"
+  ],
+  "letra_completa": "Apro la ventana, entro a la luz El cielo me dice que todo es virtud Dejo el ayer donde debe quedar Hoy nace un camino por caminar Respiro profundo, despacio otra vez La calma abraza de pie salaciendo Tengo que correr para llegar Cada pequeño paso también es avanzar Hoy todo comienza aquí, mi corazón vuelve a lastir Lo bueno ya viene hacia mí, porque aprendí a sonreír Hoy todo comienza aquí, la vida flores en mí El sol conoce mi verdad y yo también vuelvo a brillar Si el viento cambia de dirección, camino ligero con el corazón No necesito mirar hacia atrás Lo que es para mí me encontrara Cada mañana me invita a creer Que siempre hay algo nuevo por ver La esperanza conoce mi voz Y hoy vuelve a cantar entre los dos Hoy todo comienza aquí, mi corazón vuelve a lastir Lo bueno ya viene hacia mí, porque aprendí a sonreír Hoy todo comienza aquí, la vida flores en mí No importa qué pasó, hoy vuelvo a empezar otra vez Respira, confía, sonríe Todo comienza aquí, todo comienza aquí Todo comienza aquí, todo comienza aquí Oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 27.0,
+      "text": "Apro la ventana, entro a la luz"
+    },
+    {
+      "start": 30.0,
+      "end": 39.0,
+      "text": "El cielo me dice que todo es virtud"
+    },
+    {
+      "start": 41.0,
+      "end": 45.0,
+      "text": "Dejo el ayer donde debe quedar"
+    },
+    {
+      "start": 46.0,
+      "end": 51.0,
+      "text": "Hoy nace un camino por caminar"
+    },
+    {
+      "start": 52.0,
+      "end": 57.0,
+      "text": "Respiro profundo, despacio otra vez"
+    },
+    {
+      "start": 57.0,
+      "end": 62.0,
+      "text": "La calma abraza de pie salaciendo"
+    },
+    {
+      "start": 62.0,
+      "end": 67.0,
+      "text": "Tengo que correr para llegar"
+    },
+    {
+      "start": 67.0,
+      "end": 72.0,
+      "text": "Cada pequeño paso también es avanzar"
+    },
+    {
+      "start": 72.0,
+      "end": 77.0,
+      "text": "Hoy todo comienza aquí, mi corazón vuelve a lastir"
+    },
+    {
+      "start": 77.0,
+      "end": 82.0,
+      "text": "Lo bueno ya viene hacia mí, porque aprendí a sonreír"
+    },
+    {
+      "start": 82.0,
+      "end": 87.0,
+      "text": "Hoy todo comienza aquí, la vida flores en mí"
+    },
+    {
+      "start": 87.0,
+      "end": 94.0,
+      "text": "El sol conoce mi verdad y yo también vuelvo a brillar"
+    },
+    {
+      "start": 94.0,
+      "end": 103.0,
+      "text": "Si el viento cambia de dirección, camino ligero con el corazón"
+    },
+    {
+      "start": 103.0,
+      "end": 108.0,
+      "text": "No necesito mirar hacia atrás"
+    },
+    {
+      "start": 108.0,
+      "end": 113.0,
+      "text": "Lo que es para mí me encontrara"
+    },
+    {
+      "start": 113.0,
+      "end": 118.0,
+      "text": "Cada mañana me invita a creer"
+    },
+    {
+      "start": 118.0,
+      "end": 122.0,
+      "text": "Que siempre hay algo nuevo por ver"
+    },
+    {
+      "start": 123.0,
+      "end": 127.0,
+      "text": "La esperanza conoce mi voz"
+    },
+    {
+      "start": 127.0,
+      "end": 132.0,
+      "text": "Y hoy vuelve a cantar entre los dos"
+    },
+    {
+      "start": 132.0,
+      "end": 137.0,
+      "text": "Hoy todo comienza aquí, mi corazón vuelve a lastir"
+    },
+    {
+      "start": 137.0,
+      "end": 142.0,
+      "text": "Lo bueno ya viene hacia mí, porque aprendí a sonreír"
+    },
+    {
+      "start": 142.0,
+      "end": 147.0,
+      "text": "Hoy todo comienza aquí, la vida flores en mí"
+    },
+    {
+      "start": 152.0,
+      "end": 161.0,
+      "text": "No importa qué pasó, hoy vuelvo a empezar otra vez"
+    },
+    {
+      "start": 161.0,
+      "end": 167.0,
+      "text": "Respira, confía, sonríe"
+    },
+    {
+      "start": 169.0,
+      "end": 173.0,
+      "text": "Todo comienza aquí, todo comienza aquí"
+    },
+    {
+      "start": 173.0,
+      "end": 177.0,
+      "text": "Todo comienza aquí, todo comienza aquí"
+    },
+    {
+      "start": 191.0,
+      "end": 209.62,
+      "text": "Oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh, oh"
+    }
+  ],
+  "moment": "Abriste la ventana. Entró la luz. No importa lo que pasó. Hoy tu corazón vuelve a latir — y eso empieza aquí.",
+  "sintiendo": "Hubo cosas. Días donde el peso fue demasiado. Cosas que pasaron y dejaron su marca.\n\nHoy abriste la ventana. No porque todo esté resuelto — simplemente la abriste. Y la luz entró. Y algo en ese gesto dijo: hoy.\n\nNo importa lo que pasó. Hoy vuelves a empezar. La esperanza ya conoce tu voz. Hoy vuelve a cantar.",
+  "intencion": "Existe para el gesto de abrir la ventana: no la resignación ni la espera — la decisión activa de dejar que el hoy entre.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Hoy Todo Comienza Aquí",
+  "frases_clave_editoriales": [
+    "Hoy todo comienza aquí, mi corazón vuelve a latir",
+    "Lo bueno ya viene hacia mí, porque aprendí a sonreír",
+    "No necesito mirar hacia atrás, lo que es para mí me encontrará"
+  ],
+  "nota_mapeo": "Coincidencia con álbum Vuelvo a sentir la vida. Canción de apertura, energía alta, celebratoria.",
+  "estado_editorial": "aprobado",
+  "recognition": "No importa lo que pasó. Hoy vuelvo a empezar otra vez.",
+  "searchPhrases": [
+    "música para decidir empezar de nuevo hoy",
+    "canción para cuando decides que hoy es el día",
+    "ya no quiero seguir cargando esto música",
+    "canción para cuando abres los ojos y decides seguir",
+    "música para reset emocional",
+    "el día que abres la ventana y dejas entrar la luz",
+    "hoy decido que empieza algo diferente",
+    "música para levantarse y seguir después de algo difícil",
+    "canción para cuando el corazón vuelve a latir",
+    "no importa lo que pasó hoy empieza algo nuevo",
+    "música para el primer día de algo nuevo",
+    "activamente elegir comenzar canción"
+  ],
+  "semanticTags": "decisión activa, abrir la ventana, dejar entrar la luz, nuevo comienzo enérgico, no importa lo que pasó, hoy empieza aquí, corazón que vuelve a latir, la esperanza conoce mi voz, lo que es para mí me encontrará, caminar ligero, apertura como gesto físico, declaración con las manos",
+  "audioUrl": "audio/hoy-todo-comienza.mp3"
+}

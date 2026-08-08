@@ -1,0 +1,244 @@
+{
+  "archivo_original": "Baila Conmigo la Vida.mp3",
+  "nombre_limpio": "Baila Conmigo la Vida",
+  "duracion": "2:52",
+  "bpm": 103,
+  "tonalidad": "Bb mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 198,
+  "genero_detectado": "Dancehall / Pop Latino",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "crecimiento",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Ay, oh, hey Hoy desperté con ganas de dejar el miedo atrás Y abrir la puerta al día y dejarme llevar No quiero contar las horas, quiero hacerlas bailar Que el corazón marque el paso Y el alma empiece a cantar Porque entendí que la vida no espera Baila conmigo la vida Esta noche para los dos Y el ayer ya quedó lejos Hoy le hacemos caso al corazón Baila conmigo la vida No la dejes escapar Que los sueños también bailan Cuando los dejas entrar Que suene fuerte la música Que se rían los amigos Que no falten los abrazos Ni un motivo para brindar Hoy no quiero más excusas Ni pensar en lo que fue Prefiero llenar el alma De momentos que recordaré Porque la vida se disfruta en el camino Baila conmigo la vida Que la vida queda sol Y aunque el cielo se nuble Un día nunca se apaga la ilusión Baila conmigo la vida Hasta que salga la amanecer Porque el mejor momento siempre puede ser No puede ser después Que no pare la música Que todavía Nos queda mucho por vivir Katia Baila conmigo la vida Baila conmigo la vida Baila conmigo la vida Baila conmigo la vida"
+  ],
+  "letra_completa": "Ay, oh, hey Hoy desperté con ganas de dejar el miedo atrás Y abrir la puerta al día y dejarme llevar No quiero contar las horas, quiero hacerlas bailar Que el corazón marque el paso Y el alma empiece a cantar Porque entendí que la vida no espera Baila conmigo la vida Esta noche para los dos Y el ayer ya quedó lejos Hoy le hacemos caso al corazón Baila conmigo la vida No la dejes escapar Que los sueños también bailan Cuando los dejas entrar Que suene fuerte la música Que se rían los amigos Que no falten los abrazos Ni un motivo para brindar Hoy no quiero más excusas Ni pensar en lo que fue Prefiero llenar el alma De momentos que recordaré Porque la vida se disfruta en el camino Baila conmigo la vida Que la vida queda sol Y aunque el cielo se nuble Un día nunca se apaga la ilusión Baila conmigo la vida Hasta que salga la amanecer Porque el mejor momento siempre puede ser No puede ser después Que no pare la música Que todavía Nos queda mucho por vivir Katia Baila conmigo la vida Baila conmigo la vida Baila conmigo la vida Baila conmigo la vida",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 7.0,
+      "text": "Ay, oh, hey"
+    },
+    {
+      "start": 21.0,
+      "end": 25.0,
+      "text": "Hoy desperté con ganas de dejar el miedo atrás"
+    },
+    {
+      "start": 25.0,
+      "end": 30.0,
+      "text": "Y abrir la puerta al día y dejarme llevar"
+    },
+    {
+      "start": 30.0,
+      "end": 34.0,
+      "text": "No quiero contar las horas, quiero hacerlas bailar"
+    },
+    {
+      "start": 34.0,
+      "end": 37.0,
+      "text": "Que el corazón marque el paso"
+    },
+    {
+      "start": 37.0,
+      "end": 39.0,
+      "text": "Y el alma empiece a cantar"
+    },
+    {
+      "start": 39.0,
+      "end": 44.0,
+      "text": "Porque entendí que la vida no espera"
+    },
+    {
+      "start": 45.0,
+      "end": 47.0,
+      "text": "Baila conmigo la vida"
+    },
+    {
+      "start": 47.0,
+      "end": 49.0,
+      "text": "Esta noche para los dos"
+    },
+    {
+      "start": 49.0,
+      "end": 51.0,
+      "text": "Y el ayer ya quedó lejos"
+    },
+    {
+      "start": 51.0,
+      "end": 54.0,
+      "text": "Hoy le hacemos caso al corazón"
+    },
+    {
+      "start": 54.0,
+      "end": 56.0,
+      "text": "Baila conmigo la vida"
+    },
+    {
+      "start": 56.0,
+      "end": 59.0,
+      "text": "No la dejes escapar"
+    },
+    {
+      "start": 59.0,
+      "end": 61.0,
+      "text": "Que los sueños también bailan"
+    },
+    {
+      "start": 61.0,
+      "end": 64.0,
+      "text": "Cuando los dejas entrar"
+    },
+    {
+      "start": 73.0,
+      "end": 76.0,
+      "text": "Que suene fuerte la música"
+    },
+    {
+      "start": 76.0,
+      "end": 78.0,
+      "text": "Que se rían los amigos"
+    },
+    {
+      "start": 78.0,
+      "end": 80.0,
+      "text": "Que no falten los abrazos"
+    },
+    {
+      "start": 80.0,
+      "end": 83.0,
+      "text": "Ni un motivo para brindar"
+    },
+    {
+      "start": 83.0,
+      "end": 85.0,
+      "text": "Hoy no quiero más excusas"
+    },
+    {
+      "start": 85.0,
+      "end": 87.0,
+      "text": "Ni pensar en lo que fue"
+    },
+    {
+      "start": 87.0,
+      "end": 89.0,
+      "text": "Prefiero llenar el alma"
+    },
+    {
+      "start": 89.0,
+      "end": 92.0,
+      "text": "De momentos que recordaré"
+    },
+    {
+      "start": 92.0,
+      "end": 97.0,
+      "text": "Porque la vida se disfruta en el camino"
+    },
+    {
+      "start": 98.0,
+      "end": 100.0,
+      "text": "Baila conmigo la vida"
+    },
+    {
+      "start": 100.0,
+      "end": 102.0,
+      "text": "Que la vida queda sol"
+    },
+    {
+      "start": 102.0,
+      "end": 104.0,
+      "text": "Y aunque el cielo se nuble"
+    },
+    {
+      "start": 104.0,
+      "end": 107.0,
+      "text": "Un día nunca se apaga la ilusión"
+    },
+    {
+      "start": 107.0,
+      "end": 109.0,
+      "text": "Baila conmigo la vida"
+    },
+    {
+      "start": 109.0,
+      "end": 111.0,
+      "text": "Hasta que salga la amanecer"
+    },
+    {
+      "start": 111.0,
+      "end": 117.0,
+      "text": "Porque el mejor momento siempre puede ser"
+    },
+    {
+      "start": 117.0,
+      "end": 126.0,
+      "text": "No puede ser después"
+    },
+    {
+      "start": 127.0,
+      "end": 129.0,
+      "text": "Que no pare la música"
+    },
+    {
+      "start": 131.0,
+      "end": 133.0,
+      "text": "Que todavía"
+    },
+    {
+      "start": 136.0,
+      "end": 139.0,
+      "text": "Nos queda mucho por vivir"
+    },
+    {
+      "start": 142.0,
+      "end": 145.6,
+      "text": "Katia"
+    },
+    {
+      "start": 148.96,
+      "end": 153.0,
+      "text": "Baila conmigo la vida"
+    },
+    {
+      "start": 154.0,
+      "end": 157.56,
+      "text": "Baila conmigo la vida"
+    },
+    {
+      "start": 158.56,
+      "end": 161.56,
+      "text": "Baila conmigo la vida"
+    },
+    {
+      "start": 163.0,
+      "end": 166.16,
+      "text": "Baila conmigo la vida"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

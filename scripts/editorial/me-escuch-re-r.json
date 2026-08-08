@@ -1,0 +1,228 @@
+{
+  "archivo_original": "Me escuché reír.mp3",
+  "nombre_limpio": "Me escuché reír",
+  "duracion": "3:12",
+  "bpm": 99,
+  "tonalidad": "A menor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 186,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "crecimiento",
+  "emociones_secundarias": [
+    "paz / calma"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "crecimiento",
+    "autoestima",
+    "proceso",
+    "autoconocimiento",
+    "intenso",
+    "tonalidad oscura",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Y le dije hoy sorprendenme La ventana estaba abierta Y el aire olía diferente Son una canción cualquiera Y sin pensarlo la canté Hasta que alguien dijo ríéndose Hace rato no te veía así Y fue ahí me escuché reír Tan fuerte que hasta yo me sorprendí Como si el alma me quisiera decir Que nunca dejó de vivir Me escuché reír Sin pedir permiso para ser feliz Las mejores cosas Vuelven despacito Cuando dejas de perseguir Ya no cuento las ausencias Ni las veces que perdí Hoy prefiero llenar la mesa Con la gente que sigue aquí Hay momentos que no avisan Simplemente dicen ya Y te vuelven una parte tuya Que pensabas no encontrar Y fue ahí me escuché reír Tan fuerte que hasta yo me sorprendí Como si el alma me quisiera decir Que nunca dejó de vivir Me escuché reír Sin pedir permiso para ser feliz Las mejores cosas Vuelven despacito Cuando dejas de perseguir Si mañana vuelve la lluvia Ya sabré cómo esperar Porque ahora conozco el camino Que me trae De vuelta al hogar"
+  ],
+  "letra_completa": "Y le dije hoy sorprendenme La ventana estaba abierta Y el aire olía diferente Son una canción cualquiera Y sin pensarlo la canté Hasta que alguien dijo ríéndose Hace rato no te veía así Y fue ahí me escuché reír Tan fuerte que hasta yo me sorprendí Como si el alma me quisiera decir Que nunca dejó de vivir Me escuché reír Sin pedir permiso para ser feliz Las mejores cosas Vuelven despacito Cuando dejas de perseguir Ya no cuento las ausencias Ni las veces que perdí Hoy prefiero llenar la mesa Con la gente que sigue aquí Hay momentos que no avisan Simplemente dicen ya Y te vuelven una parte tuya Que pensabas no encontrar Y fue ahí me escuché reír Tan fuerte que hasta yo me sorprendí Como si el alma me quisiera decir Que nunca dejó de vivir Me escuché reír Sin pedir permiso para ser feliz Las mejores cosas Vuelven despacito Cuando dejas de perseguir Si mañana vuelve la lluvia Ya sabré cómo esperar Porque ahora conozco el camino Que me trae De vuelta al hogar",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 26.0,
+      "text": "Y le dije hoy sorprendenme La ventana estaba abierta"
+    },
+    {
+      "start": 27.0,
+      "end": 31.0,
+      "text": "Y el aire olía diferente"
+    },
+    {
+      "start": 32.0,
+      "end": 36.0,
+      "text": "Son una canción cualquiera"
+    },
+    {
+      "start": 37.0,
+      "end": 41.0,
+      "text": "Y sin pensarlo la canté"
+    },
+    {
+      "start": 42.0,
+      "end": 46.0,
+      "text": "Hasta que alguien dijo ríéndose"
+    },
+    {
+      "start": 46.0,
+      "end": 50.0,
+      "text": "Hace rato no te veía así"
+    },
+    {
+      "start": 51.0,
+      "end": 55.0,
+      "text": "Y fue ahí me escuché reír"
+    },
+    {
+      "start": 56.0,
+      "end": 60.0,
+      "text": "Tan fuerte que hasta yo me sorprendí"
+    },
+    {
+      "start": 61.0,
+      "end": 65.0,
+      "text": "Como si el alma me quisiera decir"
+    },
+    {
+      "start": 66.0,
+      "end": 70.0,
+      "text": "Que nunca dejó de vivir"
+    },
+    {
+      "start": 70.0,
+      "end": 72.0,
+      "text": "Me escuché reír"
+    },
+    {
+      "start": 72.0,
+      "end": 75.0,
+      "text": "Sin pedir permiso para ser feliz"
+    },
+    {
+      "start": 75.0,
+      "end": 77.0,
+      "text": "Las mejores cosas"
+    },
+    {
+      "start": 77.0,
+      "end": 80.0,
+      "text": "Vuelven despacito"
+    },
+    {
+      "start": 81.0,
+      "end": 84.0,
+      "text": "Cuando dejas de perseguir"
+    },
+    {
+      "start": 86.0,
+      "end": 90.0,
+      "text": "Ya no cuento las ausencias"
+    },
+    {
+      "start": 91.0,
+      "end": 94.0,
+      "text": "Ni las veces que perdí"
+    },
+    {
+      "start": 95.0,
+      "end": 99.0,
+      "text": "Hoy prefiero llenar la mesa"
+    },
+    {
+      "start": 100.0,
+      "end": 104.0,
+      "text": "Con la gente que sigue aquí"
+    },
+    {
+      "start": 105.0,
+      "end": 109.0,
+      "text": "Hay momentos que no avisan"
+    },
+    {
+      "start": 110.0,
+      "end": 114.0,
+      "text": "Simplemente dicen ya"
+    },
+    {
+      "start": 114.0,
+      "end": 119.0,
+      "text": "Y te vuelven una parte tuya"
+    },
+    {
+      "start": 119.0,
+      "end": 124.0,
+      "text": "Que pensabas no encontrar"
+    },
+    {
+      "start": 124.0,
+      "end": 128.0,
+      "text": "Y fue ahí me escuché reír"
+    },
+    {
+      "start": 129.0,
+      "end": 133.0,
+      "text": "Tan fuerte que hasta yo me sorprendí"
+    },
+    {
+      "start": 134.0,
+      "end": 138.0,
+      "text": "Como si el alma me quisiera decir"
+    },
+    {
+      "start": 139.0,
+      "end": 143.0,
+      "text": "Que nunca dejó de vivir"
+    },
+    {
+      "start": 144.0,
+      "end": 146.0,
+      "text": "Me escuché reír"
+    },
+    {
+      "start": 146.0,
+      "end": 149.0,
+      "text": "Sin pedir permiso para ser feliz"
+    },
+    {
+      "start": 149.0,
+      "end": 151.0,
+      "text": "Las mejores cosas"
+    },
+    {
+      "start": 151.0,
+      "end": 154.0,
+      "text": "Vuelven despacito"
+    },
+    {
+      "start": 154.0,
+      "end": 158.0,
+      "text": "Cuando dejas de perseguir"
+    },
+    {
+      "start": 159.0,
+      "end": 163.0,
+      "text": "Si mañana vuelve la lluvia"
+    },
+    {
+      "start": 164.0,
+      "end": 168.0,
+      "text": "Ya sabré cómo esperar"
+    },
+    {
+      "start": 169.0,
+      "end": 173.0,
+      "text": "Porque ahora conozco el camino"
+    },
+    {
+      "start": 173.0,
+      "end": 176.0,
+      "text": "Que me trae"
+    },
+    {
+      "start": 176.0,
+      "end": 178.0,
+      "text": "De vuelta al hogar"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

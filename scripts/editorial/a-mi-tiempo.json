@@ -1,0 +1,229 @@
+{
+  "archivo_original": "A+Mi+Tiempo.mp3",
+  "nombre_limpio": "A Mi Tiempo",
+  "duracion": "3:34",
+  "bpm": 60,
+  "tonalidad": "A mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "paz / calma",
+  "emociones_secundarias": [
+    "crecimiento",
+    "paz / calma",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "ritmo propio",
+    "comparación",
+    "paciencia",
+    "confianza",
+    "timing"
+  ],
+  "frases_clave": [
+    "🎵 Di pasa mil trenes por la estación pensé que el mío nunca iba a volver hoy entendí con el corazón que cada historia aprende a florecer Deje de mirar hacia los demás Deje de correr para demostrar la vida no empieza por llegar empieza cuando aprendes a esperar a mi tiempo todo va a llegar Cada semilla conoce su lugar a mi tiempo vuelvo a respirar lo que es para mí me encontrará Hoy la mañana me hablo bajito como quien conoce la dirección no necesito cambiar mi paso para escuchar mi corazón si otro celebra yo también sonrío porque aprendí a no competir cada destino tiene su ritmo el mío acaba de descubrirse aquí a mi tiempo todo va a llegar cada semilla conoce su lugar a mi tiempo vuelvo a respirar lo que es para mí me encontrará no llego tarde sólo llego cuando debo llegar a mi tiempo todo va a llegar a mi tiempo todo va a llegar cada latido me invita a confiar a mi tiempo ya puedo cantar porque mi historia acaba de empezar a mi tiempo"
+  ],
+  "letra_completa": "🎵 Di pasa mil trenes por la estación pensé que el mío nunca iba a volver hoy entendí con el corazón que cada historia aprende a florecer Deje de mirar hacia los demás Deje de correr para demostrar la vida no empieza por llegar empieza cuando aprendes a esperar a mi tiempo todo va a llegar Cada semilla conoce su lugar a mi tiempo vuelvo a respirar lo que es para mí me encontrará Hoy la mañana me hablo bajito como quien conoce la dirección no necesito cambiar mi paso para escuchar mi corazón si otro celebra yo también sonrío porque aprendí a no competir cada destino tiene su ritmo el mío acaba de descubrirse aquí a mi tiempo todo va a llegar cada semilla conoce su lugar a mi tiempo vuelvo a respirar lo que es para mí me encontrará no llego tarde sólo llego cuando debo llegar a mi tiempo todo va a llegar a mi tiempo todo va a llegar cada latido me invita a confiar a mi tiempo ya puedo cantar porque mi historia acaba de empezar a mi tiempo",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 18.36,
+      "text": "🎵"
+    },
+    {
+      "start": 18.36,
+      "end": 23.26,
+      "text": "Di pasa mil trenes por la estación"
+    },
+    {
+      "start": 23.26,
+      "end": 30.3,
+      "text": "pensé que el mío nunca iba a volver"
+    },
+    {
+      "start": 30.3,
+      "end": 38.14,
+      "text": "hoy entendí con el corazón"
+    },
+    {
+      "start": 38.14,
+      "end": 46.06,
+      "text": "que cada historia aprende a florecer"
+    },
+    {
+      "start": 46.06,
+      "end": 54.06,
+      "text": "Deje de mirar hacia los demás"
+    },
+    {
+      "start": 54.06,
+      "end": 58.06,
+      "text": "Deje de correr para demostrar"
+    },
+    {
+      "start": 58.06,
+      "end": 62.06,
+      "text": "la vida no empieza por llegar"
+    },
+    {
+      "start": 62.06,
+      "end": 67.06,
+      "text": "empieza cuando aprendes a esperar"
+    },
+    {
+      "start": 67.06,
+      "end": 74.06,
+      "text": "a mi tiempo todo va a llegar"
+    },
+    {
+      "start": 74.06,
+      "end": 82.06,
+      "text": "Cada semilla conoce su lugar"
+    },
+    {
+      "start": 82.06,
+      "end": 90.06,
+      "text": "a mi tiempo vuelvo a respirar"
+    },
+    {
+      "start": 90.06,
+      "end": 102.06,
+      "text": "lo que es para mí me encontrará"
+    },
+    {
+      "start": 102.06,
+      "end": 106.06,
+      "text": "Hoy la mañana me hablo bajito"
+    },
+    {
+      "start": 106.06,
+      "end": 110.06,
+      "text": "como quien conoce la dirección"
+    },
+    {
+      "start": 110.06,
+      "end": 114.06,
+      "text": "no necesito cambiar mi paso"
+    },
+    {
+      "start": 114.06,
+      "end": 118.06,
+      "text": "para escuchar mi corazón"
+    },
+    {
+      "start": 118.06,
+      "end": 122.06,
+      "text": "si otro celebra yo también sonrío"
+    },
+    {
+      "start": 122.06,
+      "end": 126.06,
+      "text": "porque aprendí a no competir"
+    },
+    {
+      "start": 126.06,
+      "end": 129.06,
+      "text": "cada destino tiene su ritmo"
+    },
+    {
+      "start": 129.06,
+      "end": 133.06,
+      "text": "el mío acaba de descubrirse aquí"
+    },
+    {
+      "start": 133.06,
+      "end": 141.06,
+      "text": "a mi tiempo todo va a llegar"
+    },
+    {
+      "start": 141.06,
+      "end": 148.06,
+      "text": "cada semilla conoce su lugar"
+    },
+    {
+      "start": 148.06,
+      "end": 157.06,
+      "text": "a mi tiempo vuelvo a respirar"
+    },
+    {
+      "start": 157.06,
+      "end": 163.06,
+      "text": "lo que es para mí me encontrará"
+    },
+    {
+      "start": 163.06,
+      "end": 171.06,
+      "text": "no llego tarde sólo llego cuando debo llegar"
+    },
+    {
+      "start": 171.06,
+      "end": 179.06,
+      "text": "a mi tiempo todo va a llegar"
+    },
+    {
+      "start": 179.06,
+      "end": 187.06,
+      "text": "a mi tiempo todo va a llegar"
+    },
+    {
+      "start": 187.06,
+      "end": 195.06,
+      "text": "cada latido me invita a confiar"
+    },
+    {
+      "start": 195.06,
+      "end": 203.06,
+      "text": "a mi tiempo ya puedo cantar"
+    },
+    {
+      "start": 203.06,
+      "end": 207.06,
+      "text": "porque mi historia acaba de empezar"
+    },
+    {
+      "start": 207.06,
+      "end": 211.06,
+      "text": "a mi tiempo"
+    }
+  ],
+  "moment": "Viste pasar mil trenes por la estación. Pensaste que el tuyo nunca iba a volver. Hoy la mañana te habló bajito: no llegas tarde. Solo llegas cuando debes llegar.",
+  "sintiendo": "Llevas un tiempo mirando hacia los lados. Sus logros. Sus celebraciones. Sus próximos pasos. Y una voz adentro preguntando por qué a ti te está tardando tanto.\n\nHoy algo se acomodó. No llegó ningún tren. Pero entendiste que la vida no empieza por llegar — empieza cuando aprendes a esperar. Cada semilla conoce su lugar. Tu destino acaba de descubrirse aquí.\n\nNo llegas tarde. Solo llegas cuando debes llegar.",
+  "intencion": "Existe para la persona que ha visto pasar todos los trenes y cree que el suyo no va a llegar — y le devuelve la certeza de que su historia tiene su propio tiempo.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "A Mi Tiempo",
+  "frases_clave_editoriales": [
+    "a mi tiempo todo va a llegar",
+    "cada semilla conoce su lugar",
+    "no llego tarde, sólo llego cuando debo llegar",
+    "aprendí a no competir"
+  ],
+  "nota_mapeo": "Alta coincidencia temática con álbum Las pequeñas cosas o Volví a escucharme. Letra sobre timing, paciencia y no competir. Sin ruptura ni empoderamiento obvio.",
+  "estado_editorial": "aprobado",
+  "recognition": "No llego tarde. Solo llego cuando debo llegar.",
+  "searchPhrases": [
+    "siento que todos lograron sus metas antes que yo",
+    "música para cuando te comparas con otros y sufres",
+    "por qué a mí me tarda tanto lo que a otros les llega rápido",
+    "canción para cuando sientes que estás atrasada en la vida",
+    "me da ansiedad ver el éxito de los demás",
+    "música para soltar la presión de los tiempos sociales",
+    "siento que el tiempo se me está acabando",
+    "ya todos tienen lo que yo quiero y yo no",
+    "canción para recordar que cada historia tiene su propio ritmo",
+    "música para cuando el éxito de otros te hace dudar",
+    "por qué todavía no llegué donde debería estar",
+    "canción para cuando sientes que estás atrás en la vida"
+  ],
+  "semanticTags": "comparación dolorosa, mil trenes pasando, mi tren también llega, no estoy tarde, cada semilla su lugar, dejar de mirar hacia los lados, si otro celebra yo también sonrío, lo que es para mí me encontrará, timing personal, la vida empieza cuando aprendes a esperar, cada destino tiene su ritmo, mi historia acaba de comenzar",
+  "audioUrl": "audio/a-mi-tiempo.mp3"
+}

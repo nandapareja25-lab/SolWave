@@ -1,0 +1,136 @@
+{
+  "archivo_original": "Ya No Pido Perdón.mp3",
+  "nombre_limpio": "Ya No Pido Perdón",
+  "duracion": "3:02",
+  "bpm": 99,
+  "tonalidad": "B menor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 186,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "nostalgia",
+    "empoderamiento",
+    "crecimiento"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "tonalidad oscura",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Ayer subí la música fuerte Y abrí las ventanas de par en par La vecina dijo sonriendo Que bueno volverte a escuchar Hace tiempo hablaba bajita Como pidiendo permiso al lugar Hoy mis pasos hacen ruido Y ya no los quiero callar Ya no pido perdón Por reírme con el corazón Por quererme un poquito más Por decir que no cuando es verdad Ya no pido perdón Por volver a elegir mi voz Si alguien le molesta verme bien Ese peso ya no es de mi piel Ya no escondo mis domingos Ni mi gana de descansar Aprendí que vivir despacio También es una forma de ganar Hoy me miro en los espejos Sin buscar que corregir La mujer que veo de frente Por fin quiere sonreír Ya no pido perdón Por reírme con el corazón Por quererme un poquito más Por decir que no cuando es verdad Ya no pido perdón Por volver a elegir mi voz Hoy la vida me queda mejor Desde que me elegí sin condición No cambié para gustarle al mundo Solo dejé de esconder quién soy Y que el hibiano se siente el alma Cuando camina sin temor"
+  ],
+  "letra_completa": "Ayer subí la música fuerte Y abrí las ventanas de par en par La vecina dijo sonriendo Que bueno volverte a escuchar Hace tiempo hablaba bajita Como pidiendo permiso al lugar Hoy mis pasos hacen ruido Y ya no los quiero callar Ya no pido perdón Por reírme con el corazón Por quererme un poquito más Por decir que no cuando es verdad Ya no pido perdón Por volver a elegir mi voz Si alguien le molesta verme bien Ese peso ya no es de mi piel Ya no escondo mis domingos Ni mi gana de descansar Aprendí que vivir despacio También es una forma de ganar Hoy me miro en los espejos Sin buscar que corregir La mujer que veo de frente Por fin quiere sonreír Ya no pido perdón Por reírme con el corazón Por quererme un poquito más Por decir que no cuando es verdad Ya no pido perdón Por volver a elegir mi voz Hoy la vida me queda mejor Desde que me elegí sin condición No cambié para gustarle al mundo Solo dejé de esconder quién soy Y que el hibiano se siente el alma Cuando camina sin temor",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 21.0,
+      "text": "Ayer subí la música fuerte Y abrí las ventanas de par en par"
+    },
+    {
+      "start": 21.0,
+      "end": 30.0,
+      "text": "La vecina dijo sonriendo Que bueno volverte a escuchar"
+    },
+    {
+      "start": 30.0,
+      "end": 40.0,
+      "text": "Hace tiempo hablaba bajita Como pidiendo permiso al lugar"
+    },
+    {
+      "start": 40.0,
+      "end": 48.0,
+      "text": "Hoy mis pasos hacen ruido Y ya no los quiero callar"
+    },
+    {
+      "start": 48.0,
+      "end": 56.0,
+      "text": "Ya no pido perdón Por reírme con el corazón"
+    },
+    {
+      "start": 56.0,
+      "end": 67.0,
+      "text": "Por quererme un poquito más Por decir que no cuando es verdad"
+    },
+    {
+      "start": 67.0,
+      "end": 75.0,
+      "text": "Ya no pido perdón Por volver a elegir mi voz"
+    },
+    {
+      "start": 75.0,
+      "end": 86.0,
+      "text": "Si alguien le molesta verme bien Ese peso ya no es de mi piel"
+    },
+    {
+      "start": 86.0,
+      "end": 96.0,
+      "text": "Ya no escondo mis domingos Ni mi gana de descansar"
+    },
+    {
+      "start": 96.0,
+      "end": 105.0,
+      "text": "Aprendí que vivir despacio También es una forma de ganar"
+    },
+    {
+      "start": 105.0,
+      "end": 111.0,
+      "text": "Hoy me miro en los espejos Sin buscar que corregir"
+    },
+    {
+      "start": 111.0,
+      "end": 119.0,
+      "text": "La mujer que veo de frente Por fin quiere sonreír"
+    },
+    {
+      "start": 119.0,
+      "end": 127.0,
+      "text": "Ya no pido perdón Por reírme con el corazón"
+    },
+    {
+      "start": 127.0,
+      "end": 138.0,
+      "text": "Por quererme un poquito más Por decir que no cuando es verdad"
+    },
+    {
+      "start": 138.0,
+      "end": 146.0,
+      "text": "Ya no pido perdón Por volver a elegir mi voz"
+    },
+    {
+      "start": 146.0,
+      "end": 156.0,
+      "text": "Hoy la vida me queda mejor Desde que me elegí sin condición"
+    },
+    {
+      "start": 156.0,
+      "end": 166.0,
+      "text": "No cambié para gustarle al mundo Solo dejé de esconder quién soy"
+    },
+    {
+      "start": 166.0,
+      "end": 177.0,
+      "text": "Y que el hibiano se siente el alma Cuando camina sin temor"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

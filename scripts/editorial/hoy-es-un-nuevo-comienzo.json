@@ -1,0 +1,191 @@
+{
+  "archivo_original": "Hoy+es+un+nuevo+comienzo.mp3",
+  "nombre_limpio": "Hoy es un nuevo comienzo",
+  "duracion": "2:33",
+  "bpm": 92,
+  "tonalidad": "B mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "nuevo comienzo",
+    "esperanza",
+    "renacer",
+    "fe",
+    "presente"
+  ],
+  "frases_clave": [
+    "Respirar, todo comienza aquí Hoy despierto una nueva ilusión La mañana me invita a soñar La de fuerte mi corazón Porque todo puede cambiar Dejo atrás lo que ya se fue Como el viento que abraza el mar Cada paso me acerca la fe Y me enseña volver a empezar Hoy es un nuevo comienzo Todo vuelve a florecer Hoy abrazó este momento y decido renacer No hace falta mirar atrás Hoy prefiero volver a sentir Cada sueño flores en paz Cuando aprendo a sonreír Si el camino parece lento Yo confío un poco más Cada paso vence al tiempo Y me acerca donde quiero estar Hoy es un nuevo comienzo Todo vuelve a florecer Hoy abrazó este momento y decido renacer Respirar, confía Hoy comienza una nueva historia"
+  ],
+  "letra_completa": "Respirar, todo comienza aquí Hoy despierto una nueva ilusión La mañana me invita a soñar La de fuerte mi corazón Porque todo puede cambiar Dejo atrás lo que ya se fue Como el viento que abraza el mar Cada paso me acerca la fe Y me enseña volver a empezar Hoy es un nuevo comienzo Todo vuelve a florecer Hoy abrazó este momento y decido renacer No hace falta mirar atrás Hoy prefiero volver a sentir Cada sueño flores en paz Cuando aprendo a sonreír Si el camino parece lento Yo confío un poco más Cada paso vence al tiempo Y me acerca donde quiero estar Hoy es un nuevo comienzo Todo vuelve a florecer Hoy abrazó este momento y decido renacer Respirar, confía Hoy comienza una nueva historia",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 17.0,
+      "text": "Respirar, todo comienza aquí"
+    },
+    {
+      "start": 17.0,
+      "end": 24.0,
+      "text": "Hoy despierto una nueva ilusión"
+    },
+    {
+      "start": 24.0,
+      "end": 31.0,
+      "text": "La mañana me invita a soñar"
+    },
+    {
+      "start": 31.0,
+      "end": 34.0,
+      "text": "La de fuerte mi corazón"
+    },
+    {
+      "start": 34.0,
+      "end": 41.0,
+      "text": "Porque todo puede cambiar"
+    },
+    {
+      "start": 41.0,
+      "end": 44.0,
+      "text": "Dejo atrás lo que ya se fue"
+    },
+    {
+      "start": 44.0,
+      "end": 52.0,
+      "text": "Como el viento que abraza el mar"
+    },
+    {
+      "start": 52.0,
+      "end": 54.0,
+      "text": "Cada paso me acerca la fe"
+    },
+    {
+      "start": 54.0,
+      "end": 59.0,
+      "text": "Y me enseña volver a empezar"
+    },
+    {
+      "start": 59.0,
+      "end": 63.0,
+      "text": "Hoy es un nuevo comienzo"
+    },
+    {
+      "start": 63.0,
+      "end": 68.0,
+      "text": "Todo vuelve a florecer"
+    },
+    {
+      "start": 68.0,
+      "end": 77.0,
+      "text": "Hoy abrazó este momento y decido renacer"
+    },
+    {
+      "start": 77.0,
+      "end": 80.0,
+      "text": "No hace falta mirar atrás"
+    },
+    {
+      "start": 80.0,
+      "end": 87.0,
+      "text": "Hoy prefiero volver a sentir"
+    },
+    {
+      "start": 87.0,
+      "end": 91.0,
+      "text": "Cada sueño flores en paz"
+    },
+    {
+      "start": 91.0,
+      "end": 98.0,
+      "text": "Cuando aprendo a sonreír"
+    },
+    {
+      "start": 98.0,
+      "end": 101.0,
+      "text": "Si el camino parece lento"
+    },
+    {
+      "start": 101.0,
+      "end": 108.0,
+      "text": "Yo confío un poco más"
+    },
+    {
+      "start": 108.0,
+      "end": 111.0,
+      "text": "Cada paso vence al tiempo"
+    },
+    {
+      "start": 111.0,
+      "end": 116.0,
+      "text": "Y me acerca donde quiero estar"
+    },
+    {
+      "start": 116.0,
+      "end": 120.0,
+      "text": "Hoy es un nuevo comienzo"
+    },
+    {
+      "start": 120.0,
+      "end": 125.0,
+      "text": "Todo vuelve a florecer"
+    },
+    {
+      "start": 125.0,
+      "end": 133.0,
+      "text": "Hoy abrazó este momento y decido renacer"
+    },
+    {
+      "start": 134.0,
+      "end": 144.0,
+      "text": "Respirar, confía"
+    },
+    {
+      "start": 144.0,
+      "end": 153.0,
+      "text": "Hoy comienza una nueva historia"
+    }
+  ],
+  "moment": "Respiraste. Dejaste atrás lo que ya se fue — como el viento que abraza el mar. Y en el espacio que quedó, la mañana entró diferente.",
+  "sintiendo": "Has estado cargando algo que ya no te pertenece. No porque lo decidieras — porque siguió ahí sin que lo propusieras.\n\nEsta mañana respiraste. No tomaste ninguna decisión. No resolviste nada. Pero algo salió con ese aire — como el viento que abraza el mar, sin drama, sin esfuerzo.\n\nY la mañana entró a donde estaba. Hoy es un nuevo comienzo. No porque todo cambió. Porque soltaste algo que ya no era tuyo.",
+  "intencion": "Existe para la primera mañana donde sueltas — no porque lo decidiste, sino porque ya es tiempo — y en ese espacio que queda, algo nuevo puede entrar.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Hoy Es Un Nuevo Comienzo",
+  "frases_clave_editoriales": [
+    "Hoy es un nuevo comienzo, todo vuelve a florecer",
+    "Hoy abracé este momento y decido renacer",
+    "No hace falta mirar atrás, hoy prefiero volver a sentir"
+  ],
+  "nota_mapeo": "Coincidencia con álbum Vuelvo a sentir la vida o Volví a escucharme. Canción de apertura o cierre de proceso.",
+  "estado_editorial": "aprobado",
+  "recognition": "No hace falta mirar atrás. Hoy prefiero volver a sentir.",
+  "searchPhrases": [
+    "música para empezar de nuevo después de algo difícil",
+    "canción para soltar el pasado sin drama",
+    "necesito dejar ir pero no sé cómo",
+    "música para la primera mañana tranquila en mucho tiempo",
+    "canción para cuando algo sale con la respiración",
+    "música para renovarse después de una etapa difícil",
+    "necesito respirar y soltar música",
+    "primer día después de soltar algo",
+    "canción para cuando la mañana siente diferente por dentro",
+    "música para dejar ir lo que ya se fue",
+    "todo comienza con una respiración canción",
+    "el viento que abraza el mar canción"
+  ],
+  "semanticTags": "exhalación, soltar sin esfuerzo, lo que ya se fue, mañana que entra, respirar como acto de inicio, como el viento que abraza el mar, renacer sin drama, no hace falta mirar atrás, volver a sentir, espacio que queda al soltar, fe suave, cada sueño florece en paz",
+  "audioUrl": "audio/hoy-es-un-nuevo-comienzo.mp3"
+}

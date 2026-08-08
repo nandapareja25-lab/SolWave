@@ -1,0 +1,170 @@
+{
+  "archivo_original": "Hoy+Elijo+Paz.mp3",
+  "nombre_limpio": "Hoy Elijo Paz",
+  "duracion": "3:03",
+  "bpm": 57,
+  "tonalidad": "A menor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "paz / calma",
+  "emociones_secundarias": [
+    "crecimiento",
+    "alegría",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "paz",
+    "soltar",
+    "control",
+    "calma",
+    "mindfulness",
+    "presente"
+  ],
+  "frases_clave": [
+    "El café quedó tibio sobre la mesa La mañana entró sin pedir permiso La ciudad seguía corriendo allá afuera Pero hoy no corría conmigo Habí la ventana sin mirar la hora Deje que el viento hablar primero Había respuesta en las hojas moviéndose Que nunca encontré mirando el reloj Hoy el hijo paz Aunque el mundo no se detenga jamás Hoy el hijo paz Y por primera vez me basta este lugar Lo que tenga que llegar llegará Hoy el hijo paz Las manos aprendieron a soltar despacio Lo que durante años quise controlar Hay una fuerza escondida en lo simple Que solo aparece cuando dejo de empujar No todo necesita una respuesta Ni cada silencio quiere explicar Hay días que simplemente florecen Cuando uno aprende a esperar Hoy el hijo paz Aunque el mundo no se detenga jamás Hoy el hijo paz Y por primera vez me basta este lugar Lo que tenga que llegar llegará Hoy el hijo paz Hoy el viento sabe mi nombre y el sol Entra sin preguntar No cambiá el mundo esta mañana Solo aprendí otra forma de mirar Hoy el hijo paz Sobre todo lo que no puedo cambiar Hoy el hijo paz Y eso ya es suficiente para avanzar Aquí me quedó un instante más en paz"
+  ],
+  "letra_completa": "El café quedó tibio sobre la mesa La mañana entró sin pedir permiso La ciudad seguía corriendo allá afuera Pero hoy no corría conmigo Habí la ventana sin mirar la hora Deje que el viento hablar primero Había respuesta en las hojas moviéndose Que nunca encontré mirando el reloj Hoy el hijo paz Aunque el mundo no se detenga jamás Hoy el hijo paz Y por primera vez me basta este lugar Lo que tenga que llegar llegará Hoy el hijo paz Las manos aprendieron a soltar despacio Lo que durante años quise controlar Hay una fuerza escondida en lo simple Que solo aparece cuando dejo de empujar No todo necesita una respuesta Ni cada silencio quiere explicar Hay días que simplemente florecen Cuando uno aprende a esperar Hoy el hijo paz Aunque el mundo no se detenga jamás Hoy el hijo paz Y por primera vez me basta este lugar Lo que tenga que llegar llegará Hoy el hijo paz Hoy el viento sabe mi nombre y el sol Entra sin preguntar No cambiá el mundo esta mañana Solo aprendí otra forma de mirar Hoy el hijo paz Sobre todo lo que no puedo cambiar Hoy el hijo paz Y eso ya es suficiente para avanzar Aquí me quedó un instante más en paz",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 27.28,
+      "text": "El café quedó tibio sobre la mesa La mañana entró sin pedir permiso"
+    },
+    {
+      "start": 27.28,
+      "end": 37.04,
+      "text": "La ciudad seguía corriendo allá afuera Pero hoy no corría conmigo"
+    },
+    {
+      "start": 37.04,
+      "end": 45.44,
+      "text": "Habí la ventana sin mirar la hora Deje que el viento hablar primero"
+    },
+    {
+      "start": 45.44,
+      "end": 54.56,
+      "text": "Había respuesta en las hojas moviéndose Que nunca encontré mirando el reloj"
+    },
+    {
+      "start": 54.56,
+      "end": 63.44,
+      "text": "Hoy el hijo paz Aunque el mundo no se detenga jamás"
+    },
+    {
+      "start": 63.44,
+      "end": 71.92,
+      "text": "Hoy el hijo paz Y por primera vez me basta este lugar"
+    },
+    {
+      "start": 71.92,
+      "end": 80.32,
+      "text": "Lo que tenga que llegar llegará Hoy el hijo paz"
+    },
+    {
+      "start": 80.32,
+      "end": 89.84,
+      "text": "Las manos aprendieron a soltar despacio Lo que durante años quise controlar"
+    },
+    {
+      "start": 89.84,
+      "end": 98.72,
+      "text": "Hay una fuerza escondida en lo simple Que solo aparece cuando dejo de empujar"
+    },
+    {
+      "start": 98.72,
+      "end": 106.64,
+      "text": "No todo necesita una respuesta Ni cada silencio quiere explicar"
+    },
+    {
+      "start": 107.6,
+      "end": 114.48,
+      "text": "Hay días que simplemente florecen Cuando uno aprende a esperar"
+    },
+    {
+      "start": 114.48,
+      "end": 123.36,
+      "text": "Hoy el hijo paz Aunque el mundo no se detenga jamás"
+    },
+    {
+      "start": 123.36,
+      "end": 131.36,
+      "text": "Hoy el hijo paz Y por primera vez me basta este lugar"
+    },
+    {
+      "start": 131.76,
+      "end": 136.56,
+      "text": "Lo que tenga que llegar llegará"
+    },
+    {
+      "start": 136.56,
+      "end": 145.68,
+      "text": "Hoy el hijo paz Hoy el viento sabe mi nombre y el sol"
+    },
+    {
+      "start": 145.68,
+      "end": 152.08,
+      "text": "Entra sin preguntar No cambiá el mundo esta mañana"
+    },
+    {
+      "start": 152.08,
+      "end": 157.52,
+      "text": "Solo aprendí otra forma de mirar"
+    },
+    {
+      "start": 157.68,
+      "end": 165.84,
+      "text": "Hoy el hijo paz Sobre todo lo que no puedo cambiar"
+    },
+    {
+      "start": 165.84,
+      "end": 174.72,
+      "text": "Hoy el hijo paz Y eso ya es suficiente para avanzar"
+    },
+    {
+      "start": 174.72,
+      "end": 183.6,
+      "text": "Aquí me quedó un instante más en paz"
+    }
+  ],
+  "moment": "El café se enfrió sobre la mesa. La ciudad seguía corriendo allá afuera. Tú no corrías con ella, y eso no se sintió como quedarte atrás.",
+  "sintiendo": "Llevas años intentando que todo esté en orden antes de poder descansar. Y el orden nunca termina de llegar.\n\nEsta mañana el café se enfrió. La ciudad siguió. Tú no corriste — y algo en ese no-movimiento se sintió diferente. No como rendirse. Como elegir.\n\nHay cosas que solo aparecen cuando dejas de empujar.",
+  "intencion": "Existe para la mañana en que descubres que quedarte quieta mientras el mundo corre no es perder — es otra forma de estar.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Hoy Elijo Paz",
+  "frases_clave_editoriales": [
+    "Hoy elijo paz aunque el mundo no se detenga jamás",
+    "Las manos aprendieron a soltar despacio lo que durante años quise controlar",
+    "Hay una fuerza escondida en lo simple que solo aparece cuando dejo de empujar"
+  ],
+  "nota_mapeo": "Alta coincidencia con álbum Las pequeñas cosas. Canción sobre elegir la calma en medio del ruido. Energía íntima, introspectiva.",
+  "estado_editorial": "aprobado",
+  "recognition": "Hay cosas que solo aparecen cuando dejas de empujar.",
+  "searchPhrases": [
+    "no puedo dejar de pensar en todo lo que tengo pendiente",
+    "siento que si paro voy a perder algo importante",
+    "música para cuando necesitas soltar el control",
+    "no sé estar sin hacer nada",
+    "canción para cuando todo corre y tú necesitas parar",
+    "me siento culpable cuando no soy productiva",
+    "música para una mañana tranquila sin culpa",
+    "por qué me cuesta tanto no hacer nada",
+    "canciones para soltar la ansiedad de control",
+    "música para estar presente sin pensar en lo que sigue",
+    "siento que si no controlo todo se va a desmoronar",
+    "quiero aprender a dejar ir pero no sé cómo",
+    "canción para cuando necesitas permiso para descansar"
+  ],
+  "semanticTags": "calma, soltar el control, ansiedad de productividad, presente, mañana silenciosa, dejar de empujar, suficiente, quietud sin culpa, años de control, fuerza en lo simple, no correr, bajar el ritmo",
+  "audioUrl": "audio/hoy-elijo-paz.mp3"
+}

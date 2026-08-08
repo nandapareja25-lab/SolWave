@@ -1,0 +1,168 @@
+{
+  "archivo_original": "Que Siga la Música.mp3",
+  "nombre_limpio": "Que Siga la Música",
+  "duracion": "3:19",
+  "bpm": 99,
+  "tonalidad": "G mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 200,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "crecimiento",
+  "emociones_secundarias": [
+    "alegría",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "crecimiento",
+    "autoestima",
+    "proceso",
+    "autoconocimiento",
+    "intenso",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Hoy no vine a contar penas esas ya se fueron ayer Hoy vine a darle las gracias a la vida por volver Eso en el piano bien fuerte que no para el timbal Hay razones de sobra para volver a celebrar Porque entendí que cada día es un regalo Que siga la música que no deje de sonar Mientras el corazón lata siempre habrá un motivo para cantar Que siga la música que nadie se quede atrás Hoy brindamos por la vida y por todo la que vendrá Si tropiezo me levanto ya aprendí esa lección Hoy prefiero una sonrisa antes que una explicación Traigan a toda la gente que se abra la rueda ya Las mejores alegrías siempre se viven al compás Que siga la música que la noche apenas va a empezar Cuando el alma esté contenta no hay quien la pueda parar Que siga la música que no termina esta canción Porque mientras haya ritmo siempre habrá celebración La música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar"
+  ],
+  "letra_completa": "Hoy no vine a contar penas esas ya se fueron ayer Hoy vine a darle las gracias a la vida por volver Eso en el piano bien fuerte que no para el timbal Hay razones de sobra para volver a celebrar Porque entendí que cada día es un regalo Que siga la música que no deje de sonar Mientras el corazón lata siempre habrá un motivo para cantar Que siga la música que nadie se quede atrás Hoy brindamos por la vida y por todo la que vendrá Si tropiezo me levanto ya aprendí esa lección Hoy prefiero una sonrisa antes que una explicación Traigan a toda la gente que se abra la rueda ya Las mejores alegrías siempre se viven al compás Que siga la música que la noche apenas va a empezar Cuando el alma esté contenta no hay quien la pueda parar Que siga la música que no termina esta canción Porque mientras haya ritmo siempre habrá celebración La música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar Que siga la música que no deje de sonar",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 25.5,
+      "text": "Hoy no vine a contar penas esas ya se fueron ayer"
+    },
+    {
+      "start": 25.5,
+      "end": 30.0,
+      "text": "Hoy vine a darle las gracias a la vida por volver"
+    },
+    {
+      "start": 30.0,
+      "end": 35.0,
+      "text": "Eso en el piano bien fuerte que no para el timbal"
+    },
+    {
+      "start": 35.0,
+      "end": 40.0,
+      "text": "Hay razones de sobra para volver a celebrar"
+    },
+    {
+      "start": 40.0,
+      "end": 47.0,
+      "text": "Porque entendí que cada día es un regalo"
+    },
+    {
+      "start": 47.0,
+      "end": 51.5,
+      "text": "Que siga la música que no deje de sonar"
+    },
+    {
+      "start": 51.5,
+      "end": 56.5,
+      "text": "Mientras el corazón lata siempre habrá un motivo para cantar"
+    },
+    {
+      "start": 56.5,
+      "end": 61.0,
+      "text": "Que siga la música que nadie se quede atrás"
+    },
+    {
+      "start": 61.0,
+      "end": 70.0,
+      "text": "Hoy brindamos por la vida y por todo la que vendrá"
+    },
+    {
+      "start": 81.5,
+      "end": 97.0,
+      "text": "Si tropiezo me levanto ya aprendí esa lección"
+    },
+    {
+      "start": 97.0,
+      "end": 102.0,
+      "text": "Hoy prefiero una sonrisa antes que una explicación"
+    },
+    {
+      "start": 102.0,
+      "end": 106.5,
+      "text": "Traigan a toda la gente que se abra la rueda ya"
+    },
+    {
+      "start": 106.5,
+      "end": 116.5,
+      "text": "Las mejores alegrías siempre se viven al compás"
+    },
+    {
+      "start": 116.5,
+      "end": 121.0,
+      "text": "Que siga la música que la noche apenas va a empezar"
+    },
+    {
+      "start": 121.0,
+      "end": 126.5,
+      "text": "Cuando el alma esté contenta no hay quien la pueda parar"
+    },
+    {
+      "start": 126.5,
+      "end": 130.5,
+      "text": "Que siga la música que no termina esta canción"
+    },
+    {
+      "start": 130.5,
+      "end": 140.5,
+      "text": "Porque mientras haya ritmo siempre habrá celebración"
+    },
+    {
+      "start": 160.5,
+      "end": 165.5,
+      "text": "La música que no deje de sonar"
+    },
+    {
+      "start": 165.5,
+      "end": 170.5,
+      "text": "Que siga la música que no deje de sonar"
+    },
+    {
+      "start": 170.5,
+      "end": 175.5,
+      "text": "Que siga la música que no deje de sonar"
+    },
+    {
+      "start": 175.5,
+      "end": 180.5,
+      "text": "Que siga la música que no deje de sonar"
+    },
+    {
+      "start": 180.5,
+      "end": 185.5,
+      "text": "Que siga la música que no deje de sonar"
+    },
+    {
+      "start": 185.5,
+      "end": 190.5,
+      "text": "Que siga la música que no deje de sonar"
+    },
+    {
+      "start": 190.5,
+      "end": 195.5,
+      "text": "Que siga la música que no deje de sonar"
+    },
+    {
+      "start": 195.5,
+      "end": 200.5,
+      "text": "Que siga la música que no deje de sonar"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

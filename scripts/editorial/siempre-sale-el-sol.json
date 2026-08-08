@@ -1,0 +1,155 @@
+{
+  "archivo_original": "Siempre Sale el Sol.mp3",
+  "nombre_limpio": "Siempre Sale el Sol",
+  "duracion": "2:32",
+  "bpm": 99,
+  "tonalidad": "A menor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 186,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "crecimiento",
+  "emociones_secundarias": [
+    "alegría",
+    "empoderamiento",
+    "paz / calma"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "crecimiento",
+    "autoestima",
+    "proceso",
+    "autoconocimiento",
+    "intenso",
+    "tonalidad oscura",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Ayer pensé que no podía que el cielo no iba a cambiar Pero la noche fue tan corta que el día volvió a llegar Hay abrazos que aparecen cuando dejas de esconderte más Y una mano que te encuentra cuando te animas a mirar Siempre sale el sol, aunque cueste creerlo hoy Después de cada tormenta vuelve a latir el corazón Siempre sale el sol y también vuelvo a brillar Porque aprendí que hasta las sombras me enseñaron a caminar No le tengo miedo al viento Si me despeina el pasar Las mejores aventuras nunca empiezan con un plan Hoy son ríos sin permiso Sin mirar hacia atrás Porque entendí que la esperanza nunca dejó de esperar Siempre sale el sol, aunque cueste creerlo hoy Después de cada tormenta vuelve a latir el corazón Siempre sale el sol y también vuelvo a brillar Hoy abrazo mi camino y no lo cambio por nada más Aunque el cielo se haga oscuro Sé que vuelve a amanecer Porque todo lo que florece alguna vez tuvo que creer Subtítulos por la comunidad de Amara"
+  ],
+  "letra_completa": "Ayer pensé que no podía que el cielo no iba a cambiar Pero la noche fue tan corta que el día volvió a llegar Hay abrazos que aparecen cuando dejas de esconderte más Y una mano que te encuentra cuando te animas a mirar Siempre sale el sol, aunque cueste creerlo hoy Después de cada tormenta vuelve a latir el corazón Siempre sale el sol y también vuelvo a brillar Porque aprendí que hasta las sombras me enseñaron a caminar No le tengo miedo al viento Si me despeina el pasar Las mejores aventuras nunca empiezan con un plan Hoy son ríos sin permiso Sin mirar hacia atrás Porque entendí que la esperanza nunca dejó de esperar Siempre sale el sol, aunque cueste creerlo hoy Después de cada tormenta vuelve a latir el corazón Siempre sale el sol y también vuelvo a brillar Hoy abrazo mi camino y no lo cambio por nada más Aunque el cielo se haga oscuro Sé que vuelve a amanecer Porque todo lo que florece alguna vez tuvo que creer Subtítulos por la comunidad de Amara.org",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 21.0,
+      "text": "Ayer pensé que no podía que el cielo no iba a cambiar"
+    },
+    {
+      "start": 21.0,
+      "end": 29.0,
+      "text": "Pero la noche fue tan corta que el día volvió a llegar"
+    },
+    {
+      "start": 31.0,
+      "end": 39.0,
+      "text": "Hay abrazos que aparecen cuando dejas de esconderte más"
+    },
+    {
+      "start": 40.0,
+      "end": 48.0,
+      "text": "Y una mano que te encuentra cuando te animas a mirar"
+    },
+    {
+      "start": 48.0,
+      "end": 52.0,
+      "text": "Siempre sale el sol, aunque cueste creerlo hoy"
+    },
+    {
+      "start": 52.0,
+      "end": 58.0,
+      "text": "Después de cada tormenta vuelve a latir el corazón"
+    },
+    {
+      "start": 58.0,
+      "end": 62.0,
+      "text": "Siempre sale el sol y también vuelvo a brillar"
+    },
+    {
+      "start": 62.0,
+      "end": 68.0,
+      "text": "Porque aprendí que hasta las sombras me enseñaron a caminar"
+    },
+    {
+      "start": 69.0,
+      "end": 72.0,
+      "text": "No le tengo miedo al viento"
+    },
+    {
+      "start": 74.0,
+      "end": 78.0,
+      "text": "Si me despeina el pasar"
+    },
+    {
+      "start": 79.0,
+      "end": 88.0,
+      "text": "Las mejores aventuras nunca empiezan con un plan"
+    },
+    {
+      "start": 89.0,
+      "end": 92.0,
+      "text": "Hoy son ríos sin permiso"
+    },
+    {
+      "start": 93.0,
+      "end": 97.0,
+      "text": "Sin mirar hacia atrás"
+    },
+    {
+      "start": 97.0,
+      "end": 106.0,
+      "text": "Porque entendí que la esperanza nunca dejó de esperar"
+    },
+    {
+      "start": 107.0,
+      "end": 111.0,
+      "text": "Siempre sale el sol, aunque cueste creerlo hoy"
+    },
+    {
+      "start": 111.0,
+      "end": 116.0,
+      "text": "Después de cada tormenta vuelve a latir el corazón"
+    },
+    {
+      "start": 116.0,
+      "end": 120.0,
+      "text": "Siempre sale el sol y también vuelvo a brillar"
+    },
+    {
+      "start": 120.0,
+      "end": 125.0,
+      "text": "Hoy abrazo mi camino y no lo cambio por nada más"
+    },
+    {
+      "start": 125.0,
+      "end": 128.0,
+      "text": "Aunque el cielo se haga oscuro"
+    },
+    {
+      "start": 129.0,
+      "end": 134.0,
+      "text": "Sé que vuelve a amanecer"
+    },
+    {
+      "start": 134.0,
+      "end": 144.0,
+      "text": "Porque todo lo que florece alguna vez tuvo que creer"
+    },
+    {
+      "start": 150.0,
+      "end": 154.0,
+      "text": "Subtítulos por la comunidad de Amara.org"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

@@ -1,0 +1,224 @@
+{
+  "archivo_original": "Ya no tengo prisa.mp3",
+  "nombre_limpio": "Ya no tengo prisa",
+  "duracion": "2:37",
+  "bpm": 96,
+  "tonalidad": "C mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 185,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "crecimiento",
+  "emociones_secundarias": [
+    "alegría",
+    "paz / calma",
+    "amor sano"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "crecimiento",
+    "autoestima",
+    "proceso",
+    "autoconocimiento",
+    "intenso",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Hoy salí sin mirar la hora Ni pensando en llegar primero Me senté en la plaza de siempre Solo a escuchar el viento Una nena corría descalza Percibiendo una ilusión de papel Y por un momento entendí que hace falta Tampoco para volver Ya no tengo prisa La vida no se va a escapar Todo lo que lleva mi nombre También me sabe esperar Ya no tengo prisa La vida no vivo por demostrar Descuri que las cosas más lindas Nunca llegan por apurar Antes quería ganar carreras Que ni siquiera elegí correr Hoy prefiero volver despacio Y encontrarme otra vez El semáforo cambió de verde Pero yo decidí esperar Porque aprendí que algunos milagros También caminan despacio al llegar Ya no tengo prisa La vida no se va a escapar Todo lo que lleva mi nombre También me sabe esperar Ya no tengo prisa Ya no vivo por demostrar Hoy me alcanza mirar el cielo Y sentir que estoy en mi lugar No cambié el rumbo del mundo Solo mi forma de caminar Y desde ese día la vida También me empezó a abrazar"
+  ],
+  "letra_completa": "Hoy salí sin mirar la hora Ni pensando en llegar primero Me senté en la plaza de siempre Solo a escuchar el viento Una nena corría descalza Percibiendo una ilusión de papel Y por un momento entendí que hace falta Tampoco para volver Ya no tengo prisa La vida no se va a escapar Todo lo que lleva mi nombre También me sabe esperar Ya no tengo prisa La vida no vivo por demostrar Descuri que las cosas más lindas Nunca llegan por apurar Antes quería ganar carreras Que ni siquiera elegí correr Hoy prefiero volver despacio Y encontrarme otra vez El semáforo cambió de verde Pero yo decidí esperar Porque aprendí que algunos milagros También caminan despacio al llegar Ya no tengo prisa La vida no se va a escapar Todo lo que lleva mi nombre También me sabe esperar Ya no tengo prisa Ya no vivo por demostrar Hoy me alcanza mirar el cielo Y sentir que estoy en mi lugar No cambié el rumbo del mundo Solo mi forma de caminar Y desde ese día la vida También me empezó a abrazar",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 14.0,
+      "text": "Hoy salí sin mirar la hora"
+    },
+    {
+      "start": 14.0,
+      "end": 19.0,
+      "text": "Ni pensando en llegar primero"
+    },
+    {
+      "start": 19.0,
+      "end": 25.0,
+      "text": "Me senté en la plaza de siempre"
+    },
+    {
+      "start": 25.0,
+      "end": 30.0,
+      "text": "Solo a escuchar el viento"
+    },
+    {
+      "start": 30.0,
+      "end": 33.0,
+      "text": "Una nena corría descalza"
+    },
+    {
+      "start": 33.0,
+      "end": 36.0,
+      "text": "Percibiendo una ilusión de papel"
+    },
+    {
+      "start": 36.0,
+      "end": 38.0,
+      "text": "Y por un momento entendí que hace falta"
+    },
+    {
+      "start": 38.0,
+      "end": 41.0,
+      "text": "Tampoco para volver"
+    },
+    {
+      "start": 41.0,
+      "end": 43.0,
+      "text": "Ya no tengo prisa"
+    },
+    {
+      "start": 43.0,
+      "end": 45.0,
+      "text": "La vida no se va a escapar"
+    },
+    {
+      "start": 45.0,
+      "end": 48.0,
+      "text": "Todo lo que lleva mi nombre"
+    },
+    {
+      "start": 48.0,
+      "end": 51.0,
+      "text": "También me sabe esperar"
+    },
+    {
+      "start": 51.0,
+      "end": 53.0,
+      "text": "Ya no tengo prisa"
+    },
+    {
+      "start": 53.0,
+      "end": 55.0,
+      "text": "La vida no vivo por demostrar"
+    },
+    {
+      "start": 55.0,
+      "end": 58.0,
+      "text": "Descuri que las cosas más lindas"
+    },
+    {
+      "start": 58.0,
+      "end": 61.0,
+      "text": "Nunca llegan por apurar"
+    },
+    {
+      "start": 61.0,
+      "end": 76.0,
+      "text": "Antes quería ganar carreras"
+    },
+    {
+      "start": 76.0,
+      "end": 81.0,
+      "text": "Que ni siquiera elegí correr"
+    },
+    {
+      "start": 81.0,
+      "end": 86.0,
+      "text": "Hoy prefiero volver despacio"
+    },
+    {
+      "start": 86.0,
+      "end": 91.0,
+      "text": "Y encontrarme otra vez"
+    },
+    {
+      "start": 91.0,
+      "end": 96.0,
+      "text": "El semáforo cambió de verde"
+    },
+    {
+      "start": 96.0,
+      "end": 101.0,
+      "text": "Pero yo decidí esperar"
+    },
+    {
+      "start": 101.0,
+      "end": 105.0,
+      "text": "Porque aprendí que algunos milagros"
+    },
+    {
+      "start": 105.0,
+      "end": 111.0,
+      "text": "También caminan despacio al llegar"
+    },
+    {
+      "start": 111.0,
+      "end": 113.0,
+      "text": "Ya no tengo prisa"
+    },
+    {
+      "start": 113.0,
+      "end": 115.0,
+      "text": "La vida no se va a escapar"
+    },
+    {
+      "start": 115.0,
+      "end": 118.0,
+      "text": "Todo lo que lleva mi nombre"
+    },
+    {
+      "start": 118.0,
+      "end": 120.0,
+      "text": "También me sabe esperar"
+    },
+    {
+      "start": 120.0,
+      "end": 123.0,
+      "text": "Ya no tengo prisa"
+    },
+    {
+      "start": 123.0,
+      "end": 125.0,
+      "text": "Ya no vivo por demostrar"
+    },
+    {
+      "start": 125.0,
+      "end": 127.0,
+      "text": "Hoy me alcanza mirar el cielo"
+    },
+    {
+      "start": 127.0,
+      "end": 130.0,
+      "text": "Y sentir que estoy en mi lugar"
+    },
+    {
+      "start": 130.0,
+      "end": 133.0,
+      "text": "No cambié el rumbo del mundo"
+    },
+    {
+      "start": 133.0,
+      "end": 135.0,
+      "text": "Solo mi forma de caminar"
+    },
+    {
+      "start": 135.0,
+      "end": 138.0,
+      "text": "Y desde ese día la vida"
+    },
+    {
+      "start": 138.0,
+      "end": 142.0,
+      "text": "También me empezó a abrazar"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

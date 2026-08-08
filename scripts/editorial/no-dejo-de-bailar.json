@@ -1,0 +1,225 @@
+{
+  "archivo_original": "No Dejo De Bailar.mp3",
+  "nombre_limpio": "No Dejo De Bailar",
+  "duracion": "2:47",
+  "bpm": 136,
+  "tonalidad": "Bb mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 202,
+  "genero_detectado": "Salsa / Tropical",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "crecimiento",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "energía alta",
+    "intenso",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Música Que me llaman soñadora, yo los voy a dejar hablar Refiero vivir cantando, que mirando la vida pasar Música Si hoy tengo un motivo, lo voy a celebrar Porque nadie sabe el día que nos vuelva a tocar Así que ven, no te quedes por allá No dejo de bailar, que la noche está buena Cuando el corazón sonríe, todo vale la pena Música No dejo de bailar, que la vida se va Y los mejores recuerdos, se hacen al ritmo del compás Música Que suenen las trompetas, que responde el timbal Que el piano siga diciendo, que todavía hay mucho más Música No quiero guardar abrazos, ni dejar risa para después Si la felicidad me visita, la voy a hacer quedarse Música No dejo de bailar, aunque el mundo gire al revés Porque aprendí que la alegría también se aprende Música Hasta que salga el sol, que esta noche le escribimos Con los pies y el corazón Música Suberá Música Que todavía la fiesta no termina Música Música Música Música Música Música Música Música"
+  ],
+  "letra_completa": "Música Que me llaman soñadora, yo los voy a dejar hablar Refiero vivir cantando, que mirando la vida pasar Música Si hoy tengo un motivo, lo voy a celebrar Porque nadie sabe el día que nos vuelva a tocar Así que ven, no te quedes por allá No dejo de bailar, que la noche está buena Cuando el corazón sonríe, todo vale la pena Música No dejo de bailar, que la vida se va Y los mejores recuerdos, se hacen al ritmo del compás Música Que suenen las trompetas, que responde el timbal Que el piano siga diciendo, que todavía hay mucho más Música No quiero guardar abrazos, ni dejar risa para después Si la felicidad me visita, la voy a hacer quedarse Música No dejo de bailar, aunque el mundo gire al revés Porque aprendí que la alegría también se aprende Música Hasta que salga el sol, que esta noche le escribimos Con los pies y el corazón Música Suberá Música Que todavía la fiesta no termina Música Música Música Música Música Música Música Música",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 14.56,
+      "text": "Música"
+    },
+    {
+      "start": 14.56,
+      "end": 19.2,
+      "text": "Que me llaman soñadora, yo los voy a dejar hablar"
+    },
+    {
+      "start": 19.2,
+      "end": 24.72,
+      "text": "Refiero vivir cantando, que mirando la vida pasar"
+    },
+    {
+      "start": 24.72,
+      "end": 28.36,
+      "text": "Música"
+    },
+    {
+      "start": 28.36,
+      "end": 33.08,
+      "text": "Si hoy tengo un motivo, lo voy a celebrar"
+    },
+    {
+      "start": 33.08,
+      "end": 38.92,
+      "text": "Porque nadie sabe el día que nos vuelva a tocar"
+    },
+    {
+      "start": 38.92,
+      "end": 43.4,
+      "text": "Así que ven, no te quedes por allá"
+    },
+    {
+      "start": 43.4,
+      "end": 47.48,
+      "text": "No dejo de bailar, que la noche está buena"
+    },
+    {
+      "start": 47.48,
+      "end": 52.68,
+      "text": "Cuando el corazón sonríe, todo vale la pena"
+    },
+    {
+      "start": 52.68,
+      "end": 55.08,
+      "text": "Música"
+    },
+    {
+      "start": 55.08,
+      "end": 59.56,
+      "text": "No dejo de bailar, que la vida se va"
+    },
+    {
+      "start": 59.56,
+      "end": 66.52,
+      "text": "Y los mejores recuerdos, se hacen al ritmo del compás"
+    },
+    {
+      "start": 66.52,
+      "end": 70.68,
+      "text": "Música"
+    },
+    {
+      "start": 70.68,
+      "end": 75.48,
+      "text": "Que suenen las trompetas, que responde el timbal"
+    },
+    {
+      "start": 75.48,
+      "end": 81.32,
+      "text": "Que el piano siga diciendo, que todavía hay mucho más"
+    },
+    {
+      "start": 81.32,
+      "end": 84.84,
+      "text": "Música"
+    },
+    {
+      "start": 84.84,
+      "end": 89.88,
+      "text": "No quiero guardar abrazos, ni dejar risa para después"
+    },
+    {
+      "start": 89.88,
+      "end": 95.72,
+      "text": "Si la felicidad me visita, la voy a hacer quedarse"
+    },
+    {
+      "start": 95.72,
+      "end": 97.48,
+      "text": "Música"
+    },
+    {
+      "start": 97.48,
+      "end": 101.96,
+      "text": "No dejo de bailar, aunque el mundo gire al revés"
+    },
+    {
+      "start": 101.96,
+      "end": 106.84,
+      "text": "Porque aprendí que la alegría también se aprende"
+    },
+    {
+      "start": 106.84,
+      "end": 108.76,
+      "text": "Música"
+    },
+    {
+      "start": 108.76,
+      "end": 114.68,
+      "text": "Hasta que salga el sol, que esta noche le escribimos"
+    },
+    {
+      "start": 115.4,
+      "end": 118.6,
+      "text": "Con los pies y el corazón"
+    },
+    {
+      "start": 118.6,
+      "end": 122.04,
+      "text": "Música"
+    },
+    {
+      "start": 122.04,
+      "end": 129.4,
+      "text": "Suberá"
+    },
+    {
+      "start": 129.4,
+      "end": 130.68,
+      "text": "Música"
+    },
+    {
+      "start": 130.68,
+      "end": 135.32,
+      "text": "Que todavía la fiesta no termina"
+    },
+    {
+      "start": 135.32,
+      "end": 144.52,
+      "text": "Música"
+    },
+    {
+      "start": 144.52,
+      "end": 164.36,
+      "text": "Música"
+    },
+    {
+      "start": 164.36,
+      "end": 167.88,
+      "text": "Música"
+    },
+    {
+      "start": 168.04,
+      "end": 172.84,
+      "text": "Música"
+    },
+    {
+      "start": 172.84,
+      "end": 176.84,
+      "text": "Música"
+    },
+    {
+      "start": 176.84,
+      "end": 180.84,
+      "text": "Música"
+    },
+    {
+      "start": 180.84,
+      "end": 186.84,
+      "text": "Música"
+    },
+    {
+      "start": 186.84,
+      "end": 192.84,
+      "text": "Música"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

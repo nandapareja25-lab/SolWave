@@ -1,0 +1,104 @@
+{
+  "archivo_original": "Ya Salió el Sol.mp3",
+  "nombre_limpio": "Ya Salió el Sol",
+  "duracion": "2:26",
+  "bpm": 99,
+  "tonalidad": "D mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 198,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "nostalgia",
+    "liberación"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "A Noche cerré la puerta de todo lo que dolió Hoy amanecé distinto hasta el espejo sonrió Ya no cargo las heridas las deje donde quedaron Hoy el corazón me dice que es momento de intentarlo y mírame, que bonito se siente respirar Ya salió el sol, ya volvió la inspiración Hoy le pongo buena cara a todo lo que venga El corazón ya salió el sol, ya se fue la oscuridad cuando uno cambia por dentro Todo empieza a cambiar que suenen fuerte las conchas Que no se quede nadie sentado, la tristeza ya hizo su tiempo Ahora le toca el pasado Hoy quiero llenar la casa de risas y de canción porque la vida es más bonita Cuando la baila el corazón ya salió el sol y lo quiero celebrar con la gente que me quiere y con ganas de soñar Ya salió el sol, ya no pienso mirar atrás lo mejor de esta historia Todavía está por comenzar que siga la fiesta Que hoy la vida nos volvió a sonreír"
+  ],
+  "letra_completa": "A Noche cerré la puerta de todo lo que dolió Hoy amanecé distinto hasta el espejo sonrió Ya no cargo las heridas las deje donde quedaron Hoy el corazón me dice que es momento de intentarlo y mírame, que bonito se siente respirar Ya salió el sol, ya volvió la inspiración Hoy le pongo buena cara a todo lo que venga El corazón ya salió el sol, ya se fue la oscuridad cuando uno cambia por dentro Todo empieza a cambiar que suenen fuerte las conchas Que no se quede nadie sentado, la tristeza ya hizo su tiempo Ahora le toca el pasado Hoy quiero llenar la casa de risas y de canción porque la vida es más bonita Cuando la baila el corazón ya salió el sol y lo quiero celebrar con la gente que me quiere y con ganas de soñar Ya salió el sol, ya no pienso mirar atrás lo mejor de esta historia Todavía está por comenzar que siga la fiesta Que hoy la vida nos volvió a sonreír",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 23.92,
+      "text": "A Noche cerré la puerta de todo lo que dolió Hoy amanecé distinto hasta el espejo sonrió"
+    },
+    {
+      "start": 23.92,
+      "end": 32.12,
+      "text": "Ya no cargo las heridas las deje donde quedaron Hoy el corazón me dice que es momento de"
+    },
+    {
+      "start": 32.12,
+      "end": 41.24,
+      "text": "intentarlo y mírame, que bonito se siente respirar"
+    },
+    {
+      "start": 41.24,
+      "end": 48.86,
+      "text": "Ya salió el sol, ya volvió la inspiración Hoy le pongo buena cara a todo lo que venga"
+    },
+    {
+      "start": 48.86,
+      "end": 62.02,
+      "text": "El corazón ya salió el sol, ya se fue la oscuridad cuando uno cambia por dentro"
+    },
+    {
+      "start": 62.02,
+      "end": 69.82,
+      "text": "Todo empieza a cambiar que suenen fuerte las conchas"
+    },
+    {
+      "start": 69.82,
+      "end": 79.06,
+      "text": "Que no se quede nadie sentado, la tristeza ya hizo su tiempo Ahora le toca el pasado"
+    },
+    {
+      "start": 79.06,
+      "end": 93.18,
+      "text": "Hoy quiero llenar la casa de risas y de canción porque la vida es más bonita"
+    },
+    {
+      "start": 93.18,
+      "end": 105.9,
+      "text": "Cuando la baila el corazón ya salió el sol y lo quiero celebrar con la gente que me quiere y con ganas de soñar"
+    },
+    {
+      "start": 105.9,
+      "end": 116.62,
+      "text": "Ya salió el sol, ya no pienso mirar atrás lo mejor de esta historia"
+    },
+    {
+      "start": 116.78,
+      "end": 123.98,
+      "text": "Todavía está por comenzar que siga la fiesta"
+    },
+    {
+      "start": 137.06,
+      "end": 143.18,
+      "text": "Que hoy la vida nos volvió a sonreír"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

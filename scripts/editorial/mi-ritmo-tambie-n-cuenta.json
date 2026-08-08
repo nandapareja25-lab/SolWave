@@ -1,0 +1,170 @@
+{
+  "archivo_original": "Mi+Ritmo+también+Cuenta.mp3",
+  "nombre_limpio": "Mi Ritmo también Cuenta",
+  "duracion": "3:26",
+  "bpm": 123,
+  "tonalidad": "G mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Dancehall / Pop Latino",
+  "emocion_principal": "paz / calma",
+  "emociones_secundarias": [
+    "empoderamiento",
+    "crecimiento",
+    "paz / calma"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "ritmo propio",
+    "comparación",
+    "naturaleza",
+    "paciencia",
+    "brillo",
+    "sin competir"
+  ],
+  "frases_clave": [
+    "Y siento que el cielo empieza a respirar Mi corazón ya no se esconde es momento de volar Mi ritmo también cuenta Nadie me puede apagar Hoy el sol lleva mi nombre y me vuelve iluminar Mi ritmo también cuenta Ya no quiero demostrar Todo lo que estaba buscando Siempre estuvo en mi lugar Hoy la montaña es mirar el mar Sin preguntarle cuándo llega Cada semilla bajo la piel Guarda un jardín por florecer Si el viento cambia de dirección También aprende mi corazón Cada latido vuelve a decir que todo empieza dentro de mí Y siento que el cielo empieza a respirar Mi corazón ya no se esconde es momento de volar Mi ritmo también cuenta Nadie me puede apagar Hoy mi alma toca las nubes y no piensa regresar Mi ritmo también cuenta Puedo al fin respirar Todo lo bueno me encontró Porque aprendí a confiar Mi ritmo también cuenta",
+    "Hoy la mañana volvió a cantar La brisa prendió mi verdad El sol no pregunta cuándo salí Simplemente vuelve a existir Las hojas no corren por florecer El río tampoco por llegar Si la vida conoce el compás ¿Por qué tendría que acelerar"
+  ],
+  "letra_completa": "Hoy la mañana volvió a cantar La brisa prendió mi verdad El sol no pregunta cuándo salí Simplemente vuelve a existir Las hojas no corren por florecer El río tampoco por llegar Si la vida conoce el compás ¿Por qué tendría que acelerar? Y siento que el cielo empieza a respirar Mi corazón ya no se esconde es momento de volar Mi ritmo también cuenta Nadie me puede apagar Hoy el sol lleva mi nombre y me vuelve iluminar Mi ritmo también cuenta Ya no quiero demostrar Todo lo que estaba buscando Siempre estuvo en mi lugar Hoy la montaña es mirar el mar Sin preguntarle cuándo llega Cada semilla bajo la piel Guarda un jardín por florecer Si el viento cambia de dirección También aprende mi corazón Cada latido vuelve a decir que todo empieza dentro de mí Y siento que el cielo empieza a respirar Mi corazón ya no se esconde es momento de volar Mi ritmo también cuenta Nadie me puede apagar Hoy mi alma toca las nubes y no piensa regresar Mi ritmo también cuenta Puedo al fin respirar Todo lo bueno me encontró Porque aprendí a confiar Mi ritmo también cuenta",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 25.4,
+      "text": "Hoy la mañana volvió a cantar La brisa prendió mi verdad"
+    },
+    {
+      "start": 25.4,
+      "end": 36.0,
+      "text": "El sol no pregunta cuándo salí Simplemente vuelve a existir"
+    },
+    {
+      "start": 36.0,
+      "end": 46.32,
+      "text": "Las hojas no corren por florecer El río tampoco por llegar"
+    },
+    {
+      "start": 46.32,
+      "end": 53.0,
+      "text": "Si la vida conoce el compás ¿Por qué tendría que acelerar?"
+    },
+    {
+      "start": 53.0,
+      "end": 64.4,
+      "text": "Y siento que el cielo empieza a respirar Mi corazón ya no se esconde es momento de volar"
+    },
+    {
+      "start": 64.4,
+      "end": 73.8,
+      "text": "Mi ritmo también cuenta Nadie me puede apagar"
+    },
+    {
+      "start": 73.8,
+      "end": 78.92,
+      "text": "Hoy el sol lleva mi nombre y me vuelve iluminar"
+    },
+    {
+      "start": 78.92,
+      "end": 85.64,
+      "text": "Mi ritmo también cuenta Ya no quiero demostrar"
+    },
+    {
+      "start": 85.64,
+      "end": 94.32,
+      "text": "Todo lo que estaba buscando Siempre estuvo en mi lugar"
+    },
+    {
+      "start": 94.32,
+      "end": 101.52,
+      "text": "Hoy la montaña es mirar el mar Sin preguntarle cuándo llega"
+    },
+    {
+      "start": 101.52,
+      "end": 111.96,
+      "text": "Cada semilla bajo la piel Guarda un jardín por florecer"
+    },
+    {
+      "start": 111.96,
+      "end": 122.64,
+      "text": "Si el viento cambia de dirección También aprende mi corazón"
+    },
+    {
+      "start": 122.64,
+      "end": 129.52,
+      "text": "Cada latido vuelve a decir que todo empieza dentro de mí"
+    },
+    {
+      "start": 129.52,
+      "end": 139.52,
+      "text": "Y siento que el cielo empieza a respirar"
+    },
+    {
+      "start": 139.52,
+      "end": 146.28,
+      "text": "Mi corazón ya no se esconde es momento de volar"
+    },
+    {
+      "start": 146.28,
+      "end": 155.56,
+      "text": "Mi ritmo también cuenta Nadie me puede apagar"
+    },
+    {
+      "start": 155.56,
+      "end": 160.84,
+      "text": "Hoy mi alma toca las nubes y no piensa regresar"
+    },
+    {
+      "start": 160.84,
+      "end": 167.4,
+      "text": "Mi ritmo también cuenta Puedo al fin respirar"
+    },
+    {
+      "start": 167.4,
+      "end": 179.56,
+      "text": "Todo lo bueno me encontró Porque aprendí a confiar"
+    },
+    {
+      "start": 179.56,
+      "end": 199.08,
+      "text": "Mi ritmo también cuenta"
+    }
+  ],
+  "moment": "El sol volvió a salir sin preguntar si era el momento correcto. Y por primera vez te preguntaste por qué tú sí llevabas toda la vida haciéndolo.",
+  "sintiendo": "Llevas un tiempo corriendo para llegar. Para demostrar. Para no quedarte atrás.\n\nEsta mañana la naturaleza te hizo una pregunta que no tiene respuesta cómoda: El sol no pregunta cuándo debería salir. Las hojas no corren por florecer. El río llega al mar sin apurarse. Si la vida entera conoce su propio compás — ¿por qué ibas tú a acelerar?\n\nTodo lo que estabas buscando siempre estuvo en tu lugar. Lo bueno no lo perseguiste. Te encontró cuando aprendiste a confiar.",
+  "intencion": "Existe para el momento en que la naturaleza te hace la pregunta que hace imposible seguir corriendo — y descubres que lo que buscabas siempre estuvo en tu lugar.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Mi Ritmo También Cuenta",
+  "frases_clave_editoriales": [
+    "Mi ritmo también cuenta, nadie me puede apagar",
+    "Ya no quiero demostrar, todo lo que buscaba siempre estuvo en mi lugar",
+    "Cada semilla bajo la piel guarda un jardín por florecer"
+  ],
+  "nota_mapeo": "Coincidencia con álbum Las pequeñas cosas o Volví a escucharme. Temática de ritmo propio, naturaleza, sin urgencia.",
+  "estado_editorial": "aprobado",
+  "recognition": "Si la vida entera conoce su compás, ¿por qué yo tendría que acelerar?",
+  "searchPhrases": [
+    "música para cuando sientes que vas más lento que todos",
+    "canción para dejar de comparar tu progreso con el de otros",
+    "siento que debería estar más avanzada en mi vida",
+    "música para encontrar tu propio ritmo sin competir",
+    "por qué a mí me cuesta más tiempo llegar",
+    "canción para soltar la presión de los tiempos ajenos",
+    "me agota vivir al ritmo del mundo",
+    "música para cuando descubres que no tienes que demostrar nada",
+    "ya no quiero correr para llegar primera",
+    "canción para cuando aprendes que tu ritmo también cuenta",
+    "música para la persona que siempre se exige demasiado",
+    "el día que dejas de cronometrar tu vida"
+  ],
+  "semanticTags": "ritmo propio, pregunta filosófica, la naturaleza no acelera, el sol no pregunta cuándo, dejar de demostrar, lo que buscaba estaba aquí, lo bueno me encontró, aprender a confiar, mi corazón ya no se esconde, cada semilla guarda un jardín, compás interior, sin cronómetro",
+  "audioUrl": "audio/mi-ritmo-tambien-cuenta.mp3"
+}

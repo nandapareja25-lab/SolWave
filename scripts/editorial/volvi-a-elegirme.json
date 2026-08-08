@@ -1,0 +1,304 @@
+{
+  "archivo_original": "Volví+a+Elegirme.mp3",
+  "nombre_limpio": "Volví a Elegirme",
+  "duracion": "3:10",
+  "bpm": 60,
+  "tonalidad": "G mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "empoderamiento",
+  "emociones_secundarias": [
+    "paz / calma",
+    "alegría"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "elegirse",
+    "silencio",
+    "interior",
+    "paz",
+    "identidad",
+    "volver a sí misma"
+  ],
+  "frases_clave": [
+    "Ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah Hoy me encontré frente al cristal Y una mirada volver a creer Deje de huir para empezar Volví despacio a renacer Guarda el ruido fuera de mí Cerré la puerta de la hierba La paz que tanto perseguí Siempre esperaba el volver Volví a elegirme Ya nadie me puede cambiar No es grandioso, es simple Es mi verdad Volví a elegirme Hoy vuelvo a respirar Cada latido me enseña libertad Apagué el mundo por un instante Dejé que hablar a mi interior No hizo falta seguir luchando Cuando escuché mi corazón Ya no le temo el calendario Ya lo que falta por llegar Hoy cada paso que yo doy Me recuerda quién quiero ser Volví a elegirme Ya nadie me puede cambiar No es grandioso, es simple Es mi verdad Volví a elegirme Hoy vuelvo a respirar Cada latido me enseña libertad Ya puedo descansar El peso quedó detrás Ya puedo descansar Mi alma encontró su lugar Volví a elegirme Ya nadie me puede cambiar No es grandioso, es simple Es mi verdad Volví a elegirme Hoy vuelvo a caminar Porque la mejor parte de mí Acaba de despertar Volví a elegirme Mmm",
+    "Ah, eso es que irá Mmm"
+  ],
+  "letra_completa": "Ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah Hoy me encontré frente al cristal Y una mirada volver a creer Deje de huir para empezar Volví despacio a renacer Guarda el ruido fuera de mí Cerré la puerta de la hierba La paz que tanto perseguí Siempre esperaba el volver Volví a elegirme Ya nadie me puede cambiar No es grandioso, es simple Es mi verdad Volví a elegirme Hoy vuelvo a respirar Cada latido me enseña libertad Apagué el mundo por un instante Dejé que hablar a mi interior No hizo falta seguir luchando Cuando escuché mi corazón Ya no le temo el calendario Ya lo que falta por llegar Hoy cada paso que yo doy Me recuerda quién quiero ser Volví a elegirme Ya nadie me puede cambiar No es grandioso, es simple Es mi verdad Volví a elegirme Hoy vuelvo a respirar Cada latido me enseña libertad Ya puedo descansar El peso quedó detrás Ya puedo descansar Mi alma encontró su lugar Volví a elegirme Ya nadie me puede cambiar No es grandioso, es simple Es mi verdad Volví a elegirme Hoy vuelvo a caminar Porque la mejor parte de mí Acaba de despertar Volví a elegirme Mmm... Ah, eso es que irá Mmm...",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 12.24,
+      "text": "Ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah-ah"
+    },
+    {
+      "start": 13.0,
+      "end": 15.14,
+      "text": "Hoy me encontré frente al cristal"
+    },
+    {
+      "start": 16.8,
+      "end": 19.88,
+      "text": "Y una mirada volver a creer"
+    },
+    {
+      "start": 20.9,
+      "end": 23.48,
+      "text": "Deje de huir para empezar"
+    },
+    {
+      "start": 24.9,
+      "end": 27.88,
+      "text": "Volví despacio a renacer"
+    },
+    {
+      "start": 27.88,
+      "end": 32.16,
+      "text": "Guarda el ruido fuera de mí"
+    },
+    {
+      "start": 32.16,
+      "end": 35.96,
+      "text": "Cerré la puerta de la hierba"
+    },
+    {
+      "start": 35.96,
+      "end": 40.28,
+      "text": "La paz que tanto perseguí"
+    },
+    {
+      "start": 40.28,
+      "end": 43.6,
+      "text": "Siempre esperaba el volver"
+    },
+    {
+      "start": 43.6,
+      "end": 48.04,
+      "text": "Volví a elegirme"
+    },
+    {
+      "start": 48.04,
+      "end": 51.64,
+      "text": "Ya nadie me puede cambiar"
+    },
+    {
+      "start": 51.64,
+      "end": 55.72,
+      "text": "No es grandioso, es simple"
+    },
+    {
+      "start": 56.2,
+      "end": 58.88,
+      "text": "Es mi verdad"
+    },
+    {
+      "start": 58.88,
+      "end": 62.84,
+      "text": "Volví a elegirme"
+    },
+    {
+      "start": 62.84,
+      "end": 66.84,
+      "text": "Hoy vuelvo a respirar"
+    },
+    {
+      "start": 66.84,
+      "end": 72.84,
+      "text": "Cada latido me enseña libertad"
+    },
+    {
+      "start": 72.84,
+      "end": 75.84,
+      "text": "Apagué el mundo por un instante"
+    },
+    {
+      "start": 75.84,
+      "end": 79.84,
+      "text": "Dejé que hablar a mi interior"
+    },
+    {
+      "start": 79.84,
+      "end": 83.84,
+      "text": "No hizo falta seguir luchando"
+    },
+    {
+      "start": 83.96,
+      "end": 87.96,
+      "text": "Cuando escuché mi corazón"
+    },
+    {
+      "start": 87.96,
+      "end": 90.96,
+      "text": "Ya no le temo el calendario"
+    },
+    {
+      "start": 90.96,
+      "end": 93.96,
+      "text": "Ya lo que falta por llegar"
+    },
+    {
+      "start": 93.96,
+      "end": 96.96,
+      "text": "Hoy cada paso que yo doy"
+    },
+    {
+      "start": 96.96,
+      "end": 99.96,
+      "text": "Me recuerda quién quiero ser"
+    },
+    {
+      "start": 99.96,
+      "end": 103.96,
+      "text": "Volví a elegirme"
+    },
+    {
+      "start": 103.96,
+      "end": 107.96,
+      "text": "Ya nadie me puede cambiar"
+    },
+    {
+      "start": 107.96,
+      "end": 111.96,
+      "text": "No es grandioso, es simple"
+    },
+    {
+      "start": 112.08,
+      "end": 115.08,
+      "text": "Es mi verdad"
+    },
+    {
+      "start": 115.08,
+      "end": 119.08,
+      "text": "Volví a elegirme"
+    },
+    {
+      "start": 119.08,
+      "end": 123.08,
+      "text": "Hoy vuelvo a respirar"
+    },
+    {
+      "start": 123.08,
+      "end": 129.08,
+      "text": "Cada latido me enseña libertad"
+    },
+    {
+      "start": 129.08,
+      "end": 133.08,
+      "text": "Ya puedo descansar"
+    },
+    {
+      "start": 133.08,
+      "end": 137.08,
+      "text": "El peso quedó detrás"
+    },
+    {
+      "start": 137.08,
+      "end": 141.08,
+      "text": "Ya puedo descansar"
+    },
+    {
+      "start": 141.08,
+      "end": 144.08,
+      "text": "Mi alma encontró su lugar"
+    },
+    {
+      "start": 144.08,
+      "end": 148.08,
+      "text": "Volví a elegirme"
+    },
+    {
+      "start": 148.08,
+      "end": 152.08,
+      "text": "Ya nadie me puede cambiar"
+    },
+    {
+      "start": 152.08,
+      "end": 156.08,
+      "text": "No es grandioso, es simple"
+    },
+    {
+      "start": 156.08,
+      "end": 159.08,
+      "text": "Es mi verdad"
+    },
+    {
+      "start": 159.08,
+      "end": 163.08,
+      "text": "Volví a elegirme"
+    },
+    {
+      "start": 163.08,
+      "end": 167.08,
+      "text": "Hoy vuelvo a caminar"
+    },
+    {
+      "start": 167.08,
+      "end": 169.08,
+      "text": "Porque la mejor parte de mí"
+    },
+    {
+      "start": 169.08,
+      "end": 173.08,
+      "text": "Acaba de despertar"
+    },
+    {
+      "start": 173.08,
+      "end": 177.08,
+      "text": "Volví a elegirme"
+    },
+    {
+      "start": 177.08,
+      "end": 179.08,
+      "text": "Mmm..."
+    },
+    {
+      "start": 179.08,
+      "end": 183.08,
+      "text": "Ah, eso es que irá"
+    },
+    {
+      "start": 183.08,
+      "end": 187.08,
+      "text": "Mmm..."
+    }
+  ],
+  "moment": "Apagaste el mundo por un instante. Cerraste la puerta. Cuando escuchaste tu corazón, ya no hizo falta seguir luchando. No es grandioso. Es simple. Es tu verdad.",
+  "sintiendo": "Llevas un tiempo persiguiendo la paz afuera. En el movimiento, en los logros, en lo que esperan de ti. Sin darte cuenta, dejaste tu propia voz para después.\n\nHoy apagaste el mundo. Sin gesto heroico — simplemente cerraste la puerta. Y escuchaste.\n\nNo hizo falta seguir luchando. La paz que tanto perseguiste siempre esperó que volvieras.\n\nNo es grandioso. Es simple. Es tu verdad. Ya puedes descansar.",
+  "intencion": "Existe para el regreso más íntimo: el que ocurre cuando apagas el mundo y escuchas — sin que sea dramático, sin que nadie lo vea, sin que sea grandioso.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Volví a Elegirme",
+  "frases_clave_editoriales": [
+    "Volví a elegirme, ya nadie me puede cambiar",
+    "No es grandioso, es simple, es mi verdad",
+    "Apagué el mundo por un instante, dejé que hable mi interior"
+  ],
+  "nota_mapeo": "Alta coincidencia con álbum Volví a escucharme. Posibles tracks: 'Volví a escucharme' (track 1), 'Ya no me escondo', 'Ahora sí soy yo'.",
+  "estado_editorial": "aprobado",
+  "recognition": "No es grandioso. Es simple. Es mi verdad.",
+  "searchPhrases": [
+    "música para cuando vuelves a ti misma en silencio",
+    "canción para el regreso íntimo a tu propia voz",
+    "necesito apagarme del mundo y escucharme",
+    "música para estar sola contigo misma de verdad",
+    "canción para cuando te eliges en voz baja",
+    "el momento de paz más profundo música",
+    "música para cerrar los ojos y volverte a encontrar",
+    "ya puedo descansar canción",
+    "cuando te eliges sin que sea un gran momento",
+    "música para el silencio interior",
+    "no necesito que sea grandioso solo necesito ser yo",
+    "canción para encontrar paz dentro de ti misma sin drama"
+  ],
+  "semanticTags": "regreso íntimo, sin testigos, apagar el mundo, cerrar la puerta, no hizo falta seguir luchando, ya puedo descansar, simple es mi verdad, ya nadie me puede cambiar, la paz que perseguía esperaba aquí, sin drama sin declaración, el alma encontró su lugar, voz interior escuchada",
+  "audioUrl": "audio/volvi-a-elegirme.mp3"
+}

@@ -1,0 +1,159 @@
+{
+  "archivo_original": "Me+Elegi.mp3",
+  "nombre_limpio": "Me Elegi",
+  "duracion": "3:47",
+  "bpm": 78,
+  "tonalidad": "E mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "empoderamiento",
+  "emociones_secundarias": [
+    "empoderamiento",
+    "paz / calma",
+    "crecimiento"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "elegirse",
+    "autoestima",
+    "heridas",
+    "liberación",
+    "alas",
+    "fuerza"
+  ],
+  "frases_clave": [
+    "Hoy desperté sin miedo a mi reflejo Deje el pasado donde debes estar rompí el silencio, solte aquel complejo Y vi que el cielo me quería abrazar Si alguna herida quiso detenerme Hoy es la fuerza que me hace volar Ya no le temo al mundo ni a perderme Porque aprendí primero a despertar Cuantas tormentas tuve que cruzarte Cuantas promesas se llevó layer Busqué respuestas lejos de mi alma Sin comprender que estaban en mi piel Hoy cada lágrima florece en calma Cada caída me enseñó a crecer Ya no persigo lo que no me llama Porque encontré la luz de mi querer Hoy me elegí, me abrí las alas Rompí las jaulas de mi corazón Ya no me digo falsas palabras Mi amor completo es mi canción Hoy me elegí, nadie me frena Brillo más fuerte que cualquier dolor Si el mundo cambia yo sigo firme Porque aprendí a quererme yo No necesito que alguien me rescate Llevo el valor latiendo en mi interior Cada mañana vuelvo a enamorarme De la mujer que vive en mi canción Y si la vida vuelve a desafiarme Ah, voy a mirarla siempre con valor Porque el milagro nunca estuvo afuera Siempre vivía dentro de un corazón Porque solo llenva los clave"
+  ],
+  "letra_completa": "Hoy desperté sin miedo a mi reflejo Deje el pasado donde debes estar rompí el silencio, solte aquel complejo Y vi que el cielo me quería abrazar Si alguna herida quiso detenerme Hoy es la fuerza que me hace volar Ya no le temo al mundo ni a perderme Porque aprendí primero a despertar Cuantas tormentas tuve que cruzarte Cuantas promesas se llevó layer Busqué respuestas lejos de mi alma Sin comprender que estaban en mi piel Hoy cada lágrima florece en calma Cada caída me enseñó a crecer Ya no persigo lo que no me llama Porque encontré la luz de mi querer Hoy me elegí, me abrí las alas Rompí las jaulas de mi corazón Ya no me digo falsas palabras Mi amor completo es mi canción Hoy me elegí, nadie me frena Brillo más fuerte que cualquier dolor Si el mundo cambia yo sigo firme Porque aprendí a quererme yo No necesito que alguien me rescate Llevo el valor latiendo en mi interior Cada mañana vuelvo a enamorarme De la mujer que vive en mi canción Y si la vida vuelve a desafiarme Ah, voy a mirarla siempre con valor Porque el milagro nunca estuvo afuera Siempre vivía dentro de un corazón Porque solo llenva los clave",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 25.0,
+      "text": "Hoy desperté sin miedo a mi reflejo Deje el pasado donde debes estar"
+    },
+    {
+      "start": 25.0,
+      "end": 37.0,
+      "text": "rompí el silencio, solte aquel complejo Y vi que el cielo me quería abrazar"
+    },
+    {
+      "start": 37.0,
+      "end": 49.0,
+      "text": "Si alguna herida quiso detenerme Hoy es la fuerza que me hace volar"
+    },
+    {
+      "start": 49.0,
+      "end": 61.0,
+      "text": "Ya no le temo al mundo ni a perderme Porque aprendí primero a despertar"
+    },
+    {
+      "start": 61.0,
+      "end": 73.0,
+      "text": "Cuantas tormentas tuve que cruzarte Cuantas promesas se llevó layer"
+    },
+    {
+      "start": 73.0,
+      "end": 85.0,
+      "text": "Busqué respuestas lejos de mi alma Sin comprender que estaban en mi piel"
+    },
+    {
+      "start": 85.0,
+      "end": 98.0,
+      "text": "Hoy cada lágrima florece en calma Cada caída me enseñó a crecer"
+    },
+    {
+      "start": 98.0,
+      "end": 110.0,
+      "text": "Ya no persigo lo que no me llama Porque encontré la luz de mi querer"
+    },
+    {
+      "start": 111.0,
+      "end": 123.0,
+      "text": "Hoy me elegí, me abrí las alas Rompí las jaulas de mi corazón"
+    },
+    {
+      "start": 123.0,
+      "end": 135.0,
+      "text": "Ya no me digo falsas palabras Mi amor completo es mi canción"
+    },
+    {
+      "start": 136.0,
+      "end": 147.0,
+      "text": "Hoy me elegí, nadie me frena Brillo más fuerte que cualquier dolor"
+    },
+    {
+      "start": 147.0,
+      "end": 160.0,
+      "text": "Si el mundo cambia yo sigo firme Porque aprendí a quererme yo"
+    },
+    {
+      "start": 160.0,
+      "end": 170.0,
+      "text": "No necesito que alguien me rescate Llevo el valor latiendo en mi interior"
+    },
+    {
+      "start": 170.0,
+      "end": 178.0,
+      "text": "Cada mañana vuelvo a enamorarme De la mujer que vive en mi canción"
+    },
+    {
+      "start": 178.0,
+      "end": 183.0,
+      "text": "Y si la vida vuelve a desafiarme"
+    },
+    {
+      "start": 183.0,
+      "end": 201.0,
+      "text": "Ah, voy a mirarla siempre con valor Porque el milagro nunca estuvo afuera"
+    },
+    {
+      "start": 201.0,
+      "end": 209.0,
+      "text": "Siempre vivía dentro de un corazón"
+    },
+    {
+      "start": 213.0,
+      "end": 218.0,
+      "text": "Porque solo llenva los clave"
+    }
+  ],
+  "moment": "Despertaste sin miedo a tu reflejo. No porque cambiaste afuera — porque dejaste de huir de lo que eres adentro. Rompiste el silencio. Soltaste el complejo. Y el cielo quiso abrazarte.",
+  "sintiendo": "Cuántas tormentas cruzaste. Cuántas respuestas buscaste en lugares que no eran tú. Sin entender que lo que necesitabas siempre estuvo en tu propia piel.\n\nEsta mañana despertaste. Y el reflejo no te dio miedo. No fue un día especial. Solo fue el día donde las jaulas se rompieron solas.\n\nEl milagro nunca estuvo afuera. Siempre vivía dentro de tu corazón.",
+  "intencion": "Existe para la mañana donde despiertas y el reflejo ya no da miedo — no porque resolviste algo afuera, sino porque encontraste lo que siempre estuvo adentro.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Me Elegí",
+  "frases_clave_editoriales": [
+    "Hoy me elegí, me abrí las alas, rompí las jaulas de mi corazón",
+    "Ya no me digo falsas palabras, mi amor completo es mi canción",
+    "Cuántas tormentas tuve que cruzar, cuántas promesas se llevó el ayer"
+  ],
+  "nota_mapeo": "Alta coincidencia con álbum Volví a escucharme o Ya no vuelvo atrás. Posibles tracks: 'Me elegí primero', 'Ya no me escondo'.",
+  "estado_editorial": "aprobado",
+  "recognition": "El milagro nunca estuvo afuera. Siempre vivía dentro de un corazón.",
+  "searchPhrases": [
+    "música para cuando te aceptas como eres por fin",
+    "canción para cuando dejas de odiar tu reflejo",
+    "ya me gusto como soy música",
+    "canción para cuando te reconcilias contigo misma de verdad",
+    "busqué afuera lo que estaba adentro canción",
+    "ya no me tengo miedo música",
+    "canción para el amor propio después de mucho tiempo sin él",
+    "rompí las cadenas que me ponía yo misma",
+    "música para cuando encuentras el valor dentro de ti",
+    "me elegí y ya no busco que nadie me salve",
+    "cuando aprendes que el milagro siempre estuvo en ti",
+    "canción para la liberación de los juicios propios"
+  ],
+  "semanticTags": "amor propio, sin miedo al reflejo, el milagro estaba adentro, me elegí, abrí las alas, rompí las jaulas, ya no busco afuera, aprendí a quererme, el valor late en mí, enamorarse de sí misma cada mañana, liberación interna, complejo soltado, tormentas cruzadas, respuestas en la propia piel",
+  "audioUrl": "audio/me-elegi.mp3"
+}

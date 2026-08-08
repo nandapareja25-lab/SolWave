@@ -1,0 +1,286 @@
+{
+  "archivo_original": "Volví+a+Sonreír.mp3",
+  "nombre_limpio": "Volví a Sonreír",
+  "duracion": "3:23",
+  "bpm": 129,
+  "tonalidad": "G mayor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Dancehall / Pop Latino",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "alegría",
+    "crecimiento",
+    "liberación"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "sanar",
+    "sorpresa",
+    "sonreír",
+    "memoria",
+    "sanación",
+    "retorno"
+  ],
+  "frases_clave": [
+    "Hoy pasé por la misma calle Donde un día me di caer Pensé que iba a doler mirarla Pero ya no fue como ayer Me sorprendí cantando bajito Sin darme cuenta empecé a reír Hay heridas que cierran solas Cuando dejas de perseguir Y entendí que la vida nunca se fue Era yo quien no podía verme Volví a sonreír Como si fuera la primera vez Volví a mirarme Sin esconder lo que llegué a hacer Volví a sonreír Sin esperar que alguien me salvara Hoy mi corazón baila despacio Porque aprendió a quedarse en casa Ya no cargo tantas maletas Ni preguntas que no hablan de mí Hay caminos que se iluminan Cuando decides seguir aquí Si mañana cambia la historia La volveré a escribir Porque ahora sé que la fuerza Siempre vivió dentro de mí Volví a sonreír Como si fuera la primera vez Volví a abrazarme Y todo empezó a florecer Volví a sonreír Mieda volver a empezar Hoy la vida me encontró bailando Y no te pienso dejar Volví a sonreír Como si fuera la primera vez Volví a sonreír Ah, valía a sonreír Volví a sonreír Volví a sonreír Volví a sonreír"
+  ],
+  "letra_completa": "Ah... Ah... Hoy pasé por la misma calle Donde un día me di caer Pensé que iba a doler mirarla Pero ya no fue como ayer Me sorprendí cantando bajito Sin darme cuenta empecé a reír Hay heridas que cierran solas Cuando dejas de perseguir Y entendí que la vida nunca se fue Era yo quien no podía verme Volví a sonreír Como si fuera la primera vez Volví a mirarme Sin esconder lo que llegué a hacer Volví a sonreír Sin esperar que alguien me salvara Hoy mi corazón baila despacio Porque aprendió a quedarse en casa Ya no cargo tantas maletas Ni preguntas que no hablan de mí Hay caminos que se iluminan Cuando decides seguir aquí Si mañana cambia la historia La volveré a escribir Porque ahora sé que la fuerza Siempre vivió dentro de mí Volví a sonreír Como si fuera la primera vez Volví a abrazarme Y todo empezó a florecer Volví a sonreír Mieda volver a empezar Hoy la vida me encontró bailando Y no te pienso dejar Volví a sonreír Como si fuera la primera vez Volví a sonreír Ah, valía a sonreír Volví a sonreír Volví a sonreír Volví a sonreír",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": "Ah..."
+    },
+    {
+      "start": 4.0,
+      "end": 16.0,
+      "text": "Ah..."
+    },
+    {
+      "start": 16.0,
+      "end": 20.0,
+      "text": "Hoy pasé por la misma calle"
+    },
+    {
+      "start": 20.0,
+      "end": 23.0,
+      "text": "Donde un día me di caer"
+    },
+    {
+      "start": 23.0,
+      "end": 25.0,
+      "text": "Pensé que iba a doler mirarla"
+    },
+    {
+      "start": 25.0,
+      "end": 29.0,
+      "text": "Pero ya no fue como ayer"
+    },
+    {
+      "start": 29.0,
+      "end": 32.0,
+      "text": "Me sorprendí cantando bajito"
+    },
+    {
+      "start": 32.0,
+      "end": 36.0,
+      "text": "Sin darme cuenta empecé a reír"
+    },
+    {
+      "start": 36.0,
+      "end": 39.0,
+      "text": "Hay heridas que cierran solas"
+    },
+    {
+      "start": 39.0,
+      "end": 44.0,
+      "text": "Cuando dejas de perseguir"
+    },
+    {
+      "start": 44.0,
+      "end": 51.0,
+      "text": "Y entendí que la vida nunca se fue"
+    },
+    {
+      "start": 51.0,
+      "end": 58.0,
+      "text": "Era yo quien no podía verme"
+    },
+    {
+      "start": 58.0,
+      "end": 61.0,
+      "text": "Volví a sonreír"
+    },
+    {
+      "start": 61.0,
+      "end": 65.0,
+      "text": "Como si fuera la primera vez"
+    },
+    {
+      "start": 65.0,
+      "end": 69.0,
+      "text": "Volví a mirarme"
+    },
+    {
+      "start": 69.0,
+      "end": 72.0,
+      "text": "Sin esconder lo que llegué a hacer"
+    },
+    {
+      "start": 72.0,
+      "end": 76.0,
+      "text": "Volví a sonreír"
+    },
+    {
+      "start": 76.0,
+      "end": 81.0,
+      "text": "Sin esperar que alguien me salvara"
+    },
+    {
+      "start": 81.0,
+      "end": 87.0,
+      "text": "Hoy mi corazón baila despacio"
+    },
+    {
+      "start": 87.0,
+      "end": 95.0,
+      "text": "Porque aprendió a quedarse en casa"
+    },
+    {
+      "start": 95.0,
+      "end": 98.0,
+      "text": "Ya no cargo tantas maletas"
+    },
+    {
+      "start": 98.0,
+      "end": 102.0,
+      "text": "Ni preguntas que no hablan de mí"
+    },
+    {
+      "start": 102.0,
+      "end": 105.0,
+      "text": "Hay caminos que se iluminan"
+    },
+    {
+      "start": 105.0,
+      "end": 110.0,
+      "text": "Cuando decides seguir aquí"
+    },
+    {
+      "start": 110.0,
+      "end": 114.0,
+      "text": "Si mañana cambia la historia"
+    },
+    {
+      "start": 114.0,
+      "end": 117.0,
+      "text": "La volveré a escribir"
+    },
+    {
+      "start": 117.0,
+      "end": 121.0,
+      "text": "Porque ahora sé que la fuerza"
+    },
+    {
+      "start": 121.0,
+      "end": 124.0,
+      "text": "Siempre vivió dentro de mí"
+    },
+    {
+      "start": 124.0,
+      "end": 128.0,
+      "text": "Volví a sonreír"
+    },
+    {
+      "start": 128.0,
+      "end": 132.0,
+      "text": "Como si fuera la primera vez"
+    },
+    {
+      "start": 132.0,
+      "end": 135.0,
+      "text": "Volví a abrazarme"
+    },
+    {
+      "start": 135.0,
+      "end": 139.0,
+      "text": "Y todo empezó a florecer"
+    },
+    {
+      "start": 139.0,
+      "end": 143.0,
+      "text": "Volví a sonreír"
+    },
+    {
+      "start": 143.0,
+      "end": 147.0,
+      "text": "Mieda volver a empezar"
+    },
+    {
+      "start": 147.0,
+      "end": 150.0,
+      "text": "Hoy la vida me encontró bailando"
+    },
+    {
+      "start": 150.0,
+      "end": 155.0,
+      "text": "Y no te pienso dejar"
+    },
+    {
+      "start": 161.0,
+      "end": 165.0,
+      "text": "Volví a sonreír"
+    },
+    {
+      "start": 165.0,
+      "end": 169.0,
+      "text": "Como si fuera la primera vez"
+    },
+    {
+      "start": 169.0,
+      "end": 173.0,
+      "text": "Volví a sonreír"
+    },
+    {
+      "start": 173.0,
+      "end": 181.0,
+      "text": "Ah, valía a sonreír"
+    },
+    {
+      "start": 181.0,
+      "end": 187.0,
+      "text": "Volví a sonreír"
+    },
+    {
+      "start": 187.0,
+      "end": 192.0,
+      "text": "Volví a sonreír"
+    },
+    {
+      "start": 192.0,
+      "end": 196.0,
+      "text": "Volví a sonreír"
+    }
+  ],
+  "moment": "Pasaste por la misma calle donde un día caíste. Ibas preparada para que doliera. No dolió. Y antes de que pudieras procesarlo, ya estabas cantando bajito.",
+  "sintiendo": "Habías aprendido a rodear ciertos lugares. Ciertas canciones. Ciertos nombres. Como si el dolor todavía viviera ahí y pudiera alcanzarte si te acercabas demasiado.\n\nHoy pasaste de largo. Y el dolor no estaba.\n\nNo lo decidiste. No fue trabajo. Tu cuerpo lo supo antes que tú. Ya estabas cantando bajito cuando te diste cuenta de que habías sanado.\n\nSanaste sin fecha, sin decisión, sin que nadie te avisara.",
+  "intencion": "Existe para el día en que descubres que sanaste — no porque lo decidiste, sino porque tu cuerpo ya lo sabía antes que tú.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Volví a Sonreír",
+  "frases_clave_editoriales": [
+    "Hoy pasé por la misma calle donde un día me di caer",
+    "Me sorprendí cantando bajito, sin darme cuenta empecé a reír",
+    "Volví a sonreír como si fuera la primera vez",
+    "Era yo quien no podía verme"
+  ],
+  "nota_mapeo": "Alta coincidencia con álbum Vuelvo a sentir la vida o Volví a escucharme. Posibles tracks: 'Volví a sonreír' (si existe), 'Vuelvo a sentir la vida'.",
+  "estado_editorial": "aprobado",
+  "recognition": "Sanaste sin fecha, sin decisión, sin que nadie te avisara.",
+  "searchPhrases": [
+    "pasé por el lugar donde todo pasó y no me dolió",
+    "ya no me duele pensar en él y eso me sorprendió",
+    "música para cuando descubres que ya lo superaste sin darte cuenta",
+    "canción para cuando vuelves a un lugar que antes dolía",
+    "me di cuenta que sanó sola sin que yo hiciera nada",
+    "ya no evito esa calle y no sé exactamente cuándo cambió eso",
+    "música para cuando el pasado ya no tiene el mismo peso",
+    "empecé a cantar una canción que me recordaba a él y no lloré",
+    "ya no lo extraño y eso me sorprendió",
+    "canción para cuando te sorprendes estando bien",
+    "me di cuenta que me estaba riendo y hacía mucho que no lo hacía",
+    "música para cuando el duelo terminó sin que lo sintieras terminar",
+    "ya no tengo que evitar nada"
+  ],
+  "semanticTags": "sanar sin saberlo, descubrimiento involuntario, lugar cargado de memoria, ya no duele, sorpresa de estar bien, post-duelo, cuerpo que sana antes que la mente, no fue una decisión, heridas que cierran solas, volver a verse, alegría inesperada",
+  "audioUrl": "audio/volvi-a-sonreir.mp3"
+}

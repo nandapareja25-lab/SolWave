@@ -1,0 +1,104 @@
+{
+  "archivo_original": "Cada Paso Cuenta.mp3",
+  "nombre_limpio": "Cada Paso Cuenta",
+  "duracion": "3:23",
+  "bpm": 99,
+  "tonalidad": "A menor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 200,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "crecimiento",
+  "emociones_secundarias": [
+    "paz / calma",
+    "alegría"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "crecimiento",
+    "autoestima",
+    "proceso",
+    "autoconocimiento",
+    "intenso",
+    "tonalidad oscura",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "A veces quería llegar sin aprender a caminar Quería saltarme el camino sin mirar todo lo demás Pero la vida me enseñó que no hay prisa cuando vas porque hasta el paso más pequeño Te puede cambiar y ahora sé que todo valió la pena Cada paso cuenta, cada sueño también Aunque el camino sea largo, no dejes de querer Cada paso cuenta, mírame, sonreí porque lo mejor de esta historia Toda y está por venir Hoy disfruto cada instante, cada abrazo, cada canción porque entendí que la felicidad no tiene comparación No me importa cuánto falte, sí aprendí a disfrutar Que la meta es importante, pero más no es caminar Cada paso cuenta, no lo vayas a olvidar Las cosas más bonitas, se cocinarán despacito al andar Cada paso cuenta, y hoy lo quiero celebrar Que la vida no se mide por llegar Se mide por todo lo que aprendiste al vargar La vida no se mide Cada paso cuenta"
+  ],
+  "letra_completa": "A veces quería llegar sin aprender a caminar Quería saltarme el camino sin mirar todo lo demás Pero la vida me enseñó que no hay prisa cuando vas porque hasta el paso más pequeño Te puede cambiar y ahora sé que todo valió la pena Cada paso cuenta, cada sueño también Aunque el camino sea largo, no dejes de querer Cada paso cuenta, mírame, sonreí porque lo mejor de esta historia Toda y está por venir Hoy disfruto cada instante, cada abrazo, cada canción porque entendí que la felicidad no tiene comparación No me importa cuánto falte, sí aprendí a disfrutar Que la meta es importante, pero más no es caminar Cada paso cuenta, no lo vayas a olvidar Las cosas más bonitas, se cocinarán despacito al andar Cada paso cuenta, y hoy lo quiero celebrar Que la vida no se mide por llegar Se mide por todo lo que aprendiste al vargar La vida no se mide Cada paso cuenta",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 24.0,
+      "text": "A veces quería llegar sin aprender a caminar Quería saltarme el camino sin mirar todo lo demás"
+    },
+    {
+      "start": 24.0,
+      "end": 35.0,
+      "text": "Pero la vida me enseñó que no hay prisa cuando vas porque hasta el paso más pequeño"
+    },
+    {
+      "start": 35.0,
+      "end": 55.0,
+      "text": "Te puede cambiar y ahora sé que todo valió la pena Cada paso cuenta, cada sueño también"
+    },
+    {
+      "start": 55.0,
+      "end": 75.0,
+      "text": "Aunque el camino sea largo, no dejes de querer Cada paso cuenta, mírame, sonreí porque lo mejor de esta historia"
+    },
+    {
+      "start": 75.0,
+      "end": 92.0,
+      "text": "Toda y está por venir"
+    },
+    {
+      "start": 92.0,
+      "end": 108.0,
+      "text": "Hoy disfruto cada instante, cada abrazo, cada canción porque entendí que la felicidad no tiene comparación"
+    },
+    {
+      "start": 108.0,
+      "end": 123.0,
+      "text": "No me importa cuánto falte, sí aprendí a disfrutar Que la meta es importante, pero más no es caminar"
+    },
+    {
+      "start": 123.0,
+      "end": 137.0,
+      "text": "Cada paso cuenta, no lo vayas a olvidar Las cosas más bonitas, se cocinarán despacito al andar"
+    },
+    {
+      "start": 137.0,
+      "end": 151.0,
+      "text": "Cada paso cuenta, y hoy lo quiero celebrar Que la vida no se mide por llegar"
+    },
+    {
+      "start": 151.0,
+      "end": 160.0,
+      "text": "Se mide por todo lo que aprendiste al vargar"
+    },
+    {
+      "start": 167.0,
+      "end": 187.0,
+      "text": "La vida no se mide"
+    },
+    {
+      "start": 187.0,
+      "end": 202.0,
+      "text": "Cada paso cuenta"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

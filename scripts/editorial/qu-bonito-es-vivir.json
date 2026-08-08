@@ -1,0 +1,291 @@
+{
+  "archivo_original": "¡Qué bonito es vivir!.mp3",
+  "nombre_limpio": "¡Qué bonito es vivir!",
+  "duracion": "4:04",
+  "bpm": 103,
+  "tonalidad": "G mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 199,
+  "genero_detectado": "Dancehall / Pop Latino",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Música Mira cómo da la vuelta Lo que ayer hizo sufrir Hoy le doy gracias al cielo Qué bonito es vivir No hay camino sin tropiezos Ni victoria sin sudor Pero cuando el alma baila Y todo sabe mucho mejor Traigan las contres Que esto apenas comenzó Qué bonito es vivir Cuando aprendes a sonreír Aunque el viento sople fuerte No te dejes confundir Qué bonito es vivir Con el pecho y el tambor Que la vida se selarra Con los pies y el corazón Hoy levanto mi copa Por la gente que aquí está Por los que nunca se rinden Y siempre vuelven a empezar Que no falté una sonrisa Ni una mano que estrechar Porque el mejor de los regalos Es tener con quién cantar Que vuelve a vivir Que no deje de sonar Mientras sigues esta orquesta Siempre habrá un motivo más Qué bonito es vivir Y lo vuelvo a repetir Lo vine solo a pasar la vida Vine a disfrutarlas hasta el fin Pregun, piano Piano, baby Qué hablen esos meteles Que suenen las conbras Todo el mundo con las manos arriba Una vuelta más Eso Qué se cuye Qué se cuye Qué bonito Qué bonito Qué bonito Qué bonito Tamiya nit"
+  ],
+  "letra_completa": "Música Mira cómo da la vuelta Lo que ayer hizo sufrir Hoy le doy gracias al cielo Qué bonito es vivir No hay camino sin tropiezos Ni victoria sin sudor Pero cuando el alma baila Y todo sabe mucho mejor Traigan las contres Que esto apenas comenzó Qué bonito es vivir Cuando aprendes a sonreír Aunque el viento sople fuerte No te dejes confundir Qué bonito es vivir Con el pecho y el tambor Que la vida se selarra Con los pies y el corazón Hoy levanto mi copa Por la gente que aquí está Por los que nunca se rinden Y siempre vuelven a empezar Que no falté una sonrisa Ni una mano que estrechar Porque el mejor de los regalos Es tener con quién cantar Que vuelve a vivir Que no deje de sonar Mientras sigues esta orquesta Siempre habrá un motivo más Qué bonito es vivir Y lo vuelvo a repetir Lo vine solo a pasar la vida Vine a disfrutarlas hasta el fin Pregun, piano Piano, baby Qué hablen esos meteles Que suenen las conbras Todo el mundo con las manos arriba Una vuelta más Eso Qué se cuye Qué se cuye Qué bonito Qué bonito Qué bonito Qué bonito Tamiya nit",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 17.56,
+      "text": "Música"
+    },
+    {
+      "start": 17.56,
+      "end": 22.16,
+      "text": "Mira cómo da la vuelta"
+    },
+    {
+      "start": 22.16,
+      "end": 26.8,
+      "text": "Lo que ayer hizo sufrir"
+    },
+    {
+      "start": 26.8,
+      "end": 31.36,
+      "text": "Hoy le doy gracias al cielo"
+    },
+    {
+      "start": 31.36,
+      "end": 36.04,
+      "text": "Qué bonito es vivir"
+    },
+    {
+      "start": 36.04,
+      "end": 40.68,
+      "text": "No hay camino sin tropiezos"
+    },
+    {
+      "start": 40.68,
+      "end": 45.36,
+      "text": "Ni victoria sin sudor"
+    },
+    {
+      "start": 45.36,
+      "end": 49.68,
+      "text": "Pero cuando el alma baila"
+    },
+    {
+      "start": 49.68,
+      "end": 54.84,
+      "text": "Y todo sabe mucho mejor"
+    },
+    {
+      "start": 55.0,
+      "end": 58.76,
+      "text": "Traigan las contres"
+    },
+    {
+      "start": 58.76,
+      "end": 64.0,
+      "text": "Que esto apenas comenzó"
+    },
+    {
+      "start": 64.0,
+      "end": 67.52,
+      "text": "Qué bonito es vivir"
+    },
+    {
+      "start": 67.52,
+      "end": 73.28,
+      "text": "Cuando aprendes a sonreír"
+    },
+    {
+      "start": 73.28,
+      "end": 77.48,
+      "text": "Aunque el viento sople fuerte"
+    },
+    {
+      "start": 77.48,
+      "end": 82.28,
+      "text": "No te dejes confundir"
+    },
+    {
+      "start": 82.28,
+      "end": 84.48,
+      "text": "Qué bonito es vivir"
+    },
+    {
+      "start": 84.48,
+      "end": 87.16,
+      "text": "Con el pecho y el tambor"
+    },
+    {
+      "start": 87.16,
+      "end": 91.16,
+      "text": "Que la vida se selarra"
+    },
+    {
+      "start": 91.16,
+      "end": 95.64,
+      "text": "Con los pies y el corazón"
+    },
+    {
+      "start": 103.48,
+      "end": 107.44,
+      "text": "Hoy levanto mi copa"
+    },
+    {
+      "start": 107.44,
+      "end": 110.76,
+      "text": "Por la gente que aquí está"
+    },
+    {
+      "start": 112.76,
+      "end": 116.68,
+      "text": "Por los que nunca se rinden"
+    },
+    {
+      "start": 116.68,
+      "end": 120.96,
+      "text": "Y siempre vuelven a empezar"
+    },
+    {
+      "start": 121.96,
+      "end": 126.0,
+      "text": "Que no falté una sonrisa"
+    },
+    {
+      "start": 126.0,
+      "end": 130.4,
+      "text": "Ni una mano que estrechar"
+    },
+    {
+      "start": 130.4,
+      "end": 135.28,
+      "text": "Porque el mejor de los regalos"
+    },
+    {
+      "start": 135.28,
+      "end": 140.28,
+      "text": "Es tener con quién cantar"
+    },
+    {
+      "start": 140.28,
+      "end": 142.96,
+      "text": "Que vuelve a vivir"
+    },
+    {
+      "start": 142.96,
+      "end": 145.24,
+      "text": "Que no deje de sonar"
+    },
+    {
+      "start": 145.24,
+      "end": 149.32,
+      "text": "Mientras sigues esta orquesta"
+    },
+    {
+      "start": 149.32,
+      "end": 154.2,
+      "text": "Siempre habrá un motivo más"
+    },
+    {
+      "start": 154.2,
+      "end": 156.84,
+      "text": "Qué bonito es vivir"
+    },
+    {
+      "start": 156.84,
+      "end": 158.84,
+      "text": "Y lo vuelvo a repetir"
+    },
+    {
+      "start": 158.84,
+      "end": 162.96,
+      "text": "Lo vine solo a pasar la vida"
+    },
+    {
+      "start": 162.96,
+      "end": 168.2,
+      "text": "Vine a disfrutarlas hasta el fin"
+    },
+    {
+      "start": 170.76,
+      "end": 174.04,
+      "text": "Pregun, piano"
+    },
+    {
+      "start": 177.64,
+      "end": 180.56,
+      "text": "Piano, baby"
+    },
+    {
+      "start": 183.44,
+      "end": 187.0,
+      "text": "Qué hablen esos meteles"
+    },
+    {
+      "start": 187.0,
+      "end": 189.32,
+      "text": "Que suenen las conbras"
+    },
+    {
+      "start": 189.32,
+      "end": 193.64,
+      "text": "Todo el mundo con las manos arriba"
+    },
+    {
+      "start": 193.64,
+      "end": 196.64,
+      "text": "Una vuelta más"
+    },
+    {
+      "start": 197.4,
+      "end": 199.92,
+      "text": "Eso"
+    },
+    {
+      "start": 199.92,
+      "end": 204.72,
+      "text": "Qué se cuye"
+    },
+    {
+      "start": 205.12,
+      "end": 209.52,
+      "text": "Qué se cuye"
+    },
+    {
+      "start": 209.52,
+      "end": 213.32,
+      "text": "Qué bonito"
+    },
+    {
+      "start": 218.56,
+      "end": 222.08,
+      "text": "Qué bonito"
+    },
+    {
+      "start": 222.08,
+      "end": 224.56,
+      "text": "Qué bonito"
+    },
+    {
+      "start": 224.56,
+      "end": 226.4,
+      "text": "Qué bonito"
+    },
+    {
+      "start": 226.4,
+      "end": 255.38,
+      "text": "Tamiya"
+    },
+    {
+      "start": 255.38,
+      "end": 255.88,
+      "text": "nit"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

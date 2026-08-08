@@ -1,0 +1,230 @@
+{
+  "archivo_original": "Volvió a gustarme la vida.mp3",
+  "nombre_limpio": "Volvió a gustarme la vida",
+  "duracion": "3:12",
+  "bpm": 99,
+  "tonalidad": "G menor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 186,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "alegría",
+  "emociones_secundarias": [
+    "crecimiento",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "alegría",
+    "celebración",
+    "baile",
+    "retorno",
+    "intenso",
+    "tonalidad oscura",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "SILENCIO Hoy abrí la ventana, temprano Entro el aire y cambio el lugar La taza de café entre mis manos Ya no sabía igual Pasó un chico silbando en la esquina Y sin pensarlo empecé a seguir Me di cuenta de algo sencillo Volvi a gustarme vivir Volvi a gustarme la vida Sin hacer mucho ruido llegó No tocó la puerta dos veces Solo volvió al corazón Volvió a gustarme la vida Y qué bonito se siente así Pensé que la vida ha perdido Pero nunca se fue de mí Hoy camino mirando las gasas Las flores, la gente, el color Hace tiempo no veía el mundo Con los ojos de hoy No cambiaron todas mis dudas Todavía me queda crecer Pero entendí que la felicidad También sabía parecer Volvió a gustarme la vida Sin hacer mucho ruido llegó No tocó la puerta dos veces Solo volvió al corazón Volvió a gustarme la vida Y qué bonito se siente así Pensé que la vida ha perdido Pero nunca se fue de mí Si mañana vuelve la lluvia Ya no le voy a tenerte amor Porque ahora conozco el camino De regreso al sol"
+  ],
+  "letra_completa": "SILENCIO Hoy abrí la ventana, temprano Entro el aire y cambio el lugar La taza de café entre mis manos Ya no sabía igual Pasó un chico silbando en la esquina Y sin pensarlo empecé a seguir Me di cuenta de algo sencillo Volvi a gustarme vivir Volvi a gustarme la vida Sin hacer mucho ruido llegó No tocó la puerta dos veces Solo volvió al corazón Volvió a gustarme la vida Y qué bonito se siente así Pensé que la vida ha perdido Pero nunca se fue de mí Hoy camino mirando las gasas Las flores, la gente, el color Hace tiempo no veía el mundo Con los ojos de hoy No cambiaron todas mis dudas Todavía me queda crecer Pero entendí que la felicidad También sabía parecer Volvió a gustarme la vida Sin hacer mucho ruido llegó No tocó la puerta dos veces Solo volvió al corazón Volvió a gustarme la vida Y qué bonito se siente así Pensé que la vida ha perdido Pero nunca se fue de mí Si mañana vuelve la lluvia Ya no le voy a tenerte amor Porque ahora conozco el camino De regreso al sol",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 11.0,
+      "text": "SILENCIO"
+    },
+    {
+      "start": 11.0,
+      "end": 16.0,
+      "text": "Hoy abrí la ventana, temprano"
+    },
+    {
+      "start": 16.0,
+      "end": 21.0,
+      "text": "Entro el aire y cambio el lugar"
+    },
+    {
+      "start": 21.0,
+      "end": 26.0,
+      "text": "La taza de café entre mis manos"
+    },
+    {
+      "start": 26.0,
+      "end": 29.0,
+      "text": "Ya no sabía igual"
+    },
+    {
+      "start": 30.0,
+      "end": 34.0,
+      "text": "Pasó un chico silbando en la esquina"
+    },
+    {
+      "start": 35.0,
+      "end": 39.0,
+      "text": "Y sin pensarlo empecé a seguir"
+    },
+    {
+      "start": 41.0,
+      "end": 44.0,
+      "text": "Me di cuenta de algo sencillo"
+    },
+    {
+      "start": 46.0,
+      "end": 48.0,
+      "text": "Volvi a gustarme vivir"
+    },
+    {
+      "start": 48.0,
+      "end": 51.0,
+      "text": "Volvi a gustarme la vida"
+    },
+    {
+      "start": 52.0,
+      "end": 55.0,
+      "text": "Sin hacer mucho ruido llegó"
+    },
+    {
+      "start": 57.0,
+      "end": 60.0,
+      "text": "No tocó la puerta dos veces"
+    },
+    {
+      "start": 62.0,
+      "end": 66.0,
+      "text": "Solo volvió al corazón"
+    },
+    {
+      "start": 67.0,
+      "end": 70.0,
+      "text": "Volvió a gustarme la vida"
+    },
+    {
+      "start": 72.0,
+      "end": 76.0,
+      "text": "Y qué bonito se siente así"
+    },
+    {
+      "start": 77.0,
+      "end": 80.0,
+      "text": "Pensé que la vida ha perdido"
+    },
+    {
+      "start": 82.0,
+      "end": 85.0,
+      "text": "Pero nunca se fue de mí"
+    },
+    {
+      "start": 87.0,
+      "end": 90.0,
+      "text": "Hoy camino mirando las gasas"
+    },
+    {
+      "start": 91.0,
+      "end": 95.0,
+      "text": "Las flores, la gente, el color"
+    },
+    {
+      "start": 97.0,
+      "end": 101.0,
+      "text": "Hace tiempo no veía el mundo"
+    },
+    {
+      "start": 102.0,
+      "end": 105.0,
+      "text": "Con los ojos de hoy"
+    },
+    {
+      "start": 106.0,
+      "end": 110.0,
+      "text": "No cambiaron todas mis dudas"
+    },
+    {
+      "start": 111.0,
+      "end": 115.0,
+      "text": "Todavía me queda crecer"
+    },
+    {
+      "start": 116.0,
+      "end": 119.0,
+      "text": "Pero entendí que la felicidad"
+    },
+    {
+      "start": 122.0,
+      "end": 124.0,
+      "text": "También sabía parecer"
+    },
+    {
+      "start": 124.0,
+      "end": 127.0,
+      "text": "Volvió a gustarme la vida"
+    },
+    {
+      "start": 129.0,
+      "end": 132.0,
+      "text": "Sin hacer mucho ruido llegó"
+    },
+    {
+      "start": 134.0,
+      "end": 137.0,
+      "text": "No tocó la puerta dos veces"
+    },
+    {
+      "start": 138.0,
+      "end": 142.0,
+      "text": "Solo volvió al corazón"
+    },
+    {
+      "start": 143.0,
+      "end": 146.0,
+      "text": "Volvió a gustarme la vida"
+    },
+    {
+      "start": 148.0,
+      "end": 152.0,
+      "text": "Y qué bonito se siente así"
+    },
+    {
+      "start": 153.0,
+      "end": 156.0,
+      "text": "Pensé que la vida ha perdido"
+    },
+    {
+      "start": 158.0,
+      "end": 161.0,
+      "text": "Pero nunca se fue de mí"
+    },
+    {
+      "start": 162.0,
+      "end": 166.0,
+      "text": "Si mañana vuelve la lluvia"
+    },
+    {
+      "start": 167.0,
+      "end": 171.0,
+      "text": "Ya no le voy a tenerte amor"
+    },
+    {
+      "start": 172.0,
+      "end": 176.0,
+      "text": "Porque ahora conozco el camino"
+    },
+    {
+      "start": 177.0,
+      "end": 180.0,
+      "text": "De regreso al sol"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

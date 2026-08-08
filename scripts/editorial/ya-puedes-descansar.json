@@ -1,0 +1,240 @@
+{
+  "archivo_original": "Ya+Puedes+Descansar.mp3",
+  "nombre_limpio": "Ya Puedes Descansar",
+  "duracion": "2:53",
+  "bpm": 83,
+  "tonalidad": "A menor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "paz / calma",
+  "emociones_secundarias": [
+    "crecimiento",
+    "alegría",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "nuevo comienzo",
+    "silencio",
+    "despertar",
+    "fe",
+    "florecer",
+    "hoy"
+  ],
+  "frases_clave": [
+    "Abro los ojos sin pedir respuestas, la mañana no tiene prisa por hablar, Algo pequeño cambia por dentro Aunque todavía no lo pueda nombrar No hace falta correr detrás del tiempo Cada paso también sabe llegar Todo empieza hoy Aunque todavía no lo vea Ya puedo sentir que algo va a florecer Todo empieza hoy Aunque todavía no lo vea Ya no tengo miedo de volver a creer A veces el silencio construye caminos Que los ojos todavía no alcanzan a mirar Lo que hoy parece quieto También está aprendiendo a despertar Ya no pegueo contra las horas Aprendí que todo encuentra su lugar Todo empieza hoy Aunque todavía no lo vea Ya puedo sentir que algo va a florecer Todo empieza hoy Aunque todavía no lo vea Ya no tengo miedo de volver a creer Ya puedes descansar Lo que sembras te sigue Ya puedes descansar La vida también trabaja en silencio Todo empieza hoy Aunque todavía no lo vea Cada latido me invita a confiar Todo empieza hoy Aunque todavía no lo vea Lo mejor de mi historia ya quiere empezar Todo empieza hoy Aunque todavía no lo vea Aunque todavía no lo vea",
+    "Eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh"
+  ],
+  "letra_completa": "Eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh. Abro los ojos sin pedir respuestas, la mañana no tiene prisa por hablar, Algo pequeño cambia por dentro Aunque todavía no lo pueda nombrar No hace falta correr detrás del tiempo Cada paso también sabe llegar Todo empieza hoy Aunque todavía no lo vea Ya puedo sentir que algo va a florecer Todo empieza hoy Aunque todavía no lo vea Ya no tengo miedo de volver a creer A veces el silencio construye caminos Que los ojos todavía no alcanzan a mirar Lo que hoy parece quieto También está aprendiendo a despertar Ya no pegueo contra las horas Aprendí que todo encuentra su lugar Todo empieza hoy Aunque todavía no lo vea Ya puedo sentir que algo va a florecer Todo empieza hoy Aunque todavía no lo vea Ya no tengo miedo de volver a creer Ya puedes descansar Lo que sembras te sigue Ya puedes descansar La vida también trabaja en silencio Todo empieza hoy Aunque todavía no lo vea Cada latido me invita a confiar Todo empieza hoy Aunque todavía no lo vea Lo mejor de mi historia ya quiere empezar Todo empieza hoy Aunque todavía no lo vea Aunque todavía no lo vea",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 16.76,
+      "text": "Eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh, eh."
+    },
+    {
+      "start": 18.38,
+      "end": 26.88,
+      "text": "Abro los ojos sin pedir respuestas, la mañana no tiene prisa por hablar,"
+    },
+    {
+      "start": 30.0,
+      "end": 33.48,
+      "text": "Algo pequeño cambia por dentro"
+    },
+    {
+      "start": 35.32,
+      "end": 38.84,
+      "text": "Aunque todavía no lo pueda nombrar"
+    },
+    {
+      "start": 40.32,
+      "end": 43.92,
+      "text": "No hace falta correr detrás del tiempo"
+    },
+    {
+      "start": 43.92,
+      "end": 48.24,
+      "text": "Cada paso también sabe llegar"
+    },
+    {
+      "start": 49.12,
+      "end": 51.72,
+      "text": "Todo empieza hoy"
+    },
+    {
+      "start": 51.72,
+      "end": 54.16,
+      "text": "Aunque todavía no lo vea"
+    },
+    {
+      "start": 54.16,
+      "end": 57.72,
+      "text": "Ya puedo sentir que algo va a florecer"
+    },
+    {
+      "start": 57.84,
+      "end": 59.6,
+      "text": "Todo empieza hoy"
+    },
+    {
+      "start": 59.6,
+      "end": 62.68,
+      "text": "Aunque todavía no lo vea"
+    },
+    {
+      "start": 62.68,
+      "end": 66.64,
+      "text": "Ya no tengo miedo de volver a creer"
+    },
+    {
+      "start": 68.56,
+      "end": 72.32,
+      "text": "A veces el silencio construye caminos"
+    },
+    {
+      "start": 72.32,
+      "end": 75.48,
+      "text": "Que los ojos todavía no alcanzan a mirar"
+    },
+    {
+      "start": 75.48,
+      "end": 77.64,
+      "text": "Lo que hoy parece quieto"
+    },
+    {
+      "start": 77.64,
+      "end": 81.08,
+      "text": "También está aprendiendo a despertar"
+    },
+    {
+      "start": 81.08,
+      "end": 83.72,
+      "text": "Ya no pegueo contra las horas"
+    },
+    {
+      "start": 83.8,
+      "end": 89.04,
+      "text": "Aprendí que todo encuentra su lugar"
+    },
+    {
+      "start": 89.04,
+      "end": 91.8,
+      "text": "Todo empieza hoy"
+    },
+    {
+      "start": 91.8,
+      "end": 94.28,
+      "text": "Aunque todavía no lo vea"
+    },
+    {
+      "start": 94.28,
+      "end": 97.84,
+      "text": "Ya puedo sentir que algo va a florecer"
+    },
+    {
+      "start": 97.84,
+      "end": 99.68,
+      "text": "Todo empieza hoy"
+    },
+    {
+      "start": 99.68,
+      "end": 102.8,
+      "text": "Aunque todavía no lo vea"
+    },
+    {
+      "start": 102.8,
+      "end": 106.8,
+      "text": "Ya no tengo miedo de volver a creer"
+    },
+    {
+      "start": 107.8,
+      "end": 113.52,
+      "text": "Ya puedes descansar"
+    },
+    {
+      "start": 113.52,
+      "end": 119.52,
+      "text": "Lo que sembras te sigue"
+    },
+    {
+      "start": 119.52,
+      "end": 124.52,
+      "text": "Ya puedes descansar"
+    },
+    {
+      "start": 124.52,
+      "end": 128.52,
+      "text": "La vida también trabaja en silencio"
+    },
+    {
+      "start": 128.52,
+      "end": 131.12,
+      "text": "Todo empieza hoy"
+    },
+    {
+      "start": 131.12,
+      "end": 133.72,
+      "text": "Aunque todavía no lo vea"
+    },
+    {
+      "start": 133.72,
+      "end": 136.72,
+      "text": "Cada latido me invita a confiar"
+    },
+    {
+      "start": 137.64,
+      "end": 140.24,
+      "text": "Todo empieza hoy"
+    },
+    {
+      "start": 140.24,
+      "end": 142.72,
+      "text": "Aunque todavía no lo vea"
+    },
+    {
+      "start": 142.72,
+      "end": 147.72,
+      "text": "Lo mejor de mi historia ya quiere empezar"
+    },
+    {
+      "start": 148.72,
+      "end": 153.72,
+      "text": "Todo empieza hoy"
+    },
+    {
+      "start": 153.72,
+      "end": 163.72,
+      "text": "Aunque todavía no lo vea"
+    },
+    {
+      "start": 164.72,
+      "end": 169.72,
+      "text": "Aunque todavía no lo vea"
+    }
+  ],
+  "moment": "Para cuando la mañana llega en silencio y algo en ti sabe, antes de que la mente despierte, que hoy algo florece aunque todavía no puedas nombrarlo.",
+  "sintiendo": "La quietud frágil de un nuevo comienzo que todavía no hace ruido. No entusiasmo todavía. Solo la sensación suave de que algo está despertando dentro de ti.",
+  "intencion": "Para los comienzos que no anuncian. Para los días en que todavía no lo ves pero ya puedes sentirlo.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Todo Empieza Hoy",
+  "frases_clave_editoriales": [
+    "Todo empieza hoy, aunque todavía no lo vea",
+    "Ya puedo sentir que algo va a florecer",
+    "Ya no tengo miedo de volver a creer",
+    "Lo que hoy parece quieto también está aprendiendo a despertar"
+  ],
+  "nota_mapeo": "⚠️ DISCREPANCIA: el nombre del archivo es 'Ya Puedes Descansar' pero el coro de la canción dice 'Todo Empieza Hoy'. Título probable en el catálogo: 'Hoy empieza todo' (track 11 de Volví a escucharme). Confianza: alta. Verificar con la artista.",
+  "estado_editorial": "borrador — pendiente revisión",
+  "audioUrl": "audio/ya-puedes-descansar.mp3"
+}

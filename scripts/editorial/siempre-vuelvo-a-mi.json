@@ -1,0 +1,372 @@
+{
+  "archivo_original": "Siempre+vuelvo+a+mí.mp3",
+  "nombre_limpio": "Siempre vuelvo a mí",
+  "duracion": "2:34",
+  "bpm": 129,
+  "tonalidad": "Eb menor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Dancehall / Pop Latino",
+  "emocion_principal": "empoderamiento",
+  "emociones_secundarias": [
+    "crecimiento",
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "resistencia",
+    "volver a sí misma",
+    "caídas",
+    "fuerza",
+    "identidad",
+    "perseverar"
+  ],
+  "frases_clave": [
+    "Dicen que el tiempo lo cura todo Pero pregni que me curo, yo fui recogiendo pedazos pedazos Solo que el miedo nunca rompió Mire mi historia sin dar un paso atrás Abraza la serida sin mirar Hoy entendí que perde también Es otra forma de comenzar Siempre vuelvo a mí, siempre vuelvo aquí Cuando el mundo me quiera apagar Mi corazón vuelve a mi piel Siempre vuelvo a mí, siempre vuelvo a mi piel Siempre vuelvo a sentir Aunque llueva sobre mi piel Siempre vuelva sobre mi piel Siempre vuelve la manesella No persigo lo que se fue Ni las promesas que se llevo Hoy mis pasos conocen el camino Que luego un día me encontró Si me cago me vuelvo a levantar Porque aprendí a confiar No necesito un mirar sobre mi piel Siempre vuelve la manesella No persigo lo que se fue Ni las promesas que se llevo Hoy mis pasos conocen el camino Que algún día me encontró Si me cago me vuelvo a levantar Porque aprendí a confiar No necesito un mirar sobre mi piel Siempre vuelve a maneser Y se me vuelvo otra vez Cien o noche quiere vencer Siempre vuelve a maneser Siempre vuelve a maneser Siempre vuelve a maneser Y siempre vuelvo a mí Si la noche quiere vencer Siempre vuelvo a maneser Siempre vuelve a maneser Siempre vuelvo a mí Siempre vuelve a la extra We son ríos sin mirar atrás Porque entchio entre mi libertad Siempre vuelve a maneser Siempre vuelve a maneser Siempre vuelve a maneser Siempre vuelve a maneser Y siempre vuelve a l rzeczywiście Y siempre vuelve otra vez Si la noche quiere vencer Siempre vuelve a maneser Siempre vuelve o если son ríos sin mirar tras Porque ent nutrients mi libertad Siempre vuelvo a maquí y sin la noche que le vencé Siempre vuelvo a amanecer Siempre vuelvo a amanecer Siempre vuelvo a mí Siempre va a creer hoy sonríos sin mirar atrás Porque entondré en mi libertad Siempre vuelvo a maquí y sin la noche que le vencé Siempre vuelvo a amanecer"
+  ],
+  "letra_completa": "Mmm... Mmm... Dicen que el tiempo lo cura todo Pero pregni que me curo, yo fui recogiendo pedazos pedazos Solo que el miedo nunca rompió Mire mi historia sin dar un paso atrás Abraza la serida sin mirar Hoy entendí que perde también Es otra forma de comenzar Siempre vuelvo a mí, siempre vuelvo aquí Cuando el mundo me quiera apagar Mi corazón vuelve a mi piel Siempre vuelvo a mí, siempre vuelvo a mi piel Siempre vuelvo a sentir Aunque llueva sobre mi piel Siempre vuelva sobre mi piel Siempre vuelve la manesella No persigo lo que se fue Ni las promesas que se llevo Hoy mis pasos conocen el camino Que luego un día me encontró Si me cago me vuelvo a levantar Porque aprendí a confiar No necesito un mirar sobre mi piel Siempre vuelve la manesella No persigo lo que se fue Ni las promesas que se llevo Hoy mis pasos conocen el camino Que algún día me encontró Si me cago me vuelvo a levantar Porque aprendí a confiar No necesito un mirar sobre mi piel Siempre vuelve a maneser Y se me vuelvo otra vez Cien o noche quiere vencer Siempre vuelve a maneser Siempre vuelve a maneser Siempre vuelve a maneser Y siempre vuelvo a mí Si la noche quiere vencer Siempre vuelvo a maneser Siempre vuelve a maneser Siempre vuelvo a mí Siempre vuelve a la extra We son ríos sin mirar atrás Porque entchio entre mi libertad Siempre vuelve a maneser Siempre vuelve a maneser Siempre vuelve a maneser Siempre vuelve a maneser Y siempre vuelve a l rzeczywiście Y siempre vuelve otra vez Si la noche quiere vencer Siempre vuelve a maneser Siempre vuelve o если son ríos sin mirar tras Porque ent nutrients mi libertad Siempre vuelvo a maquí y sin la noche que le vencé Siempre vuelvo a amanecer Siempre vuelvo a amanecer Siempre vuelvo a mí Siempre va a creer hoy sonríos sin mirar atrás Porque entondré en mi libertad Siempre vuelvo a maquí y sin la noche que le vencé Siempre vuelvo a amanecer",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": "Mmm..."
+    },
+    {
+      "start": 4.0,
+      "end": 8.0,
+      "text": "Mmm..."
+    },
+    {
+      "start": 8.0,
+      "end": 10.0,
+      "text": "Dicen que el tiempo lo cura todo"
+    },
+    {
+      "start": 10.0,
+      "end": 13.0,
+      "text": "Pero pregni que me curo, yo fui recogiendo pedazos pedazos"
+    },
+    {
+      "start": 13.0,
+      "end": 15.0,
+      "text": "Solo que el miedo nunca rompió"
+    },
+    {
+      "start": 15.0,
+      "end": 17.0,
+      "text": "Mire mi historia sin dar un paso atrás"
+    },
+    {
+      "start": 17.0,
+      "end": 20.0,
+      "text": "Abraza la serida sin mirar"
+    },
+    {
+      "start": 20.0,
+      "end": 22.0,
+      "text": "Hoy entendí que perde también"
+    },
+    {
+      "start": 22.0,
+      "end": 23.0,
+      "text": "Es otra forma de comenzar"
+    },
+    {
+      "start": 23.0,
+      "end": 26.0,
+      "text": "Siempre vuelvo a mí, siempre vuelvo aquí"
+    },
+    {
+      "start": 26.0,
+      "end": 28.0,
+      "text": "Cuando el mundo me quiera apagar"
+    },
+    {
+      "start": 28.0,
+      "end": 30.0,
+      "text": "Mi corazón vuelve a mi piel"
+    },
+    {
+      "start": 30.0,
+      "end": 32.0,
+      "text": "Siempre vuelvo a mí, siempre vuelvo a mi piel"
+    },
+    {
+      "start": 32.0,
+      "end": 35.0,
+      "text": "Siempre vuelvo a sentir"
+    },
+    {
+      "start": 35.0,
+      "end": 37.0,
+      "text": "Aunque llueva sobre mi piel"
+    },
+    {
+      "start": 37.0,
+      "end": 38.0,
+      "text": "Siempre vuelva sobre mi piel"
+    },
+    {
+      "start": 38.0,
+      "end": 40.0,
+      "text": "Siempre vuelve la manesella"
+    },
+    {
+      "start": 40.0,
+      "end": 42.0,
+      "text": "No persigo lo que se fue"
+    },
+    {
+      "start": 42.0,
+      "end": 45.0,
+      "text": "Ni las promesas que se llevo"
+    },
+    {
+      "start": 45.0,
+      "end": 47.0,
+      "text": "Hoy mis pasos conocen el camino"
+    },
+    {
+      "start": 47.0,
+      "end": 51.0,
+      "text": "Que luego un día me encontró"
+    },
+    {
+      "start": 51.0,
+      "end": 53.0,
+      "text": "Si me cago me vuelvo a levantar"
+    },
+    {
+      "start": 53.0,
+      "end": 54.0,
+      "text": "Porque aprendí a confiar"
+    },
+    {
+      "start": 54.0,
+      "end": 56.0,
+      "text": "No necesito un mirar sobre mi piel"
+    },
+    {
+      "start": 56.0,
+      "end": 57.0,
+      "text": "Siempre vuelve la manesella"
+    },
+    {
+      "start": 57.0,
+      "end": 60.0,
+      "text": "No persigo lo que se fue"
+    },
+    {
+      "start": 60.0,
+      "end": 62.0,
+      "text": "Ni las promesas que se llevo"
+    },
+    {
+      "start": 62.0,
+      "end": 64.0,
+      "text": "Hoy mis pasos conocen el camino"
+    },
+    {
+      "start": 64.0,
+      "end": 66.0,
+      "text": "Que algún día me encontró"
+    },
+    {
+      "start": 66.0,
+      "end": 68.0,
+      "text": "Si me cago me vuelvo a levantar"
+    },
+    {
+      "start": 68.0,
+      "end": 69.0,
+      "text": "Porque aprendí a confiar"
+    },
+    {
+      "start": 69.0,
+      "end": 71.0,
+      "text": "No necesito un mirar sobre mi piel"
+    },
+    {
+      "start": 71.0,
+      "end": 72.0,
+      "text": "Siempre vuelve a maneser"
+    },
+    {
+      "start": 72.0,
+      "end": 74.0,
+      "text": "Y se me vuelvo otra vez"
+    },
+    {
+      "start": 74.0,
+      "end": 76.0,
+      "text": "Cien o noche quiere vencer"
+    },
+    {
+      "start": 76.0,
+      "end": 78.0,
+      "text": "Siempre vuelve a maneser"
+    },
+    {
+      "start": 78.0,
+      "end": 80.0,
+      "text": "Siempre vuelve a maneser"
+    },
+    {
+      "start": 80.0,
+      "end": 82.0,
+      "text": "Siempre vuelve a maneser"
+    },
+    {
+      "start": 82.0,
+      "end": 84.0,
+      "text": "Y siempre vuelvo a mí"
+    },
+    {
+      "start": 84.0,
+      "end": 86.0,
+      "text": "Si la noche quiere vencer"
+    },
+    {
+      "start": 86.0,
+      "end": 88.0,
+      "text": "Siempre vuelvo a maneser"
+    },
+    {
+      "start": 88.0,
+      "end": 90.0,
+      "text": "Siempre vuelve a maneser"
+    },
+    {
+      "start": 90.0,
+      "end": 92.0,
+      "text": "Siempre vuelvo a mí"
+    },
+    {
+      "start": 92.0,
+      "end": 93.0,
+      "text": "Siempre vuelve a la extra"
+    },
+    {
+      "start": 93.0,
+      "end": 95.0,
+      "text": "We son ríos sin mirar atrás"
+    },
+    {
+      "start": 95.0,
+      "end": 96.0,
+      "text": "Porque entchio entre mi libertad"
+    },
+    {
+      "start": 96.0,
+      "end": 97.0,
+      "text": "Siempre vuelve a maneser"
+    },
+    {
+      "start": 97.0,
+      "end": 99.0,
+      "text": "Siempre vuelve a maneser"
+    },
+    {
+      "start": 99.0,
+      "end": 100.0,
+      "text": "Siempre vuelve a maneser"
+    },
+    {
+      "start": 100.0,
+      "end": 101.0,
+      "text": "Siempre vuelve a maneser"
+    },
+    {
+      "start": 101.0,
+      "end": 102.0,
+      "text": "Y siempre vuelve a l rzeczywiście"
+    },
+    {
+      "start": 102.0,
+      "end": 103.0,
+      "text": "Y siempre vuelve otra vez"
+    },
+    {
+      "start": 103.0,
+      "end": 104.0,
+      "text": "Si la noche quiere vencer"
+    },
+    {
+      "start": 104.0,
+      "end": 107.0,
+      "text": "Siempre vuelve a maneser"
+    },
+    {
+      "start": 107.0,
+      "end": 109.0,
+      "text": "Siempre vuelve o если son ríos sin mirar tras"
+    },
+    {
+      "start": 109.0,
+      "end": 112.0,
+      "text": "Porque ent nutrients mi libertad"
+    },
+    {
+      "start": 116.0,
+      "end": 126.0,
+      "text": "Siempre vuelvo a maquí y sin la noche que le vencé"
+    },
+    {
+      "start": 126.0,
+      "end": 131.0,
+      "text": "Siempre vuelvo a amanecer Siempre vuelvo a amanecer"
+    },
+    {
+      "start": 131.0,
+      "end": 135.0,
+      "text": "Siempre vuelvo a mí Siempre va a creer hoy sonríos sin mirar atrás"
+    },
+    {
+      "start": 135.0,
+      "end": 141.0,
+      "text": "Porque entondré en mi libertad"
+    },
+    {
+      "start": 146.0,
+      "end": 154.0,
+      "text": "Siempre vuelvo a maquí y sin la noche que le vencé Siempre vuelvo a amanecer"
+    }
+  ],
+  "moment": "Dicen que el tiempo lo cura todo. Pero fuiste tú quien recogió los pedazos.",
+  "sintiendo": "Te han dicho que el tiempo cura. Y a veces parece que sí — pero algo no cuadra. Porque recuerdas haberte levantado. Recuerdas haber recogido cada pedazo con tus propias manos.\n\nNo fue el tiempo. Fuiste tú. Hoy entendiste que perder también es una forma de comenzar. El miedo nunca te rompió. Tus pasos ya conocen el camino de regreso.\n\nSiempre vuelves a ti.",
+  "intencion": "Existe para el momento donde te das cuenta de que no fue el tiempo el que te curó — fuiste tú, recogiendo pedazos. Y que eso, en sí mismo, es lo más fuerte que puedes ser.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Siempre Vuelvo a Mí",
+  "frases_clave_editoriales": [
+    "Siempre vuelvo a mí, siempre vuelvo aquí, cuando el mundo me quiera apagar",
+    "Si me caigo me vuelvo a levantar, porque aprendí a confiar"
+  ],
+  "nota_mapeo": "Coincidencia con álbum Volví a escucharme o Ya no vuelvo atrás. Canción de resiliencia profunda.",
+  "estado_editorial": "aprobado",
+  "recognition": "Dicen que el tiempo lo cura todo. Pero fui yo quien recogió los pedazos.",
+  "searchPhrases": [
+    "música para cuando sabes que siempre te levantas",
+    "canción para la persona que cae y siempre vuelve",
+    "me han dicho que el tiempo cura todo pero soy yo la que recojo los pedazos",
+    "música para celebrar tu propia resiliencia",
+    "canción para cuando reconoces que siempre has vuelto",
+    "siempre encuentro el camino de regreso a mí misma",
+    "música para cuando el miedo no te rompió",
+    "canción para la fuerza que no se ve pero siempre estuvo ahí",
+    "perder también es una forma de comenzar",
+    "música para los que se levantan aunque nadie lo vea",
+    "no fue el tiempo fui yo que me curé",
+    "canción para cuando reconoces tu propio patrón de resiliencia"
+  ],
+  "semanticTags": "resiliencia como patrón, yo recogí los pedazos, no fue el tiempo, siempre vuelvo a mí, el miedo no me rompió, caigo y me levanto, mis pasos conocen el camino, perder también es comenzar, agente activa de su propia recuperación, historial acumulado, siempre amanecer",
+  "audioUrl": "audio/siempre-vuelvo-a-mi.mp3"
+}

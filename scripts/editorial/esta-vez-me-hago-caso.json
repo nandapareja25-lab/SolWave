@@ -1,0 +1,228 @@
+{
+  "archivo_original": "Esta vez me hago caso.mp3",
+  "nombre_limpio": "Esta vez me hago caso",
+  "duracion": "3:12",
+  "bpm": 99,
+  "tonalidad": "Bb mayor",
+  "energia": "alta",
+  "brillo": "brillante",
+  "bitrate_kbps": 185,
+  "genero_detectado": "Pop / Pop Soul",
+  "emocion_principal": "empoderamiento",
+  "emociones_secundarias": [
+    "nostalgia"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "empoderamiento",
+    "fuerza",
+    "independencia",
+    "decisión",
+    "intenso",
+    "para bailar",
+    "nuevo comienzo"
+  ],
+  "frases_clave": [
+    "Música Hoy sonó el teléfono temprano Lo deje sonar una vez más Hay silencios que ya me enseñaron Que puertas no quiero abrir jamás Me puse el vestido que me gusta Sin pensar si iba a combinar Hace tiempo vivía preguntando Hoy me alcanza con escuchar Esta vez me hago caso Si mi corazón dice que sí Ya no cambio mis sueños Para que alguien se quede aquí Esta vez me hago caso Y que lindo se siente así Descubrí que el camino correcto Siempre empezaba dentro de mí Ya no guardo tantas palabras Por un miedo a poder molestar Mi verdad también tiene un lugar Y aprendió a respirar No hace falta que me entiendan Para saber quién quiero ser Hoy camino con paso tranquilo Sin permiso para crecer Esta vez me hago caso Si mi corazón dice que sí Ya no cambio mis sueños Para que alguien se quede aquí Esta vez me hago caso Y que lindo se siente así La mejor conversación de mi vida Hoy la tuve junto a mí Si mañana cambié el paisaje Cambiaré con el sin temor Porque ahora la voz que más escucho Es la que vive en mi interior"
+  ],
+  "letra_completa": "Música Hoy sonó el teléfono temprano Lo deje sonar una vez más Hay silencios que ya me enseñaron Que puertas no quiero abrir jamás Me puse el vestido que me gusta Sin pensar si iba a combinar Hace tiempo vivía preguntando Hoy me alcanza con escuchar Esta vez me hago caso Si mi corazón dice que sí Ya no cambio mis sueños Para que alguien se quede aquí Esta vez me hago caso Y que lindo se siente así Descubrí que el camino correcto Siempre empezaba dentro de mí Ya no guardo tantas palabras Por un miedo a poder molestar Mi verdad también tiene un lugar Y aprendió a respirar No hace falta que me entiendan Para saber quién quiero ser Hoy camino con paso tranquilo Sin permiso para crecer Esta vez me hago caso Si mi corazón dice que sí Ya no cambio mis sueños Para que alguien se quede aquí Esta vez me hago caso Y que lindo se siente así La mejor conversación de mi vida Hoy la tuve junto a mí Si mañana cambié el paisaje Cambiaré con el sin temor Porque ahora la voz que más escucho Es la que vive en mi interior",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 20.0,
+      "text": "Música"
+    },
+    {
+      "start": 20.0,
+      "end": 25.0,
+      "text": "Hoy sonó el teléfono temprano"
+    },
+    {
+      "start": 25.0,
+      "end": 29.0,
+      "text": "Lo deje sonar una vez más"
+    },
+    {
+      "start": 30.0,
+      "end": 34.0,
+      "text": "Hay silencios que ya me enseñaron"
+    },
+    {
+      "start": 34.0,
+      "end": 39.0,
+      "text": "Que puertas no quiero abrir jamás"
+    },
+    {
+      "start": 39.0,
+      "end": 44.0,
+      "text": "Me puse el vestido que me gusta"
+    },
+    {
+      "start": 44.0,
+      "end": 49.0,
+      "text": "Sin pensar si iba a combinar"
+    },
+    {
+      "start": 49.0,
+      "end": 54.0,
+      "text": "Hace tiempo vivía preguntando"
+    },
+    {
+      "start": 54.0,
+      "end": 57.0,
+      "text": "Hoy me alcanza con escuchar"
+    },
+    {
+      "start": 57.0,
+      "end": 60.0,
+      "text": "Esta vez me hago caso"
+    },
+    {
+      "start": 61.0,
+      "end": 65.0,
+      "text": "Si mi corazón dice que sí"
+    },
+    {
+      "start": 67.0,
+      "end": 72.0,
+      "text": "Ya no cambio mis sueños"
+    },
+    {
+      "start": 72.0,
+      "end": 76.0,
+      "text": "Para que alguien se quede aquí"
+    },
+    {
+      "start": 77.0,
+      "end": 80.0,
+      "text": "Esta vez me hago caso"
+    },
+    {
+      "start": 80.0,
+      "end": 85.0,
+      "text": "Y que lindo se siente así"
+    },
+    {
+      "start": 85.0,
+      "end": 89.0,
+      "text": "Descubrí que el camino correcto"
+    },
+    {
+      "start": 89.0,
+      "end": 94.0,
+      "text": "Siempre empezaba dentro de mí"
+    },
+    {
+      "start": 96.0,
+      "end": 99.0,
+      "text": "Ya no guardo tantas palabras"
+    },
+    {
+      "start": 101.0,
+      "end": 104.0,
+      "text": "Por un miedo a poder molestar"
+    },
+    {
+      "start": 105.0,
+      "end": 109.0,
+      "text": "Mi verdad también tiene un lugar"
+    },
+    {
+      "start": 109.0,
+      "end": 113.0,
+      "text": "Y aprendió a respirar"
+    },
+    {
+      "start": 115.0,
+      "end": 118.0,
+      "text": "No hace falta que me entiendan"
+    },
+    {
+      "start": 119.0,
+      "end": 123.0,
+      "text": "Para saber quién quiero ser"
+    },
+    {
+      "start": 124.0,
+      "end": 128.0,
+      "text": "Hoy camino con paso tranquilo"
+    },
+    {
+      "start": 129.0,
+      "end": 132.0,
+      "text": "Sin permiso para crecer"
+    },
+    {
+      "start": 133.0,
+      "end": 135.0,
+      "text": "Esta vez me hago caso"
+    },
+    {
+      "start": 135.0,
+      "end": 140.0,
+      "text": "Si mi corazón dice que sí"
+    },
+    {
+      "start": 142.0,
+      "end": 147.0,
+      "text": "Ya no cambio mis sueños"
+    },
+    {
+      "start": 147.0,
+      "end": 151.0,
+      "text": "Para que alguien se quede aquí"
+    },
+    {
+      "start": 152.0,
+      "end": 155.0,
+      "text": "Esta vez me hago caso"
+    },
+    {
+      "start": 156.0,
+      "end": 160.0,
+      "text": "Y que lindo se siente así"
+    },
+    {
+      "start": 160.0,
+      "end": 165.0,
+      "text": "La mejor conversación de mi vida"
+    },
+    {
+      "start": 166.0,
+      "end": 170.0,
+      "text": "Hoy la tuve junto a mí"
+    },
+    {
+      "start": 171.0,
+      "end": 175.0,
+      "text": "Si mañana cambié el paisaje"
+    },
+    {
+      "start": 175.0,
+      "end": 179.0,
+      "text": "Cambiaré con el sin temor"
+    },
+    {
+      "start": 180.0,
+      "end": 184.0,
+      "text": "Porque ahora la voz que más escucho"
+    },
+    {
+      "start": 184.0,
+      "end": 189.0,
+      "text": "Es la que vive en mi interior"
+    }
+  ],
+  "moment": "[DRAFT — revisar]",
+  "sintiendo": "[DRAFT — revisar]",
+  "intencion": "[DRAFT — revisar]",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small"
+}

@@ -1,0 +1,137 @@
+{
+  "archivo_original": "Respiro+y+Confío.mp3",
+  "nombre_limpio": "Respiro y Confío",
+  "duracion": "3:17",
+  "bpm": 92,
+  "tonalidad": "Ab menor",
+  "energia": "alta",
+  "brillo": "cálida",
+  "bitrate_kbps": 256,
+  "genero_detectado": "Pop / Canción de autor",
+  "emocion_principal": "paz / calma",
+  "emociones_secundarias": [
+    "alegría"
+  ],
+  "titulo_detectado_en_letra": [],
+  "tags": [
+    "respirar",
+    "confiar",
+    "incertidumbre",
+    "calma",
+    "fe",
+    "soltar"
+  ],
+  "frases_clave": [
+    "Oye el sol, dibuja otro color La brisa caricia al corazón Dejo que el viento marque el compás Todo encuentra siempre su lugar Las nubes aprendieron a pasar También mis miedos saben descansar Yo necesito verlo para creer Cada amanecer me enseña a renacer Respiro y todo vuelve a su lugar La calma me vuelve a abrazar Si cierro los ojos puedo sentir Que lo mejor ya viene hacia mi Respiro y todo vuelve a su lugar Mi corazón aprende a confiar El cielo me recuerda al despertar Que siempre hay luz para comenzar Hoy camino sin mirar atrás La vida conoce dónde va Cada paso florece a andar Todo llega cuando debe llegar Si la lluvia decida aparecer También las flores vuelven a crecer Hoy dejo que el río siga el mar Y descubro la paz de confiar Respiro Respiro y todo vuelve a su lugar"
+  ],
+  "letra_completa": "Oye el sol, dibuja otro color La brisa caricia al corazón Dejo que el viento marque el compás Todo encuentra siempre su lugar Las nubes aprendieron a pasar También mis miedos saben descansar Yo necesito verlo para creer Cada amanecer me enseña a renacer Respiro y todo vuelve a su lugar La calma me vuelve a abrazar Si cierro los ojos puedo sentir Que lo mejor ya viene hacia mi Respiro y todo vuelve a su lugar Mi corazón aprende a confiar El cielo me recuerda al despertar Que siempre hay luz para comenzar Hoy camino sin mirar atrás La vida conoce dónde va Cada paso florece a andar Todo llega cuando debe llegar Si la lluvia decida aparecer También las flores vuelven a crecer Hoy dejo que el río siga el mar Y descubro la paz de confiar Respiro Respiro y todo vuelve a su lugar",
+  "segmentos": [
+    {
+      "start": 0.0,
+      "end": 27.84,
+      "text": "Oye el sol, dibuja otro color La brisa caricia al corazón"
+    },
+    {
+      "start": 27.84,
+      "end": 38.56,
+      "text": "Dejo que el viento marque el compás Todo encuentra siempre su lugar"
+    },
+    {
+      "start": 38.56,
+      "end": 48.36,
+      "text": "Las nubes aprendieron a pasar También mis miedos saben descansar"
+    },
+    {
+      "start": 48.36,
+      "end": 58.64,
+      "text": "Yo necesito verlo para creer Cada amanecer me enseña a renacer"
+    },
+    {
+      "start": 58.64,
+      "end": 69.52,
+      "text": "Respiro y todo vuelve a su lugar La calma me vuelve a abrazar"
+    },
+    {
+      "start": 69.52,
+      "end": 79.68,
+      "text": "Si cierro los ojos puedo sentir Que lo mejor ya viene hacia mi"
+    },
+    {
+      "start": 79.68,
+      "end": 90.56,
+      "text": "Respiro y todo vuelve a su lugar Mi corazón aprende a confiar"
+    },
+    {
+      "start": 90.56,
+      "end": 101.92,
+      "text": "El cielo me recuerda al despertar Que siempre hay luz para comenzar"
+    },
+    {
+      "start": 101.92,
+      "end": 112.32,
+      "text": "Hoy camino sin mirar atrás La vida conoce dónde va"
+    },
+    {
+      "start": 112.32,
+      "end": 121.72,
+      "text": "Cada paso florece a andar Todo llega cuando debe llegar"
+    },
+    {
+      "start": 121.72,
+      "end": 132.16,
+      "text": "Si la lluvia decida aparecer También las flores vuelven a crecer"
+    },
+    {
+      "start": 132.16,
+      "end": 142.0,
+      "text": "Hoy dejo que el río siga el mar Y descubro la paz de confiar"
+    },
+    {
+      "start": 142.0,
+      "end": 144.0,
+      "text": "Respiro"
+    },
+    {
+      "start": 172.0,
+      "end": 195.68,
+      "text": "Respiro y todo vuelve a su lugar"
+    }
+  ],
+  "moment": "El sol dibujó otro color. Las nubes pasaron. Tú, que siempre necesitaste ver para creer, cerraste los ojos — y sentiste que lo mejor ya viene hacia ti.",
+  "sintiendo": "Llevas un tiempo necesitando ver para creer. No es debilidad — es como eres. Y cuando no ves evidencia de que todo va a estar bien, el miedo ocupa ese espacio.\n\nEsta mañana la naturaleza te mostró algo que lleva siglos mostrando: las nubes aprendieron a pasar. La lluvia hace que las flores vuelvan a crecer. El río deja que el mar lo encuentre.\n\nRespiraste. Cerraste los ojos. Y sentiste que lo mejor ya viene. No porque lo viste — porque lo soltaste.",
+  "intencion": "Existe para la persona que siempre necesitó ver para creer — y que en una mañana simple, descubrió que cerrar los ojos también es una forma de saber.",
+  "historia": null,
+  "inspirada": null,
+  "inspiradaPrivacy": "name",
+  "album_probable": null,
+  "track_probable": null,
+  "confianza_mapeo": null,
+  "notas_mapeo": null,
+  "pipeline_version": "1.0",
+  "modelo_whisper": "small",
+  "titulo_en_cancion": "Respiro y Confío",
+  "frases_clave_editoriales": [
+    "Respiro y todo vuelve a su lugar, la calma me vuelve a abrazar",
+    "Si cierro los ojos puedo sentir que lo mejor ya viene hacia mí",
+    "Descubro la paz de confiar"
+  ],
+  "nota_mapeo": "Coincidencia con álbum Las pequeñas cosas. Canción muy íntima, de respiración y quietud.",
+  "estado_editorial": "aprobado",
+  "recognition": "Respiro. Y todo vuelve a su lugar.",
+  "searchPhrases": [
+    "música para cuando no puedes controlar lo que va a pasar",
+    "canción para soltar la ansiedad de la incertidumbre",
+    "necesito confiar en el proceso pero me cuesta",
+    "música para cuando tienes miedo de lo que no sabes",
+    "canción para aprender a soltar el control",
+    "no puedo dejar de pensar en lo que puede salir mal",
+    "música para encontrar paz cuando todo es incierto",
+    "necesito creer que va a estar bien",
+    "música para cuando el miedo al futuro te paraliza",
+    "confiar cuando no tienes garantías",
+    "canción para soltar y respirar profundo",
+    "yo necesito verlo para creer canción"
+  ],
+  "semanticTags": "confiar sin ver, necesitaba evidencia, naturaleza como maestra, respirar y soltar, todo vuelve a su lugar, la calma que abraza, lo mejor ya viene, cerrar los ojos y sentir, dejar que el río llegue al mar, mis miedos aprenden a descansar, nubes que aprenden a pasar, paz como consecuencia",
+  "audioUrl": "audio/respiro-y-confio.mp3"
+}

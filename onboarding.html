@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Solwave — Tu música de momentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ── */
+:root {
+  --base:   #0E1118;
+  --s1:     #161B24;
+  --s2:     #1E242E;
+  --border: rgba(245,239,230,0.07);
+  --gold:   #F4B860;
+  --coral:  #F47C5C;
+  --teal:   #4DB6AC;
+  --text-1: #F5EFE6;
+  --text-2: #8A8070;
+  --text-3: rgba(245,239,230,0.3);
+  --serif:  'Playfair Display', Georgia, serif;
+  --sans:   'DM Sans', system-ui, sans-serif;
+  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  background: var(--base);
+  color: var(--text-1);
+  font-family: var(--sans);
+  font-weight: 300;
+  overflow: hidden;
+  user-select: none;
+}
+@media (min-width: 500px) {
+  body {
+    background: radial-gradient(ellipse 70% 50% at 50% 20%, rgba(244,184,96,0.05) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 40% at 50% 90%, rgba(244,124,92,0.03) 0%, transparent 60%),
+                var(--base);
+  }
+}
+
+/* ── SHELL ── */
+.shell {
+  width: 100%;
+  max-width: 430px;
+  height: 100%;
+  min-height: 100dvh;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER FIJO (logo + progress) ── */
+.header {
+  position: relative;
+  z-index: 10;
+  padding: 52px 20px 0;
+  flex-shrink: 0;
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.btn-back {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-2);
+  font-size: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-back:hover { background: rgba(245,239,230,0.05); }
+.btn-back.hidden { opacity: 0; pointer-events: none; }
+
+.logo {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-2);
+  letter-spacing: 0.05em;
+  flex: 1;
+  text-align: center;
+}
+.logo span { color: var(--gold); }
+
+.skip-btn {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent; border: none; cursor: pointer;
+  font-size: 12px; font-weight: 400; color: var(--text-3);
+  font-family: var(--sans);
+  letter-spacing: 0.05em;
+  -webkit-tap-highlight-color: transparent;
+}
+.skip-btn.hidden { opacity: 0; pointer-events: none; }
+
+/* Barra de progreso */
+.progress-bar {
+  height: 2px;
+  background: rgba(245,239,230,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 999px;
+  transition: width 0.4s var(--ease);
+}
+.progress-pct {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-3);
+  text-align: right;
+  margin-top: 6px;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── VIEWPORT DE PANTALLAS ── */
+.screens {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── PANTALLA BASE ── */
+.screen {
+  position: absolute;
+  inset: 0;
+  padding: 32px 20px max(28px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(40px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.screen.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+}
+.screen.exit-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen, .screen.active, .screen.exit-left { transition: opacity 0.2s ease; transform: none; }
+  .progress-fill { transition: none; }
+}
+
+/* ── PREGUNTA ── */
+.q-question {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  text-wrap: balance;
+  margin-bottom: 8px;
+}
+.q-micro {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-2);
+  margin-bottom: 28px;
+}
+
+/* Tagline footer en pantallas de pregunta */
+.q-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-3);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* ── CHIPS ── */
+.chips {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding-bottom: 4px;
+  margin-bottom: 0;
+}
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 18px;
+  height: 60px;
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+  position: relative;
+}
+.chip:active { transform: scale(0.97); }
+.chip.selected {
+  border: 1.5px solid var(--gold);
+  background: rgba(244,184,96,0.08);
+}
+/* Stagger de entrada para chips */
+@keyframes chipIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.chip-stagger {
+  animation: chipIn 0.28s var(--ease) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .chip-stagger { animation: none; }
+}
+
+.chip-icon-wrap {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(245,239,230,0.05);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.chip.selected .chip-icon-wrap { background: rgba(244,184,96,0.12); }
+.chip-icon-svg {
+  width: 16px; height: 16px;
+  color: var(--text-2);
+  transition: color 0.15s;
+}
+.chip.selected .chip-icon-svg { color: var(--gold); }
+.chip-label {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-1);
+  flex: 1;
+}
+.chip-check {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.2s, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+.chip-check svg { width: 11px; height: 11px; }
+.chip.selected .chip-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Chips 2 columnas */
+.chips-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.chip-2col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 12px;
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+  min-height: 88px;
+  position: relative;
+}
+.chip-2col:active { transform: scale(0.96); }
+.chip-2col.selected {
+  border: 1.5px solid var(--gold);
+  background: rgba(244,184,96,0.08);
+}
+.chip-2col-icon-wrap {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(245,239,230,0.05);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.chip-2col.selected .chip-2col-icon-wrap { background: rgba(244,184,96,0.12); }
+.chip-2col-icon-svg {
+  width: 18px; height: 18px;
+  color: var(--text-2);
+  transition: color 0.15s;
+}
+.chip-2col.selected .chip-2col-icon-svg { color: var(--gold); }
+.chip-2col-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-1);
+  line-height: 1.3;
+}
+.chip-2col-check {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.2s, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.chip-2col-check svg { width: 9px; height: 9px; }
+.chip-2col.selected .chip-2col-check { opacity: 1; transform: scale(1); }
+
+/* ── PANTALLA DE RECONOCIMIENTO (A5) ── */
+.recognition-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 40px;
+}
+.recog-visual {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: rgba(244,184,96,0.08);
+  border: 1px solid rgba(244,184,96,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+  margin-bottom: 28px;
+  flex-shrink: 0;
+}
+.recog-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  margin-bottom: 16px;
+  max-width: 300px;
+  text-wrap: balance;
+}
+.recog-body {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.65;
+  max-width: 310px;
+  margin-bottom: 36px;
+}
+.recog-highlight { color: var(--text-1); font-weight: 400; }
+
+/* Mini-visual del mecanismo */
+.mechanism-visual {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 36px;
+}
+.mech-card {
+  flex: 1;
+  padding: 14px 12px;
+  border-radius: 12px;
+  text-align: center;
+}
+.mech-card.before {
+  background: rgba(244,124,92,0.08);
+  border: 1px solid rgba(244,124,92,0.15);
+}
+.mech-card.after {
+  background: rgba(244,184,96,0.08);
+  border: 1px solid rgba(244,184,96,0.2);
+}
+.mech-label {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.mech-card.before .mech-label { color: rgba(244,124,92,0.6); }
+.mech-card.after .mech-label { color: rgba(244,184,96,0.6); }
+.mech-desc {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.45;
+}
+.mech-card.before .mech-desc { color: rgba(245,239,230,0.45); }
+.mech-card.after .mech-desc { color: rgba(245,239,230,0.75); }
+
+/* ── LOADING SCREEN (B) ── */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+.ring-container {
+  width: 120px; height: 120px;
+  position: relative;
+  margin-bottom: 36px;
+  flex-shrink: 0;
+}
+.ring-svg { width: 120px; height: 120px; transform: rotate(-90deg); }
+.ring-track {
+  fill: none;
+  stroke: rgba(245,239,230,0.08);
+  stroke-width: 8;
+}
+.ring-fill {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 339.3;
+  stroke-dashoffset: 339.3;
+  transition: stroke-dashoffset 0.6s var(--ease);
+}
+.ring-pct {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.loading-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-1);
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+
+.loading-steps {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 4px;
+}
+.loading-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+.loading-step.visible { opacity: 1; transform: translateY(0); }
+.step-icon {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.step-check {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.2s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.step-check.visible { opacity: 1; transform: scale(1); }
+.step-check svg { width: 10px; height: 10px; }
+.step-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin: 6px;
+  animation: pulse 1s ease-in-out infinite;
+}
+.step-pending {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(245,239,230,0.2);
+  margin: 6px;
+}
+@keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+.step-text {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  flex: 1;
+}
+.step-text.dim { color: rgba(245,239,230,0.4); }
+.step-text.active { color: var(--text-1); }
+.step-text.done { color: var(--text-2); }
+.step-highlight { color: var(--gold); font-weight: 400; }
+
+/* ── PAYWALL SCREEN (C) ── */
+.paywall-screen {
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.paywall-close {
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 20;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(14,17,24,0.7);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text-2);
+  font-size: 18px;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+/* Hero del paywall: gradiente de atardecer */
+.paywall-hero {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+  height: 148px;
+  flex-shrink: 0;
+}
+.paywall-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #0D0500 0%, #5A2000 25%, #B04800 55%, #D88020 80%, #F4B040 100%);
+}
+.paywall-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 20%, rgba(14,17,24,0.7) 100%);
+}
+.paywall-hero-content {
+  position: absolute;
+  bottom: 16px; left: 20px; right: 20px;
+}
+.paywall-hero-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244,184,96,0.7);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.paywall-hero-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-1);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.paywall-headline {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  margin-bottom: 10px;
+  text-wrap: balance;
+}
+.paywall-headline em { font-style: italic; color: var(--gold); }
+.paywall-subhead {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+/* Benefits */
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.benefit-check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(244,184,96,0.12);
+  border: 1px solid rgba(244,184,96,0.3);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.benefit-check svg { width: 9px; height: 9px; color: var(--gold); }
+.benefit-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(245,239,230,0.75);
+  line-height: 1.55;
+}
+.benefit-text strong { color: var(--text-1); font-weight: 400; }
+
+/* Plan cards */
+.plan-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.plan-card {
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1.5px solid var(--border);
+  background: var(--s1);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+.plan-card.recommended {
+  border-color: rgba(244,184,96,0.4);
+  background: linear-gradient(135deg, #1A1408, #221A0A);
+}
+.plan-card.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(244,184,96,0.15);
+}
+.plan-badge {
+  position: absolute;
+  top: -1px; right: 16px;
+  transform: translateY(-50%);
+  background: var(--gold);
+  color: var(--base);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.plan-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.plan-select {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(245,239,230,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.plan-card.selected .plan-select {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+.plan-select-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--base);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.plan-card.selected .plan-select-dot { opacity: 1; }
+
+.plan-name {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  flex: 1;
+  padding-left: 12px;
+}
+.plan-price-group { text-align: right; }
+.plan-price {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.plan-period {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-2);
+}
+.plan-savings {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--teal);
+  background: rgba(77,182,172,0.1);
+  padding: 2px 7px;
+  border-radius: 8px;
+  margin-top: 2px;
+}
+.plan-detail {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-3);
+  margin-top: 6px;
+  padding-left: 32px;
+}
+
+/* CTA fijo del paywall */
+.paywall-cta-wrap {
+  position: sticky;
+  bottom: 0;
+  padding: 16px 0 max(20px, env(safe-area-inset-bottom));
+  background: linear-gradient(to top, var(--base) 60%, transparent 100%);
+  margin-top: 8px;
+}
+.btn-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 56px;
+  background: rgba(244,184,96,0.92);
+  color: var(--base);
+  border: none;
+  border-radius: 28px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--sans);
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(244,184,96,0.25);
+  transition: transform 0.15s, box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-cta:active { transform: scale(0.97); box-shadow: 0 4px 12px rgba(244,184,96,0.2); }
+
+.paywall-trust {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-2);
+  margin-top: 10px;
+  padding-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+.paywall-skip {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-2);
+  margin-top: 6px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: underline;
+  text-decoration-color: rgba(138,128,112,0.35);
+  text-underline-offset: 2px;
+  background: none;
+  border: none;
+  width: 100%;
+  font-family: var(--sans);
+}
+
+/* ── BOTÓN CTA DE PASOS DE RECONOCIMIENTO ── */
+.btn-continue {
+  width: 100%;
+  height: 54px;
+  background: rgba(244,184,96,0.9);
+  color: var(--base);
+  border: none;
+  border-radius: 27px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: var(--sans);
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: max(24px, env(safe-area-inset-bottom));
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s, opacity 0.1s;
+  flex-shrink: 0;
+}
+.btn-continue:active { transform: scale(0.97); opacity: 0.9; }
+
+/* Header oculto en paywall */
+.shell.paywall-mode .header { display: none; }
+
+/* Paywall-screen scrollbar oculto */
+.paywall-screen::-webkit-scrollbar { display: none; }
+.paywall-screen { scrollbar-width: none; }
+
+/* Pill sticky del loading */
+.loading-done-note {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(244,184,96,0.5);
+  text-align: center;
+  margin-top: auto;
+  padding-bottom: 20px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.loading-done-note.visible { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <button class="btn-back hidden" id="btnBack" aria-label="Atrás">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 4L6 10l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="logo">Sol<span>wave</span></div>
+      <button class="skip-btn hidden" id="btnSkip">Omitir</button>
+    </div>
+    <div class="progress-bar" id="progressBar" style="display:none">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-pct" id="progressPct" style="display:none"></div>
+  </div>
+
+  <!-- PANTALLAS -->
+  <div class="screens">
+
+    <!-- PANTALLA 1: ¿Para qué momento usas música? -->
+    <div class="screen active" id="s1">
+      <p class="q-question">¿Para qué momento del día usas más la música?</p>
+      <p class="q-micro">Define el primer territorio que prepararemos para ti.</p>
+      <div class="chips" id="chips1">
+        <div class="chip" data-val="manana" onclick="selectChip(this,'s1')">
+          <div class="chip-icon-wrap"><svg class="chip-icon-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v1M3.5 5.5l.7.7M12.5 5.5l-.7.7M2 11h12M5.3 11a3 3 0 0 1 5.4 0M4 14h8"/></svg></div>
+          <span class="chip-label">Por la mañana, para empezar el día</span>
+          <div class="chip-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="chip" data-val="trabajo" onclick="selectChip(this,'s1')">
+          <div class="chip-icon-wrap"><svg class="chip-icon-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="8" rx="1.5"/><path d="M1 13h14"/></svg></div>
+          <span class="chip-label">Mientras trabajo o estudio</span>
+          <div class="chip-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="chip" data-val="relax" onclick="selectChip(this,'s1')">
+          <div class="chip-icon-wrap"><svg class="chip-icon-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13c2-5 5-8 10-8"/><path d="M3 13c0-4 2-7 7-8"/></svg></div>
+          <span class="chip-label">Para relajarme o descansar</span>
+          <div class="chip-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="chip" data-val="drive" onclick="selectChip(this,'s1')">
+          <div class="chip-icon-wrap"><svg class="chip-icon-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9.5L5 6h6l1.5 3.5"/><path d="M2 9.5h12v3H2z"/><circle cx="4.5" cy="12.5" r="1"/><circle cx="11.5" cy="12.5" r="1"/></svg></div>
+          <span class="chip-label">En el carro o moviéndome</span>
+          <div class="chip-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="chip" data-val="noche" onclick="selectChip(this,'s1')">
+          <div class="chip-icon-wrap"><svg class="chip-icon-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 10a6 6 0 1 1-7-7 4.5 4.5 0 0 0 7 7z"/></svg></div>
+          <span class="chip-label">Por las noches, para terminar el día</span>
+          <div class="chip-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        </div>
+      </div>
+      <p class="q-footer">Para las personas que sienten la música,<br>no solo la escuchan.</p>
+    </div>
+
+    <!-- PANTALLA 2: ¿Qué sientes cuando buscas música? -->
+    <div class="screen" id="s2">
+      <p class="q-question">¿Qué pasa cuando buscas música y no encuentras nada?</p>
+      <p class="q-micro">Elige la que más te describe. Sin juzgar.</p>
+      <div class="chips" id="chips2">
+        <div class="chip" data-val="tiempo" onclick="selectChip(this,'s2')">
+          <div class="chip-icon-wrap"><svg class="chip-icon-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg></div>
+          <span class="chip-label">Pierdo el tiempo y pierdo el ritmo</span>
+          <div class="chip-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="chip" data-val="playlists" onclick="selectChip(this,'s2')">
+          <div class="chip-icon-wrap"><svg class="chip-icon-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h10M3 8h10M3 11h6"/><path d="M11 10l3 1.5L11 13z" fill="currentColor" stroke="none"/></svg></div>
+          <span class="chip-label">Termino en las mismas playlists de siempre</span>
+          <div class="chip-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="chip" data-val="distrae" onclick="selectChip(this,'s2')">
+          <div class="chip-icon-wrap"><svg class="chip-icon-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12V5l8-2v7"/><circle cx="4" cy="12" r="2"/><circle cx="12" cy="10" r="2"/></svg></div>
+          <span class="chip-label">La música me distrae en vez de ayudarme</span>
+          <div class="chip-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="chip" data-val="nada" onclick="selectChip(this,'s2')">
+          <div class="chip-icon-wrap"><svg class="chip-icon-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M5 8h6"/></svg></div>
+          <span class="chip-label">Termino trabajando en silencio, sin ganas</span>
+          <div class="chip-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        </div>
+      </div>
+      <p class="q-footer">Para las personas que sienten la música,<br>no solo la escuchan.</p>
+    </div>
+
+    <!-- PANTALLA 3: RECONOCIMIENTO -->
+    <div class="screen" id="s3">
+      <div class="recognition-screen">
+        <div class="recog-visual">🎯</div>
+        <h2 class="recog-title">No es falta de gusto. Es falta de la herramienta correcta.</h2>
+        <p class="recog-body">
+          Spotify tiene millones de canciones, pero <span class="recog-highlight">está diseñado para artistas, no para momentos</span>. Buscas por emoción — y él te da géneros. Eso siempre va a fallar.
+        </p>
+        <div class="mechanism-visual">
+          <div class="mech-card before">
+            <div class="mech-label">Antes</div>
+            <div class="mech-desc">Abres Spotify. Scrolleas 8 minutos. Nada cuadra.</div>
+          </div>
+          <div class="mech-card after">
+            <div class="mech-label">Con Solwave</div>
+            <div class="mech-desc">Eliges el momento. Play. En menos de 10 segundos.</div>
+          </div>
+        </div>
+        <button class="btn-continue" onclick="nextScreen()">Continuar</button>
+      </div>
+    </div>
+
+    <!-- PANTALLA 4: ¿Cómo prefieres sentirte? -->
+    <div class="screen" id="s4">
+      <p class="q-question">¿Cómo quieres sentirte con la música?</p>
+      <p class="q-micro">Elige todas las que apliquen.</p>
+      <div class="chips-2col" id="chips4">
+        <div class="chip-2col" data-val="enfocado" onclick="selectChip2col(this,'s4')">
+          <div class="chip-2col-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="chip-2col-icon-wrap"><svg class="chip-2col-icon-svg" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="7"/><circle cx="9" cy="9" r="3"/><circle cx="9" cy="9" r="1" fill="currentColor" stroke="none"/></svg></div>
+          <span class="chip-2col-label">Enfocado y productivo</span>
+        </div>
+        <div class="chip-2col" data-val="tranquilo" onclick="selectChip2col(this,'s4')">
+          <div class="chip-2col-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="chip-2col-icon-wrap"><svg class="chip-2col-icon-svg" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c1.5-2.5 4-2.5 5.5 0s4 2.5 5.5 0M2 8c1.5-2.5 4-2.5 5.5 0s4 2.5 5.5 0"/></svg></div>
+          <span class="chip-2col-label">Tranquilo y en calma</span>
+        </div>
+        <div class="chip-2col" data-val="energia" onclick="selectChip2col(this,'s4')">
+          <div class="chip-2col-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="chip-2col-icon-wrap"><svg class="chip-2col-icon-svg" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2L5 10h6l-4 6 10-9h-6z"/></svg></div>
+          <span class="chip-2col-label">Con energía y buen mood</span>
+        </div>
+        <div class="chip-2col" data-val="presente" onclick="selectChip2col(this,'s4')">
+          <div class="chip-2col-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="chip-2col-icon-wrap"><svg class="chip-2col-icon-svg" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="3.5"/><path d="M9 2v1M9 15v1M2 9h1M15 9h1M4.1 4.1l.7.7M13.2 13.2l.7.7M4.1 13.9l.7-.7M13.2 4.8l.7-.7"/></svg></div>
+          <span class="chip-2col-label">Presente y disfrutando</span>
+        </div>
+        <div class="chip-2col" data-val="libre" onclick="selectChip2col(this,'s4')">
+          <div class="chip-2col-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="chip-2col-icon-wrap"><svg class="chip-2col-icon-svg" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14c1.5-4 4-7 10-7M3 14c0-5 2-8 7-9"/></svg></div>
+          <span class="chip-2col-label">Libre y desconectado</span>
+        </div>
+        <div class="chip-2col" data-val="creatividad" onclick="selectChip2col(this,'s4')">
+          <div class="chip-2col-check"><svg viewBox="0 0 11 8" fill="none"><path d="M1 4l3 3 6-6" stroke="#0E1118" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="chip-2col-icon-wrap"><svg class="chip-2col-icon-svg" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2l1.5 4 4 1-4 1-1.5 4-1.5-4-4-1 4-1zM3.5 13l.8 2 2 .7-2 .6-.8 2-.7-2-2-.6 2-.7zM13 3l.6 1.5 1.4.5-1.4.5L13 7l-.6-1.5L11 5l1.4-.5z"/></svg></div>
+          <span class="chip-2col-label">Creativo e inspirado</span>
+        </div>
+      </div>
+      <button class="btn-continue" id="btn4" style="opacity:0.4; pointer-events:none; margin-top:20px; flex-shrink:0; margin-bottom:max(24px, env(safe-area-inset-bottom))" onclick="nextScreen()">Continuar</button>
+    </div>
+
+    <!-- PANTALLA 5: LOADING — construyendo tu biblioteca -->
+    <div class="screen" id="s5">
+      <div class="loading-screen">
+        <div class="ring-container">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-track" cx="60" cy="60" r="54"/>
+            <circle class="ring-fill" id="ringFill" cx="60" cy="60" r="54"/>
+          </svg>
+          <div class="ring-pct" id="ringPct">0%</div>
+        </div>
+        <p class="loading-title" id="loadingTitle">Preparando tu biblioteca…</p>
+        <div class="loading-steps" id="loadingSteps">
+          <div class="loading-step" id="lstep1">
+            <div class="step-icon"><div class="step-pending" id="icon1"></div></div>
+            <div class="step-text dim" id="text1">Mapeando tu momento principal</div>
+          </div>
+          <div class="loading-step" id="lstep2">
+            <div class="step-icon"><div class="step-pending" id="icon2"></div></div>
+            <div class="step-text dim" id="text2">Seleccionando las colecciones que encajan</div>
+          </div>
+          <div class="loading-step" id="lstep3">
+            <div class="step-icon"><div class="step-pending" id="icon3"></div></div>
+            <div class="step-text dim" id="text3">Ajustando el ambiente a tu estado emocional</div>
+          </div>
+          <div class="loading-step" id="lstep4">
+            <div class="step-icon"><div class="step-pending" id="icon4"></div></div>
+            <div class="step-text dim" id="text4">Tu Mapa de Momentos está listo</div>
+          </div>
+        </div>
+        <p class="loading-done-note" id="loadingDone">Tu biblioteca está preparada ✓</p>
+      </div>
+    </div>
+
+    <!-- PANTALLA 6: PAYWALL -->
+    <div class="screen" id="s6">
+      <!-- Close fuera del scroll = siempre visible -->
+      <div style="display:flex; align-items:center; justify-content:space-between; padding: 16px 20px 0; flex-shrink:0;">
+        <a href="landing.html" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(245,239,230,0.06);border:1px solid rgba(245,239,230,0.1);border-radius:50%;color:var(--text-2);font-size:20px;text-decoration:none;line-height:1;flex-shrink:0;" aria-label="Cerrar">×</a>
+        <div style="font-family:var(--serif);font-size:15px;color:var(--text-2);letter-spacing:0.05em;">Solwave</div>
+        <div style="width:44px"></div>
+      </div>
+      <div class="paywall-screen">
+
+        <!-- Hero visual -->
+        <div class="paywall-hero">
+          <div class="paywall-hero-bg"></div>
+          <div class="paywall-hero-overlay"></div>
+          <div class="paywall-hero-content">
+            <div class="paywall-hero-label">Tu Mapa de Momentos</div>
+            <div class="paywall-hero-title" id="paywallHeroTitle">Tu biblioteca está lista</div>
+          </div>
+        </div>
+
+        <h2 class="paywall-headline">Empieza tu <em>prueba gratis</em> de 7 días.</h2>
+        <p class="paywall-subhead" id="paywallSubhead">Música organizada para tus momentos exactos del día.</p>
+
+        <!-- 3 beneficios -->
+        <div class="benefits">
+          <div class="benefit">
+            <div class="benefit-check"><svg viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#F4B860" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <span class="benefit-text"><strong>9 territorios emocionales</strong> — cada uno diseñado para un momento de tu día</span>
+          </div>
+          <div class="benefit">
+            <div class="benefit-check"><svg viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#F4B860" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <span class="benefit-text"><strong>80+ tracks originales</strong> — música exclusiva que no encontrarás en Spotify</span>
+          </div>
+          <div class="benefit">
+            <div class="benefit-check"><svg viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#F4B860" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <span class="benefit-text">Presiona play en <strong>menos de 10 segundos</strong> — sin buscar, sin scrollear</span>
+          </div>
+        </div>
+
+        <!-- Plan cards -->
+        <div class="plan-cards">
+          <!-- Plan anual (recomendado, preseleccionado) -->
+          <div class="plan-card recommended selected" id="planAnual" onclick="selectPlan('planAnual')">
+            <div class="plan-badge">MÁS POPULAR</div>
+            <div class="plan-row">
+              <div class="plan-select"><div class="plan-select-dot"></div></div>
+              <span class="plan-name">Anual</span>
+              <div class="plan-price-group">
+                <div class="plan-price">$4.99<span style="font-size:13px; color:var(--text-2)">/mes</span></div>
+                <div class="plan-savings">Ahorra $36 al año</div>
+              </div>
+            </div>
+            <div class="plan-detail">$59.99 al año · 7 días gratis</div>
+          </div>
+          <!-- Plan mensual -->
+          <div class="plan-card" id="planMensual" onclick="selectPlan('planMensual')">
+            <div class="plan-row">
+              <div class="plan-select"><div class="plan-select-dot"></div></div>
+              <span class="plan-name">Mensual</span>
+              <div class="plan-price-group">
+                <div class="plan-price">$7.99<span style="font-size:13px; color:var(--text-2)">/mes</span></div>
+              </div>
+            </div>
+            <div class="plan-detail">Facturado mensualmente · 7 días gratis</div>
+          </div>
+        </div>
+
+        <!-- CTA fijo -->
+        <div class="paywall-cta-wrap">
+          <button class="btn-cta" onclick="startTrial()">Empezar mi prueba gratis →</button>
+          <p class="paywall-trust">Sin tarjeta. Cancelas cuando quieras.</p>
+          <button class="paywall-skip" onclick="window.location.href='landing.html'">Ahora no</button>
+        </div>
+
+      </div><!-- /paywall-screen -->
+    </div>
+
+  </div><!-- /screens -->
+</div><!-- /shell -->
+
+<script>
+// ── ESTADO ──
+const state = {
+  current: 1,
+  total: 6,
+  answers: {
+    momento: null,
+    frustracion: null,
+    emociones: [],
+  }
+};
+
+const momentoLabels = {
+  manana: 'empezar el día',
+  trabajo: 'trabajar y estudiar',
+  relax: 'relajarte',
+  drive: 'el carro',
+  noche: 'cerrar el día',
+};
+
+// ── PROGRESO ──
+function updateProgress() {
+  const s = state.current;
+  const t = state.total;
+  // Ocultar barra en pantalla 1 (primera pregunta no tiene back) — mostrar desde s1
+  const bar = document.getElementById('progressBar');
+  const pct = document.getElementById('progressPct');
+  const fill = document.getElementById('progressFill');
+
+  if (s === 1) {
+    bar.style.display = 'block';
+    pct.style.display = 'block';
+  }
+  if (s >= 6) {
+    bar.style.display = 'none';
+    pct.style.display = 'none';
+    return;
+  }
+
+  // Barra empieza en 8%, no en 0%
+  const pctVal = Math.max(8, Math.round(((s - 1) / (t - 2)) * 100));
+  fill.style.width = pctVal + '%';
+  pct.textContent = pctVal + '%';
+
+  // Back: visible desde s1 (en s1 va a landing)
+  document.getElementById('btnBack').classList.toggle('hidden', s >= 6);
+  // Skip: visible en s3 y s4
+  document.getElementById('btnSkip').classList.toggle('hidden', s !== 3 && s !== 4);
+}
+
+// ── NAVEGACIÓN ──
+function goTo(n) {
+  const prev = document.getElementById('s' + state.current);
+  const next = document.getElementById('s' + n);
+  if (!next) return;
+
+  prev.classList.add('exit-left');
+  setTimeout(() => {
+    prev.classList.remove('active', 'exit-left');
+    next.classList.add('active');
+    // Stagger chips al entrar
+    const chips = next.querySelectorAll('.chip, .chip-2col');
+    chips.forEach((chip, i) => {
+      chip.classList.remove('chip-stagger');
+      chip.style.animationDelay = (i * 60) + 'ms';
+      void chip.offsetWidth; // force reflow
+      chip.classList.add('chip-stagger');
+    });
+  }, 220);
+
+  state.current = n;
+  document.querySelector('.shell').classList.toggle('paywall-mode', n === 6);
+  updateProgress();
+
+  if (n === 5) {
+    personalizePaywall();
+    setTimeout(runLoading, 300);
+  }
+}
+
+function nextScreen() { goTo(state.current + 1); }
+
+document.getElementById('btnBack').addEventListener('click', () => {
+  if (state.current <= 1) window.location.href = 'landing.html';
+  else goTo(state.current - 1);
+});
+document.getElementById('btnSkip').addEventListener('click', () => {
+  if (state.current === 3 || state.current === 4) goTo(5);
+});
+
+// ── SELECCIÓN CHIPS (single) ──
+function selectChip(chip, screenId) {
+  const chips = document.querySelectorAll('#' + screenId + ' .chip');
+  chips.forEach(c => c.classList.remove('selected'));
+  chip.classList.add('selected');
+
+  // Guardar respuesta
+  const val = chip.dataset.val;
+  if (screenId === 's1') state.answers.momento = val;
+  if (screenId === 's2') state.answers.frustracion = val;
+
+  // Auto-avance tras 320ms
+  setTimeout(() => {
+    chip.classList.remove('selected');
+    nextScreen();
+  }, 320);
+}
+
+// ── SELECCIÓN CHIPS 2-col (multi) ──
+function selectChip2col(chip, screenId) {
+  chip.classList.toggle('selected');
+  const val = chip.dataset.val;
+  const idx = state.answers.emociones.indexOf(val);
+  if (idx === -1) state.answers.emociones.push(val);
+  else state.answers.emociones.splice(idx, 1);
+
+  // Habilitar continuar
+  const btn = document.getElementById('btn4');
+  const hasSelection = state.answers.emociones.length > 0;
+  btn.style.opacity = hasSelection ? '1' : '0.4';
+  btn.style.pointerEvents = hasSelection ? 'auto' : 'none';
+}
+
+// ── PERSONALIZAR PAYWALL ──
+function personalizePaywall() {
+  const momento = state.answers.momento;
+  const label = momentoLabels[momento] || 'en tus momentos del día';
+
+  document.getElementById('paywallHeroTitle').textContent =
+    'Tu biblioteca para ' + label;
+  document.getElementById('paywallSubhead').textContent =
+    'Preparamos tu Mapa de Momentos basado en tus respuestas.';
+}
+
+// ── LOADING SEQUENCE ──
+function runLoading() {
+  const momento = state.answers.momento;
+  const momentoLabel = momentoLabels[momento] || 'tu día';
+
+  // Textos personalizados
+  const steps = [
+    { id: 1, text: 'Mapeando tu momento: <span class="step-highlight">' + (momentoLabel) + '</span>' },
+    { id: 2, text: 'Seleccionando las colecciones que encajan' },
+    { id: 3, text: 'Ajustando el ambiente a tu estado emocional' },
+    { id: 4, text: 'Tu Mapa de Momentos está <span class="step-highlight">listo</span>' },
+  ];
+
+  const circumference = 339.3;
+  const ring = document.getElementById('ringFill');
+  const pctEl = document.getElementById('ringPct');
+  let currentPct = 0;
+
+  function animateRing(targetPct, duration) {
+    const startPct = currentPct;
+    const startTime = performance.now();
+    function frame(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const pct = startPct + (targetPct - startPct) * eased;
+      ring.style.strokeDashoffset = circumference - (circumference * pct / 100);
+      pctEl.textContent = Math.round(pct) + '%';
+      if (progress < 1) requestAnimationFrame(frame);
+      else currentPct = targetPct;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function setIcon(id, state) {
+    const icon = document.getElementById('icon' + id);
+    const text = document.getElementById('text' + id);
+    const step = document.getElementById('lstep' + id);
+    step.classList.add('visible');
+    if (state === 'active') {
+      icon.outerHTML = '<div class="step-dot" id="icon' + id + '"></div>';
+      text.className = 'step-text active';
+    } else if (state === 'done') {
+      const el = document.getElementById('icon' + id);
+      if (el) {
+        el.outerHTML = '<div class="step-check visible" id="icon' + id + '"><svg viewBox="0 0 10 7" fill="none"><path d="M1 3.5l2.5 2.5 5.5-5" stroke="#0E1118" stroke-width="1.5" stroke-linecap="round"/></svg></div>';
+      }
+      text.className = 'step-text done';
+    }
+  }
+
+  // Personalizar texto del paso 1
+  document.getElementById('text1').innerHTML =
+    'Mapeando tu momento: <span class="step-highlight">' + momentoLabel + '</span>';
+
+  let t = 0;
+  const seq = [
+    () => { animateRing(15, 500);  setIcon(1, 'active'); },
+    () => { animateRing(40, 700);  setIcon(1, 'done'); setIcon(2, 'active'); },
+    () => { animateRing(65, 700);  setIcon(2, 'done'); setIcon(3, 'active'); },
+    () => { animateRing(88, 700);  setIcon(3, 'done'); setIcon(4, 'active'); },
+    () => {
+      animateRing(100, 500);
+      setIcon(4, 'done');
+      // Spring en el ring al 100%
+      setTimeout(() => {
+        ring.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+        ring.style.transform = 'rotate(-90deg) scale(1.08)';
+        setTimeout(() => { ring.style.transform = 'rotate(-90deg) scale(1)'; }, 220);
+      }, 480);
+      document.getElementById('loadingTitle').textContent = '¡Listo!';
+      document.getElementById('loadingDone').classList.add('visible');
+    },
+    () => { goTo(6); },
+  ];
+
+  const delays = [0, 1000, 2200, 3400, 4500, 5400];
+  delays.forEach((d, i) => setTimeout(seq[i], d));
+}
+
+// ── PLAN SELECTION ──
+function selectPlan(id) {
+  document.getElementById('planAnual').classList.toggle('selected', id === 'planAnual');
+  document.getElementById('planMensual').classList.toggle('selected', id === 'planMensual');
+}
+
+// ── START TRIAL ──
+function startTrial() {
+  // Placeholder: redirigir al registro real
+  alert('🎵 Redirigiendo al registro...\n(Aquí irá el link de Hotmart o el onboarding de auth)');
+}
+
+// ── INIT ──
+document.querySelectorAll('.screen').forEach(s => s.classList.remove('active', 'exit-left'));
+document.getElementById('s1').classList.add('active');
+state.current = 1;
+updateProgress();
+// Stagger chips de s1 en carga inicial
+setTimeout(() => {
+  document.querySelectorAll('#s1 .chip').forEach((chip, i) => {
+    chip.style.animationDelay = (i * 60) + 'ms';
+    chip.classList.add('chip-stagger');
+  });
+}, 100);
+</script>
+</body>
+</html>
