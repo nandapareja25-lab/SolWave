@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 
 /* ── TOKENS ── */
@@ -2214,8 +2215,21 @@ body {
         </div>
       </div>
 
-      <div class="profile-section">
-        <div class="profile-section-title">Cuenta</div>
+      <div class="profile-section" id="profile-logged-out" style="display:block">
+        <button id="btn-login" onclick="signInWithGoogle()" style="width:100%;padding:16px;background:var(--gold);border:none;border-radius:50px;color:#111;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans);display:flex;align-items:center;justify-content:center;gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#111" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/><path fill="#333" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/><path fill="#555" d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#222" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+          Entrar con Google
+        </button>
+        <div style="text-align:center;font-size:12px;color:var(--text-2);margin-top:12px">Guardá tus favoritas y pedí canciones</div>
+      </div>
+
+      <div class="profile-section" id="profile-logged-in" style="display:none">
+        <div class="profile-row">
+          <div class="profile-row-left">
+            <div class="profile-row-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#8A8070" stroke-width="1.5"><circle cx="8" cy="6" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-linecap="round"/></svg></div>
+            <div class="profile-row-label" id="profile-email" style="font-size:13px;color:var(--text-2)"></div>
+          </div>
+        </div>
         <div class="profile-row">
           <div class="profile-row-left">
             <div class="profile-row-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 1l1.3 2.6L10 4.1 8 6l.5 2.9L6 7.5 3.5 8.9 4 6 2 4.1l2.7-.5z" fill="#F4B860"/></svg></div>
@@ -2224,7 +2238,7 @@ body {
           <div class="profile-row-value" style="color:var(--gold)">Anual</div>
           <div class="profile-row-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
         </div>
-        <div class="profile-row" onclick="confirmLogout()">
+        <div class="profile-row" onclick="signOut()">
           <div class="profile-row-left">
             <div class="profile-row-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#F47C5C" stroke-width="1.5" stroke-linecap="round"><path d="M10 2h2a2 2 0 012 2v8a2 2 0 01-2 2h-2M7 11l3-3-3-3M10 8H2"/></svg></div>
             <div class="profile-row-label profile-logout">Cerrar sesión</div>
@@ -2782,10 +2796,85 @@ const state = {
   playingFullAlbum: false
 };
 
-// Persist básico (localStorage)
+// ════════════════════════════════════════
+// SUPABASE
+// ════════════════════════════════════════
+const SUPA_URL = 'https://zsbbzrlfpvgppsfrmtha.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpzYmJ6cmxmcHZncHBzZnJtdGhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxNDYxMjMsImV4cCI6MjEwMTcyMjEyM30.CHXZjXOgm98Q4568ff0VM81gxdy9iUzjq1AGMJ_oiZk';
+const supa = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+let currentUser = null;
+
+async function initAuth() {
+  const { data: { session } } = await supa.auth.getSession();
+  if (session) await onSignIn(session.user);
+
+  supa.auth.onAuthStateChange(async (event, session) => {
+    if (event === 'SIGNED_IN' && session) await onSignIn(session.user);
+    if (event === 'SIGNED_OUT') onSignOut();
+  });
+}
+
+async function onSignIn(user) {
+  currentUser = user;
+  // Crear perfil si no existe
+  await supa.from('profiles').upsert({ id: user.id, email: user.email }, { onConflict: 'id', ignoreDuplicates: true });
+  // Sincronizar favoritos desde la nube
+  const { data } = await supa.from('favorites').select('album_id, track_num').eq('user_id', user.id);
+  if (data) {
+    state.favorites = new Set(data.map(f => `${f.album_id}::${f.track_num}`));
+    saveFavs();
+  }
+  updateProfileUI();
+  renderFavScreen();
+}
+
+function onSignOut() {
+  currentUser = null;
+  updateProfileUI();
+}
+
+async function signInWithGoogle() {
+  await supa.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: window.location.origin + '/app.html' }
+  });
+}
+
+async function signOut() {
+  await supa.auth.signOut();
+  showToast('Sesión cerrada');
+}
+
+function updateProfileUI() {
+  const btnLogin = document.getElementById('btn-login');
+  const divLoggedIn = document.getElementById('profile-logged-in');
+  const divLoggedOut = document.getElementById('profile-logged-out');
+  if (!btnLogin) return;
+  if (currentUser) {
+    if (divLoggedIn) divLoggedIn.style.display = 'block';
+    if (divLoggedOut) divLoggedOut.style.display = 'none';
+    const emailEl = document.getElementById('profile-email');
+    if (emailEl) emailEl.textContent = currentUser.email;
+  } else {
+    if (divLoggedIn) divLoggedIn.style.display = 'none';
+    if (divLoggedOut) divLoggedOut.style.display = 'block';
+  }
+}
+
+// Persist básico (localStorage + Supabase si hay sesión)
 function saveFavs() { try { localStorage.setItem('sw_favs', JSON.stringify([...state.favorites])); } catch(e){} }
 function loadFavs() { try { const d = localStorage.getItem('sw_favs'); if (d) state.favorites = new Set(JSON.parse(d)); } catch(e){} }
 loadFavs();
+
+async function syncFavToCloud(albumId, trackNum, isAdding) {
+  if (!currentUser) return;
+  if (isAdding) {
+    await supa.from('favorites').upsert({ user_id: currentUser.id, album_id: albumId, track_num: trackNum }, { onConflict: 'user_id,album_id,track_num', ignoreDuplicates: true });
+  } else {
+    await supa.from('favorites').delete().eq('user_id', currentUser.id).eq('album_id', albumId).eq('track_num', trackNum);
+  }
+}
 
 // ════════════════════════════════════════
 // NAVEGACIÓN
@@ -3581,14 +3670,18 @@ function closeSongRequest() {
   document.getElementById('songRequestOverlay').classList.remove('visible');
   document.getElementById('songRequestSheet').classList.remove('visible');
 }
-function submitSongRequest() {
+async function submitSongRequest() {
   const text = document.getElementById('songRequestText').value.trim();
   if (!text) return;
-  // Guardar en localStorage para ver todas las peticiones
+  // Guardar en localStorage
   const key = 'sw_song_requests';
   const reqs = JSON.parse(localStorage.getItem(key) || '[]');
   reqs.push({ text, date: new Date().toISOString() });
   localStorage.setItem(key, JSON.stringify(reqs));
+  // Sincronizar con Supabase si hay sesión
+  if (currentUser) {
+    await supa.from('song_requests').insert({ user_id: currentUser.id, text });
+  }
   closeSongRequest();
   showToast('¡Gracias! Tu petición fue enviada 💛');
 }
@@ -3842,6 +3935,7 @@ function toggleTrackHeart(e, btn, albumId, trackNum) {
   icon.style.transform = 'scale(1.3)';
   setTimeout(() => { icon.style.transform = 'scale(1)'; }, 140);
   saveFavs();
+  syncFavToCloud(albumId, trackNum, !wasLiked);
 }
 
 function togglePlayerHeart() {
@@ -3864,6 +3958,7 @@ function togglePlayerHeart() {
   icon.style.transform = 'scale(1.3)';
   setTimeout(() => { icon.style.transform = 'scale(1)'; }, 140);
   saveFavs();
+  syncFavToCloud(state.currentAlbumId, state.currentTrackNum, !wasLiked);
 }
 
 function renderFavs() {
@@ -4148,6 +4243,9 @@ renderExploreGrid();
 
 // Default: chip de Desamor activo en Home
 document.querySelector('.emotion-chip.active').click();
+
+// Inicializar Supabase auth
+initAuth();
 
 </script>
 </body>
