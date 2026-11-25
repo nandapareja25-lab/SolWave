@@ -37,7 +37,7 @@ create type public.shipping_method_type   as enum ('standard', 'express', 'free'
 create type public.warranty_claim_status  as enum ('submitted', 'in_review', 'approved', 'rejected', 'resolved');
 create type public.warranty_resolution    as enum ('replacement', 'repair', 'refund', 'none');
 create type public.media_kind             as enum ('image', 'video');
-create type public.page_kind              as enum ('warranty', 'shipping', 'returns', 'privacy', 'terms', 'about', 'care', 'other');
+create type public.page_kind              as enum ('privacy', 'cookies', 'terms', 'site_terms', 'shipping', 'returns', 'refunds', 'warranty', 'contact', 'about', 'care', 'other');
 create type public.category_auto_rule     as enum ('new', 'sale');
 
 -- -----------------------------------------------------------------------------
@@ -48,6 +48,16 @@ returns trigger language plpgsql set search_path = '' as $$
 begin
   new.updated_at := now();
   return new;
+end $$;
+
+-- Zona horaria IANA válida (America/New_York, America/Bogota…). Se usa en checks.
+create or replace function public.is_valid_timezone(p_tz text)
+returns boolean language plpgsql immutable set search_path = '' as $$
+begin
+  perform now() at time zone p_tz;
+  return true;
+exception when others then
+  return false;
 end $$;
 
 -- -----------------------------------------------------------------------------
@@ -100,7 +110,12 @@ create table public.store_settings (
   currency           char(3) not null default 'USD' check (currency = 'USD'),
   newsletter_enabled boolean not null default false,
   testimonials_enabled boolean not null default false,
-  announcement       jsonb not null default '{}'::jsonb,  -- {"es":"...","en":"..."} barra superior opcional
+  timezone           text not null default 'America/New_York' check (public.is_valid_timezone(timezone)), -- zona del negocio (editable)
+  privacy_email      text,
+  business_address   jsonb,                      -- dirección comercial cuando corresponda
+  cookie_banner_enabled boolean not null default true,
+  privacy_response_days integer not null default 45 check (privacy_response_days between 1 and 90),   -- ⚠ revisar con abogado
+  consent_retention_months integer not null default 24 check (consent_retention_months between 1 and 120), -- ⚠ revisar con abogado
   updated_at         timestamptz not null default now(),
   updated_by         uuid references auth.users (id)
 );
@@ -144,14 +159,19 @@ create table public.exchange_rates (
 );
 
 -- -----------------------------------------------------------------------------
--- 4. Contenido editable: políticas, FAQ, testimonios, newsletter
+-- 4. Contenido editable: políticas, FAQ, testimonios
 -- -----------------------------------------------------------------------------
+-- Políticas y páginas. region_code null = general; 'US-CA', 'US-CO', 'EU'… = aviso específico por jurisdicción.
+-- El texto PUBLICADO vive en page_versions (historial inmutable, migración 5). page_translations es el borrador.
 create table public.pages (
   id           uuid primary key default gen_random_uuid(),
   kind         public.page_kind not null,
+  region_code  text check (region_code is null or region_code ~ '^[A-Z]{2}(-[A-Z0-9]{1,3})?$'),
   is_published boolean not null default false,
+  show_in_footer boolean not null default true,
   sort_order   integer not null default 0,
-  updated_at   timestamptz not null default now()
+  updated_at   timestamptz not null default now(),
+  unique nulls not distinct (kind, region_code)
 );
 create table public.page_translations (
   page_id         uuid not null references public.pages (id) on delete cascade,
@@ -194,14 +214,7 @@ create table public.testimonials (
   created_at   timestamptz not null default now()
 );
 
-create table public.newsletter_subscribers (
-  email           extensions.citext primary key,
-  locale          public.locale_code not null default 'es',
-  source          text not null default 'footer',
-  consent_at      timestamptz not null default now(),
-  unsubscribed_at timestamptz,
-  unsubscribe_token uuid not null default gen_random_uuid() unique
-);
+-- Suscripciones de marketing: ver migración 5 (marketing_subscriptions + historial de consentimiento).
 
 -- -----------------------------------------------------------------------------
 -- 5. Garantías (políticas editables)
@@ -564,8 +577,7 @@ create table public.customers (
   email              extensions.citext not null unique,
   full_name          text,
   phone_e164         text,
-  accepts_marketing  boolean not null default false,
-  marketing_consent_at timestamptz,
+  anonymized_at      timestamptz,             -- solicitud de eliminación atendida (datos fiscales conservados)
   stripe_customer_id text unique,
   instagram_handle   text,
   created_at         timestamptz not null default now(),

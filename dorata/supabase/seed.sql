@@ -75,9 +75,55 @@ select ins.id, 'es', s.name from ins join s using (code);
 insert into public.discounts (code, description, type, percent_off, first_order_only, usage_limit_per_customer, is_active)
 values ('BIENVENIDA10', 'Bienvenida: primera compra', 'percentage', 10, true, 1, false);
 
--- Página de garantía (borrador). El contenido vivo sale de warranty_policies.
-with pg as (
-  insert into public.pages (kind, is_published, sort_order) values ('warranty', false, 1) returning id
+-- Páginas legales: BORRADORES con estructura, sin texto legal inventado.
+-- Se redactan/revisan con un abogado y se PUBLICAN desde el panel (crea page_versions).
+with p (kind, slug, title, sort_order, skeleton) as (values
+  ('privacy',    'privacidad',              'Política de Privacidad',              1,
+   E'## Quiénes somos\n[Razón social, nombre comercial, contacto de privacidad]\n\n## Qué datos recogemos y para qué\n[Pedidos, entrega, soporte, garantías, obligaciones fiscales, prevención de fraude, comunicaciones autorizadas]\n\n## Con quién los compartimos\n[Stripe (pagos), transportistas, proveedores de email y hosting]\n\n## No vendemos tu información personal\n\n## Tus derechos y cómo ejercerlos\n[Formulario de privacidad · plazos · derechos por estado]\n\n## Menores de edad\n[La tienda no está dirigida a niños; no recogemos intencionalmente datos de menores]\n\n## Cambios a esta política\n\n> [REQUIERE REVISIÓN LEGAL]'),
+  ('cookies',    'cookies',                 'Política de Cookies',                 2,
+   E'## Qué son las cookies\n\n## Categorías\nEsenciales · Analíticas · Marketing · Personalización\n\n## Lista de cookies\n[Se genera automáticamente desde el panel]\n\n## Cómo cambiar tus preferencias\n[Enlace "Preferencias de privacidad"]\n\n> [REQUIERE REVISIÓN LEGAL]'),
+  ('terms',      'terminos-y-condiciones',  'Términos y Condiciones',              3, E'> [REQUIERE REVISIÓN LEGAL]'),
+  ('site_terms', 'terminos-de-uso',         'Términos de uso del sitio',           4, E'> [REQUIERE REVISIÓN LEGAL]'),
+  ('shipping',   'envios',                  'Política de Envíos',                  5, E'[Métodos, costos y tiempos se muestran desde Configuración › Envíos]\n\n> [REQUIERE REVISIÓN]'),
+  ('returns',    'cambios-y-devoluciones',  'Política de Cambios y Devoluciones',  6, E'> [REQUIERE REVISIÓN LEGAL]'),
+  ('refunds',    'reembolsos',              'Política de Reembolsos',              7, E'> [REQUIERE REVISIÓN LEGAL]'),
+  ('warranty',   'garantia',                'Garantía D''ORATA',                   8, E'[Se compone desde Configuración › Garantías: coberturas 1 año / 5 años y exclusiones]'),
+  ('contact',    'contacto',                'Información de contacto comercial',   9, E'[Razón social · correo · WhatsApp · dirección comercial cuando corresponda]')
+), ins as (
+  insert into public.pages (kind, is_published, sort_order)
+  select p.kind::public.page_kind, false, p.sort_order from p order by p.sort_order
+  returning id, kind
 )
 insert into public.page_translations (page_id, locale, slug, title, body_md)
-select pg.id, 'es', 'garantia', 'Garantía D''ORATA', '' from pg;
+select ins.id, 'es', p.slug, p.title, p.skeleton from ins join p on p.kind::public.page_kind = ins.kind;
+
+-- Banner: campaña de lanzamiento con los datos de la dueña. Creada APAGADA (se enciende en el panel).
+-- Fin: 2-dic-2026 23:59:59 en la zona horaria del negocio.
+with c as (
+  insert into public.announcement_campaigns
+    (internal_name, is_active, priority, starts_at, ends_at, timezone, style, motion, marquee_speed, link_url, link_label)
+  values ('Lanzamiento D''ORATA', false, 10,
+          timestamp '2026-11-25 00:00:00' at time zone 'America/New_York',
+          timestamp '2026-12-02 23:59:59' at time zone 'America/New_York',
+          'America/New_York', 'black', 'marquee', 40, null, '{}'::jsonb)
+  returning id
+), m as (
+  insert into public.announcement_messages (campaign_id, position) select c.id, 1 from c returning id
+)
+insert into public.announcement_message_translations (message_id, locale, text)
+select m.id, 'es', '✨ LANZAMIENTO D''ORATA — 2 DE DICIEMBRE ✨' from m;
+
+-- Inventario de almacenamiento PROPIO conocido (los de terceros se agregan al activar cada integración).
+insert into public.cookie_declarations (name, provider, category, storage, purpose, duration) values
+  ('dorata_consent', 'D''ORATA', 'essential', 'cookie',
+   '{"es":"Guarda tus preferencias de cookies y el identificador técnico del consentimiento."}', '12 meses'),
+  ('dorata_cart', 'D''ORATA', 'essential', 'local_storage',
+   '{"es":"Recuerda los productos de tu carrito en este dispositivo."}', 'Hasta vaciar el carrito'),
+  ('sb-auth-token', 'D''ORATA (Supabase)', 'essential', 'cookie',
+   '{"es":"Mantiene tu sesión iniciada si creas una cuenta."}', 'Sesión / hasta cerrar sesión');
+
+-- Integraciones de analítica/publicidad: creadas APAGADAS y sin ID.
+insert into public.tracking_integrations (provider, display_name, consent_category) values
+  ('google_analytics', 'Google Analytics 4', 'analytics'),
+  ('meta_pixel',       'Meta Pixel',         'marketing'),
+  ('tiktok_pixel',     'TikTok Pixel',       'marketing');

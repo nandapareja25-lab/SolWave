@@ -110,7 +110,7 @@ begin
   foreach t in array array[
     'customers', 'customer_addresses', 'customer_notes', 'orders', 'order_items', 'order_events',
     'shipments', 'warranty_claims', 'warranty_claim_photos', 'warranty_claim_events',
-    'authenticity_certificates', 'certificate_items', 'newsletter_subscribers'
+    'authenticity_certificates', 'certificate_items'
   ] loop
     execute format('create policy "staff all %1$s" on public.%1$I for all to authenticated using ((select public.is_staff())) with check ((select public.is_staff()))', t);
   end loop;
@@ -177,7 +177,6 @@ create policy "customer reads own claims" on public.warranty_claims
   for select to authenticated using (customer_id = (select public.current_customer_id()));
 
 -- Las notas internas, costos y eventos internos NO tienen política de cliente → invisibles.
--- Newsletter: el alta pública entra por el servidor (Turnstile + rate limit), no directo.
 
 -- Índices de soporte para las políticas
 create index customers_user on public.customers (user_id);

@@ -1,8 +1,8 @@
 # ESTADO — D'ORATA (tienda online propia)
 Última actualización: 2026-11-25 | Fase actual: 0 — Definición (arquitectura + propuesta visual)
 
-⏸️ CHECKPOINT — Última acción: arquitectura, esquema SQL probado (12/12), flujos y comparativa visual A/B/C
-entregados. / Siguiente acción exacta: que la dueña elija A, B, C o una combinación → llenar FICHA-ARTE.md
+⏸️ CHECKPOINT — Última acción: añadidos banner de anuncios (§46) y legal/privacidad (§33–45): esquema
+(70 tablas, 20/20 pruebas), maqueta funcional y docs 05/06. / Siguiente acción exacta: que la dueña elija A, B, C o una combinación → llenar FICHA-ARTE.md
 → arrancar FASE 1 (scaffold Next.js + Cloudflare, layout, navegación, home con datos semilla).
 
 ## Qué es (3 líneas)
@@ -30,6 +30,14 @@ Carrito → Checkout Stripe → Confirmación → (cuenta opcional) · y el Pane
 - Tienda sin librerías de animación (CSS + View Transitions); shadcn/Recharts solo en /admin.
 - "Nuevos" y "Ofertas" = categorías automáticas (auto_rule) por flags del producto.
 - Envíos: proveedor 'manual' hoy; interfaz lista para USPS/UPS/Shippo.
+- Banner: campañas (prioridad, periodo UTC + zona de edición) con mensajes; current_announcement() decide;
+  público no lee campañas. SSR + revalidate 60s + temporizador a next_change_at. Pausa WCAG 2.2.2.
+- Legal: borradores en page_translations → publicar crea page_versions inmutables (SHA-256, estado de
+  revisión legal). Variantes por región (region_code) para leyes estatales / internacional.
+- Cookies: modelo estricto (no esenciales OFF hasta aceptar), GPC = rechazo de marketing, registro mínimo
+  sin IP. Píxeles GA4/Meta/TikTok vía tracking_integrations (apagados), cargador condicionado al consentimiento.
+- Marketing separado: marketing_subscriptions + ledger; comprar NO suscribe. Remitentes distintos.
+- Eliminación de datos = anonymize_customer() (conserva registro fiscal).
 
 ## Dirección de arte
 - FICHA-ARTE.md: PENDIENTE (se llena al elegir). Comparativa: `dorata/direcciones-abc.html`.
@@ -44,11 +52,12 @@ Carrito → Checkout Stripe → Confirmación → (cuenta opcional) · y el Pane
 
 ## Fases
 - [x] 0 · Definición: arquitectura, esquema BD (migraciones + seed + tests), flujos, propuesta visual
-- [ ] 1 · Base: scaffold, tokens de la dirección elegida, layout, navegación, home con semilla
+- [ ] 1 · Base: scaffold, tokens de la dirección elegida, layout, navegación, home con semilla,
+        banner de anuncios, aviso de cookies + preferencias, footer legal
 - [ ] 2 · BD conectada, catálogo, producto, inventario
-- [ ] 3 · Panel administrativo
+- [ ] 3 · Panel administrativo (incl. Banner de anuncios, Legal y Privacidad, Integraciones)
 - [ ] 4 · Carrito, Stripe (finalize_paid_checkout en SQL), impuestos, envíos
-- [ ] 5 · Pedidos, clientes, garantías, certificados, emails
+- [ ] 5 · Pedidos, clientes, garantías, certificados, emails (transaccional/marketing), solicitudes de privacidad
 - [ ] 6 · Finanzas, calculadora de precio, estudio de mercado, analítica
 - [ ] 7 · SEO, auditoría de seguridad (27/61), testing, deploy, lanzamiento
 
@@ -58,6 +67,10 @@ Carrito → Checkout Stripe → Confirmación → (cuenta opcional) · y el Pane
 - Aprobar o corregir FICHA-AVATAR.md.
 - (Fase 4) Tarifas y tiempos de envío; ¿activar código BIENVENIDA10?; cuenta de Stripe.
 - (Fase 7) Comprar/conectar dorata18k.com en Cloudflare; Supabase Pro antes del lanzamiento.
+- Confirmar zona horaria del negocio (valor inicial America/New_York).
+- Revisión legal: lista de 9 puntos en docs/05-LEGAL-Y-PRIVACIDAD.md §9 (políticas en borrador).
+- ⚠ Fecha de lanzamiento 2-dic-2026 vs. plan por fases: la tienda completa no estará lista en 7 días.
+  Opción propuesta: página "próximamente" + lista de espera + banner con contador, y tienda completa después.
 
 ## Problemas conocidos
 - Ninguno en código (aún no hay app). El dev server/tsc/build se verifican desde la FASE 1.

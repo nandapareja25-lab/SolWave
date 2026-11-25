@@ -1,7 +1,7 @@
 # D'ORATA — Esquema de base de datos
 
 > Fuente de verdad: `supabase/migrations/*.sql` (aplicadas y probadas en PostgreSQL 16 local:
-> 58 tablas, 58 con RLS, 12/12 pruebas de inventario y permisos — `supabase/tests/`).
+> 70 tablas, 70 con RLS, 20/20 pruebas — inventario, permisos, banner, políticas y privacidad — `supabase/tests/`).
 
 ## Principios
 
@@ -18,8 +18,13 @@
 ```
 CONFIGURACIÓN      store_settings (pública) · business_settings (privada: tasa, márgenes, fees)
                    exchange_rates (historial de tasas COP/USD)
-CONTENIDO          pages + page_translations (garantía, envíos, privacidad…) · faq_items(+t)
-                   testimonials (solo publicados con consentimiento) · newsletter_subscribers
+CONTENIDO          pages + page_translations (borradores, con variante por región) · faq_items(+t)
+                   testimonials (solo publicados con consentimiento)
+BANNER             announcement_campaigns(+t) · announcement_messages(+t) · current_announcement()
+LEGAL              page_versions (inmutables, huella SHA-256) · policy_version_at() · policy_acceptances
+COOKIES            cookie_declarations · tracking_integrations (GA4/Meta/TikTok) · cookie_consent_records
+PRIVACIDAD         privacy_requests · privacy_request_events · anonymize_customer()
+MARKETING          marketing_subscriptions · marketing_consent_events (separado de lo transaccional)
 GARANTÍAS          warranty_policies(+t)  ← categories.default · products.override · order_items.snapshot
 CATÁLOGO           categories(+t, auto_rule new/sale) · collections(+t) · products(+t)
                    product_categories · product_collections · product_variants(+t)
@@ -102,4 +107,12 @@ OK 9  visitante: solo catálogo público (sin costos, pedidos, clientes ni márg
 OK 10 staff: opera sin ver costos ni finanzas
 OK 11 owner ve todo; un cliente no puede auto-asignarse rol
 OK 12 certificado limitado a 3 joyas
+OK A1 banner aparece/desaparece solo en las fechas exactas (tu ejemplo), con zonas horarias
+OK A2 prioridad entre campañas, rotación de varios mensajes, aviso del próximo cambio
+OK A3 contador: al llegar a cero cambia de mensaje u oculta, según configuración
+OK A4 campañas incompletas no rompen nada; el público no ve lanzamientos futuros
+OK L1 políticas: versiones inmutables y "qué versión estaba vigente en tal fecha"
+OK C1 consentimiento coherente, inmutable, respeta GPC, se purga por antigüedad
+OK P1 solicitud de privacidad con plazo automático; no se cierra sin resolución
+OK P2 eliminación: datos personales fuera, registro fiscal intacto; staff no puede
 ```
