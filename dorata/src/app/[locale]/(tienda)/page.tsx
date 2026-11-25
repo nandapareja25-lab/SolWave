@@ -9,6 +9,7 @@ import { NewsletterForm } from "@/components/tienda/NewsletterForm";
 import { newsletterLabels } from "@/components/tienda/labels";
 import { getCategories, getHome, getStoreSettings, getWarrantyPolicies } from "@/server/catalog";
 import { formatUSD } from "@/lib/money";
+import { Reveal } from "@/components/tienda/Reveal";
 
 export const revalidate = 60;
 
@@ -29,12 +30,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
+      <Reveal />
       {/* ───────── 1 · HERO (oscuro, de la opción B) ───────── */}
       <section aria-labelledby="hero-title" className="velvet overflow-hidden">
         <div className="mx-auto grid max-w-6xl md:grid-cols-2 md:items-center md:gap-12 md:px-8 md:py-16">
           {hero && (
             <Link href={`/${hero.categorySlug}/${hero.slug}`} className="rise block" aria-label={hero.name}>
-              <ProductImage image={hero.image} surface="velvet" priority className="h-[180px] md:h-[520px] md:rounded-[4px]" />
+              <ProductImage image={hero.image} surface="velvet" priority className="filete-doble h-[180px] md:h-[520px] md:rounded-[4px]" />
             </Link>
           )}
           <div className="px-4 pb-8 pt-4 md:px-0 md:py-0">
@@ -46,9 +48,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <div className="rise rise-4 mt-6 flex flex-col gap-2 sm:flex-row">
               <Link href="/tienda" className="press flex h-[52px] items-center justify-center gap-2 rounded-full bg-gold px-8 text-[15px] font-semibold text-ink hover:bg-gold-soft">
                 {t("heroCta")} <ArrowRight aria-hidden="true" size={18} />
-              </Link>
-              <Link href="/sets" className="press flex h-12 items-center justify-center px-4 text-[15px] font-semibold text-on-dark underline decoration-gold underline-offset-4">
-                {t("heroSecondary")}
               </Link>
             </div>
           </div>
@@ -75,17 +74,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* ───────── 3 · DESTACADOS (claro) ───────── */}
-      <section aria-labelledby="featured-title" className="mx-auto max-w-6xl px-4 pt-12">
+      <section data-reveal aria-labelledby="featured-title" className="mx-auto max-w-6xl px-4 pt-12">
         <SectionHeading id="featured-title" kicker={t("featuredKicker")} title={t("featuredTitle")} href="/tienda" linkLabel={t("seeAll")} />
         <div className="grid grid-cols-2 gap-x-3 gap-y-8 md:grid-cols-4 md:gap-x-6">
-          {home.featured.map((p, i) => <ProductCard key={p.id} product={p} priority={i < 2} />)}
+          {home.featured.map((p, i) => <div key={p.id} data-reveal-item><ProductCard product={p} priority={i < 2} /></div>)}
         </div>
       </section>
 
       {/* ───────── 4 · GARANTÍA 1 / 5 años (oscuro, "estuche") ───────── */}
       {shortW && longW && (
         <section aria-labelledby="warranty-title" className="mt-16 bg-velvet px-4 py-12">
-          <div className="filete-doble velvet mx-auto max-w-3xl rounded-[4px] border border-velvet-line px-6 py-8 md:px-12">
+          <div data-reveal className="filete-doble velvet mx-auto max-w-3xl rounded-[4px] border border-velvet-line px-6 py-8 md:px-12">
             <p className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[.16em] text-gold">
               <ShieldCheck aria-hidden="true" size={16} strokeWidth={1.75} /> {t("warrantyKicker")}
             </p>
@@ -115,16 +114,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       {/* ───────── 5 · NUEVOS INGRESOS (claro, carrusel) ───────── */}
       {home.newArrivals.length > 0 && (
-        <section aria-labelledby="new-title" className="mx-auto max-w-6xl pt-16">
+        <section data-reveal aria-labelledby="new-title" className="mx-auto max-w-6xl pt-16">
           <div className="px-4"><SectionHeading id="new-title" kicker={t("newKicker")} title={t("newTitle")} href="/nuevos" linkLabel={t("seeAll")} /></div>
           <ul className="rail pb-2">
-            {home.newArrivals.map((p) => <li key={p.id} className="w-[168px] md:w-[240px]"><ProductCard product={p} /></li>)}
+            {home.newArrivals.map((p) => <li key={p.id} data-reveal-item className="w-[156px] md:w-[240px]"><ProductCard product={p} /></li>)}
           </ul>
         </section>
       )}
 
       {/* ───────── 6 · SETS (tarjeta oscura) ───────── */}
-      <section aria-labelledby="sets-title" className="mx-auto max-w-6xl px-4 pt-16">
+      <section data-reveal aria-labelledby="sets-title" className="mx-auto max-w-6xl px-4 pt-16">
         <Link href="/sets" className="group velvet block overflow-hidden rounded-[4px] md:grid md:grid-cols-2 md:items-center">
           <ProductImage image={home.setProduct?.image ?? { url: null, illustration: "set", alt: t("setsTitle") }} surface="velvet" className="h-[240px] md:h-[360px]" />
           <div className="p-6 pt-2 text-on-dark md:p-12">
@@ -139,7 +138,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* ───────── 7 · QUÉ ES EL ORO LAMINADO 18K (crema) ───────── */}
-      <section aria-labelledby="explain-title" className="mt-16 bg-cream px-6 py-12 text-center">
+      <section data-reveal aria-labelledby="explain-title" className="mt-16 bg-cream px-6 py-12 text-center">
         <div className="mx-auto max-w-xl">
           <p className="text-[12px] font-semibold uppercase tracking-[.2em] text-gold-deep">{t("explainKicker")}</p>
           <h2 id="explain-title" className="mt-3 font-display text-[28px] leading-[1.1]">{t("explainTitle")}</h2>
@@ -152,7 +151,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* ───────── 8 · BENEFICIOS (claro) ───────── */}
-      <section aria-labelledby="benefits-title" className="mx-auto max-w-6xl px-4 pt-16">
+      <section data-reveal aria-labelledby="benefits-title" className="mx-auto max-w-6xl px-4 pt-16">
         <SectionHeading id="benefits-title" title={t("benefitsTitle")} />
         <ul className="grid gap-2 md:grid-cols-2">
           {[

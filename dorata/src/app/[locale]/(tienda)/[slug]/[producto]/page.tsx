@@ -95,26 +95,23 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
             </a>
           )}
 
-          {/* Garantía: siempre visible en la ficha */}
-          <div className="rise rise-4 filete-doble velvet mt-6 rounded-[4px] p-5">
-            <p className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[.14em] text-gold"><ShieldCheck aria-hidden="true" size={16} strokeWidth={1.75} /> {t("warranty")}</p>
-            {p.warranty ? (
-              <>
-                <p className="mt-2 font-display text-[20px] leading-tight">{p.warranty.name}</p>
-                <p className="mt-1 text-[14px] leading-[1.5] text-on-dark-2">{p.warranty.summary}</p>
-              </>
-            ) : (
-              <p className="mt-2 text-[14px] leading-[1.5] text-on-dark-2">
-                {t("noWarranty")}{" "}
-                <Link href="/contacto" className="font-semibold text-on-dark underline decoration-gold underline-offset-4">{t("noWarrantyContact")}</Link>
-                {settings.social.instagram && <> · <a href={settings.social.instagram} target="_blank" rel="noopener noreferrer" className="font-semibold text-on-dark underline decoration-gold underline-offset-4">Instagram {settings.socialHandle}</a></>}
-              </p>
-            )}
-            <Link href="/garantia" className="mt-3 inline-flex min-h-11 items-center text-[14px] font-semibold text-gold underline decoration-gold/60 underline-offset-4">{t("warrantyLink")}</Link>
-          </div>
+          {/* Garantía: tarjeta destacada solo cuando la pieza tiene garantía con nombre */}
+          {p.warranty ? (
+            <div className="rise rise-4 filete-doble velvet mt-6 rounded-[4px] p-5">
+              <p className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[.14em] text-gold"><ShieldCheck aria-hidden="true" size={16} strokeWidth={1.75} /> {t("warranty")}</p>
+              <p className="mt-2 font-display text-[20px] leading-tight">{p.warranty.name}</p>
+              <p className="mt-1 text-[15px] leading-[1.5] text-on-dark-2">{p.warranty.summary}</p>
+              <Link href="/garantia" className="mt-3 inline-flex min-h-11 items-center text-[15px] font-semibold text-gold underline decoration-gold/60 underline-offset-4">{t("warrantyLink")}</Link>
+            </div>
+          ) : null}
 
-          <ul className="mt-6 grid gap-3 text-[14px] text-ink-2">
+          <ul className="mt-6 grid gap-3 text-[15px] text-ink-2">
             <li className="flex gap-3"><BadgeCheck aria-hidden="true" size={18} className="shrink-0 text-gold-deep" strokeWidth={1.5} />{t("certificate")}</li>
+            {!p.warranty && (
+              <li className="flex gap-3"><ShieldCheck aria-hidden="true" size={18} className="shrink-0 text-gold-deep" strokeWidth={1.5} />
+                <span>{t("noWarranty")}{" "}<Link href="/contacto" className="font-semibold text-ink underline decoration-gold underline-offset-4">{t("noWarrantyContact")}</Link></span>
+              </li>
+            )}
             {p.shippingNotes && <li className="flex gap-3"><Truck aria-hidden="true" size={18} className="shrink-0 text-gold-deep" strokeWidth={1.5} />{p.shippingNotes}</li>}
           </ul>
 
@@ -122,7 +119,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
             <h2 id="details-title" className="text-[13px] font-semibold uppercase tracking-[.14em] text-ink-2">{t("details")}</h2>
             <dl className="mt-3 divide-y divide-line">
               {[[t("material"), p.material], [t("measurements"), p.measurements], [p.variants.some((x) => x.swatch) ? t("metalColor") : t("color"), p.color]].filter(([, v]) => v).map(([k, v]) => (
-                <div key={k} className="flex justify-between gap-4 py-3 text-[14px]"><dt className="text-ink-2">{k}</dt><dd className="text-right font-medium">{v}</dd></div>
+                <div key={k} className="flex justify-between gap-4 py-3 text-[15px]"><dt className="text-ink-2">{k}</dt><dd className="text-right font-medium">{v}</dd></div>
               ))}
             </dl>
           </section>

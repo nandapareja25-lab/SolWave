@@ -15,7 +15,7 @@ export default async function SystemLayout({ children }: { children: React.React
       <footer className="border-t border-velvet-line px-4 py-6 text-center text-[12px] text-on-dark-2">
         <ul className="flex flex-wrap justify-center gap-x-4">
           {links.map((p) => <li key={p.slug}><Link href={`/${p.slug}`} className="inline-flex min-h-11 items-center hover:text-on-dark">{p.title.replace(/^Política de /, "").replace("Información de contacto comercial", "Contacto")}</Link></li>)}
-          <li><PrivacyPreferencesButton label={t("privacyPrefs")} /></li>
+          <li><PrivacyPreferencesButton label={t("privacyPrefs")} plain /></li>
         </ul>
         <p className="mt-2">{t("rights", { year })}</p>
       </footer>

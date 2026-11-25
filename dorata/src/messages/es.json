@@ -175,7 +175,7 @@
   "comingSoon": {
     "eyebrow": "Muy pronto",
     "title": "Oro laminado 18K con garantía de color por escrito",
-    "body": "¿Cansada de piezas doradas que se ponen negras en semanas? Las nuestras tienen garantía de color por escrito: {short} en piezas terminadas y {long} en balinería. Únete a la lista y te avisamos antes de abrir.",
+    "body": "¿Piezas doradas que se ponen negras en semanas? Las nuestras tienen garantía de color por escrito: {short}, y {long} en balinería.",
     "launch": "Abrimos el {date}",
     "days": "días",
     "hours": "horas",

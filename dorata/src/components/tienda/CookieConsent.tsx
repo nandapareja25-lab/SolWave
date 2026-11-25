@@ -145,10 +145,10 @@ function Toggle({ k, label, body, prefs, setPrefs, locked }: {
 }
 
 /** Botón del footer "Preferencias de privacidad": reabre el panel en cualquier momento. */
-export function PrivacyPreferencesButton({ label }: { label: string }) {
+export function PrivacyPreferencesButton({ label, plain = false }: { label: string; plain?: boolean }) {
   return (
     <button type="button" onClick={() => window.dispatchEvent(new Event(OPEN_PRIVACY_EVENT))}
-      className="min-h-11 text-left text-[14px] text-gold underline decoration-gold/60 underline-offset-[3px]">
+      className={plain ? "inline-flex min-h-11 items-center hover:text-on-dark" : "min-h-11 text-left text-[14px] text-gold underline decoration-gold/60 underline-offset-[3px]"}>
       {label}
     </button>
   );

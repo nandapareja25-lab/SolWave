@@ -21,12 +21,12 @@ export async function ProductCard({ product, priority }: { product: Card; priori
             {!product.available && <span className="rounded-[4px] bg-surface px-2 py-1 text-[12px] font-semibold uppercase tracking-[.1em] text-ink-2">{t("soldOut")}</span>}
           </div>
         </div>
-        <h3 className="mt-3 line-clamp-2 text-[15px] leading-[1.35] group-hover:underline group-hover:decoration-gold group-hover:underline-offset-4">{product.name}</h3>
+        <h3 className="mt-3 line-clamp-2 min-h-[2.7em] text-[15px] leading-[1.35] group-hover:underline group-hover:decoration-gold group-hover:underline-offset-4">{product.name}</h3>
         <p className="tabular mt-1 text-[15px] font-semibold">
           {formatUSD(product.priceCents)}
           {product.compareAtCents && <s className="ml-2 text-[13px] font-normal text-ink-3">{formatUSD(product.compareAtCents)}</s>}
         </p>
-        {product.warrantyName && <p className="mt-1 text-[12px] font-medium text-gold-deep">{product.warrantyName}</p>}
+        <p className="mt-1 min-h-[1.4em] text-[12px] font-medium text-gold-deep">{product.warrantyName ?? ""}</p>
       </Link>
       {product.available && product.variantCount === 1 && (
         <div className="pointer-events-none absolute inset-x-0 top-0 aspect-[4/5] [&>*]:pointer-events-auto">

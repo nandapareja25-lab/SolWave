@@ -57,7 +57,14 @@ Stack: Next.js 15 en Cloudflare Workers (OpenNext) · Supabase · Stripe Checkou
 - Ronda 1: home 27/40·11/20·copy 11/20 · Próximamente 29/40·12/20 · producto 28/40·13/20 → corregidos radios,
   primera vista, copy con dolor, WhatsApp falso, foto por variante, deshacer, garantía sin salida, escala tipográfica.
 - Ronda 2: Próximamente 32/40·14/20 · producto 29/40·14/20 · home invalidada por .reveal (contenido oculto) → quitado.
-- Ronda 3: (resultado en el reporte de cierre de la sesión).
+- Ronda 3: home 29/40·13/20·copy 14/20 · Próximamente 33/40·15/20·copy 14/20 · producto 33/40·15/20.
+  Después se aplicaron sus últimos ajustes (1 acción en hero, filete en hero, cards alineadas, entrada suave sin
+  ocultar, subtítulo corto, garantía sin definir como línea simple, variante agotada no seleccionable) — NO
+  re-puntuados. GATE NO SUPERADO. Lo que falta según el revisor depende sobre todo de la dueña: fotos reales,
+  datos de envío/devoluciones, beneficio de la lista de espera, garantía de pulseras de hilo/sets, fecha del
+  banner; y búsqueda (fase 2).
+- ⚠ La regla de radios de FICHA-ARTE.md (4px contenedores · píldora en botones/chips/inputs) se precisó durante la
+  revisión: pendiente de que la dueña la confirme.
 
 ## Pendiente / preguntas para la dueña
 - Número de WhatsApp (sin él no se muestra el botón), correo de contacto, Facebook si existe; confirmar @dorata18k.

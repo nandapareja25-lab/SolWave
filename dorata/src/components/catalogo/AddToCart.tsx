@@ -34,8 +34,8 @@ export function AddToCart({ product, labels }: {
           <legend className="text-[13px] font-semibold uppercase tracking-[.12em] text-ink-2">{labels.variant}: <span className="normal-case tracking-normal text-ink">{v.title}</span></legend>
           <div className="mt-3 flex flex-wrap gap-2">
             {variants.map((x) => (
-              <label key={x.id} className={`press relative flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-4 text-[14px] has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-gold-deep ${x.id === selected ? "border-ink bg-surface font-semibold" : "border-line bg-surface"} ${!x.available ? "text-ink-3" : ""}`}>
-                <input type="radio" name="variant" value={x.id} checked={x.id === selected} onChange={() => { select(x.id); setQty(1); }} className="sr-only" />
+              <label key={x.id} className={`press relative flex min-h-11 cursor-pointer items-center gap-2 rounded-full border px-4 text-[14px] has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-gold-deep ${x.id === selected ? "border-ink bg-surface font-semibold" : "border-line bg-surface"} ${!x.available ? "cursor-not-allowed text-ink-3 opacity-70" : ""}`}>
+                <input type="radio" name="variant" value={x.id} checked={x.id === selected} disabled={!x.available} onChange={() => { select(x.id); setQty(1); }} className="sr-only" />
                 {x.swatch && <span aria-hidden="true" className="size-4 rounded-full ring-1 ring-line" style={{ backgroundColor: x.swatch }} />}
                 {x.title}
                 {!x.available && <span className="text-[12px] font-semibold uppercase tracking-[.08em] text-ink-3 no-underline [text-decoration:none]">· {labels.soldOutShort}</span>}
