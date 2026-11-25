@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D'ORATA — Propuesta visual A/B/C</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Cormorant+Garamond:wght@500;600&family=Figtree:wght@400;500;600&family=Jost:wght@400;500&family=Manrope:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Contrato de marca (igual en las 3 opciones) ---------- */
+  :root {
+    --ivory: #FAF6EF;  --white: #FFFFFF;  --cream: #F2EADB;  --line: #E6DCC8;
+    --ink: #1C1915;    --ink-2: #5E554A;  --ink-3: #8A8072;
+    --gold: #C9A45C;   --gold-deep: #8A6628; --gold-soft: #EADBB8;
+    --velvet: #16130F; --velvet-2: #221D17;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #E9E4DA; color: var(--ink); font-family: 'Jost', monospace; -webkit-font-smoothing: antialiased; }
+  .page-head { max-width: 1240px; margin: 0 auto; padding: 40px 24px 16px; }
+  .page-head h1 { font-family: 'Cormorant Garamond', monospace; font-weight: 600; font-size: 36px; }
+  .page-head p { color: var(--ink-2); font-size: 15px; max-width: 760px; margin-top: 8px; line-height: 1.5; }
+  .page-head .note { display: inline-block; margin-top: 12px; font-size: 13px; background: var(--white); border: 1px solid var(--line); padding: 8px 12px; border-radius: 8px; }
+  .row { display: flex; gap: 40px; justify-content: center; align-items: flex-start; flex-wrap: wrap; padding: 24px 24px 64px; }
+  .col { width: 391px; }
+  .label { margin-bottom: 16px; }
+  .label b { display: block; font-family: 'Cormorant Garamond', monospace; font-size: 28px; font-weight: 600; }
+  .label span { display: block; font-size: 14px; color: var(--ink-2); line-height: 1.45; margin-top: 4px; }
+  .phone { width: 391px; border-radius: 36px; overflow: hidden; background: var(--ivory); box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 24px 64px -24px rgba(40,30,15,.35); border: 8px solid #141210; position: relative; }
+  svg.i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .ph { position: relative; display: grid; place-items: center; overflow: hidden; }
+  .ph svg.j { width: 72%; height: 72%; position: relative; z-index: 1; filter: drop-shadow(0 6px 8px rgba(70,50,20,.18)); }
+  .ph::after { content: ""; position: absolute; bottom: 14%; left: 22%; right: 22%; height: 10px; border-radius: 50%; background: radial-gradient(rgba(60,45,20,.18), transparent 70%); }
+  .studio { background: radial-gradient(120% 90% at 50% 30%, #FFFDF8 0%, #F3EBDD 70%, #EADFCB 100%); }
+  .velvet { background: radial-gradient(110% 90% at 50% 35%, #2C2620 0%, #17140F 70%, #0F0D0A 100%); }
+  .velvet::after { background: radial-gradient(rgba(0,0,0,.5), transparent 70%); }
+  .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  .annot { margin: 0 16px; border: 1px dashed var(--gold); color: var(--gold-deep); font-size: 12px; padding: 8px 12px; border-radius: 8px; background: rgba(201,164,92,.06); line-height: 1.4; }
+
+  /* =================== OPCIÓN A — Vitrina marfil =================== */
+  .A { font-family: 'Jost', monospace; background: var(--ivory); }
+  .A .serif { font-family: 'Cormorant Garamond', monospace; font-variant-numeric: lining-nums; }
+  .A .bar { background: var(--ink); color: var(--ivory); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; text-align: center; padding: 8px 16px; }
+  .A header { display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; padding: 12px 16px; }
+  .A header .acts { display: flex; gap: 4px; justify-content: flex-end; }
+  .A .icbtn { width: 44px; height: 44px; display: grid; place-items: center; color: var(--ink); position: relative; }
+  .A .badge { position: absolute; top: 8px; right: 6px; min-width: 16px; height: 16px; border-radius: 8px; background: var(--gold-deep); color: var(--white); font-size: 10px; display: grid; place-items: center; }
+  .A .stories { display: flex; gap: 16px; overflow: hidden; padding: 4px 16px 24px; }
+  .A .story { width: 64px; text-align: center; flex: none; font-size: 12px; color: var(--ink-2); }
+  .A .story .ph { width: 64px; height: 64px; border-radius: 50%; box-shadow: 0 0 0 1px var(--gold), 0 0 0 4px var(--ivory), 0 0 0 5px var(--gold-soft); margin: 0 auto 8px; }
+  .A .hero-frame { margin: 0 16px; padding: 8px; border: 1px solid var(--gold); border-radius: 4px; background: var(--white); }
+  .A .hero-frame .inner { border: 1px solid var(--gold-soft); }
+  .A .hero-frame .ph { height: 300px; }
+  .A .hero-copy { text-align: center; padding: 24px 24px 32px; }
+  .A .eyebrow { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-deep); }
+  .A h2.display { font-size: 40px; line-height: 1.05; font-weight: 500; margin: 12px 0; }
+  .A .sub { font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+  .A .btn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; border-radius: 4px; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; }
+  .A .btn-primary { background: var(--ink); color: var(--ivory); margin-top: 24px; }
+  .A .btn-link { color: var(--ink); margin-top: 8px; text-decoration: underline; text-underline-offset: 4px; text-transform: none; letter-spacing: 0; }
+  .A .trust { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--white); }
+  .A .trust div { padding: 16px 8px; text-align: center; font-size: 12px; line-height: 1.35; color: var(--ink-2); }
+  .A .trust div + div { border-left: 1px solid var(--line); }
+  .A .trust svg { color: var(--gold-deep); margin: 0 auto 8px; display: block; }
+  .A section { padding: 48px 16px 0; }
+  .A .sec-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; }
+  .A .sec-head h3 { font-size: 28px; font-weight: 500; }
+  .A .sec-head a { font-size: 14px; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+  .A .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; }
+  .A .card .ph { aspect-ratio: 4/5; border-radius: 4px; }
+  .A .card .tag { position: absolute; top: 8px; left: 8px; z-index: 2; background: var(--white); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding: 4px 8px; border-radius: 2px; }
+  .A .card .add { position: absolute; bottom: 8px; right: 8px; z-index: 2; width: 36px; height: 36px; border-radius: 50%; background: var(--white); display: grid; place-items: center; box-shadow: 0 2px 8px rgba(40,30,15,.12); }
+  .A .card .add svg { width: 18px; height: 18px; }
+  .A .card .name { font-size: 15px; margin-top: 12px; line-height: 1.3; }
+  .A .card .price { font-size: 15px; font-weight: 500; margin-top: 4px; }
+  .A .card .price s { color: var(--ink-3); font-weight: 400; margin-left: 6px; font-size: 13px; }
+  .A .card .warr { font-size: 12px; color: var(--gold-deep); margin-top: 4px; }
+  .A .explain { margin: 48px 0 0; padding: 48px 24px; background: var(--cream); text-align: center; }
+  .A .explain h3 { font-size: 32px; font-weight: 500; line-height: 1.1; }
+  .A .layers { display: flex; flex-direction: column; gap: 4px; margin: 24px auto; width: 200px; }
+  .A .layers div { height: 28px; border-radius: 2px; font-size: 12px; display: grid; place-items: center; letter-spacing: .08em; }
+  .A .layers .l1 { background: linear-gradient(90deg, #E9D29A, #C49A4C, #E2C47E); color: var(--ink); }
+  .A .layers .l2 { background: #CFC6B8; color: var(--ink-2); height: 40px; }
+  .A .warranty { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .A .wcard { background: var(--white); border: 1px solid var(--line); padding: 24px 16px; text-align: center; border-radius: 4px; }
+  .A .wcard .n { font-size: 56px; line-height: 1; color: var(--gold-deep); }
+  .A .wcard .u { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; }
+  .A .wcard p { font-size: 13px; color: var(--ink-2); margin-top: 8px; line-height: 1.4; }
+  .A .covers { margin-top: 16px; font-size: 14px; color: var(--ink-2); line-height: 1.5; text-align: center; }
+  .A .set { position: relative; border-radius: 4px; overflow: hidden; }
+  .A .set .ph { height: 240px; }
+  .A .set .cap { position: absolute; left: 16px; bottom: 16px; z-index: 2; }
+  .A .set .cap b { font-family: 'Cormorant Garamond', monospace; font-size: 28px; font-weight: 500; display: block; }
+  .A .rail { display: flex; gap: 12px; overflow: hidden; }
+  .A .rail .card { width: 150px; flex: none; }
+  .A .benefits { display: grid; gap: 8px; }
+  .A .ben { display: flex; gap: 16px; align-items: center; background: var(--white); border: 1px solid var(--line); padding: 16px; border-radius: 4px; }
+  .A .chip { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgba(201,164,92,.12); color: var(--gold-deep); flex: none; }
+  .A .ben b { font-weight: 500; font-size: 15px; display: block; }
+  .A .ben span { font-size: 13px; color: var(--ink-2); }
+  .A .ig { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .A .ig .ph { aspect-ratio: 1; }
+  .A .news { margin-top: 48px; padding: 40px 24px; background: var(--white); text-align: center; border-top: 1px solid var(--line); }
+  .A .news h3 { font-size: 28px; font-weight: 500; }
+  .A .field { display: flex; margin-top: 16px; border: 1px solid var(--ink); border-radius: 4px; height: 52px; overflow: hidden; }
+  .A .field span { flex: 1; text-align: left; padding: 0 16px; display: flex; align-items: center; color: var(--ink-3); font-size: 15px; }
+  .A .field b { background: var(--ink); color: var(--ivory); padding: 0 16px; display: grid; place-items: center; font-weight: 500; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; }
+  .A footer { background: var(--ink); color: var(--ivory); padding: 40px 24px 96px; }
+  .A footer .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; font-size: 14px; }
+  .A footer h4 { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 12px; }
+  .A footer li { list-style: none; color: #D9D1C3; line-height: 2; }
+  .A footer .legal { margin-top: 32px; padding-top: 16px; border-top: 1px solid #3A342C; font-size: 12px; color: #A89E8E; line-height: 1.6; }
+  .fab { position: absolute; right: 16px; top: 720px; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; z-index: 5; }
+  .A .fab { background: var(--ink); color: var(--gold); box-shadow: 0 8px 24px -8px rgba(0,0,0,.5); border: 1px solid var(--gold); }
+
+  /* =================== OPCIÓN B — Estuche negro =================== */
+  .B { font-family: 'Manrope', monospace; background: var(--ivory); }
+  .B .serif { font-family: 'Bodoni Moda', monospace; }
+  .B .top { background: var(--velvet); color: var(--ivory); }
+  .B header { display: flex; align-items: center; justify-content: space-between; padding: 12px 8px; }
+  .B .icbtn { width: 44px; height: 44px; display: grid; place-items: center; position: relative; color: var(--ivory); }
+  .B .badge { position: absolute; top: 8px; right: 6px; min-width: 16px; height: 16px; border-radius: 8px; background: var(--gold); color: var(--ink); font-size: 10px; display: grid; place-items: center; font-weight: 600; }
+  .B .hero .ph { height: 340px; }
+  .B .hero-copy { padding: 8px 24px 32px; }
+  .B h2.display { font-size: 38px; line-height: 1.08; font-weight: 500; }
+  .B h2.display em { color: var(--gold); font-style: italic; }
+  .B .sub { color: #CFC5B5; font-size: 15px; line-height: 1.5; margin-top: 12px; }
+  .B .btn { display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; border-radius: 999px; font-size: 15px; font-weight: 600; }
+  .B .btn-gold { background: var(--gold); color: var(--ink); margin-top: 24px; }
+  .B .pills { display: flex; gap: 8px; overflow: hidden; padding: 16px; background: var(--velvet); border-top: 1px solid #2E2820; }
+  .B .pill { height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid #4A4135; color: #E8DFCF; font-size: 13px; display: flex; align-items: center; flex: none; }
+  .B .pill.on { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+  .B section { padding: 48px 0 0; }
+  .B .sec-head { padding: 0 16px; margin-bottom: 16px; display: flex; align-items: flex-end; justify-content: space-between; }
+  .B .kicker { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
+  .B .kicker svg { width: 16px; height: 16px; }
+  .B .sec-head h3 { font-size: 30px; font-weight: 500; margin-top: 4px; line-height: 1.1; }
+  .B .sec-head a { font-size: 14px; font-weight: 600; color: var(--ink); display: flex; gap: 4px; align-items: center; }
+  .B .sec-head a svg { width: 16px; height: 16px; }
+  .B .rail { display: flex; gap: 12px; overflow: hidden; padding: 0 16px; }
+  .B .catcard { width: 140px; flex: none; border-radius: 16px; overflow: hidden; position: relative; }
+  .B .catcard .ph { height: 180px; }
+  .B .catcard b { position: absolute; left: 12px; bottom: 12px; z-index: 2; color: var(--ivory); font-size: 15px; font-weight: 600; }
+  .B .catcard::before { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(transparent 55%, rgba(10,8,6,.55)); pointer-events: none; }
+  .B .pcard { width: 172px; flex: none; }
+  .B .pcard .ph { aspect-ratio: 1; border-radius: 16px; }
+  .B .pcard .name { font-size: 14px; margin-top: 12px; line-height: 1.35; font-weight: 500; }
+  .B .pcard .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+  .B .pcard .price { font-size: 15px; font-weight: 600; }
+  .B .pcard .warr { font-size: 11px; font-weight: 600; color: var(--gold-deep); border: 1px solid var(--gold-soft); padding: 2px 8px; border-radius: 999px; }
+  .B .estuche { margin: 0 16px; background: var(--velvet); color: var(--ivory); border-radius: 20px; padding: 6px; }
+  .B .estuche .in { border: 1px solid rgba(201,164,92,.45); border-radius: 16px; padding: 24px 20px; }
+  .B .estuche h3 { font-size: 30px; font-weight: 500; line-height: 1.1; }
+  .B .estuche p { color: #CFC5B5; font-size: 14px; line-height: 1.55; margin-top: 12px; }
+  .B .wrow { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; }
+  .B .wrow div { background: var(--velvet-2); border-radius: 12px; padding: 16px; }
+  .B .wrow .n { font-family: 'Bodoni Moda', monospace; font-size: 32px; white-space: nowrap; line-height: 1; color: var(--gold); }
+  .B .wrow small { display: block; font-size: 12px; color: #CFC5B5; margin-top: 6px; line-height: 1.4; }
+  .B .checks { margin-top: 16px; display: grid; gap: 8px; font-size: 14px; color: #E8DFCF; }
+  .B .checks div { display: flex; gap: 8px; align-items: center; }
+  .B .ck { width: 20px; height: 20px; border-radius: 50%; background: rgba(201,164,92,.18); display: grid; place-items: center; color: var(--gold); flex: none; }
+  .B .ck svg { width: 12px; height: 12px; stroke-width: 2.5; }
+  .B .explain { margin: 0 16px; display: grid; grid-template-columns: 112px 1fr; gap: 16px; align-items: center; background: var(--white); border-radius: 20px; padding: 16px; border: 1px solid var(--line); }
+  .B .explain .ph { height: 112px; border-radius: 12px; }
+  .B .explain h4 { font-family: 'Bodoni Moda', monospace; font-size: 20px; font-weight: 500; line-height: 1.2; }
+  .B .explain p { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-top: 6px; }
+  .B .setcard { margin: 0 16px; border-radius: 20px; overflow: hidden; position: relative; }
+  .B .setcard .ph { height: 260px; }
+  .B .setcard .cap { position: absolute; inset: auto 0 0 0; z-index: 2; padding: 20px; color: var(--ivory); background: linear-gradient(transparent, rgba(10,8,6,.75)); }
+  .B .setcard .cap b { font-family: 'Bodoni Moda', monospace; font-size: 28px; font-weight: 500; display: block; }
+  .B .setcard .cap span { font-size: 14px; color: #E8DFCF; }
+  .B .bens { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 16px; }
+  .B .ben { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+  .B .ben .chip { width: 40px; height: 40px; border-radius: 12px; background: var(--velvet); color: var(--gold); display: grid; place-items: center; margin-bottom: 12px; }
+  .B .ben b { font-size: 14px; font-weight: 600; display: block; line-height: 1.3; }
+  .B .ben span { font-size: 12px; color: var(--ink-2); line-height: 1.4; display: block; margin-top: 4px; }
+  .B .ig { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 16px; }
+  .B .ig .ph { aspect-ratio: 1; border-radius: 12px; }
+  .B .news { margin: 48px 16px 0; background: var(--cream); border-radius: 20px; padding: 24px 20px; }
+  .B .news h3 { font-size: 24px; font-weight: 500; }
+  .B .news p { font-size: 14px; color: var(--ink-2); margin-top: 6px; }
+  .B .field { display: flex; gap: 8px; margin-top: 16px; }
+  .B .field span { flex: 1; height: 48px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); display: flex; align-items: center; padding: 0 16px; color: var(--ink-3); font-size: 14px; }
+  .B .field b { height: 48px; padding: 0 20px; border-radius: 999px; background: var(--ink); color: var(--ivory); display: grid; place-items: center; font-size: 14px; font-weight: 600; }
+  .B footer { margin-top: 48px; background: var(--velvet); color: var(--ivory); padding: 40px 24px 96px; }
+  .B footer .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; font-size: 14px; }
+  .B footer h4 { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .B footer li { list-style: none; color: #D9D1C3; line-height: 2; }
+  .B footer .legal { margin-top: 32px; padding-top: 16px; border-top: 1px solid #3A342C; font-size: 12px; color: #A89E8E; line-height: 1.6; }
+  .B .fab { background: var(--gold); color: var(--ink); box-shadow: 0 8px 24px -8px rgba(0,0,0,.5); }
+
+  /* =================== OPCIÓN C — Arco boutique =================== */
+  .C { font-family: 'Figtree', monospace; background: var(--white); }
+  .C .serif { font-family: 'Marcellus', monospace; }
+  .C header { display: flex; align-items: center; justify-content: space-between; padding: 12px 8px; border-bottom: 1px solid var(--line); }
+  .C .icbtn { width: 44px; height: 44px; display: grid; place-items: center; position: relative; color: var(--ink); }
+  .C .badge { position: absolute; top: 8px; right: 6px; min-width: 16px; height: 16px; border-radius: 8px; background: var(--ink); color: var(--white); font-size: 10px; display: grid; place-items: center; }
+  .C .hero { position: relative; padding: 32px 16px 0; text-align: center; background: linear-gradient(var(--white), var(--ivory)); overflow: hidden; }
+  .C .big18 { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-family: 'Marcellus', monospace; font-size: 210px; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--gold); opacity: .55; letter-spacing: -.02em; white-space: nowrap; }
+  .C .arch { position: relative; width: 248px; height: 320px; margin: 0 auto; border-radius: 124px 124px 8px 8px; overflow: hidden; border: 1px solid var(--gold); padding: 6px; background: var(--white); }
+  .C .arch .ph { width: 100%; height: 100%; border-radius: 118px 118px 4px 4px; }
+  .C .hero h2 { font-size: 36px; line-height: 1.1; font-weight: 400; margin-top: 24px; }
+  .C .sub { font-size: 15px; line-height: 1.5; color: var(--ink-2); margin-top: 12px; }
+  .C .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; padding-bottom: 32px; }
+  .C .btn { height: 52px; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 8px; font-size: 15px; font-weight: 600; }
+  .C .btn-primary { background: var(--ink); color: var(--white); }
+  .C .btn-ghost { border: 1px solid var(--ink); color: var(--ink); }
+  .C section { padding: 48px 16px 0; }
+  .C .sec-head { text-align: center; margin-bottom: 24px; }
+  .C .sec-head small { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
+  .C .sec-head h3 { font-size: 30px; font-weight: 400; margin-top: 8px; line-height: 1.1; }
+  .C .bento { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 150px 150px 120px; gap: 8px; }
+  .C .bento > div { position: relative; border-radius: 8px; overflow: hidden; }
+  .C .bento .ph { width: 100%; height: 100%; }
+  .C .bento .tall { grid-row: span 2; }
+  .C .bento .wide { grid-column: span 2; }
+  .C .bento b { position: absolute; left: 12px; bottom: 12px; z-index: 2; background: var(--white); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; }
+  .C .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 12px; }
+  .C .card .ph { aspect-ratio: 3/4; border-radius: 80px 80px 8px 8px; }
+  .C .card .name { font-size: 14px; margin-top: 12px; text-align: center; line-height: 1.3; }
+  .C .card .price { font-size: 15px; font-weight: 600; text-align: center; margin-top: 4px; }
+  .C .card .price s { color: var(--ink-3); font-weight: 400; margin-left: 6px; font-size: 13px; }
+  .C .card .btn-add { margin-top: 8px; height: 44px; border: 1px solid var(--line); border-radius: 8px; display: grid; place-items: center; font-size: 13px; font-weight: 600; }
+  .C .timeline { background: var(--ivory); border-radius: 8px; padding: 24px 16px; border: 1px solid var(--line); }
+  .C .tl-row + .tl-row { margin-top: 20px; }
+  .C .tl-row .t { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; }
+  .C .tl-row .t b { font-family: 'Marcellus', monospace; font-weight: 400; font-size: 22px; }
+  .C .tl-row .t span { color: var(--ink-2); font-size: 13px; }
+  .C .track { height: 8px; border-radius: 4px; background: var(--cream); margin-top: 8px; overflow: hidden; }
+  .C .track i { display: block; height: 100%; border-radius: 4px; background: linear-gradient(90deg, #E9D29A, #C49A4C); }
+  .C .tl-axis { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-3); margin-top: 8px; }
+  .C .covers { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .C .covers span { display: flex; align-items: center; gap: 6px; font-size: 13px; background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+  .C .covers svg { width: 14px; height: 14px; color: var(--gold-deep); }
+  .C .explain { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; }
+  .C .step { background: var(--ivory); border-radius: 8px; padding: 16px 8px; border: 1px solid var(--line); }
+  .C .step .num { font-family: 'Marcellus', monospace; font-size: 28px; color: var(--gold-deep); }
+  .C .step p { font-size: 12px; line-height: 1.4; color: var(--ink-2); margin-top: 4px; }
+  .C .set { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: stretch; background: var(--velvet); border-radius: 8px; overflow: hidden; }
+  .C .set .ph { height: 200px; }
+  .C .set .cap { padding: 20px 16px 20px 8px; color: var(--ivory); display: flex; flex-direction: column; justify-content: center; }
+  .C .set .cap b { font-family: 'Marcellus', monospace; font-weight: 400; font-size: 24px; line-height: 1.15; }
+  .C .set .cap span { font-size: 13px; color: #CFC5B5; margin-top: 8px; line-height: 1.4; }
+  .C .set .cap a { margin-top: 16px; color: var(--gold); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+  .C .set .cap a svg { width: 16px; height: 16px; }
+  .C .rail { display: flex; gap: 12px; overflow: hidden; }
+  .C .rail .card { width: 140px; flex: none; }
+  .C .bens { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .C .ben { display: flex; gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .C .ben .chip { width: 44px; height: 44px; border-radius: 22px 22px 6px 6px; background: var(--ivory); border: 1px solid var(--gold-soft); color: var(--gold-deep); display: grid; place-items: center; flex: none; }
+  .C .ben b { font-size: 15px; font-weight: 600; display: block; }
+  .C .ben span { font-size: 13px; color: var(--ink-2); }
+  .C .ig { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; height: 220px; }
+  .C .ig .ph { border-radius: 8px; }
+  .C .ig .ph:first-child { grid-row: span 2; }
+  .C .news { margin-top: 48px; padding: 40px 24px; background: var(--ivory); text-align: center; border-top: 1px solid var(--line); }
+  .C .news h3 { font-size: 26px; font-weight: 400; }
+  .C .news p { font-size: 14px; color: var(--ink-2); margin-top: 8px; }
+  .C .field { margin-top: 16px; display: grid; gap: 8px; }
+  .C .field span { height: 52px; border-radius: 8px; background: var(--white); border: 1px solid var(--line); display: flex; align-items: center; padding: 0 16px; color: var(--ink-3); font-size: 15px; }
+  .C .field b { height: 52px; border-radius: 8px; background: var(--ink); color: var(--white); display: grid; place-items: center; font-size: 15px; font-weight: 600; }
+  .C footer { background: var(--ivory); border-top: 1px solid var(--gold-soft); padding: 40px 24px 96px; text-align: center; }
+  .C footer .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; font-size: 14px; text-align: left; }
+  .C footer h4 { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; margin-bottom: 12px; }
+  .C footer li { list-style: none; color: var(--ink-2); line-height: 2; }
+  .C footer .legal { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 12px; color: var(--ink-3); line-height: 1.6; }
+  .C .fab { background: var(--white); color: var(--ink); border: 1px solid var(--gold); box-shadow: 0 8px 24px -10px rgba(40,30,15,.4); }
+
+  .socials { display: flex; gap: 8px; justify-content: center; margin-top: 20px; }
+  .socials span { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid currentColor; opacity: .85; }
+  .logo-wrap { display: flex; justify-content: center; }
+  .logo text { font-family: inherit; }
+</style>
+</head>
+<body>
+
+<!-- ======== Recursos SVG compartidos: degradados de oro, joyas ilustrativas, íconos (Lucide) ======== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F3DFA6"/><stop offset=".38" stop-color="#C9A050"/>
+      <stop offset=".62" stop-color="#9A7430"/><stop offset="1" stop-color="#E2C47E"/>
+    </linearGradient>
+    <radialGradient id="gBall" cx=".35" cy=".32" r=".75">
+      <stop offset="0" stop-color="#FFF6DC"/><stop offset=".3" stop-color="#E5C77F"/>
+      <stop offset=".72" stop-color="#B08638"/><stop offset="1" stop-color="#6E5020"/>
+    </radialGradient>
+    <symbol id="logo-crown" viewBox="0 0 120 56">
+      <path d="M14 46 L8 14 L34 32 L60 6 L86 32 L112 14 L106 46 Z" fill="none" stroke="url(#gGold)" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="M16 52 H104" stroke="url(#gGold)" stroke-width="3.2" stroke-linecap="round"/>
+      <circle cx="8" cy="12" r="4.5" fill="url(#gBall)"/><circle cx="60" cy="5" r="5" fill="url(#gBall)"/><circle cx="112" cy="12" r="4.5" fill="url(#gBall)"/>
+      <circle cx="60" cy="34" r="3.6" fill="url(#gBall)"/>
+    </symbol>
+    <!-- Cadena (estilo singapur) -->
+    <symbol id="j-chain" viewBox="0 0 200 200">
+      <path d="M30 20 C30 120 70 170 100 170 C130 170 170 120 170 20" fill="none" stroke="url(#gGold)" stroke-width="7" stroke-dasharray="7 3.5" stroke-linecap="round"/>
+      <path d="M30 20 C30 120 70 170 100 170 C130 170 170 120 170 20" fill="none" stroke="#FFF3CF" stroke-opacity=".55" stroke-width="2" stroke-dasharray="3 7.5" stroke-linecap="round"/>
+      <circle cx="100" cy="174" r="7" fill="url(#gBall)"/>
+    </symbol>
+    <!-- Aretes argolla -->
+    <symbol id="j-hoops" viewBox="0 0 200 200">
+      <circle cx="70" cy="110" r="40" fill="none" stroke="url(#gGold)" stroke-width="11"/>
+      <circle cx="136" cy="96" r="40" fill="none" stroke="url(#gGold)" stroke-width="11"/>
+      <path d="M58 76 a40 40 0 0 1 30 -4" stroke="#FFF3CF" stroke-opacity=".7" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M124 62 a40 40 0 0 1 30 -4" stroke="#FFF3CF" stroke-opacity=".7" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <!-- Pulsera de hilo con balines (el color del hilo hereda de `color`) -->
+    <symbol id="j-thread" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="104" rx="72" ry="50" fill="none" stroke="currentColor" stroke-width="4"/>
+      <g fill="url(#gBall)">
+        <circle cx="100" cy="154" r="11"/><circle cx="76" cy="150" r="8"/><circle cx="124" cy="150" r="8"/>
+        <circle cx="56" cy="141" r="6.5"/><circle cx="144" cy="141" r="6.5"/>
+      </g>
+      <path d="M160 70 l14 -12 M164 76 l16 -6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <!-- Dije trébol -->
+    <symbol id="j-clover" viewBox="0 0 200 200">
+      <path d="M100 10 V64" stroke="url(#gGold)" stroke-width="4" stroke-dasharray="5 3"/>
+      <g fill="url(#gGold)" stroke="#8E6A2C" stroke-width="1">
+        <circle cx="100" cy="88" r="24"/><circle cx="76" cy="112" r="24"/><circle cx="124" cy="112" r="24"/><circle cx="100" cy="136" r="24"/>
+      </g>
+      <g fill="none" stroke="#FFF3CF" stroke-opacity=".6" stroke-width="2">
+        <circle cx="100" cy="88" r="14"/><circle cx="76" cy="112" r="14"/><circle cx="124" cy="112" r="14"/><circle cx="100" cy="136" r="14"/>
+      </g>
+      <circle cx="100" cy="112" r="7" fill="url(#gBall)"/>
+    </symbol>
+    <!-- Balinería -->
+    <symbol id="j-beads" viewBox="0 0 200 200">
+      <g fill="url(#gBall)">
+        <circle cx="100" cy="40" r="13"/><circle cx="135" cy="50" r="13"/><circle cx="158" cy="78" r="13"/><circle cx="164" cy="112" r="13"/>
+        <circle cx="148" cy="143" r="13"/><circle cx="120" cy="162" r="13"/><circle cx="86" cy="164" r="13"/><circle cx="56" cy="150" r="13"/>
+        <circle cx="38" cy="122" r="13"/><circle cx="36" cy="88" r="13"/><circle cx="54" cy="58" r="13"/><circle cx="72" cy="44" r="10"/>
+      </g>
+    </symbol>
+    <!-- Topitos -->
+    <symbol id="j-studs" viewBox="0 0 200 200">
+      <circle cx="72" cy="104" r="30" fill="url(#gBall)"/><circle cx="136" cy="96" r="30" fill="url(#gBall)"/>
+      <circle cx="62" cy="94" r="7" fill="#FFF9E8" opacity=".8"/><circle cx="126" cy="86" r="7" fill="#FFF9E8" opacity=".8"/>
+    </symbol>
+    <!-- Set (cadena + dije + topitos) -->
+    <symbol id="j-set" viewBox="0 0 200 200">
+      <path d="M40 20 C40 100 75 132 100 132 C125 132 160 100 160 20" fill="none" stroke="url(#gGold)" stroke-width="5" stroke-dasharray="6 3" stroke-linecap="round"/>
+      <g fill="url(#gGold)"><circle cx="100" cy="146" r="12"/><circle cx="88" cy="158" r="12"/><circle cx="112" cy="158" r="12"/><circle cx="100" cy="170" r="12"/></g>
+      <circle cx="40" cy="168" r="11" fill="url(#gBall)"/><circle cx="160" cy="168" r="11" fill="url(#gBall)"/>
+    </symbol>
+    <!-- Íconos (Lucide) -->
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="i-waves" viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="M11.56 3.27a.5.5 0 0 1 .88 0l2.95 5.6a1 1 0 0 0 1.52.29l4.27-3.66a.5.5 0 0 1 .82.5l-2.83 10.25a1 1 0 0 1-.96.75H5.8a1 1 0 0 1-.96-.75L2.02 6a.5.5 0 0 1 .82-.5l4.27 3.66a1 1 0 0 0 1.52-.29z"/><path d="M5 21h14"/></symbol>
+  </defs>
+</svg>
+
+<div class="page-head">
+  <h1>D'ORATA · Propuesta visual de la página principal</h1>
+  <p>Tres interpretaciones de la misma marca —marfil, dorado y negro, serif elegante, corona— vistas a tamaño de celular (375&nbsp;px). Las tres respetan tu identidad; cambian la composición y el detalle que hace única a la tienda.</p>
+  <span class="note">Fotos, precios y logo son <b>ilustrativos</b>: se reemplazan por tus fotos, tus precios y tu archivo oficial de logo desde el panel.</span>
+</div>
+
+<div class="row">
+
+<!-- ============================== OPCIÓN A ============================== -->
+<div class="col">
+  <div class="label"><b>Opción A · Vitrina marfil</b><span>Editorial y centrada, como la vitrina de una boutique. Categorías en círculos tipo historias de Instagram y un marco dorado doble —como el de tu certificado— alrededor de la foto principal.</span></div>
+  <div class="phone A">
+    <div class="bar">Garantía de color hasta 5 años</div>
+    <header>
+      <span class="icbtn"><svg class="i"><use href="#i-menu"/></svg></span>
+      <div class="logo-wrap">
+        <svg class="logo" width="150" height="58" viewBox="0 0 150 58" role="img" aria-label="D'ORATA Oro laminado 18K">
+          <use href="#logo-crown" x="57" y="0" width="36" height="17"/>
+          <text x="75" y="40" text-anchor="middle" font-family="Cormorant Garamond, monospace" font-size="24" font-weight="600" letter-spacing="3" fill="url(#gGold)">D'ORATA</text>
+          <text x="75" y="54" text-anchor="middle" font-family="Jost, monospace" font-size="7.5" letter-spacing="2.6" fill="#8A6628">ORO LAMINADO 18K</text>
+        </svg>
+      </div>
+      <div class="acts"><span class="icbtn"><svg class="i"><use href="#i-bag"/></svg><span class="badge">2</span></span></div>
+    </header>
+    <div class="stories">
+      <div class="story"><div class="ph studio"><svg class="j"><use href="#j-chain"/></svg></div>Cadenas</div>
+      <div class="story"><div class="ph studio"><svg class="j"><use href="#j-hoops"/></svg></div>Aretes</div>
+      <div class="story"><div class="ph studio"><svg class="j"><use href="#j-clover"/></svg></div>Dijes</div>
+      <div class="story"><div class="ph studio"><svg class="j" style="color:#1C1915"><use href="#j-thread"/></svg></div>Pulseras</div>
+      <div class="story"><div class="ph studio"><svg class="j"><use href="#j-beads"/></svg></div>Balinería</div>
+    </div>
+    <div class="hero-frame"><div class="inner"><div class="ph studio"><svg class="j"><use href="#j-chain"/></svg></div></div></div>
+    <div class="hero-copy">
+      <div class="eyebrow">Oro laminado 18K</div>
+      <h2 class="display serif">Brillo que se queda contigo</h2>
+      <p class="sub">Piezas pensadas para usarse todos los días, con garantía de color incluso en el mar y la piscina.</p>
+      <div class="btn btn-primary">Comprar ahora</div>
+      <div class="btn btn-link">Ver sets</div>
+    </div>
+    <div class="trust">
+      <div><svg class="i"><use href="#i-shield"/></svg>Garantía por escrito</div>
+      <div><svg class="i"><use href="#i-waves"/></svg>Color que resiste agua y sudor</div>
+      <div><svg class="i"><use href="#i-truck"/></svg>Envíos en EE.&nbsp;UU.</div>
+    </div>
+    <section>
+      <div class="sec-head"><h3 class="serif">Destacados</h3><a>Ver todo</a></div>
+      <div class="grid2">
+        <div class="card"><div class="ph studio"><span class="tag">Nuevo</span><svg class="j"><use href="#j-chain"/></svg><span class="add"><svg class="i"><use href="#i-plus"/></svg></span></div><div class="name">Cadena Singapur 45 cm</div><div class="price">$89.00</div><div class="warr">Garantía 1 año</div></div>
+        <div class="card"><div class="ph studio"><svg class="j" style="color:#7A1E22"><use href="#j-thread"/></svg><span class="add"><svg class="i"><use href="#i-plus"/></svg></span></div><div class="name">Pulsera de hilo con balines</div><div class="price">$59.99</div><div class="warr">Garantía 5 años en balines</div></div>
+        <div class="card"><div class="ph studio"><svg class="j"><use href="#j-hoops"/></svg><span class="add"><svg class="i"><use href="#i-plus"/></svg></span></div><div class="name">Aretes argolla mediana</div><div class="price">$64.00 <s>$78.00</s></div><div class="warr">Garantía 1 año</div></div>
+        <div class="card"><div class="ph studio"><svg class="j"><use href="#j-clover"/></svg><span class="add"><svg class="i"><use href="#i-plus"/></svg></span></div><div class="name">Dije trébol</div><div class="price">$72.00</div><div class="warr">Garantía 1 año</div></div>
+      </div>
+    </section>
+    <div class="explain">
+      <div class="eyebrow">Lo que te llevas</div>
+      <h3 class="serif" style="margin-top:12px">¿Qué es el oro laminado 18K?</h3>
+      <div class="layers"><div class="l1">CAPA DE ORO 18K</div><div class="l2">BASE METÁLICA</div></div>
+      <p class="sub">Una capa de oro de 18 quilates sobre una base metálica resistente: el brillo del oro, pensado para usarse todos los días.</p>
+      <div class="btn btn-link">Conoce el proceso</div>
+    </div>
+    <section>
+      <div class="sec-head"><h3 class="serif">Garantía D'ORATA</h3><a>Detalles</a></div>
+      <div class="warranty">
+        <div class="wcard"><div class="n serif">1</div><div class="u">año</div><p>Cadenas, aretes, dijes, topitos y piezas terminadas</p></div>
+        <div class="wcard"><div class="n serif">5</div><div class="u">años</div><p>Balinería de oro laminado</p></div>
+      </div>
+      <p class="covers">Cubre pérdida o cambio de color, incluso con piscina, mar, sudor, cremas y lociones.</p>
+    </section>
+    <section>
+      <div class="set"><div class="ph studio"><svg class="j"><use href="#j-set"/></svg></div><div class="cap"><b>Sets</b><span style="font-size:14px;color:var(--ink-2)">Combina y regala</span></div></div>
+    </section>
+    <section>
+      <div class="sec-head"><h3 class="serif">Nuevos ingresos</h3><a>Ver todo</a></div>
+      <div class="rail">
+        <div class="card"><div class="ph studio"><span class="tag">Nuevo</span><svg class="j"><use href="#j-studs"/></svg></div><div class="name">Topitos esfera</div><div class="price">$38.00</div></div>
+        <div class="card"><div class="ph studio"><span class="tag">Nuevo</span><svg class="j"><use href="#j-beads"/></svg></div><div class="name">Pulsera balinería 4 mm</div><div class="price">$84.00</div></div>
+        <div class="card"><div class="ph studio"><svg class="j" style="color:#22406E"><use href="#j-thread"/></svg></div><div class="name">Pulsera de hilo azul</div><div class="price">$59.99</div></div>
+      </div>
+    </section>
+    <section>
+      <div class="sec-head"><h3 class="serif">Por qué D'ORATA</h3></div>
+      <div class="benefits">
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-badge"/></svg></span><div><b>Certificado de autenticidad</b><span>Cada compra incluye su tarjeta con tu número de orden.</span></div></div>
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-shield"/></svg></span><div><b>Garantía de color</b><span>1 año en piezas terminadas, 5 años en balinería.</span></div></div>
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-msg"/></svg></span><div><b>Te asesoramos por WhatsApp</b><span>Medidas, combinaciones y regalos.</span></div></div>
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-lock"/></svg></span><div><b>Pago seguro</b><span>Tarjeta, Apple Pay y Google Pay.</span></div></div>
+      </div>
+    </section>
+    <section style="padding-top:32px"><div class="annot" style="margin:0">Testimonios: la sección queda lista y se enciende desde el panel cuando tengas reseñas reales con permiso del cliente.</div></section>
+    <section>
+      <div class="sec-head"><h3 class="serif">@dorata18k</h3><a>Seguir</a></div>
+      <div class="ig">
+        <div class="ph studio"><svg class="j"><use href="#j-hoops"/></svg></div><div class="ph studio"><svg class="j"><use href="#j-studs"/></svg></div><div class="ph studio"><svg class="j"><use href="#j-chain"/></svg></div>
+        <div class="ph studio"><svg class="j"><use href="#j-beads"/></svg></div><div class="ph studio"><svg class="j"><use href="#j-clover"/></svg></div><div class="ph studio"><svg class="j" style="color:#C2456E"><use href="#j-thread"/></svg></div>
+      </div>
+    </section>
+    <div class="news">
+      <h3 class="serif">Novedades primero</h3>
+      <p class="sub" style="margin-top:8px">Nuevos ingresos y sets antes que nadie.</p>
+      <div class="field"><span>Tu correo</span><b>Unirme</b></div>
+    </div>
+    <footer>
+      <div class="logo-wrap"><svg width="150" height="58" viewBox="0 0 150 58" aria-hidden="true"><use href="#logo-crown" x="57" y="0" width="36" height="17"/><text x="75" y="40" text-anchor="middle" font-family="Cormorant Garamond, monospace" font-size="24" font-weight="600" letter-spacing="3" fill="url(#gGold)">D'ORATA</text><text x="75" y="54" text-anchor="middle" font-family="Jost, monospace" font-size="7.5" letter-spacing="2.6" fill="#C9A45C">ORO LAMINADO 18K</text></svg></div>
+      <div class="socials" style="color:var(--gold)"><span><svg class="i"><use href="#i-ig"/></svg></span><span><svg class="i"><use href="#i-music"/></svg></span><span><svg class="i"><use href="#i-fb"/></svg></span></div>
+      <div class="cols">
+        <div><h4>Tienda</h4><ul><li>Cadenas</li><li>Aretes</li><li>Pulseras</li><li>Sets</li></ul></div>
+        <div><h4>Ayuda</h4><ul><li>Garantía</li><li>Envíos</li><li>Cambios</li><li>Preguntas</li></ul></div>
+      </div>
+      <div class="legal">© 2026 D'ORATA · Oro laminado 18K<br>Privacidad · Términos · Contacto</div>
+    </footer>
+    <span class="fab" aria-label="WhatsApp"><svg class="i" style="width:24px;height:24px"><use href="#i-msg"/></svg></span>
+  </div>
+</div>
+
+<!-- ============================== OPCIÓN B ============================== -->
+<div class="col">
+  <div class="label"><b>Opción B · Estuche negro</b><span>La entrada se siente como abrir un joyero: terciopelo negro, oro encima. Abajo, marfil limpio con carruseles amplios. El "estuche" —tarjeta negra con filo dorado interior— marca garantía y momentos clave.</span></div>
+  <div class="phone B">
+    <div class="top">
+      <header>
+        <span class="icbtn"><svg class="i"><use href="#i-menu"/></svg></span>
+        <svg width="150" height="58" viewBox="0 0 150 58" role="img" aria-label="D'ORATA Oro laminado 18K">
+          <use href="#logo-crown" x="57" y="0" width="36" height="17"/>
+          <text x="75" y="40" text-anchor="middle" font-family="Bodoni Moda, monospace" font-size="22" font-weight="500" letter-spacing="3" fill="url(#gGold)">D'ORATA</text>
+          <text x="75" y="54" text-anchor="middle" font-family="Manrope, monospace" font-size="7" letter-spacing="2.6" fill="#C9A45C">ORO LAMINADO 18K</text>
+        </svg>
+        <span class="icbtn"><svg class="i"><use href="#i-bag"/></svg><span class="badge">2</span></span>
+      </header>
+      <div class="hero"><div class="ph velvet"><svg class="j"><use href="#j-clover"/></svg></div></div>
+      <div class="hero-copy">
+        <h2 class="display serif">Hecha para lucirse. <em>Garantizada</em> para durar.</h2>
+        <p class="sub">Oro laminado 18K con garantía de color, incluso en el mar, la piscina y el día a día.</p>
+        <div class="btn btn-gold">Comprar ahora <svg class="i" style="width:18px;height:18px"><use href="#i-arrow"/></svg></div>
+      </div>
+      <div class="pills"><span class="pill on">Todo</span><span class="pill">Cadenas</span><span class="pill">Aretes</span><span class="pill">Dijes</span><span class="pill">Topitos</span></div>
+    </div>
+    <section>
+      <div class="sec-head"><div><div class="kicker"><svg class="i"><use href="#i-crown"/></svg>Explora</div><h3 class="serif">Por pieza</h3></div><a>Todas <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      <div class="rail">
+        <div class="catcard"><div class="ph studio"><svg class="j"><use href="#j-chain"/></svg></div><b>Cadenas</b></div>
+        <div class="catcard"><div class="ph studio"><svg class="j"><use href="#j-beads"/></svg></div><b>Balinería</b></div>
+        <div class="catcard"><div class="ph studio"><svg class="j" style="color:#1C1915"><use href="#j-thread"/></svg></div><b>Pulseras de hilo</b></div>
+      </div>
+    </section>
+    <section>
+      <div class="sec-head"><div><div class="kicker"><svg class="i"><use href="#i-crown"/></svg>Lo más elegido</div><h3 class="serif">Destacados</h3></div><a>Ver <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      <div class="rail">
+        <div class="pcard"><div class="ph studio"><svg class="j"><use href="#j-chain"/></svg></div><div class="name">Cadena Singapur 45 cm</div><div class="meta"><span class="price">$89.00</span><span class="warr">1 año</span></div></div>
+        <div class="pcard"><div class="ph studio"><svg class="j" style="color:#7A1E22"><use href="#j-thread"/></svg></div><div class="name">Pulsera de hilo con balines</div><div class="meta"><span class="price">$59.99</span><span class="warr">5 años</span></div></div>
+      </div>
+    </section>
+    <section>
+      <div class="estuche"><div class="in">
+        <div class="kicker" style="color:var(--gold)"><svg class="i"><use href="#i-shield"/></svg>Garantía D'ORATA</div>
+        <h3 class="serif" style="margin-top:8px">Tu color, protegido por escrito</h3>
+        <div class="wrow">
+          <div><div class="n">1 año</div><small>Cadenas, aretes, dijes, topitos y piezas terminadas</small></div>
+          <div><div class="n">5 años</div><small>Balinería de oro laminado</small></div>
+        </div>
+        <div class="checks">
+          <div><span class="ck"><svg class="i"><use href="#i-check"/></svg></span>Piscina, mar y sudor</div>
+          <div><span class="ck"><svg class="i"><use href="#i-check"/></svg></span>Cremas y lociones</div>
+          <div><span class="ck"><svg class="i"><use href="#i-check"/></svg></span>Certificado con tu número de orden</div>
+        </div>
+      </div></div>
+    </section>
+    <section>
+      <div class="explain"><div class="ph studio"><svg class="j"><use href="#j-studs"/></svg></div><div><h4>¿Qué es el oro laminado 18K?</h4><p>Una capa de oro de 18 quilates sobre una base metálica resistente: el brillo del oro para todos los días.</p></div></div>
+    </section>
+    <section>
+      <div class="setcard"><div class="ph velvet"><svg class="j"><use href="#j-set"/></svg></div><div class="cap"><b>Sets</b><span>Combinaciones listas para regalar</span></div></div>
+    </section>
+    <section>
+      <div class="sec-head"><div><div class="kicker"><svg class="i"><use href="#i-crown"/></svg>Recién llegados</div><h3 class="serif">Nuevos ingresos</h3></div><a>Ver <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      <div class="rail">
+        <div class="pcard"><div class="ph studio"><svg class="j"><use href="#j-hoops"/></svg></div><div class="name">Aretes argolla mediana</div><div class="meta"><span class="price">$64.00</span><span class="warr">1 año</span></div></div>
+        <div class="pcard"><div class="ph studio"><svg class="j"><use href="#j-beads"/></svg></div><div class="name">Pulsera balinería 4 mm</div><div class="meta"><span class="price">$84.00</span><span class="warr">5 años</span></div></div>
+      </div>
+    </section>
+    <section>
+      <div class="sec-head"><div><div class="kicker"><svg class="i"><use href="#i-crown"/></svg>Comprar aquí</div><h3 class="serif">Por qué D'ORATA</h3></div></div>
+      <div class="bens">
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-badge"/></svg></span><b>Certificado de autenticidad</b><span>En cada compra</span></div>
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-shield"/></svg></span><b>Garantía de color</b><span>Hasta 5 años</span></div>
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-msg"/></svg></span><b>Asesoría por WhatsApp</b><span>Antes y después</span></div>
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-lock"/></svg></span><b>Pago seguro</b><span>Apple Pay y Google Pay</span></div>
+      </div>
+    </section>
+    <section style="padding-top:24px"><div class="annot">Testimonios: se encienden desde el panel cuando tengas reseñas reales.</div></section>
+    <section>
+      <div class="sec-head"><div><div class="kicker"><svg class="i"><use href="#i-ig"/></svg>Síguenos</div><h3 class="serif">@dorata18k</h3></div></div>
+      <div class="ig">
+        <div class="ph velvet"><svg class="j"><use href="#j-hoops"/></svg></div><div class="ph studio"><svg class="j"><use href="#j-clover"/></svg></div><div class="ph velvet"><svg class="j"><use href="#j-beads"/></svg></div>
+      </div>
+    </section>
+    <div class="news"><h3 class="serif">Novedades primero</h3><p>Nuevos ingresos y sets antes que nadie.</p><div class="field"><span>Tu correo</span><b>Unirme</b></div></div>
+    <footer>
+      <div class="logo-wrap"><svg width="150" height="58" viewBox="0 0 150 58" aria-hidden="true"><use href="#logo-crown" x="57" y="0" width="36" height="17"/><text x="75" y="40" text-anchor="middle" font-family="Bodoni Moda, monospace" font-size="22" font-weight="500" letter-spacing="3" fill="url(#gGold)">D'ORATA</text><text x="75" y="54" text-anchor="middle" font-family="Manrope, monospace" font-size="7" letter-spacing="2.6" fill="#C9A45C">ORO LAMINADO 18K</text></svg></div>
+      <div class="socials" style="color:var(--gold)"><span><svg class="i"><use href="#i-ig"/></svg></span><span><svg class="i"><use href="#i-music"/></svg></span><span><svg class="i"><use href="#i-fb"/></svg></span></div>
+      <div class="cols">
+        <div><h4>Tienda</h4><ul><li>Cadenas</li><li>Aretes</li><li>Pulseras</li><li>Sets</li></ul></div>
+        <div><h4>Ayuda</h4><ul><li>Garantía</li><li>Envíos</li><li>Cambios</li><li>Preguntas</li></ul></div>
+      </div>
+      <div class="legal">© 2026 D'ORATA · Oro laminado 18K<br>Privacidad · Términos · Contacto</div>
+    </footer>
+    <span class="fab" aria-label="WhatsApp"><svg class="i" style="width:24px;height:24px"><use href="#i-msg"/></svg></span>
+  </div>
+</div>
+
+<!-- ============================== OPCIÓN C ============================== -->
+<div class="col">
+  <div class="label"><b>Opción C · Arco boutique</b><span>Luminosa y arquitectónica: las fotos viven dentro de arcos, como las vitrinas de una joyería de calle. Un "18K" gigante en línea dorada firma la portada, y la garantía se muestra como una barra que se ve, no solo se lee.</span></div>
+  <div class="phone C">
+    <header>
+      <span class="icbtn"><svg class="i"><use href="#i-menu"/></svg></span>
+      <svg width="150" height="58" viewBox="0 0 150 58" role="img" aria-label="D'ORATA Oro laminado 18K">
+        <use href="#logo-crown" x="57" y="0" width="36" height="17"/>
+        <text x="75" y="40" text-anchor="middle" font-family="Marcellus, monospace" font-size="23" letter-spacing="3" fill="url(#gGold)">D'ORATA</text>
+        <text x="75" y="54" text-anchor="middle" font-family="Figtree, monospace" font-size="7" letter-spacing="2.6" fill="#8A6628">ORO LAMINADO 18K</text>
+      </svg>
+      <span style="display:flex"><span class="icbtn"><svg class="i"><use href="#i-search"/></svg></span><span class="icbtn"><svg class="i"><use href="#i-bag"/></svg><span class="badge">2</span></span></span>
+    </header>
+    <div class="hero">
+      <div class="big18">18K</div>
+      <div class="arch"><div class="ph studio"><svg class="j"><use href="#j-hoops"/></svg></div></div>
+      <h2 class="serif">Oro laminado 18K, todos los días</h2>
+      <p class="sub">Piezas que mantienen su color con garantía por escrito, hasta 5 años.</p>
+      <div class="btns"><div class="btn btn-primary">Comprar ahora</div><div class="btn btn-ghost">Ver sets</div></div>
+    </div>
+    <section>
+      <div class="sec-head"><small>Categorías</small><h3 class="serif">Encuentra tu pieza</h3></div>
+      <div class="bento">
+        <div class="tall"><div class="ph studio"><svg class="j"><use href="#j-chain"/></svg></div><b>Cadenas</b></div>
+        <div><div class="ph studio"><svg class="j"><use href="#j-studs"/></svg></div><b>Topitos</b></div>
+        <div><div class="ph studio"><svg class="j"><use href="#j-clover"/></svg></div><b>Dijes</b></div>
+        <div class="wide"><div class="ph studio"><svg class="j" style="color:#1C1915"><use href="#j-thread"/></svg></div><b>Pulseras de hilo</b></div>
+      </div>
+    </section>
+    <section>
+      <div class="sec-head"><small>Lo más elegido</small><h3 class="serif">Destacados</h3></div>
+      <div class="grid2">
+        <div class="card"><div class="ph studio"><svg class="j"><use href="#j-chain"/></svg></div><div class="name">Cadena Singapur 45 cm</div><div class="price">$89.00</div><div class="btn-add">Agregar</div></div>
+        <div class="card"><div class="ph studio"><svg class="j" style="color:#7A1E22"><use href="#j-thread"/></svg></div><div class="name">Pulsera de hilo con balines</div><div class="price">$59.99</div><div class="btn-add">Agregar</div></div>
+      </div>
+    </section>
+    <section>
+      <div class="sec-head"><small>Garantía D'ORATA</small><h3 class="serif">El color se queda</h3></div>
+      <div class="timeline">
+        <div class="tl-row"><div class="t"><b>1 año</b><span>Piezas terminadas</span></div><div class="track"><i style="width:20%"></i></div></div>
+        <div class="tl-row"><div class="t"><b>5 años</b><span>Balinería</span></div><div class="track"><i style="width:100%"></i></div></div>
+        <div class="tl-axis"><span>Compra</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5 años</span></div>
+        <div class="covers"><span><svg class="i"><use href="#i-waves"/></svg>Piscina y mar</span><span><svg class="i"><use href="#i-check"/></svg>Sudor</span><span><svg class="i"><use href="#i-check"/></svg>Cremas y lociones</span></div>
+      </div>
+    </section>
+    <section>
+      <div class="sec-head"><small>Lo que te llevas</small><h3 class="serif">¿Qué es el oro laminado?</h3></div>
+      <div class="explain">
+        <div class="step"><div class="num">1</div><p>Base metálica resistente</p></div>
+        <div class="step"><div class="num">2</div><p>Capa de oro de 18 quilates</p></div>
+        <div class="step"><div class="num">3</div><p>Brillo para todos los días</p></div>
+      </div>
+    </section>
+    <section>
+      <div class="set"><div class="ph velvet"><svg class="j"><use href="#j-set"/></svg></div><div class="cap"><b>Sets para regalar</b><span>Cadena, dije y topitos que ya combinan.</span><a>Ver sets <svg class="i"><use href="#i-arrow"/></svg></a></div></div>
+    </section>
+    <section>
+      <div class="sec-head"><small>Recién llegados</small><h3 class="serif">Nuevos ingresos</h3></div>
+      <div class="rail">
+        <div class="card"><div class="ph studio"><svg class="j"><use href="#j-beads"/></svg></div><div class="name">Pulsera balinería 4 mm</div><div class="price">$84.00</div></div>
+        <div class="card"><div class="ph studio"><svg class="j"><use href="#j-hoops"/></svg></div><div class="name">Aretes argolla</div><div class="price">$64.00 <s>$78</s></div></div>
+        <div class="card"><div class="ph studio"><svg class="j"><use href="#j-studs"/></svg></div><div class="name">Topitos esfera</div><div class="price">$38.00</div></div>
+      </div>
+    </section>
+    <section>
+      <div class="sec-head"><small>Comprar aquí</small><h3 class="serif">Por qué D'ORATA</h3></div>
+      <div class="bens">
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-badge"/></svg></span><div><b>Certificado de autenticidad</b><span>Tarjeta física con tu número de orden</span></div></div>
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-msg"/></svg></span><div><b>Asesoría por WhatsApp</b><span>Te ayudamos a elegir y combinar</span></div></div>
+        <div class="ben"><span class="chip"><svg class="i"><use href="#i-lock"/></svg></span><div><b>Pago seguro</b><span>Tarjeta, Apple Pay y Google Pay</span></div></div>
+      </div>
+    </section>
+    <section style="padding-top:24px"><div class="annot" style="margin:0">Testimonios: se encienden desde el panel cuando tengas reseñas reales.</div></section>
+    <section>
+      <div class="sec-head"><small>Síguenos</small><h3 class="serif">@dorata18k</h3></div>
+      <div class="ig"><div class="ph studio"><svg class="j"><use href="#j-clover"/></svg></div><div class="ph velvet"><svg class="j"><use href="#j-studs"/></svg></div><div class="ph studio"><svg class="j" style="color:#C2456E"><use href="#j-thread"/></svg></div></div>
+    </section>
+    <div class="news"><h3 class="serif">Novedades primero</h3><p>Nuevos ingresos y sets antes que nadie.</p><div class="field"><span>Tu correo</span><b>Unirme</b></div></div>
+    <footer>
+      <div class="logo-wrap"><svg width="150" height="58" viewBox="0 0 150 58" aria-hidden="true"><use href="#logo-crown" x="57" y="0" width="36" height="17"/><text x="75" y="40" text-anchor="middle" font-family="Marcellus, monospace" font-size="23" letter-spacing="3" fill="url(#gGold)">D'ORATA</text><text x="75" y="54" text-anchor="middle" font-family="Figtree, monospace" font-size="7" letter-spacing="2.6" fill="#8A6628">ORO LAMINADO 18K</text></svg></div>
+      <div class="socials" style="color:var(--ink)"><span><svg class="i"><use href="#i-ig"/></svg></span><span><svg class="i"><use href="#i-music"/></svg></span><span><svg class="i"><use href="#i-fb"/></svg></span></div>
+      <div class="cols">
+        <div><h4>Tienda</h4><ul><li>Cadenas</li><li>Aretes</li><li>Pulseras</li><li>Sets</li></ul></div>
+        <div><h4>Ayuda</h4><ul><li>Garantía</li><li>Envíos</li><li>Cambios</li><li>Preguntas</li></ul></div>
+      </div>
+      <div class="legal">© 2026 D'ORATA · Oro laminado 18K<br>Privacidad · Términos · Contacto</div>
+    </footer>
+    <span class="fab" aria-label="WhatsApp"><svg class="i" style="width:24px;height:24px"><use href="#i-msg"/></svg></span>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
