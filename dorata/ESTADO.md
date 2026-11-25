@@ -1,78 +1,76 @@
 # ESTADO — D'ORATA (tienda online propia)
-Última actualización: 2026-11-25 | Fase actual: 0 — Definición (arquitectura + propuesta visual)
+Última actualización: 2026-11-25 | Fase actual: 1 — Base, diseño, navegación (construida; ver revisión visual)
 
-⏸️ CHECKPOINT — Última acción: añadidos banner de anuncios (§46) y legal/privacidad (§33–45): esquema
-(70 tablas, 20/20 pruebas), maqueta funcional y docs 05/06. / Siguiente acción exacta: que la dueña elija A, B, C o una combinación → llenar FICHA-ARTE.md
-→ arrancar FASE 1 (scaffold Next.js + Cloudflare, layout, navegación, home con datos semilla).
+⏸️ CHECKPOINT — Última acción: Fase 1 construida y verificada (tsc/lint/22 unit/23 SQL/build/OpenNext/Playwright 375).
+Siguiente acción exacta: cerrar hallazgos de la revisión visual que dependen de la dueña (envío/devoluciones,
+beneficio de lista de espera, fecha 02.12.26) → Fase 2 (Supabase real: catálogo, ajustes, políticas, búsqueda).
 
 ## Qué es (3 líneas)
 Tienda online propia de accesorios en oro laminado 18K, marca D'ORATA (empresa legal futura: Mafer Studio LLC).
 Mercado: EE. UU., español (inglés después), USD, móvil primero. Venta web + manual (IG/TikTok/WhatsApp/persona).
-Stack: Next.js en Cloudflare Workers · Supabase · Stripe Checkout. Panel privado tipo "mini Shopify".
+Stack: Next.js 15 en Cloudflare Workers (OpenNext) · Supabase · Stripe Checkout (fase 4). Panel privado (fase 3).
 
 ## Ubicación en el repo
-Vive en `dorata/` dentro del repo SolWave para no tocar el proyecto Solwave (raíz). Recomendado: moverlo a
-un repo propio (`dorata18k`) antes de la FASE 7 (deploy). El ESTADO/FICHAS de la raíz son de Solwave.
+`dorata/` dentro del repo SolWave (la raíz es otro proyecto: Solwave). Recomendado: repo propio antes de la fase 7.
+⚠ GitHub: push bloqueado (403, falta permiso de la app de Claude en el repo). Commits locales en la rama
+`claude/dorata-ecommerce-platform-qu0ubx`; reintentar push en cada hito.
 
-## Adaptación de la Secuencia Maestra del SO (ecommerce, no SaaS)
-Landing → onboarding → paywall → login NO aplica literal. Equivalente: Home (venta) → Categoría/Ficha →
-Carrito → Checkout Stripe → Confirmación → (cuenta opcional) · y el Panel admin en paralelo.
+## Decisiones confirmadas por la dueña
+- Dirección visual: mezcla A+B (hero oscuro B, luego marfil/crema, categorías circulares A, alternar oscuro/claro).
+- Zona horaria oficial: America/New_York. Lanzamiento: 2-dic-2026.
+- Banner: "✦ LANZAMIENTO D'ORATA · 02.12.26 · MUY PRONTO ✦" + "Faltan {countdown}" → a las 00:00 NY del 2-dic
+  cambia solo a "✦ D'ORATA YA ESTÁ DISPONIBLE · COMPRA AHORA ✦" (sin fecha fin; ella lo reemplaza en el panel).
+- Estado de tienda controlable sin código: Próximamente / Tienda activa / Mantenimiento (+ apertura programable live_at).
+  Arranca en Próximamente. Si el 2-dic está lista y probada → Tienda activa; si no → sigue Próximamente.
 
-## Decisiones técnicas (cosa juzgada — detalle en docs/01-ARQUITECTURA.md)
-- Next.js 15 App Router + TS estricto, desplegado con @opennextjs/cloudflare en Workers; ISR con caché R2.
-- Supabase: Postgres + RLS en 58/58 tablas, Auth (admin con MFA obligatorio), Storage, pg_cron.
-- Admin en /admin con 3 capas: Cloudflare Access + Supabase Auth MFA + rol en BD (owner/admin/staff) + RLS.
-- Dinero en centavos USD; costos COP con tasa guardada; snapshots de precio/costo/garantía en pedidos.
-- Inventario solo vía funciones SQL (reserva atómica, libro inmutable). Reserva 35 min (Stripe expira a 30).
-- Pago confirmado SOLO por webhook firmado + idempotencia (stripe_events).
-- i18n: next-intl `as-needed` (es sin prefijo) + tablas *_translations. UI mono-idioma español hoy.
-- Imágenes: redimensionado en el navegador del admin (WebP 400/800/1600) + proxy /media con caché CF.
-- Tienda sin librerías de animación (CSS + View Transitions); shadcn/Recharts solo en /admin.
-- "Nuevos" y "Ofertas" = categorías automáticas (auto_rule) por flags del producto.
-- Envíos: proveedor 'manual' hoy; interfaz lista para USPS/UPS/Shippo.
-- Banner: campañas (prioridad, periodo UTC + zona de edición) con mensajes; current_announcement() decide;
-  público no lee campañas. SSR + revalidate 60s + temporizador a next_change_at. Pausa WCAG 2.2.2.
-- Legal: borradores en page_translations → publicar crea page_versions inmutables (SHA-256, estado de
-  revisión legal). Variantes por región (region_code) para leyes estatales / internacional.
-- Cookies: modelo estricto (no esenciales OFF hasta aceptar), GPC = rechazo de marketing, registro mínimo
-  sin IP. Píxeles GA4/Meta/TikTok vía tracking_integrations (apagados), cargador condicionado al consentimiento.
-- Marketing separado: marketing_subscriptions + ledger; comprar NO suscribe. Remitentes distintos.
-- Eliminación de datos = anonymize_customer() (conserva registro fiscal).
+## Decisiones técnicas (detalle en docs/01-ARQUITECTURA.md y docs/07-FASE-1.md)
+- Next.js 15.5 App Router + TS estricto + Tailwind v4 + next-intl (es sin prefijo) + OpenNext/Workers.
+- Supabase: 70 tablas con RLS, funciones de inventario, banner (current_announcement), modo (effective_store_mode),
+  políticas versionadas, consentimiento, privacidad, subscribe_marketing. Pruebas: 23/23.
+- Fase 1 usa repositorio con fuente DEMO (mismas firmas); banner, modo, versión de cookies e integraciones ya leen
+  Supabase cuando hay variables. Fase 2 reemplaza catálogo/ajustes/políticas por Supabase.
+- Middleware: modo de tienda (caché 30 s) + vista previa privada `?vista_previa=TOKEN` (hash, cookie httpOnly 12 h).
+- htmlLimitedBots=/.*/ para que 404/308 sean reales (sin streaming de metadatos). Sin loading.tsx a nivel de grupo.
+- Tienda sin librerías de animación (CSS); nunca ocultar contenido con animación de scroll.
+- Íconos: Lucide + íconos propios de redes (Lucide v1 no trae marcas).
+- Radios: 4px contenedores · píldora botones/chips/inputs/círculos. Escala tipográfica 56/36/32/28/20/15/13/12.
 
 ## Dirección de arte
-- FICHA-ARTE.md: PENDIENTE (se llena al elegir). Comparativa: `dorata/direcciones-abc.html`.
-- Contrato de marca (del brief): marfil/blanco/crema + dorado + negro secundario; serif elegante; corona;
-  "ORO LAMINADO 18K"; sin "Joyería", sin corazones, sin degradados exagerados.
-- Opciones: A Vitrina marfil (Cormorant+Jost) · B Estuche negro (Bodoni Moda+Manrope) · C Arco boutique (Marcellus+Figtree).
-- Registro anti-repetición: Solwave usó Playfair Display + DM Sans → vetadas aquí.
-- Logo de la maqueta es PROVISIONAL: falta el archivo oficial de la dueña.
+- FICHA-ARTE.md: aprobada (A+B). Par: Bodoni Moda + Manrope. Dispositivo: filete dorado doble + anillo dorado.
+- Registro anti-repetición: Solwave usó Playfair + DM Sans (vetadas). D'ORATA: Bodoni Moda + Manrope.
 
 ## Avatar
-- FICHA-AVATAR.md: BORRADOR, pendiente de aprobación (derivado solo del brief; campos [validar]).
+- FICHA-AVATAR.md: BORRADOR pendiente de aprobación (campos [validar]).
 
 ## Fases
-- [x] 0 · Definición: arquitectura, esquema BD (migraciones + seed + tests), flujos, propuesta visual
-- [ ] 1 · Base: scaffold, tokens de la dirección elegida, layout, navegación, home con semilla,
-        banner de anuncios, aviso de cookies + preferencias, footer legal
-- [ ] 2 · BD conectada, catálogo, producto, inventario
-- [ ] 3 · Panel administrativo (incl. Banner de anuncios, Legal y Privacidad, Integraciones)
-- [ ] 4 · Carrito, Stripe (finalize_paid_checkout en SQL), impuestos, envíos
-- [ ] 5 · Pedidos, clientes, garantías, certificados, emails (transaccional/marketing), solicitudes de privacidad
+- [x] 0 · Definición: arquitectura, esquema BD, flujos, propuesta visual, banner, legal/privacidad
+- [x] 1 · Base: scaffold, tokens, layout, navegación, banner, cookies, footer legal, home, catálogo, producto,
+        carrito local, Próximamente/Mantenimiento, lista de espera (revisión visual: ver abajo)
+- [ ] 2 · Supabase real: catálogo, productos, inventario, ajustes, políticas, búsqueda, fotos (Storage)
+- [ ] 3 · Panel administrativo (primero: interruptor de modo de tienda y editor del banner)
+- [ ] 4 · Carrito → Stripe Checkout, impuestos, envíos
+- [ ] 5 · Pedidos, clientes, garantías, certificados, emails, solicitudes de privacidad
 - [ ] 6 · Finanzas, calculadora de precio, estudio de mercado, analítica
-- [ ] 7 · SEO, auditoría de seguridad (27/61), testing, deploy, lanzamiento
+- [ ] 7 · SEO completo, auditoría de seguridad (27/61), testing e2e, deploy, lanzamiento
+
+## Revisión visual (subagente revisor-visual, gate ≥36/40 y ≥16/20)
+- Ronda 1: home 27/40·11/20·copy 11/20 · Próximamente 29/40·12/20 · producto 28/40·13/20 → corregidos radios,
+  primera vista, copy con dolor, WhatsApp falso, foto por variante, deshacer, garantía sin salida, escala tipográfica.
+- Ronda 2: Próximamente 32/40·14/20 · producto 29/40·14/20 · home invalidada por .reveal (contenido oculto) → quitado.
+- Ronda 3: (resultado en el reporte de cierre de la sesión).
 
 ## Pendiente / preguntas para la dueña
-- Elegir dirección visual (A/B/C/combinar).
-- Archivo oficial del logo (SVG o PNG grande) y fotos reales de producto.
-- Aprobar o corregir FICHA-AVATAR.md.
-- (Fase 4) Tarifas y tiempos de envío; ¿activar código BIENVENIDA10?; cuenta de Stripe.
-- (Fase 7) Comprar/conectar dorata18k.com en Cloudflare; Supabase Pro antes del lanzamiento.
-- Confirmar zona horaria del negocio (valor inicial America/New_York).
-- Revisión legal: lista de 9 puntos en docs/05-LEGAL-Y-PRIVACIDAD.md §9 (políticas en borrador).
-- ⚠ Fecha de lanzamiento 2-dic-2026 vs. plan por fases: la tienda completa no estará lista en 7 días.
-  Opción propuesta: página "próximamente" + lista de espera + banner con contador, y tienda completa después.
+- Número de WhatsApp (sin él no se muestra el botón), correo de contacto, Facebook si existe; confirmar @dorata18k.
+- Logo oficial (SVG/PNG) y fotos reales de producto.
+- Envíos: tarifas, plazos, umbral de envío gratis; política de devoluciones (para la línea de confianza y checkout).
+- ¿Beneficio por unirse a la lista de espera? (acceso anticipado / precio fundadora) — no se inventa.
+- Fecha "02.12.26": en EE. UU. puede leerse 12 de febrero. Sugerencia: "2 DE DICIEMBRE". Editable en el panel.
+- Garantía de pulseras de hilo con balines y de los sets (hoy sin garantía asignada).
+- ¿Las piezas se envían en estuche? (se quitó esa afirmación hasta confirmarlo).
+- Aprobar FICHA-AVATAR.md. Revisión legal (docs/05 §9). Cuenta Stripe (fase 4). Dominio en Cloudflare (fase 7).
+- Antes del 2-dic: crear proyecto Supabase, aplicar migraciones, desplegar en Cloudflare (sin esto, Próximamente
+  y la lista de espera no están en internet).
 
 ## Problemas conocidos
-- Ninguno en código (aún no hay app). El dev server/tsc/build se verifican desde la FASE 1.
-- La comparativa visual NO pasó por el subagente revisor-visual: es propuesta de dirección, no pantalla
-  terminada. El revisor puntuará la home real en la FASE 1.
+- Mantenimiento responde 200 + noindex (no 503); aceptable, revisar en fase 7.
+- CSP con nonce pendiente (fase 7). Rate limit en memoria por instancia; en producción se suma regla WAF.

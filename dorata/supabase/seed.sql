@@ -97,21 +97,27 @@ with p (kind, slug, title, sort_order, skeleton) as (values
 insert into public.page_translations (page_id, locale, slug, title, body_md)
 select ins.id, 'es', p.slug, p.title, p.skeleton from ins join p on p.kind::public.page_kind = ins.kind;
 
--- Banner: campaña de lanzamiento con los datos de la dueña. Creada APAGADA (se enciende en el panel).
--- Fin: 2-dic-2026 23:59:59 en la zona horaria del negocio.
+-- Banner de lanzamiento (aprobado por la dueña 25-nov-2026). ACTIVO desde hoy, con cuenta regresiva
+-- hasta el 2-dic-2026 00:00 (America/New_York). Al llegar a cero cambia solo al mensaje "ya disponible";
+-- sin fecha de fin: la dueña lo reemplaza desde el panel.
 with c as (
   insert into public.announcement_campaigns
-    (internal_name, is_active, priority, starts_at, ends_at, timezone, style, motion, marquee_speed, link_url, link_label)
-  values ('Lanzamiento D''ORATA', false, 10,
-          timestamp '2026-11-25 00:00:00' at time zone 'America/New_York',
-          timestamp '2026-12-02 23:59:59' at time zone 'America/New_York',
-          'America/New_York', 'black', 'marquee', 40, null, '{}'::jsonb)
+    (internal_name, is_active, priority, starts_at, ends_at, timezone, style, motion, marquee_speed,
+     countdown_enabled, countdown_target_at, countdown_end_behavior, after_link_url)
+  values ('Lanzamiento D''ORATA', true, 10,
+          timestamp '2026-11-25 00:00:00' at time zone 'America/New_York', null,
+          'America/New_York', 'black', 'marquee', 36,
+          true, timestamp '2026-12-02 00:00:00' at time zone 'America/New_York', 'swap_message', '/')
   returning id
+), t as (
+  insert into public.announcement_campaign_translations (campaign_id, locale, countdown_text, after_text, after_link_label)
+  select c.id, 'es', 'Faltan {countdown}', '✦ D''ORATA YA ESTÁ DISPONIBLE · COMPRA AHORA ✦', 'Comprar' from c
+  returning campaign_id
 ), m as (
   insert into public.announcement_messages (campaign_id, position) select c.id, 1 from c returning id
 )
 insert into public.announcement_message_translations (message_id, locale, text)
-select m.id, 'es', '✨ LANZAMIENTO D''ORATA — 2 DE DICIEMBRE ✨' from m;
+select m.id, 'es', '✦ LANZAMIENTO D''ORATA · 02.12.26 · MUY PRONTO ✦' from m;
 
 -- Inventario de almacenamiento PROPIO conocido (los de terceros se agregan al activar cada integración).
 insert into public.cookie_declarations (name, provider, category, storage, purpose, duration) values

@@ -39,6 +39,7 @@ create type public.warranty_resolution    as enum ('replacement', 'repair', 'ref
 create type public.media_kind             as enum ('image', 'video');
 create type public.page_kind              as enum ('privacy', 'cookies', 'terms', 'site_terms', 'shipping', 'returns', 'refunds', 'warranty', 'contact', 'about', 'care', 'other');
 create type public.category_auto_rule     as enum ('new', 'sale');
+create type public.store_mode             as enum ('coming_soon', 'live', 'maintenance');
 
 -- -----------------------------------------------------------------------------
 -- 1. Utilidades
@@ -111,6 +112,9 @@ create table public.store_settings (
   newsletter_enabled boolean not null default false,
   testimonials_enabled boolean not null default false,
   timezone           text not null default 'America/New_York' check (public.is_valid_timezone(timezone)), -- zona del negocio (editable)
+  store_mode         public.store_mode not null default 'coming_soon',  -- Próximamente / Tienda activa / Mantenimiento
+  live_at            timestamptz,               -- opcional: en Próximamente, abre sola a esta hora (si la dueña lo programa)
+  maintenance_message jsonb not null default '{}'::jsonb,              -- {"es":"Volvemos en unas horas…"}
   privacy_email      text,
   business_address   jsonb,                      -- dirección comercial cuando corresponda
   cookie_banner_enabled boolean not null default true,

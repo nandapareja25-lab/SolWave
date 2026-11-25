@@ -12,7 +12,47 @@ insert into public.user_roles (user_id, role) values
   ('00000000-0000-0000-0000-0000000000b2', 'staff');
 
 -- ---------- A1: tu ejemplo — lanzamiento 25-nov → 2-dic 11:59 p. m. ----------
-update public.announcement_campaigns set is_active = true where internal_name = 'Lanzamiento D''ORATA';
+-- ---------- A0: la campaña REAL de lanzamiento (seed aprobado por la dueña) ----------
+do $$
+declare r jsonb;
+begin
+  r := public.current_announcement('es', timestamp '2026-11-30 18:00:00' at time zone 'America/New_York');
+  assert r ->> 'mode' = 'countdown', r::text;
+  assert r -> 'items' -> 0 ->> 'text' = 'Faltan {countdown}';
+  assert r -> 'items' -> 1 ->> 'text' = '✦ LANZAMIENTO D''ORATA · 02.12.26 · MUY PRONTO ✦';
+  assert (r ->> 'countdown_target_at')::timestamptz = timestamp '2026-12-02 00:00:00' at time zone 'America/New_York';
+  assert r -> 'after' ->> 'text' = '✦ D''ORATA YA ESTÁ DISPONIBLE · COMPRA AHORA ✦', 'el navegador recibe el mensaje siguiente para cambiar sin recargar';
+  r := public.current_announcement('es', timestamp '2026-12-02 00:00:00' at time zone 'America/New_York');
+  assert r ->> 'mode' = 'after' and r -> 'items' -> 0 ->> 'text' = '✦ D''ORATA YA ESTÁ DISPONIBLE · COMPRA AHORA ✦', r::text;
+  r := public.current_announcement('es', timestamp '2027-03-01 00:00:00' at time zone 'America/New_York');
+  assert r ->> 'mode' = 'after', 'sin fecha de fin: sigue hasta que la dueña lo reemplace';
+  raise notice 'OK A0 — lanzamiento real: cuenta regresiva hasta 02.12.26 y luego "ya disponible"';
+end $$;
+
+-- ---------- S1: modo de la tienda ----------
+do $$
+begin
+  assert public.effective_store_mode() ->> 'mode' = 'coming_soon', 'arranca en Próximamente';
+  update public.store_settings set live_at = timestamp '2026-12-02 00:00:00' at time zone 'America/New_York';
+  assert public.effective_store_mode(timestamp '2026-12-01 23:59:00' at time zone 'America/New_York') ->> 'mode' = 'coming_soon';
+  assert public.effective_store_mode(timestamp '2026-12-02 00:00:00' at time zone 'America/New_York') ->> 'mode' = 'live', 'abre sola si la dueña programó la hora';
+  update public.store_settings set store_mode = 'maintenance';
+  assert public.effective_store_mode(timestamp '2026-12-03 00:00:00' at time zone 'America/New_York') ->> 'mode' = 'maintenance', 'mantenimiento manda';
+  update public.store_settings set store_mode = 'coming_soon', live_at = null;
+  raise notice 'OK S1 — Próximamente / Tienda activa / Mantenimiento, con apertura programable';
+end $$;
+
+-- Para A1–A4: campañas de prueba independientes del seed.
+delete from public.announcement_campaigns;
+with c as (
+  insert into public.announcement_campaigns (internal_name, is_active, priority, starts_at, ends_at, style, motion)
+  values ('Lanzamiento D''ORATA', true, 10,
+          timestamp '2026-11-25 00:00:00' at time zone 'America/New_York',
+          timestamp '2026-12-02 23:59:59' at time zone 'America/New_York', 'black', 'marquee')
+  returning id
+), m as (insert into public.announcement_messages (campaign_id, position) select id, 1 from c returning id)
+insert into public.announcement_message_translations (message_id, locale, text)
+select id, 'es', '✨ LANZAMIENTO D''ORATA — 2 DE DICIEMBRE ✨' from m;
 do $$
 declare r jsonb;
 begin
@@ -204,6 +244,34 @@ begin
   assert (select count(*) from public.customer_addresses where customer_id = c.id) = 0;
   assert (select count(*) from public.marketing_subscriptions) = 0, 'sale de marketing';
   raise notice 'OK P2 — eliminación por solicitud: datos personales fuera, registro fiscal intacto';
+end $$;
+reset role;
+
+-- ---------- M1: lista de espera / novedades ----------
+set local role service_role;
+select public.subscribe_marketing('Ana@Test.local', 'waitlist');
+select public.subscribe_marketing('ana@test.local', 'footer');   -- repetir no duplica
+do $$
+begin
+  assert (select count(*) from public.marketing_subscriptions where email::text = 'ana@test.local') = 1, 'guardado en minúsculas y sin duplicar';
+  assert (select count(*) from public.marketing_consent_events e join public.marketing_subscriptions m on m.id = e.subscription_id
+           where m.email::text = 'ana@test.local') = 2, 'cada alta deja evidencia';
+  begin
+    perform public.subscribe_marketing('no-es-correo', 'footer');
+    raise exception 'debió fallar';
+  exception when others then assert sqlerrm = 'INVALID_EMAIL', sqlerrm;
+  end;
+  raise notice 'OK M1 — lista de espera: sin duplicados, con evidencia de consentimiento';
+end $$;
+reset role;
+set local role anon;
+do $$
+begin
+  begin
+    perform public.subscribe_marketing('x@test.local', 'footer');
+    raise exception 'anon no debe poder llamar directo';
+  exception when insufficient_privilege then null;
+  end;
 end $$;
 reset role;
 

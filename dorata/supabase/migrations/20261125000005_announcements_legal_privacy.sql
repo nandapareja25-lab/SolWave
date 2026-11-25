@@ -154,7 +154,9 @@ begin
       'countdown_target_at', case when v_mode = 'countdown' then c.countdown_target_at end,
       'ends_at', c.ends_at,
       'timezone', c.timezone,
-      'next_change_at', v_next
+      'next_change_at', v_next,
+      'after', case when v_mode = 'countdown' and c.countdown_end_behavior = 'swap_message' and v_t.after_text is not null
+                    then jsonb_build_object('text', v_t.after_text, 'link_url', c.after_link_url, 'link_label', v_t.after_link_label) end
     );
   end loop;
 
@@ -359,7 +361,7 @@ create table public.marketing_consent_events (
   id                bigint generated always as identity primary key,
   subscription_id   uuid not null references public.marketing_subscriptions (id) on delete cascade,
   action            text not null check (action in ('opt_in', 'opt_out')),
-  source            text not null check (source in ('checkout', 'footer', 'popup', 'account', 'admin', 'unsubscribe_link', 'privacy_request')),
+  source            text not null check (source in ('checkout', 'footer', 'popup', 'waitlist', 'account', 'admin', 'unsubscribe_link', 'privacy_request')),
   policy_version_id uuid references public.page_versions (id) on delete set null,
   created_at        timestamptz not null default now()
 );
@@ -538,3 +540,48 @@ begin
                           $cron$ select public.purge_old_consent_records(); $cron$);
   end if;
 end $$;
+
+-- -----------------------------------------------------------------------------
+-- 7. Modo de la tienda (lo usa el middleware; público, sin datos sensibles)
+-- -----------------------------------------------------------------------------
+create or replace function public.effective_store_mode(p_now timestamptz default now())
+returns jsonb language sql stable security definer set search_path = '' as $$
+  select jsonb_build_object(
+    'mode', case when s.store_mode = 'coming_soon' and s.live_at is not null and s.live_at <= p_now
+                 then 'live' else s.store_mode::text end,
+    'live_at', s.live_at,
+    'timezone', s.timezone)
+  from public.store_settings s where s.id = 1;
+$$;
+grant execute on function public.effective_store_mode(timestamptz) to anon, authenticated, service_role;
+
+-- -----------------------------------------------------------------------------
+-- 8. Alta de marketing / lista de espera (atómica, con evento de consentimiento)
+-- -----------------------------------------------------------------------------
+create or replace function public.subscribe_marketing(
+  p_email extensions.citext,
+  p_source text,
+  p_locale public.locale_code default 'es'
+) returns void language plpgsql security definer set search_path = '' as $$
+declare
+  v_id uuid;
+  v_policy uuid;
+begin
+  p_email := lower(trim(p_email::text));
+  if p_email is null or p_email::text !~ '^[^\s@]+@[^\s@]+\.[^\s@]{2,}$' or length(p_email::text) > 254 then
+    raise exception 'INVALID_EMAIL';
+  end if;
+  insert into public.marketing_subscriptions (email, channel, status, locale, subscribed_at)
+  values (p_email, 'email', 'subscribed', p_locale, now())
+  on conflict (email, channel) do update
+    set status = 'subscribed',
+        subscribed_at = case when public.marketing_subscriptions.status = 'subscribed'
+                             then public.marketing_subscriptions.subscribed_at else now() end,
+        unsubscribed_at = null
+  returning id into v_id;
+  select v.id into v_policy from public.policy_version_at('privacy', p_locale) v;
+  insert into public.marketing_consent_events (subscription_id, action, source, policy_version_id)
+  values (v_id, 'opt_in', p_source, v_policy);
+end $$;
+revoke all on function public.subscribe_marketing(extensions.citext, text, public.locale_code) from public, anon, authenticated;
+grant execute on function public.subscribe_marketing(extensions.citext, text, public.locale_code) to service_role;
