@@ -59,7 +59,7 @@ export function DiscountEditor({ initial, timezone, timesUsed, categories, produ
   }
 
   return (
-    <form ref={formRef} onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <form ref={formRef} onSubmit={submit} className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
       <div className="lg:col-span-2">
         <PageHeader eyebrow={initial.id ? "Código de descuento" : "Nuevo código"} title={d.code || "Nuevo código"}
           description={initial.id ? `${timesUsed} ${timesUsed === 1 ? "uso" : "usos"} · ${d.is_active ? "activo" : "inactivo"}` : "Elige el código, cuánto descuenta y dónde aplica."} />

@@ -3,14 +3,13 @@
 import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowDown, ArrowUp, ChevronsDown, ChevronsUp, Eye, EyeOff, ListPlus, ListX, MoreHorizontal, Pencil, X } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, Check, ChevronsDown, ChevronsUp, Eye, EyeOff, ListPlus, ListX, MoreHorizontal, Pencil, X } from "lucide-react";
+import { monogram } from "@/lib/monogram";
 import { setCategoryOrder, toggleCategory } from "@/app/admin/(panel)/categorias/actions";
 
 export type CategoryItem = { id: string; name: string; visible: boolean; nav: boolean; auto: string | null; products: number; warranty: string | null; image: string | null };
 const iconBtn = "press grid size-10 shrink-0 place-items-center rounded-full border border-line disabled:opacity-30";
 type Filter = "all" | "nav" | "hidden" | "auto";
-/** Dos letras para distinguir "Pulseras" de "Pulseras de hilo" cuando aún no hay foto. */
-const monogram = (name: string) => { const w = name.split(/\s+/).filter((x) => x.length > 2 || /^[A-ZÁÉÍÓÚÑ]/.test(x)); return (w.length > 1 ? w[0]![0]! + w[w.length - 1]![0]! : name.slice(0, 2)).toUpperCase(); };
 const menuItem = "flex min-h-11 w-full items-center gap-3 px-4 text-left text-[14px] hover:bg-ivory disabled:opacity-40";
 
 /** Lista ordenable: el cambio se ve al instante y se guarda detrás; cada cambio de visibilidad se puede deshacer. */
@@ -21,6 +20,7 @@ export function CategoryList({ items }: { items: CategoryItem[] }) {
   if (items !== synced) { setSynced(items); setList(items); } // datos nuevos del servidor
   const [, start] = useTransition();
   const [filter, setFilter] = useState<Filter>("all");
+  const [sorting, setSorting] = useState(false);
   const [toast, setToast] = useState<{ text: string; ok: boolean; undo?: () => void } | null>(null);
   useEffect(() => { if (!toast) return; const t = setTimeout(() => setToast(null), 7000); return () => clearTimeout(t); }, [toast]);
 
@@ -64,49 +64,61 @@ export function CategoryList({ items }: { items: CategoryItem[] }) {
 
   return (
     <>
-      <div className="mb-4 flex flex-wrap gap-2" role="group" aria-label="Filtrar categorías">
-        {([["all", `Todas (${list.length})`], ["nav", `En el menú (${list.filter((c) => c.visible && c.nav).length})`], ["hidden", `Ocultas (${list.filter((c) => !c.visible || !c.nav).length})`], ["auto", `Automáticas (${list.filter((c) => c.auto).length})`]] as [Filter, string][]).map(([k, label]) => (
-          <button key={k} type="button" aria-pressed={filter === k} onClick={() => setFilter(k)}
-            className={`press inline-flex h-10 items-center rounded-full border px-4 text-[14px] ${filter === k ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{label}</button>
-        ))}
-      </div>
-      {filter !== "all" && <p className="mb-3 text-[13px] text-ink-2">Para cambiar el orden, vuelve a “Todas”.</p>}
+      {sorting ? (
+        <div className="fade-in mb-4 flex items-center gap-3 rounded-[4px] border border-gold/50 bg-gold/10 p-3">
+          <p className="flex-1 text-[14px]">Mueve cada categoría con las flechas. El orden se guarda solo.</p>
+          <button type="button" onClick={() => setSorting(false)} className="press inline-flex h-10 shrink-0 items-center gap-1.5 rounded-full bg-ink px-4 text-[14px] font-semibold text-on-dark"><Check aria-hidden="true" size={15} />Listo</button>
+        </div>
+      ) : (
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar categorías">
+            {([["all", `Todas (${list.length})`], ["nav", `En el menú (${list.filter((c) => c.visible && c.nav).length})`], ["hidden", `Ocultas (${list.filter((c) => !c.visible || !c.nav).length})`], ["auto", `Automáticas (${list.filter((c) => c.auto).length})`]] as [Filter, string][]).map(([k, label]) => (
+              <button key={k} type="button" aria-pressed={filter === k} onClick={() => setFilter(k)}
+                className={`press inline-flex h-9 items-center rounded-full border px-3 text-[13px] ${filter === k ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{label}</button>
+            ))}
+          </div>
+          <button type="button" onClick={() => { setFilter("all"); setSorting(true); }} className="press ml-auto inline-flex h-9 items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-[13px]">
+            <ArrowUpDown aria-hidden="true" size={14} />Ordenar
+          </button>
+        </div>
+      )}
       <ol className="grid grid-cols-[minmax(0,1fr)] gap-2">
-        {list.map((c, i) => ({ c, i })).filter(({ c }) => filter === "all" || (filter === "nav" ? c.visible && c.nav : filter === "hidden" ? !c.visible || !c.nav : !!c.auto)).map(({ c, i }) => (
+        {list.map((c, i) => ({ c, i })).filter(({ c }) => sorting || filter === "all" || (filter === "nav" ? c.visible && c.nav : filter === "hidden" ? !c.visible || !c.nav : !!c.auto)).map(({ c, i }) => (
           <li key={c.id} className="rise flex min-w-0 items-center gap-2 rounded-[4px] border border-line bg-surface p-2 pl-3" style={{ animationDelay: `${Math.min(i, 8) * 40}ms` }}>
-            <span className="w-5 shrink-0 text-right text-[12px] tabular text-ink-3">{i + 1}</span>
+            {sorting && <span className="w-5 shrink-0 text-right text-[12px] tabular text-ink-3">{i + 1}</span>}
             <Link href={`/admin/categorias/${c.id}`} className="flex min-w-0 flex-1 items-center gap-3 py-1">
               <span className="grid size-12 shrink-0 place-items-center overflow-hidden rounded-full border border-gold/50 bg-cream">
                 {/* eslint-disable-next-line @next/next/no-img-element -- miniatura del panel */}
                 {c.image ? <img src={c.image} alt="" width={48} height={48} className="size-full object-cover" /> : <span className="font-display text-[16px] text-gold-deep">{monogram(c.name)}</span>}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="flex items-center gap-2">
-                  <span className="truncate text-[15px] font-semibold underline-offset-4 hover:underline">{c.name}</span>
-                  {(!c.visible || !c.nav) && <span className="shrink-0 rounded-[4px] bg-line/60 px-1.5 text-[11px] text-ink-2">{!c.visible ? "Oculta" : "Fuera del menú"}</span>}
-                </span>
-                <span className="block truncate text-[12px] text-ink-2">
-                  {c.auto ? (c.auto === "new" ? "Automática: novedades" : "Automática: ofertas") : `${c.products} ${c.products === 1 ? "producto" : "productos"}`} · {c.warranty ?? "sin garantía"}
-                </span>
+                <span className="line-clamp-2 text-[15px] font-semibold leading-snug">{c.name}</span>
+                {!sorting && (
+                  <span className="mt-0.5 block text-[12px] leading-snug text-ink-2">
+                    {c.auto ? (c.auto === "new" ? "Automática: novedades" : "Automática: ofertas") : `${c.products} ${c.products === 1 ? "producto" : "productos"}`} · {c.warranty ?? "sin garantía"}
+                    {(!c.visible || !c.nav) && <span className="ml-1.5 rounded-[4px] bg-line/60 px-1.5 text-[11px] text-ink-2">{!c.visible ? "Oculta" : "Fuera del menú"}</span>}
+                  </span>
+                )}
               </span>
             </Link>
-            {filter === "all" && (
+            {sorting ? (
               <>
                 <button type="button" aria-label={`Subir ${c.name}`} disabled={i === 0} onClick={() => move(c.id, "up")} className={iconBtn}><ArrowUp aria-hidden="true" size={15} /></button>
                 <button type="button" aria-label={`Bajar ${c.name}`} disabled={i === list.length - 1} onClick={() => move(c.id, "down")} className={iconBtn}><ArrowDown aria-hidden="true" size={15} /></button>
               </>
+            ) : (
+              <details className="relative shrink-0">
+                <summary aria-label={`Más opciones de ${c.name}`} className={`${iconBtn} cursor-pointer list-none [&::-webkit-details-marker]:hidden`}><MoreHorizontal aria-hidden="true" size={17} /></summary>
+                <div className="fade-in absolute right-0 top-12 z-10 w-64 overflow-hidden rounded-[4px] border border-line bg-surface py-1 shadow-[0_12px_32px_rgb(22_19_15/.14)]"
+                  onClick={(e) => (e.currentTarget.parentElement as HTMLDetailsElement).removeAttribute("open")}>
+                  <Link href={`/admin/categorias/${c.id}`} className={menuItem}><Pencil aria-hidden="true" size={16} />Editar</Link>
+                  <button type="button" disabled={i === 0} onClick={() => move(c.id, "first")} className={menuItem}><ChevronsUp aria-hidden="true" size={16} />Mover al principio</button>
+                  <button type="button" disabled={i === list.length - 1} onClick={() => move(c.id, "last")} className={menuItem}><ChevronsDown aria-hidden="true" size={16} />Mover al final</button>
+                  <button type="button" onClick={() => toggle(c, "is_visible")} className={menuItem}>{c.visible ? <EyeOff aria-hidden="true" size={16} /> : <Eye aria-hidden="true" size={16} />}{c.visible ? "Ocultar de la tienda" : "Mostrar en la tienda"}</button>
+                  {c.visible && <button type="button" onClick={() => toggle(c, "show_in_nav")} className={menuItem}>{c.nav ? <ListX aria-hidden="true" size={16} /> : <ListPlus aria-hidden="true" size={16} />}{c.nav ? "Quitar del menú y portada" : "Poner en el menú y portada"}</button>}
+                </div>
+              </details>
             )}
-            <details className="relative shrink-0">
-              <summary aria-label={`Más opciones de ${c.name}`} className={`${iconBtn} cursor-pointer list-none [&::-webkit-details-marker]:hidden`}><MoreHorizontal aria-hidden="true" size={17} /></summary>
-              <div className="fade-in absolute right-0 top-12 z-10 w-64 overflow-hidden rounded-[4px] border border-line bg-surface py-1 shadow-[0_12px_32px_rgb(22_19_15/.14)]"
-                onClick={(e) => (e.currentTarget.parentElement as HTMLDetailsElement).removeAttribute("open")}>
-                <Link href={`/admin/categorias/${c.id}`} className={menuItem}><Pencil aria-hidden="true" size={16} />Editar</Link>
-                <button type="button" disabled={i === 0} onClick={() => move(c.id, "first")} className={menuItem}><ChevronsUp aria-hidden="true" size={16} />Mover al principio</button>
-                <button type="button" disabled={i === list.length - 1} onClick={() => move(c.id, "last")} className={menuItem}><ChevronsDown aria-hidden="true" size={16} />Mover al final</button>
-                <button type="button" onClick={() => toggle(c, "is_visible")} className={menuItem}>{c.visible ? <EyeOff aria-hidden="true" size={16} /> : <Eye aria-hidden="true" size={16} />}{c.visible ? "Ocultar de la tienda" : "Mostrar en la tienda"}</button>
-                {c.visible && <button type="button" onClick={() => toggle(c, "show_in_nav")} className={menuItem}>{c.nav ? <ListX aria-hidden="true" size={16} /> : <ListPlus aria-hidden="true" size={16} />}{c.nav ? "Quitar del menú y portada" : "Poner en el menú y portada"}</button>}
-              </div>
-            </details>
           </li>
         ))}
       </ol>

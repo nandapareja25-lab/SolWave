@@ -27,11 +27,11 @@ export default async function CollectionsPage() {
   return (
     <div>
       <PageHeader title="Colecciones" description="Agrupa piezas por tema (Navidad, Día de la Madre, Sets…) además de su categoría. Los productos se agregan desde su ficha."
-        actions={<Link href="/admin/colecciones/nueva" className={`${btnPrimary} w-full sm:w-auto`}><Plus aria-hidden="true" size={16} />Nueva colección</Link>} />
+        actions={list.length ? <Link href="/admin/colecciones/nueva" className={`${btnPrimary} w-full sm:w-auto`}><Plus aria-hidden="true" size={16} />Nueva colección</Link> : undefined} />
       {list.length === 0 ? (
         <div className="filete-doble rounded-[4px] border border-line bg-surface p-6 text-center">
           <p className="font-display text-[22px]">Aún no tienes colecciones</p>
-          <p className="mx-auto mt-2 max-w-md text-[14px] text-ink-2">Son opcionales. Úsalas para campañas o temas: cada una tiene su propia página en la tienda.</p>
+          <p className="mx-auto mt-2 max-w-md text-[14px] text-ink-2">Son opcionales. Úsalas para campañas o temas, por ejemplo “Día de la Madre” o “Navidad”: cada una tiene su propia página en la tienda.</p>
           <Link href="/admin/colecciones/nueva" className={`${btnPrimary} mt-4`}><Plus aria-hidden="true" size={16} />Crear la primera colección</Link>
         </div>
       ) : (

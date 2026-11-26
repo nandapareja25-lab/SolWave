@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Plus } from "lucide-react";
@@ -29,7 +30,7 @@ export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: {
   return (
     <Card title="Costo y ganancia" step={3} aside={<span className={helpCls}>Solo lo ves tú</span>}>
       <p className="mb-4 text-[13px] text-ink-2">
-        {fx ? <>Tasa de cambio: <strong className="tabular text-ink">{fx.toLocaleString("es-US")} pesos</strong> por 1 dólar (se cambia en Configuración).</> : <span className="text-gold-deep">Para registrar costos en pesos colombianos, primero escribe la tasa de cambio en Configuración › Tienda. En dólares puedes registrarlos ya.</span>}
+        {fx ? <>Tasa de cambio: <strong className="tabular text-ink">{fx.toLocaleString("es-US")} pesos</strong> por 1 dólar (se cambia en Configuración).</> : <span className="text-gold-deep">Tus costos en pesos quedan guardados; para verlos en dólares y calcular la ganancia, escribe la tasa de cambio en <Link href="/admin/configuracion" className="font-semibold underline underline-offset-4">Configuración › Tienda</Link>.</span>}
       </p>
       <ul className="grid gap-3">
         {variants.map((v) => {

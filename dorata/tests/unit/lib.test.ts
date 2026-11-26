@@ -218,3 +218,13 @@ describe("fechas legibles", () => {
     expect(tzLabel("America/New_York")).toContain("Este");
   });
 });
+
+describe("monogram", () => {
+  it("distingue nombres parecidos", async () => {
+    const { monogram } = await import("@/lib/monogram");
+    expect(monogram("Pulseras de hilo")).toBe("PH");
+    expect(monogram("Pulseras")).toBe("PU");
+    expect(monogram("Día de la Madre")).toBe("DM");
+    expect(monogram("")).toBe("?");
+  });
+});

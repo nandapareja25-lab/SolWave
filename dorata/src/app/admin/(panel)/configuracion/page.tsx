@@ -22,13 +22,13 @@ export default async function StoreConfigPage() {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <Card title="Estado de la tienda" step={1}>
-        <ActionForm action={saveStoreMode}>
+        <ActionForm action={saveStoreMode} submitLabel="Guardar estado de la tienda">
           <StoreModeFields mode={s.store_mode} liveAt={utcToWallTime(s.live_at, tz)} maintenance={(s.maintenance_message as Record<string, string>)?.es ?? ""} timezone={tz} />
         </ActionForm>
       </Card>
 
       <Card title="Contacto, redes y presentación" step={2}>
-        <ActionForm action={saveGeneral}>
+        <ActionForm action={saveGeneral} submitLabel="Guardar contacto y presentación">
           <label className={labelCls}>Correo de contacto
             <input name="contact_email" type="email" defaultValue={s.contact_email ?? ""} placeholder="Ej: hola@dorata18k.com" className={inputCls} />
             {!s.contact_email && <span className="text-[12px] font-normal text-gold-deep">Sin correo, tus clientas no tienen cómo escribirte desde la tienda.</span>}

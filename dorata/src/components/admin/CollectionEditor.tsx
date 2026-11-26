@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Check, ImagePlus, Loader2, Trash2 } from "lucide-react";
+import { Check, ChevronRight, ImagePlus, Loader2, Trash2 } from "lucide-react";
 import { deleteCollection, saveCollection, type CollectionInput } from "@/app/admin/(panel)/colecciones/actions";
 import { supabaseBrowser } from "@/server/supabase/browser";
 import { prepareSingleImage } from "./prepare-image";
 import { slugify } from "@/lib/slug";
+import { monogram } from "@/lib/monogram";
 import { DateTimeField } from "./DateTimeField";
 import { Card, PageHeader, SaveBar, StatusText, areaCls, btnPrimary, helpCls, inputCls, labelCls } from "./ui";
 import { useUnsavedGuard } from "./useUnsavedGuard";
@@ -64,7 +65,7 @@ export function CollectionEditor({ initial, timezone, products, storageBase, can
   }
 
   return (
-    <form ref={formRef} onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <form ref={formRef} onSubmit={submit} className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
       <div className="lg:col-span-2">
         <PageHeader eyebrow={initial.id ? "Colección" : "Nueva colección"} title={d.name || "Nueva colección"}
           description={initial.id ? `${products.length} ${products.length === 1 ? "producto" : "productos"} · ${d.is_visible ? "visible" : "oculta"}` : "Guarda y luego agrega productos desde la ficha de cada uno (sección “Dónde aparece”)."} />
@@ -95,9 +96,10 @@ export function CollectionEditor({ initial, timezone, products, storageBase, can
             <p className="text-[14px] text-ink-2">Aún no tiene productos. Abre un producto y márcala en “Dónde aparece”.</p>
           ) : (
             <ul className="divide-y divide-line">
-              {products.map((p) => <li key={p.id}><Link href={`/admin/productos/${p.id}`} className="flex min-h-11 items-center text-[15px] underline-offset-4 hover:underline">{p.name}</Link></li>)}
+              {products.map((p) => <li key={p.id}><Link href={`/admin/productos/${p.id}`} className="flex min-h-11 items-center gap-2 text-[15px] underline-offset-4 hover:underline"><span className="min-w-0 flex-1 truncate">{p.name}</span><ChevronRight aria-hidden="true" size={16} className="shrink-0 text-ink-3" /></Link></li>)}
             </ul>
           )}
+          {products.length > 0 && <p className={`mt-3 ${helpCls}`}>Para agregar otra pieza, ábrela y márcala en “Dónde aparece”.</p>}
         </Card>
       </div>
       <div className="grid min-w-0 content-start gap-6">
@@ -105,7 +107,7 @@ export function CollectionEditor({ initial, timezone, products, storageBase, can
           <div className="grid gap-3">
             <div className="grid aspect-[4/3] place-items-center overflow-hidden rounded-[4px] border border-gold/40 bg-cream">
               {/* eslint-disable-next-line @next/next/no-img-element -- vista previa del panel */}
-              {imageUrl ? <img src={imageUrl} alt={`Portada de ${d.name}`} className="fade-in size-full object-cover" /> : <span className="font-display text-[40px] text-gold-deep">{d.name.slice(0, 2) || "?"}</span>}
+              {imageUrl ? <img src={imageUrl} alt={`Portada de ${d.name}`} className="fade-in size-full object-cover" /> : <span className="font-display text-[40px] text-gold-deep">{monogram(d.name)}</span>}
             </div>
             {d.id ? (
               <>
@@ -113,7 +115,7 @@ export function CollectionEditor({ initial, timezone, products, storageBase, can
                 <label htmlFor="col-photo" className={`press inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-ink px-5 text-[14px] font-semibold ${uploading ? "pointer-events-none opacity-60" : ""}`}>
                   {uploading ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <ImagePlus aria-hidden="true" size={16} />}{imageUrl ? "Cambiar foto" : "Subir foto"}
                 </label>
-                {photoMsg && <StatusText ok={photoMsg.ok}>{photoMsg.text}</StatusText>}
+                {photoMsg ? <StatusText ok={photoMsg.ok}>{photoMsg.text}</StatusText> : <p className={helpCls}>Horizontal (3:2). Se optimiza sola.</p>}
               </>
             ) : <p className={helpCls}>Guarda la colección para poder subir su foto.</p>}
           </div>

@@ -7,6 +7,7 @@ import { deleteCategory, saveCategory, type CategoryInput } from "@/app/admin/(p
 import { supabaseBrowser } from "@/server/supabase/browser";
 import { prepareSingleImage } from "./prepare-image";
 import { slugify } from "@/lib/slug";
+import { monogram } from "@/lib/monogram";
 import { formatWarranty } from "@/lib/warranty";
 import { Card, PageHeader, SaveBar, StatusText, areaCls, btnPrimary, helpCls, inputCls, labelCls } from "./ui";
 import { useUnsavedGuard } from "./useUnsavedGuard";
@@ -70,7 +71,7 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
   }
 
   return (
-    <form ref={formRef} onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <form ref={formRef} onSubmit={submit} className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
       <div className="lg:col-span-2">
         <PageHeader eyebrow={initial.id ? "Categoría" : "Nueva categoría"} title={d.name || (initial.id ? "Sin nombre" : "Nueva categoría")}
           description={initial.id ? (!d.is_visible ? "Oculta en la tienda" : d.show_in_nav ? "Visible · en el menú y la portada" : "Visible · fuera del menú") : "Completa los datos y guarda; después podrás subir su foto."} />
@@ -137,12 +138,12 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
           <div className="grid justify-items-center gap-3">
             <div className="grid size-36 place-items-center overflow-hidden rounded-full border-2 border-gold/50 bg-cream">
               {/* eslint-disable-next-line @next/next/no-img-element -- vista previa del panel */}
-              {imageUrl ? <img src={imageUrl} alt={`Foto de ${d.name}`} className="size-full object-cover" /> : <span className="font-display text-[44px] text-gold-deep">{d.name[0] ?? "?"}</span>}
+              {imageUrl ? <img src={imageUrl} alt={`Foto de ${d.name}`} className="size-full object-cover" /> : <span className="font-display text-[40px] text-gold-deep">{monogram(d.name)}</span>}
             </div>
             {d.id ? (
               <>
                 <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp,image/heic" className="sr-only" id="cat-photo" onChange={(e) => onFile(e.target.files?.[0])} />
-                <label htmlFor="cat-photo" className={`press inline-flex h-11 cursor-pointer items-center gap-2 rounded-full border border-ink px-5 text-[14px] font-semibold ${uploading ? "pointer-events-none opacity-60" : ""}`}>
+                <label htmlFor="cat-photo" className={`press inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-ink px-5 text-[14px] font-semibold ${uploading ? "pointer-events-none opacity-60" : ""}`}>
                   {uploading ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <ImagePlus aria-hidden="true" size={16} />}
                   {uploading ? "Subiendo…" : imageUrl ? "Cambiar foto" : "Subir foto"}
                 </label>

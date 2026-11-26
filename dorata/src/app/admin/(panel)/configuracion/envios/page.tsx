@@ -27,7 +27,7 @@ export default async function ShippingPage() {
           const t = (m.shipping_method_translations as { locale: string; name: string; description: string | null }[]).find((x) => x.locale === "es");
           return (
             <Card key={m.id} title={`${TYPE[m.type] ?? m.type} · ${m.is_active ? "Activo" : "Inactivo"}`}>
-              <ActionForm action={saveShippingMethod}>
+              <ActionForm action={saveShippingMethod} submitLabel="Guardar este envío">
                 <input type="hidden" name="id" value={m.id} />
                 <label className={labelCls}>Nombre que ve la clienta<input name="name" maxLength={60} required defaultValue={t?.name ?? ""} className={inputCls} /></label>
                 <label className={labelCls}>Descripción (opcional)<input name="description" maxLength={200} defaultValue={t?.description ?? ""} placeholder="Ej: Entrega con número de rastreo" className={inputCls} /></label>

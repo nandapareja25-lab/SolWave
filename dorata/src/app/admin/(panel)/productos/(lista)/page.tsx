@@ -62,7 +62,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
   };
   const chip = (patch: Partial<Sp>, text: string, on: boolean) => (
     <Link href={href(patch)} aria-current={on ? "page" : undefined}
-      className={`press inline-flex h-10 items-center rounded-full border px-4 text-[14px] ${on ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{text}</Link>
+      className={`press inline-flex h-9 items-center rounded-full border px-3 text-[13px] ${on ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{text}</Link>
   );
 
   return (
@@ -112,9 +112,9 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
           {list.map((p, i) => (
             <li key={p.id} className="rise" style={{ animationDelay: `${Math.min(i, 8) * 50}ms` }}>
               <Link href={`/admin/productos/${p.id}`} className="flex items-center gap-3 p-3 hover:bg-ivory">
-                <div className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-[4px] border border-gold/40 bg-cream p-[2px]">
+                <div className="grid size-[72px] shrink-0 place-items-center overflow-hidden rounded-[4px] border border-gold/40 bg-cream p-[2px]">
                   {/* eslint-disable-next-line @next/next/no-img-element -- miniatura del panel */}
-                  {p.thumb ? <img src={p.thumb} alt="" width={64} height={64} className="size-full rounded-[2px] object-cover" /> : <span className="text-[11px] text-ink-3">Sin foto</span>}
+                  {p.thumb ? <img src={p.thumb} alt="" width={72} height={72} className="size-full rounded-[2px] object-cover" /> : <span className="text-[11px] text-ink-3">Sin foto</span>}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-[15px] font-semibold">{p.name}</p>
@@ -126,7 +126,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                   </p>
                   {p.stockAlert && <p className="mt-0.5 flex items-center gap-1.5 truncate text-[12px] text-gold-deep"><span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-gold" />{p.stockAlert}</p>}
                 </div>
-                <span className={`shrink-0 rounded-[4px] px-2 py-1 text-[12px] font-semibold ${STATUS[p.status]?.cls}`}>{STATUS[p.status]?.label}</span>
+                <span className={`shrink-0 self-start rounded-[4px] px-2 py-1 text-[12px] font-semibold ${STATUS[p.status]?.cls}`}>{STATUS[p.status]?.label}</span>
               </Link>
             </li>
           ))}

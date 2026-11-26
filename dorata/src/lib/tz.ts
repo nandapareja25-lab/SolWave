@@ -39,12 +39,12 @@ export const BUSINESS_TIMEZONES = [
 
 /** Nombre sencillo de la zona para la dueña (sin "America/New_York"). */
 export const TZ_LABELS: Record<string, string> = {
-  "America/New_York": "hora del Este (Nueva York, Miami)",
-  "America/Chicago": "hora del Centro (Chicago, Houston)",
-  "America/Denver": "hora de la Montaña (Denver)",
-  "America/Los_Angeles": "hora del Pacífico (Los Ángeles)",
-  "America/Phoenix": "hora de Arizona (Phoenix)",
-  "America/Bogota": "hora de Colombia (Bogotá)",
+  "America/New_York": "Hora del Este (Nueva York, Miami)",
+  "America/Chicago": "Hora del Centro (Chicago, Houston)",
+  "America/Denver": "Hora de la Montaña (Denver)",
+  "America/Los_Angeles": "Hora del Pacífico (Los Ángeles)",
+  "America/Phoenix": "Hora de Arizona (Phoenix)",
+  "America/Bogota": "Hora de Colombia (Bogotá)",
 };
 export const tzLabel = (tz: string) => TZ_LABELS[tz] ?? tz.replace(/_/g, " ");
 

@@ -57,7 +57,7 @@ export default async function LegalEditPage({ params }: { params: Promise<{ id: 
         </div>
         <div className="grid content-start gap-6">
           <Card title="Publicar">
-            <ActionForm action={publishVersion} submitLabel="Publicar versión">
+            <ActionForm action={publishVersion} submitLabel="Publicar versión" primary>
               <input type="hidden" name="page_id" value={p.id} />
               <p className="text-[14px] text-ink-2">Publica el último borrador guardado. Las versiones anteriores quedan en el historial.</p>
               <label className={labelCls}>Número de versión<input name="version_label" required defaultValue={nextLabel(versions)} className={inputCls} /></label>
@@ -71,7 +71,7 @@ export default async function LegalEditPage({ params }: { params: Promise<{ id: 
             </ActionForm>
           </Card>
           <Card title="Pie de página">
-            <ActionForm action={setFooter}>
+            <ActionForm action={setFooter} submitLabel="Guardar pie de página">
               <input type="hidden" name="page_id" value={p.id} />
               <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" name="show_in_footer" defaultChecked={p.show_in_footer} className="size-5 accent-[var(--ink)]" />Mostrar enlace en el pie de la tienda</label>
             </ActionForm>

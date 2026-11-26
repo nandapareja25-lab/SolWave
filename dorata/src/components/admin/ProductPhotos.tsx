@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, ArrowRight, ImagePlus, Loader2, Trash2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown, ImagePlus, Loader2, Trash2 } from "lucide-react";
 import { deleteMedia, registerMedia, reorderMedia, updateMedia } from "@/app/admin/(panel)/productos/actions";
 import { supabaseBrowser } from "@/server/supabase/browser";
 import { prepareProductImage } from "./prepare-image";
@@ -99,8 +99,8 @@ export function ProductPhotos({ productId, storageBase, items, variants, product
                       </span>
                     </div>
                   )}
-                  <details className="text-[13px]">
-                    <summary className="cursor-pointer py-2 text-ink-2 underline underline-offset-4">Descripción y variante</summary>
+                  <details className="group text-[13px]">
+                    <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-1 text-ink-2 [&::-webkit-details-marker]:hidden">Texto y variante<ChevronDown aria-hidden="true" size={14} className="shrink-0 transition-transform group-open:rotate-180 motion-reduce:transition-none" /></summary>
                     <div className="grid gap-2" onKeyDown={(e) => { if (e.key === "Enter" && (e.target as HTMLElement).tagName === "INPUT") e.preventDefault(); }}>
                       <label className={labelCls}>Qué se ve (para lectores de pantalla y Google)<input name="alt" defaultValue={m.alt} maxLength={200} className={inputCls} /></label>
                       {variants.length > 1 && (

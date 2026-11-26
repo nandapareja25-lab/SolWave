@@ -8,7 +8,8 @@ import { formatInZone } from "@/lib/tz";
 
 export const metadata = { title: "Inventario" };
 /** El motivo solo se muestra si agrega información (no repite el tipo ni el texto automático). */
-const AUTO_REASONS = ["Llegó mercancía", "Devolución en buen estado", "Unidades iniciales al crear la variante"];
+const AUTO_REASONS = ["Llegó mercancía", "Devolución en buen estado", "Unidades iniciales al crear la variante", "Se deshizo el ajuste anterior"];
+const UNDO_REASON = "Se deshizo el ajuste anterior";
 const extra = (type: string, reason: string | null) => (!reason || AUTO_REASONS.includes(reason) || reason === TYPE[type] ? "" : ` · ${reason}`);
 const TYPE: Record<string, string> = {
   initial_count: "Unidades iniciales", sale: "Venta", adjustment: "Dañadas o perdidas", restock: "Llegó mercancía", return: "Devolución",
@@ -39,7 +40,7 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
   const label = new Map(all.map((r) => [r.variantId, `${r.product} · ${r.title}`]));
   const chip = (v: string | undefined, text: string) => (
     <Link href={v ? `/admin/inventario?ver=${v}` : "/admin/inventario"} aria-current={sp.ver === v ? "page" : undefined}
-      className={`press inline-flex h-10 items-center rounded-full border px-4 text-[14px] ${sp.ver === v ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{text}</Link>
+      className={`press inline-flex h-9 items-center rounded-full border px-3 text-[13px] ${sp.ver === v ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{text}</Link>
   );
 
   return (
@@ -47,8 +48,8 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
       <PageHeader title="Inventario" description="Las ventas descuentan solas. Aquí registras lo que llega, los conteos y las piezas dañadas." />
       <div className="mb-6 grid grid-cols-3 gap-3">
         {[{ n: units, l: units === 1 ? "pieza en total" : "piezas en total", href: "/admin/inventario" },
-          { n: low, l: low === 1 ? "variante con pocas" : "variantes con pocas", c: low ? "text-gold-deep" : "", href: "/admin/inventario?ver=pocas" },
-          { n: out, l: out === 1 ? "variante agotada" : "variantes agotadas", c: out ? "text-danger" : "", href: "/admin/inventario?ver=agotado" }].map((k, i) => (
+          { n: low, l: "quedan pocas", c: low ? "text-gold-deep" : "", href: "/admin/inventario?ver=pocas" },
+          { n: out, l: "agotadas", c: out ? "text-danger" : "", href: "/admin/inventario?ver=agotado" }].map((k, i) => (
           <Link key={k.l} href={k.href} className="rise press rounded-[4px] border border-line bg-surface p-3 hover:border-ink-3" style={{ animationDelay: `${i * 60}ms` }}>
             <p className={`font-display text-[32px] leading-none tabular ${k.c ?? ""}`}><CountUp value={k.n} /></p>
             <p className="mt-1 text-[12px] leading-tight text-ink-2">{k.l}</p>
@@ -98,7 +99,7 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
                 <span className={`w-9 shrink-0 font-semibold tabular ${m.quantity_delta > 0 ? "text-success" : "text-danger"}`}>{m.quantity_delta > 0 ? `+${m.quantity_delta}` : m.quantity_delta}</span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate font-medium">{label.get(m.variant_id)}</span>
-                  <span className="block text-[13px] text-ink-2">{TYPE[m.type] ?? m.type}{extra(m.type, m.reason)} · quedan {m.on_hand_after}</span>
+                  <span className="block text-[13px] text-ink-2">{m.reason === UNDO_REASON ? "Ajuste deshecho" : TYPE[m.type] ?? m.type}{extra(m.type, m.reason)} · quedan {m.on_hand_after}</span>
                   <span className="block text-[12px] text-ink-3">{formatInZone(m.created_at, tz)}</span>
                 </span>
               </li>

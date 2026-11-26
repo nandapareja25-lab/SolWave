@@ -38,9 +38,11 @@ function LinkFields({ url, label, onUrl, onLabel, pages, idPrefix, labelPlacehol
         </select>
         {custom && <input aria-label={`${idPrefix}: enlace externo`} value={url} onChange={(e) => onUrl(e.target.value)} placeholder="https://…" className={inputCls} />}
       </label>
-      <label className={labelCls}>Texto del enlace
-        <input aria-label={`${idPrefix}: texto del enlace`} maxLength={40} value={label} disabled={!url} onChange={(e) => onLabel(e.target.value)} placeholder={url ? labelPlaceholder : "Primero elige a dónde lleva"} className={inputCls} />
-      </label>
+      {url && (
+        <label className={`fade-in ${labelCls}`}>Texto del enlace
+          <input aria-label={`${idPrefix}: texto del enlace`} maxLength={40} value={label} onChange={(e) => onLabel(e.target.value)} placeholder={labelPlaceholder} className={inputCls} />
+        </label>
+      )}
     </div>
   );
 }
@@ -116,7 +118,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
   }
 
   return (
-    <form ref={formRef} onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
+    <form ref={formRef} onSubmit={submit} className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
       <div className="grid min-w-0 gap-6">
         <Card title="Campaña" step={1}>
           <div className="grid gap-4">
@@ -183,13 +185,13 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
               <>
                 <DateTimeField label="Cuenta hasta" value={d.countdown_target_at} onChange={(v) => set("countdown_target_at", v)} timezone={d.timezone} />
                 <div className="grid gap-2">
-                  <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-end gap-2">
+                  <div className="grid gap-2">
                     <label className={labelCls}>Texto antes del tiempo
                       <input maxLength={80} value={cdBefore} onChange={(e) => setCountdown(e.target.value, cdAfter)} placeholder="Ej: Faltan" className={inputCls} />
                     </label>
-                    <span className="mb-3 rounded-[4px] bg-gold/15 px-2 py-1 text-[12px] font-semibold text-gold-deep">tiempo</span>
-                    <label className={labelCls}>Texto después (opcional)
-                      <input maxLength={60} value={cdAfter} onChange={(e) => setCountdown(cdBefore, e.target.value)} placeholder="Ej: para el lanzamiento" className={inputCls} />
+                    <span className="w-fit rounded-[4px] bg-gold/15 px-2 py-1 text-[12px] font-semibold text-gold-deep">+ el tiempo restante</span>
+                    <label className={labelCls}>Texto después del tiempo (opcional)
+                      <input maxLength={60} value={cdAfter} onChange={(e) => setCountdown(cdBefore, e.target.value)} placeholder="Ej: y contando" className={inputCls} />
                     </label>
                   </div>
                   <span className={helpCls}>Se verá así: “{cdBefore || "Faltan"} 6 días · 02:29:32{cdAfter ? ` ${cdAfter}` : ""}”.</span>

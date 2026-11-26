@@ -97,7 +97,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
   }
 
   return (
-    <form ref={formRef} onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+    <form ref={formRef} onSubmit={submit} className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
       <div className="lg:col-span-2">
         <PageHeader eyebrow={initial.id ? "Producto" : "Nuevo producto"} title={d.name || (initial.id ? "Sin nombre" : "Nuevo producto")}
           description={initial.id ? [STATUS.find((s) => s.value === initial.status)?.label, cat?.name, priceText].filter(Boolean).join(" · ") : "Empieza por el nombre, la categoría y el precio. Las fotos se agregan después de guardar."} />

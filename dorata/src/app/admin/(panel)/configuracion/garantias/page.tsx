@@ -26,7 +26,7 @@ export default async function WarrantiesPage() {
           const n = usage.get(w.id) ?? 0;
           return (
             <Card key={w.id} title={`${t?.name ?? w.code} · ${n} ${n === 1 ? "categoría" : "categorías"}`}>
-              <ActionForm action={saveWarrantyPolicy}>
+              <ActionForm action={saveWarrantyPolicy} submitLabel="Guardar esta garantía">
                 <input type="hidden" name="id" value={w.id} />
                 <div className="grid grid-cols-[minmax(0,1fr)_120px] gap-4">
                   <label className={labelCls}>Nombre<input name="name" maxLength={60} required defaultValue={t?.name ?? ""} className={inputCls} /></label>
