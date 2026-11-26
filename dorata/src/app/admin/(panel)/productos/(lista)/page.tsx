@@ -125,7 +125,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="line-clamp-2 text-[15px] font-semibold leading-snug">{p.name}</p>
-                  {p.flag && <span className={`mt-0.5 inline-block rounded-[4px] px-1.5 py-0.5 text-[11px] font-semibold ${p.flag === "Dije para set" ? "bg-line/60 text-ink-2" : "bg-gold/15 text-gold-deep"}`}>{p.flag}</span>}
+                  {p.flag && <span className={`mt-0.5 inline-block rounded-[4px] px-1.5 py-0.5 text-[12px] font-semibold ${p.flag === "Dije para set" ? "bg-line/60 text-ink-2" : "bg-gold/15 text-gold-deep"}`}>{p.flag}</span>}
                   <p className="truncate text-[13px] text-ink-2">{p.category}{p.variants > 1 ? ` · ${p.variants} variantes` : ""}</p>
                   <p className="mt-1 flex flex-wrap items-center gap-2 text-[13px]">
                     <span className={`tabular font-semibold ${p.noPrice ? "text-gold-deep" : ""}`}>{p.price}</span>
@@ -140,10 +140,10 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
         </ul>
       )}
       {pages > 1 && (
-        <nav aria-label="Páginas" className="mt-4 flex items-center justify-between gap-3 text-[14px]">
-          {page > 1 ? <Link href={href({ p: page > 2 ? String(page - 1) : undefined })} className="press inline-flex h-11 items-center rounded-full border border-line bg-surface px-4">← Anteriores</Link> : <span />}
-          <span className="text-ink-2 tabular">Página {page} de {pages}</span>
-          {page < pages ? <Link href={href({ p: String(page + 1) })} className="press inline-flex h-11 items-center rounded-full border border-line bg-surface px-4">Siguientes →</Link> : <span />}
+        <nav aria-label="Páginas" className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3 text-[14px]">
+          {page > 1 ? <Link href={href({ p: page > 2 ? String(page - 1) : undefined })} className="press inline-flex h-11 items-center justify-self-start rounded-full border border-line bg-surface px-4">← Anteriores</Link> : <span />}
+          <span className="text-center text-ink-2 tabular">Página {page} de {pages}</span>
+          {page < pages ? <Link href={href({ p: String(page + 1) })} className="press inline-flex h-11 items-center justify-self-end rounded-full border border-line bg-surface px-4">Siguientes →</Link> : <span />}
         </nav>
       )}
     </div>
