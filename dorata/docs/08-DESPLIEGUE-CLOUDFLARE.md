@@ -28,6 +28,10 @@ Estado: **preparado y verificado** (26-nov-2026). Falta solo lo que requiere TUS
 5. **Dominio del Worker:** Workers → `mafer-studio` → *Settings* → *Domains & Routes* → *Add* → `dorata18k.com` y `www.dorata18k.com`.
 6. Escríbeme "listo" y verifico en vivo: Próximamente, cuenta regresiva, lista de espera guardando correos, cookies, políticas, y que la tienda NO se vea sin tu enlace.
 
+## Estado (26-nov)
+- Worker `mafer-studio` conectado a GitHub con Root directory `dorata`, rama `claude/dorata-ecommerce-platform-qu0ubx`,
+  build `npx opennextjs-cloudflare build` y deploy `npx opennextjs-cloudflare deploy` (configurado por la dueña).
+
 ## Si el despliegue falla con "error 10181" o menciona `env.DB` / D1
 La tienda **no usa D1** (base de datos de Cloudflare): todos los datos están en Supabase. El código nunca usa `env.DB`
 y `dorata/wrangler.jsonc` no declara ninguna base D1. Si Cloudflare intenta crear un binding `DB` (por ejemplo
