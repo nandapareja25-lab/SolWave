@@ -8,7 +8,8 @@ import { supabaseBrowser } from "@/server/supabase/browser";
 import { prepareSingleImage } from "./prepare-image";
 import { slugify } from "@/lib/slug";
 import { formatWarranty } from "@/lib/warranty";
-import { Card, btnPrimary, inputCls, labelCls } from "./ui";
+import { Card, PageHeader, SaveBar, StatusText, areaCls, btnPrimary, helpCls, inputCls, labelCls } from "./ui";
+import { useUnsavedGuard } from "./useUnsavedGuard";
 
 const IMG_ERR: Record<string, string> = {
   IMAGE_TYPE: "Usa una foto JPG, PNG, WebP o HEIC.", IMAGE_SIZE: "La foto pesa demasiado (máx. 20 MB).", IMAGE_TOO_SMALL: "La foto es muy pequeña: usa una de al menos 800 px.",
@@ -24,26 +25,31 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
   const [pending, start] = useTransition();
   const [uploading, setUploading] = useState(false);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [photoMsg, setPhotoMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [saved, setSaved] = useState(() => JSON.stringify(initial));
+  const dirty = JSON.stringify(d) !== saved;
+  useUnsavedGuard(dirty);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
-  const set = <K extends keyof CategoryInput>(k: K, v: CategoryInput[K]) => setD((x) => ({ ...x, [k]: v }));
+  const set = <K extends keyof CategoryInput>(k: K, v: CategoryInput[K]) => { setMsg(null); setD((x) => ({ ...x, [k]: v })); };
   const imageUrl = d.image_path ? `${storageBase}/storage/v1/object/public/category-media/${d.image_path}` : null;
 
   async function onFile(file: File | undefined) {
     if (!file || !d.id) return;
-    setUploading(true); setMsg(null);
+    setUploading(true); setPhotoMsg(null);
     try {
       const blob = await prepareSingleImage(file, 800);
       const path = `${d.id}/${crypto.randomUUID()}.webp`;
       const { error } = await supabaseBrowser().storage.from("category-media").upload(path, blob, { contentType: "image/webp", cacheControl: "31536000" });
       if (error) throw new Error("UPLOAD");
-      const next = { ...d, image_path: path };
-      setD(next);
-      const r = await saveCategory(next);
-      setMsg(r ? { ok: r.ok, text: r.ok ? "Foto guardada." : r.message } : null);
+      // Solo cambia la foto: lo demás que esté sin guardar sigue pendiente
+      const savedState = JSON.parse(saved) as CategoryInput;
+      const r = await saveCategory({ ...savedState, image_path: path });
+      if (r?.ok) { setD((x) => ({ ...x, image_path: path })); setSaved(JSON.stringify({ ...savedState, image_path: path })); }
+      setPhotoMsg(r ? { ok: r.ok, text: r.ok ? "Foto guardada." : r.message } : null);
       router.refresh();
     } catch (e) {
-      setMsg({ ok: false, text: IMG_ERR[(e as Error).message] ?? "No se pudo subir la foto. Revisa tu conexión e inténtalo de nuevo." });
+      setPhotoMsg({ ok: false, text: IMG_ERR[(e as Error).message] ?? "No se pudo subir la foto. Revisa tu conexión e inténtalo de nuevo." });
     } finally { setUploading(false); if (fileRef.current) fileRef.current.value = ""; }
   }
 
@@ -53,27 +59,35 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
       const r = await saveCategory(d);
       if (!r) return;
       setMsg({ ok: r.ok, text: r.message });
-      if (r.ok && r.id && !d.id) router.replace(`/admin/categorias/${r.id}`);
+      if (r.ok) setSaved(JSON.stringify({ ...d, id: r.id ?? d.id }));
+      if (r.ok && r.id && !d.id) { setD((x) => ({ ...x, id: r.id! })); router.replace(`/admin/categorias/${r.id}`); }
       router.refresh();
     });
   }
 
   return (
     <form onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div className="lg:col-span-2">
+        <PageHeader eyebrow={initial.id ? "Categoría" : "Nueva categoría"} title={d.name || (initial.id ? "Sin nombre" : "Nueva categoría")}
+          description={initial.id ? (!d.is_visible ? "Oculta en la tienda" : d.show_in_nav ? "Visible · en el menú y la portada" : "Visible · fuera del menú") : "Completa los datos y guarda; después podrás subir su foto."} />
+      </div>
       <div className="grid min-w-0 gap-6">
-        <Card title="Datos">
+        <Card title="Datos" step={1}>
           <div className="grid gap-4">
             <label className={labelCls}>Nombre
               <input required maxLength={60} value={d.name} onChange={(e) => { const v = e.target.value; setD((x) => ({ ...x, name: v, slug: slugTouched ? x.slug : slugify(v) })); }} placeholder="Ej: Pulseras de hilo" className={inputCls} />
             </label>
             <label className={labelCls}>Dirección en la tienda
-              <span className="flex items-center gap-1 text-[15px] text-ink-3">dorata18k.com/
-                <input required maxLength={80} value={d.slug} onChange={(e) => { setSlugTouched(true); set("slug", slugify(e.target.value) || e.target.value.toLowerCase()); }} className={inputCls} />
+              <span className="flex h-11 items-center overflow-hidden rounded-[4px] border border-line bg-ivory focus-within:border-gold-deep">
+                <span className="shrink-0 border-r border-line bg-cream px-3 text-[14px] leading-[44px] text-ink-3">dorata18k.com/</span>
+                <input required maxLength={80} value={d.slug} onChange={(e) => { setSlugTouched(true); set("slug", slugify(e.target.value) || e.target.value.toLowerCase()); }}
+                  className="h-full min-w-0 flex-1 bg-transparent px-3 text-[15px] text-ink outline-none" />
               </span>
+              <span className={helpCls}>Se crea sola a partir del nombre. Solo minúsculas, números y guiones.</span>
               {initial.slug && d.slug !== initial.slug && <span className="text-[12px] text-ink-3">La dirección anterior seguirá funcionando y llevará a la nueva.</span>}
             </label>
             <label className={labelCls}>Descripción (aparece arriba de los productos)
-              <textarea maxLength={600} value={d.description} onChange={(e) => set("description", e.target.value)} className="min-h-24 w-full rounded-[4px] border border-line bg-ivory p-3 text-[15px] outline-none focus:border-gold-deep" />
+              <textarea maxLength={600} value={d.description} onChange={(e) => set("description", e.target.value)} placeholder="Ej: Pulseras tejidas a mano con balines de oro laminado 18K." className={`min-h-24 ${areaCls}`} />
             </label>
             <div className="grid gap-4 sm:grid-cols-2">
               <label className={labelCls}>Garantía por defecto
@@ -98,20 +112,22 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
             </div>
           </div>
         </Card>
-        <Card title="Google (opcional)">
+        <Card title="Cómo se ve en Google (opcional)" step={2}>
           <div className="grid gap-4">
-            <label className={labelCls}>Título en Google <span className="tabular text-ink-3">{d.seo_title.length}/70</span>
-              <input maxLength={70} value={d.seo_title} onChange={(e) => set("seo_title", e.target.value)} placeholder={`${d.name || "Categoría"} en oro laminado 18K | D'ORATA`} className={inputCls} />
+            <label className={labelCls}>Título en Google
+              <input maxLength={70} value={d.seo_title} onChange={(e) => set("seo_title", e.target.value)} className={inputCls} />
+              <span className={`${helpCls} flex justify-between gap-2`}><span>Vacío: “{d.name || "Categoría"} | D&apos;ORATA”.</span><span className="tabular">{d.seo_title.length}/70</span></span>
             </label>
-            <label className={labelCls}>Descripción en Google <span className="tabular text-ink-3">{d.seo_description.length}/160</span>
-              <textarea maxLength={160} value={d.seo_description} onChange={(e) => set("seo_description", e.target.value)} className="min-h-20 w-full rounded-[4px] border border-line bg-ivory p-3 text-[15px] outline-none focus:border-gold-deep" />
+            <label className={labelCls}>Descripción en Google
+              <textarea maxLength={160} value={d.seo_description} onChange={(e) => set("seo_description", e.target.value)} className={`min-h-20 ${areaCls}`} />
+              <span className={`${helpCls} flex justify-between gap-2`}><span>Vacío: se usa la descripción de arriba.</span><span className="tabular">{d.seo_description.length}/160</span></span>
             </label>
           </div>
         </Card>
       </div>
 
-      <div className="grid content-start gap-6">
-        <Card title="Foto del círculo">
+      <div className="grid min-w-0 content-start gap-6">
+        <Card title="Foto del círculo" step={3}>
           <div className="grid justify-items-center gap-3">
             <div className="grid size-36 place-items-center overflow-hidden rounded-full border-2 border-gold/50 bg-cream">
               {/* eslint-disable-next-line @next/next/no-img-element -- vista previa del panel */}
@@ -124,23 +140,17 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
                   {uploading ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <ImagePlus aria-hidden="true" size={16} />}
                   {uploading ? "Subiendo…" : imageUrl ? "Cambiar foto" : "Subir foto"}
                 </label>
-                <p className="text-center text-[12px] text-ink-3">Cuadrada, con la pieza centrada. Se optimiza sola.</p>
+                {photoMsg ? <StatusText ok={photoMsg.ok}>{photoMsg.text}</StatusText> : <p className="text-center text-[12px] text-ink-3">Cuadrada, con la pieza centrada. Se optimiza sola.</p>}
               </>
             ) : <p className="text-center text-[13px] text-ink-2">Guarda la categoría para poder subir su foto.</p>}
           </div>
         </Card>
-        <Card title="Visibilidad">
+        <Card title="Visibilidad" step={4}>
           <div className="grid gap-3">
             <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.is_visible} onChange={(e) => set("is_visible", e.target.checked)} className="size-5 accent-[var(--ink)]" />Visible en la tienda</label>
             <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.show_in_nav} disabled={!d.is_visible} onChange={(e) => set("show_in_nav", e.target.checked)} className="size-5 accent-[var(--ink)]" />Mostrar en el menú y la portada</label>
           </div>
         </Card>
-        <div className="flex flex-wrap items-center gap-3">
-          <button type="submit" disabled={pending || uploading} className={btnPrimary}>
-            {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}Guardar
-          </button>
-          {msg && <p role={msg.ok ? "status" : "alert"} className={`text-[14px] ${msg.ok ? "text-success" : "text-danger"}`}>{msg.text}</p>}
-        </div>
         {d.id && canDelete && (
           <div className="border-t border-line pt-4">
             {confirmDelete ? (
@@ -158,6 +168,12 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
           </div>
         )}
       </div>
+      <SaveBar dirty={dirty && !msg}>
+        <button type="submit" disabled={pending || uploading} className={btnPrimary}>
+          {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}Guardar
+        </button>
+        {msg && <StatusText ok={msg.ok}>{msg.text}</StatusText>}
+      </SaveBar>
     </form>
   );
 }

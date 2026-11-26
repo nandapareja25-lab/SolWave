@@ -38,7 +38,7 @@ export async function saveStoreMode(_p: ActionResult, form: FormData): Promise<A
 // ---------- Datos generales ----------
 const generalSchema = z.object({
   contact_email: z.string().trim().max(254).refine((v) => v === "" || z.string().email().safeParse(v).success, "Correo no válido"),
-  whatsapp_e164: z.string().trim().max(20).refine((v) => v === "" || /^\+[1-9][0-9]{6,14}$/.test(v), "Escribe el número con + y código de país, sin espacios. Ej: +13055550100"),
+  whatsapp_e164: z.string().trim().max(20).refine((v) => v === "" || /^\+[1-9][0-9]{6,14}$/.test(v), "Escribe el número con + y código de país. Ej: +1 305 555 0100"),
   instagram: optionalUrl, tiktok: optionalUrl, facebook: optionalUrl,
   packaging_note: z.string().trim().max(160),
   timezone: z.string().trim().max(60),
@@ -47,7 +47,9 @@ const generalSchema = z.object({
 
 export async function saveGeneral(_p: ActionResult, form: FormData): Promise<ActionResult> {
   const auth = await adminAction("admin"); if (!auth.ok) return fail(auth.error);
-  const d = generalSchema.safeParse(Object.fromEntries(form));
+  const raw = Object.fromEntries(form) as Record<string, string>;
+  raw.whatsapp_e164 = String(raw.whatsapp_e164 ?? "").replace(/[\s().-]/g, "");
+  const d = generalSchema.safeParse(raw);
   if (!d.success) return fail(d.error.issues[0]?.message ?? "Revisa los datos.");
   const social = Object.fromEntries((["instagram", "tiktok", "facebook"] as const).filter((k) => d.data[k]).map((k) => [k, d.data[k]]));
   const { error } = await auth.sb.from("store_settings").update({

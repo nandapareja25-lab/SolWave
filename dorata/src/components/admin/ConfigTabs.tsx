@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const TABS = [
   { href: "/admin/configuracion", label: "Tienda" },
-  { href: "/admin/configuracion/banner", label: "Banner" },
+  { href: "/admin/configuracion/banner", label: "Barra de anuncios" },
   { href: "/admin/configuracion/envios", label: "Envíos" },
   { href: "/admin/configuracion/garantias", label: "Garantías" },
   { href: "/admin/configuracion/legal", label: "Legal y privacidad" },
@@ -14,8 +14,8 @@ const TABS = [
 export function ConfigTabs() {
   const path = usePathname();
   return (
-    <nav aria-label="Secciones de configuración" className="-mx-4 mb-6 overflow-x-auto px-4">
-      <ul className="flex gap-2">
+    <nav aria-label="Secciones de configuración" className="mb-6">
+      <ul className="flex flex-wrap gap-2">
         {TABS.map((t) => {
           const on = t.href === "/admin/configuracion" ? path === t.href : path.startsWith(t.href);
           return (

@@ -5,7 +5,7 @@ import { Card, btnPrimary } from "@/components/admin/ui";
 import { CampaignRowActions } from "@/components/admin/CampaignRowActions";
 import { formatInZone } from "@/lib/tz";
 
-export const metadata = { title: "Banner" };
+export const metadata = { title: "Barra de anuncios" };
 
 type Row = { id: string; internal_name: string; is_active: boolean; priority: number; starts_at: string; ends_at: string | null; timezone: string; style: string; countdown_enabled: boolean; countdown_target_at: string | null };
 

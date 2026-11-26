@@ -1,16 +1,12 @@
 import { requireAdmin } from "@/server/admin/auth";
-import { Card, inputCls, labelCls } from "@/components/admin/ui";
+import { Card, helpCls, inputCls, labelCls } from "@/components/admin/ui";
 import { ActionForm } from "@/components/admin/forms";
-import { BUSINESS_TIMEZONES, formatInZone, utcToWallTime } from "@/lib/tz";
+import { BUSINESS_TIMEZONES, formatInZone, tzLabel, utcToWallTime } from "@/lib/tz";
+import { StoreModeFields } from "@/components/admin/StoreModeFields";
 import { saveGeneral, saveRate, saveStoreMode } from "./actions";
 
 export const metadata = { title: "Configuración" };
 
-const MODES = [
-  { value: "coming_soon", label: "Próximamente", help: "Toda la tienda muestra la página de lanzamiento con cuenta regresiva y lista de espera. Las políticas siguen visibles." },
-  { value: "live", label: "Tienda activa", help: "La tienda completa queda abierta al público." },
-  { value: "maintenance", label: "Mantenimiento", help: "Toda la tienda muestra un aviso de “volvemos en un momento”. Úsalo si necesitas cerrar temporalmente." },
-] as const;
 
 export default async function StoreConfigPage() {
   const { sb, role } = await requireAdmin("admin");
@@ -25,35 +21,22 @@ export default async function StoreConfigPage() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <Card title="Estado de la tienda">
+      <Card title="Estado de la tienda" step={1}>
         <ActionForm action={saveStoreMode}>
-          <fieldset className="grid gap-2">
-            <legend className="sr-only">Estado</legend>
-            {MODES.map((m) => (
-              <label key={m.value} className="flex cursor-pointer gap-3 rounded-[4px] border border-line p-3 has-[:checked]:border-ink has-[:checked]:bg-ivory">
-                <input type="radio" name="store_mode" value={m.value} defaultChecked={s.store_mode === m.value} className="mt-1 accent-[var(--ink)]" />
-                <span><span className="block text-[15px] font-semibold">{m.label}</span><span className="block text-[13px] text-ink-2">{m.help}</span></span>
-              </label>
-            ))}
-          </fieldset>
-          <label className={labelCls}>
-            Abrir automáticamente (opcional, solo en Próximamente) · hora de {tz.replace("_", " ")}
-            <input type="datetime-local" name="live_at" defaultValue={utcToWallTime(s.live_at, tz)} className={inputCls} />
-          </label>
-          <label className={labelCls}>
-            Mensaje de mantenimiento (opcional)
-            <input name="maintenance_message" maxLength={240} defaultValue={(s.maintenance_message as Record<string, string>)?.es ?? ""} className={inputCls} placeholder="Volvemos en unas horas." />
-          </label>
-          <p className="text-[13px] text-ink-3">Para ver la tienda real mientras está cerrada usa tu enlace privado (dorata18k.com/?vista_previa=…).</p>
+          <StoreModeFields mode={s.store_mode} liveAt={utcToWallTime(s.live_at, tz)} maintenance={(s.maintenance_message as Record<string, string>)?.es ?? ""} timezone={tz} />
         </ActionForm>
       </Card>
 
-      <Card title="Contacto, redes y presentación">
+      <Card title="Contacto, redes y presentación" step={2}>
         <ActionForm action={saveGeneral}>
-          <label className={labelCls}>Correo de contacto<input name="contact_email" type="email" defaultValue={s.contact_email ?? ""} className={inputCls} /></label>
+          <label className={labelCls}>Correo de contacto
+            <input name="contact_email" type="email" defaultValue={s.contact_email ?? ""} placeholder="Ej: hola@dorata18k.com" className={inputCls} />
+            {!s.contact_email && <span className="text-[12px] font-normal text-gold-deep">Sin correo, tus clientas no tienen cómo escribirte desde la tienda.</span>}
+          </label>
           <label className={labelCls}>
-            WhatsApp (con + y código de país). Sin número, el botón no aparece.
-            <input name="whatsapp_e164" inputMode="tel" placeholder="+13055550100" defaultValue={s.whatsapp_e164 ?? ""} className={inputCls} />
+            WhatsApp
+            <input name="whatsapp_e164" inputMode="tel" placeholder="Ej: +1 305 555 0100" defaultValue={s.whatsapp_e164 ?? ""} className={inputCls} />
+            <span className={helpCls}>Con + y código de país. Mientras esté vacío, el botón de WhatsApp no aparece en la tienda.</span>
           </label>
           <div className="grid gap-4 sm:grid-cols-3">
             <label className={labelCls}>Instagram<input name="instagram" defaultValue={social.instagram ?? ""} placeholder="https://www.instagram.com/…" className={inputCls} /></label>
@@ -68,7 +51,7 @@ export default async function StoreConfigPage() {
             <label className={labelCls}>
               Zona horaria del negocio
               <select name="timezone" defaultValue={tz} className={inputCls}>
-                {BUSINESS_TIMEZONES.map((z) => <option key={z} value={z}>{z.replace("_", " ")}</option>)}
+                {BUSINESS_TIMEZONES.map((z) => <option key={z} value={z}>{tzLabel(z)}</option>)}
               </select>
             </label>
             <label className="flex items-center gap-3 self-end text-[14px]">
@@ -80,14 +63,14 @@ export default async function StoreConfigPage() {
       </Card>
 
       {role !== "staff" && (
-        <Card title="Tasa de cambio COP / USD">
+        <Card title="Tasa de cambio COP / USD" step={3}>
           <p className="mb-4 text-[14px] text-ink-2">
             Se usa para convertir el costo de tus piezas compradas en pesos colombianos. No cambia sola: tú la defines.
             {b?.cop_per_usd ? <> Vigente: <strong className="tabular">{Number(b.cop_per_usd).toLocaleString("es-US")} COP</strong> por 1 USD{b.cop_rate_updated_at ? ` (desde ${formatInZone(b.cop_rate_updated_at, tz)})` : ""}.</> : <> Aún no hay tasa definida.</>}
           </p>
           <ActionForm action={saveRate} submitLabel="Guardar tasa">
             <div className="grid gap-4 sm:grid-cols-2">
-              <label className={labelCls}>COP por 1 USD<input name="cop_per_usd" inputMode="decimal" required placeholder="4100" className={inputCls} /></label>
+              <label className={labelCls}>COP por 1 USD<input name="cop_per_usd" inputMode="decimal" required placeholder="Ej: 4100" className={inputCls} /></label>
               <label className={labelCls}>Nota (opcional)<input name="note" maxLength={200} placeholder="Tasa de mi compra de diciembre" className={inputCls} /></label>
             </div>
           </ActionForm>

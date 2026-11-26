@@ -36,3 +36,22 @@ export function formatInZone(iso: string, timeZone: string): string {
 export const BUSINESS_TIMEZONES = [
   "America/New_York", "America/Chicago", "America/Denver", "America/Los_Angeles", "America/Phoenix", "America/Bogota",
 ] as const;
+
+/** Nombre sencillo de la zona para la dueña (sin "America/New_York"). */
+export const TZ_LABELS: Record<string, string> = {
+  "America/New_York": "hora del Este (Nueva York, Miami)",
+  "America/Chicago": "hora del Centro (Chicago, Houston)",
+  "America/Denver": "hora de la Montaña (Denver)",
+  "America/Los_Angeles": "hora del Pacífico (Los Ángeles)",
+  "America/Phoenix": "hora de Arizona (Phoenix)",
+  "America/Bogota": "hora de Colombia (Bogotá)",
+};
+export const tzLabel = (tz: string) => TZ_LABELS[tz] ?? tz.replace(/_/g, " ");
+
+/** "2026-12-02T00:00" (hora de pared) → "miércoles 2 de diciembre de 2026, 12:00 a. m." */
+export function readableWallTime(local: string): string {
+  const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(local);
+  if (!m) return "";
+  const d = new Date(Date.UTC(+m[1]!, +m[2]! - 1, +m[3]!, +m[4]!, +m[5]!));
+  return new Intl.DateTimeFormat("es-US", { weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(d);
+}

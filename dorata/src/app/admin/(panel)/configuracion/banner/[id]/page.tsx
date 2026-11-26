@@ -6,13 +6,18 @@ import { CampaignEditor } from "@/components/admin/CampaignEditor";
 import type { CampaignInput } from "../actions";
 import { utcToWallTime } from "@/lib/tz";
 
-export const metadata = { title: "Campaña del banner" };
+export const metadata = { title: "Campaña de la barra de anuncios" };
 
 export default async function CampaignPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { sb } = await requireAdmin("admin");
   const { data: settings } = await sb.from("store_settings").select("timezone").eq("id", 1).single();
   const defaultTz = settings?.timezone ?? "America/New_York";
+  const { data: cats } = await sb.from("categories").select("category_translations(locale,name,slug)").eq("is_visible", true).order("sort_order");
+  const pages = [
+    { path: "/", label: "Portada" }, { path: "/tienda", label: "Toda la tienda" },
+    ...(cats ?? []).flatMap((c) => (c.category_translations as { locale: string; name: string; slug: string }[]).filter((t) => t.locale === "es").map((t) => ({ path: `/${t.slug}`, label: t.name }))),
+  ];
 
   let initial: CampaignInput;
   if (id === "nueva") {
@@ -51,7 +56,7 @@ export default async function CampaignPage({ params }: { params: Promise<{ id: s
   return (
     <div>
       <Link href="/admin/configuracion/banner" className="mb-4 inline-flex h-10 items-center gap-2 text-[14px] text-ink-2"><ArrowLeft aria-hidden="true" size={16} />Todas las campañas</Link>
-      <CampaignEditor initial={initial} />
+      <CampaignEditor initial={initial} pages={pages} />
     </div>
   );
 }

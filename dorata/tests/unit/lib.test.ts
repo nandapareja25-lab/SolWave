@@ -208,3 +208,13 @@ describe("slugify", () => {
     expect(isValidSlug(slugify("Tréboles 18K"))).toBe(true);
   });
 });
+
+describe("fechas legibles", () => {
+  it("muestra la hora de pared en español sin moverla de zona", async () => {
+    const { readableWallTime, tzLabel } = await import("@/lib/tz");
+    expect(readableWallTime("2026-12-02T00:00")).toMatch(/miércoles, 2 de diciembre de 2026|miércoles 2 de diciembre de 2026/);
+    expect(readableWallTime("2026-12-02T00:00")).toMatch(/12:00/);
+    expect(readableWallTime("")).toBe("");
+    expect(tzLabel("America/New_York")).toContain("Este");
+  });
+});

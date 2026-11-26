@@ -60,17 +60,17 @@ export async function saveCategory(input: CategoryInput): Promise<CategoryResult
   return { ok: true, message: "Guardado. La tienda se actualiza en menos de un minuto.", id: data as string };
 }
 
-export async function moveCategory(id: string, dir: -1 | 1): Promise<CategoryResult> {
+/** Guarda el orden completo (la pantalla ya lo mostró al instante). */
+export async function setCategoryOrder(ids: string[]): Promise<CategoryResult> {
   const auth = await adminAction("staff"); if (!auth.ok) return fail(auth.error);
-  const { data: rows } = await auth.sb.from("categories").select("id,sort_order").order("sort_order").order("created_at");
-  const list = rows ?? [];
-  const i = list.findIndex((r) => r.id === id); const j = i + dir;
-  if (i < 0 || j < 0 || j >= list.length) return null;
-  [list[i], list[j]] = [list[j]!, list[i]!];
-  const results = await Promise.all(list.map((r, k) => (r.sort_order === k ? null : auth.sb.from("categories").update({ sort_order: k }).eq("id", r.id))));
-  if (results.some((r) => r?.error)) return fail("No se pudo reordenar.");
+  if (ids.length > 200 || !ids.every((i) => z.string().uuid().safeParse(i).success)) return fail("Datos no válidos.");
+  const { data: rows } = await auth.sb.from("categories").select("id,sort_order");
+  const current = new Map((rows ?? []).map((r) => [r.id, r.sort_order as number]));
+  if (ids.length !== current.size || ids.some((i) => !current.has(i))) return fail("La lista cambió mientras la ordenabas. Recarga la página.");
+  const results = await Promise.all(ids.map((id, k) => (current.get(id) === k ? null : auth.sb.from("categories").update({ sort_order: k }).eq("id", id))));
+  if (results.some((r) => r?.error)) return fail("No se pudo guardar el orden. Recarga la página.");
   done();
-  return { ok: true, message: "Orden actualizado." };
+  return { ok: true, message: "Orden guardado." };
 }
 
 export async function toggleCategory(id: string, field: "is_visible" | "show_in_nav", value: boolean): Promise<CategoryResult> {
