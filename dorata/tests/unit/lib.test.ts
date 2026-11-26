@@ -184,3 +184,18 @@ describe("fotos de producto", () => {
     expect(averageColor(px)).toBe("#C86464");
   });
 });
+
+import { utcToWallTime, wallTimeToUtc } from "@/lib/tz";
+describe("zonas horarias", () => {
+  it("2-dic 00:00 Nueva York = 05:00 UTC (horario de invierno)", () => {
+    expect(wallTimeToUtc("2026-12-02T00:00", "America/New_York")).toBe("2026-12-02T05:00:00.000Z");
+  });
+  it("julio en Nueva York = UTC-4 (horario de verano)", () => {
+    expect(wallTimeToUtc("2026-07-04T12:00", "America/New_York")).toBe("2026-07-04T16:00:00.000Z");
+  });
+  it("ida y vuelta para el formulario", () => {
+    expect(utcToWallTime("2026-12-02T05:00:00.000Z", "America/New_York")).toBe("2026-12-02T00:00");
+    expect(utcToWallTime("2026-12-02T05:00:00.000Z", "America/Los_Angeles")).toBe("2026-12-01T21:00");
+  });
+  it("texto inválido", () => { expect(wallTimeToUtc("mañana", "America/New_York")).toBeNull(); });
+});
