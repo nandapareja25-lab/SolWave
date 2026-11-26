@@ -1,14 +1,25 @@
 # ESTADO — D'ORATA (tienda online propia)
-Última actualización: 2026-11-25 | Fase actual: 1 — Base, diseño, navegación (construida; ver revisión visual)
+Última actualización: 2026-11-26 | Fase actual: 2 — Supabase real conectado (falta despliegue en Cloudflare con cuentas de la dueña)
 
-⏸️ CHECKPOINT — Última acción: Fase 1 construida y verificada (tsc/lint/22 unit/23 SQL/build/OpenNext/Playwright 375).
-Siguiente acción exacta: cerrar hallazgos de la revisión visual que dependen de la dueña (envío/devoluciones,
-beneficio de lista de espera, fecha 02.12.26) → Fase 2 (Supabase real: catálogo, ajustes, políticas, búsqueda).
+⏸️ CHECKPOINT — Última acción: Fase 2 base lista — Supabase "dorata" con 8 migraciones + seed, tienda leyendo la
+base real, funciones de administración probadas, fotos (WebP en navegador), build Cloudflare OK.
+Siguiente acción exacta: la dueña crea cuenta Cloudflare + dominio + secretos (docs/08) → verificar Próximamente
+en vivo → Fase 3 (panel: modo de tienda, banner, productos con subida de fotos).
 
 ## Qué es (3 líneas)
 Tienda online propia de accesorios en oro laminado 18K, marca D'ORATA (empresa legal futura: Mafer Studio LLC).
 Mercado: EE. UU., español (inglés después), USD, móvil primero. Venta web + manual (IG/TikTok/WhatsApp/persona).
 Stack: Next.js 15 en Cloudflare Workers (OpenNext) · Supabase · Stripe Checkout (fase 4). Panel privado (fase 3).
+
+## Infraestructura real
+- Supabase: proyecto "dorata" (ref rsjbhvlfqlpqethplawp, us-east-1, org Quotronex). Migraciones 1–8 aplicadas
+  vía MCP; seed aplicado; newsletter_enabled=true; redes @dorata18k (⚠ confirmar que existen las cuentas).
+- Modo actual en la base: coming_soon. Banner de lanzamiento activo (countdown 2-dic 00:00 NY → "ya disponible").
+- Entorno de trabajo "dorata" (cloud) con acceso a rsjbhvlfqlpqethplawp.supabase.co. Node necesita
+  NODE_USE_ENV_PROXY=1 en este entorno (solo desarrollo).
+- ⚠ En el entorno "Default" quedó guardada una credencial inválida para api.supabase.com (no era token sbp_):
+  la dueña puede borrarla en Configuración del entorno → Network secrets.
+- Cloudflare: pendiente cuenta/dominio/secretos de la dueña (guía docs/08-DESPLIEGUE-CLOUDFLARE.md).
 
 ## Ubicación en el repo
 `dorata/` dentro del repo SolWave (la raíz es otro proyecto: Solwave). Recomendado: repo propio antes de la fase 7.
@@ -46,7 +57,9 @@ Stack: Next.js 15 en Cloudflare Workers (OpenNext) · Supabase · Stripe Checkou
 - [x] 0 · Definición: arquitectura, esquema BD, flujos, propuesta visual, banner, legal/privacidad
 - [x] 1 · Base: scaffold, tokens, layout, navegación, banner, cookies, footer legal, home, catálogo, producto,
         carrito local, Próximamente/Mantenimiento, lista de espera (revisión visual: ver abajo)
-- [ ] 2 · Supabase real: catálogo, productos, inventario, ajustes, políticas, búsqueda, fotos (Storage)
+- [x] 2 · Supabase real: base, repositorio, admin RPCs (categorías/productos/fotos), garantías por componente,
+        políticas públicas, lista de espera (función), fotos WebP, preparación Cloudflare.
+        Pendiente de fase 2: búsqueda en la tienda; verificación en vivo tras el despliegue.
 - [ ] 3 · Panel administrativo (primero: interruptor de modo de tienda y editor del banner)
 - [ ] 4 · Carrito → Stripe Checkout, impuestos, envíos
 - [ ] 5 · Pedidos, clientes, garantías, certificados, emails, solicitudes de privacidad

@@ -156,3 +156,31 @@ describe("garantías", () => {
     expect(r.map((p) => p.months)).toEqual([12, 60]);
   });
 });
+
+import { averageColor, checkImage, mediaPaths, plannedWidths, scaledSize } from "@/lib/images";
+describe("fotos de producto", () => {
+  it("valida tipo, peso y tamaño mínimo", () => {
+    expect(checkImage({ type: "image/jpeg", size: 1000 })).toEqual({ ok: true });
+    expect(checkImage({ type: "image/gif", size: 1000 })).toEqual({ ok: false, reason: "type" });
+    expect(checkImage({ type: "image/png", size: 30 * 1024 * 1024 })).toEqual({ ok: false, reason: "size" });
+    expect(checkImage({ type: "image/png", size: 1 }, { width: 500, height: 900 })).toEqual({ ok: false, reason: "too_small" });
+  });
+  it("nunca agranda la foto original", () => {
+    expect(plannedWidths(3000)).toEqual([400, 800, 1600]);
+    expect(plannedWidths(1000)).toEqual([400, 800]);
+    expect(plannedWidths(300)).toEqual([400]);
+    expect(scaledSize(3000, 4000, 800)).toEqual({ width: 800, height: 1067 });
+    expect(scaledSize(600, 600, 800)).toEqual({ width: 600, height: 600 });
+  });
+  it("rutas dentro de la carpeta del producto", () => {
+    const pid = "b4533810-079e-4b23-9f48-3f5f2edf0f16", iid = "7f6b0a4e-2a51-4d5c-9b0e-3f3f1c1b2a10";
+    const r = mediaPaths(pid, iid, [400, 800, 1600]);
+    expect(r.storagePath).toBe(`${pid}/${iid}-1600.webp`);
+    expect(r.variants["800"]).toBe(`${pid}/${iid}-800.webp`);
+    expect(() => mediaPaths("../otro", iid, [400])).toThrow();
+  });
+  it("color dominante", () => {
+    const px = new Uint8ClampedArray(64).fill(0).map((_, i) => (i % 4 === 3 ? 255 : i % 4 === 0 ? 200 : 100));
+    expect(averageColor(px)).toBe("#C86464");
+  });
+});

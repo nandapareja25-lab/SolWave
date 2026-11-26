@@ -13,10 +13,24 @@ import type { Category, LegalPage, LegalPageSummary, ProductCard, ProductDetail,
  */
 const live = () => supabasePublicConfig() !== null;
 
-export const getStoreSettings = cache(async (): Promise<StoreSettings> => (live() ? sbSettings() : DEMO_SETTINGS));
+/** Valores seguros si la base no responde (sin datos inventados: sin redes, sin WhatsApp). */
+const SAFE_SETTINGS: StoreSettings = {
+  storeName: "D'ORATA", descriptor: "Oro laminado 18K", logoUrl: null, whatsappE164: null, contactEmail: null,
+  social: {}, socialHandle: null, testimonialsEnabled: false, newsletterEnabled: false, packagingNote: null, isDemo: false,
+};
+
+async function degrade<T>(label: string, fn: () => Promise<T>, fallback: T): Promise<T> {
+  try { return await fn(); } catch (e) {
+    console.error(`${label}_degraded`, e instanceof Error ? e.message : "unknown");
+    return fallback;
+  }
+}
+
+export const getStoreSettings = cache(async (): Promise<StoreSettings> =>
+  (live() ? degrade("settings", sbSettings, SAFE_SETTINGS) : DEMO_SETTINGS));
 
 export const getCategories = cache(async (): Promise<Category[]> =>
-  (live() ? sbCategories() : DEMO_CATEGORIES));
+  (live() ? degrade("categories", sbCategories, []) : DEMO_CATEGORIES));
 
 export const getNavCategories = cache(async (): Promise<Category[]> =>
   (await getCategories()).filter((c) => c.showInNav));
@@ -25,7 +39,8 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
   return (await getCategories()).find((c) => c.slug === slug) ?? null;
 }
 
-export const getWarrantyPolicies = cache(async (): Promise<WarrantyPolicy[]> => (live() ? sbWarranties() : DEMO_WARRANTIES));
+export const getWarrantyPolicies = cache(async (): Promise<WarrantyPolicy[]> =>
+  (live() ? degrade("warranties", sbWarranties, []) : DEMO_WARRANTIES));
 
 /** Catálogo activo completo (una consulta por solicitud, con caché ISR). Suficiente para cientos de piezas. */
 const loadProducts = cache(async (): Promise<ProductDetail[]> => (live() ? sbProducts() : DEMO_PRODUCTS));
@@ -78,7 +93,7 @@ export async function getRelated(product: ProductDetail): Promise<ProductCard[]>
 }
 
 export const getLegalPages = cache(async (): Promise<LegalPageSummary[]> =>
-  live() ? sbLegalPages() : DEMO_LEGAL.map(({ kind, slug, title }) => ({ kind, slug, title })));
+  live() ? degrade("legal_pages", sbLegalPages, []) : DEMO_LEGAL.map(({ kind, slug, title }) => ({ kind, slug, title })));
 
 export async function getLegalPage(slug: string): Promise<LegalPage | null> {
   return live() ? sbLegalPage(slug) : DEMO_LEGAL.find((p) => p.slug === slug) ?? null;

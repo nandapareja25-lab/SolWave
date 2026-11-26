@@ -8,6 +8,11 @@
   "observability": { "enabled": true },
   // Variables públicas (no secretas). Los secretos se cargan con: npx wrangler secret put NOMBRE
   "vars": {
-    "NEXT_PUBLIC_SITE_URL": "https://dorata18k.com"
+    "NEXT_PUBLIC_SITE_URL": "https://dorata18k.com",
+    // Públicas por diseño (la seguridad la dan las reglas RLS de la base):
+    "NEXT_PUBLIC_SUPABASE_URL": "https://rsjbhvlfqlpqethplawp.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_cGUFaUFw59_9-s2-87fmNw_l4ka8GTx"
   }
+  // SECRETOS (nunca aquí): SUPABASE_SECRET_KEY, STORE_PREVIEW_TOKEN, TURNSTILE_SECRET_KEY
+  // → Cloudflare › Workers › dorata-web › Settings › Variables and Secrets (tipo "Secret").
 }
