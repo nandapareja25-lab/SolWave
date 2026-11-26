@@ -44,3 +44,18 @@ export async function prepareProductImage(file: File, productId: string): Promis
   bitmap.close();
   return out;
 }
+
+/** Una sola imagen WebP (por defecto 800 px de ancho) para categorías y colecciones. */
+export async function prepareSingleImage(file: File, width = 800): Promise<Blob> {
+  const first = checkImage(file);
+  if (!first.ok) throw new Error(`IMAGE_${first.reason.toUpperCase()}`);
+  const bitmap = await createImageBitmap(file, { imageOrientation: "from-image" });
+  const size = scaledSize(bitmap.width, bitmap.height, Math.min(width, bitmap.width));
+  const canvas = new OffscreenCanvas(size.width, size.height);
+  const ctx = canvas.getContext("2d");
+  if (!ctx) { bitmap.close(); throw new Error("CANVAS_UNAVAILABLE"); }
+  ctx.imageSmoothingQuality = "high";
+  ctx.drawImage(bitmap, 0, 0, size.width, size.height);
+  bitmap.close();
+  return canvas.convertToBlob({ type: "image/webp", quality: 0.82 });
+}

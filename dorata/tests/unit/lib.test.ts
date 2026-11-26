@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { slugify, isValidSlug } from "@/lib/slug";
 import fixture from "./fixture-announcement.json";
 import { formatUSD, discountPercent } from "@/lib/money";
 import { countdownParts, formatCountdown, msToNextSecond } from "@/lib/countdown";
@@ -198,4 +199,12 @@ describe("zonas horarias", () => {
     expect(utcToWallTime("2026-12-02T05:00:00.000Z", "America/Los_Angeles")).toBe("2026-12-01T21:00");
   });
   it("texto inválido", () => { expect(wallTimeToUtc("mañana", "America/New_York")).toBeNull(); });
+});
+
+describe("slugify", () => {
+  it("quita acentos, espacios y símbolos", () => {
+    expect(slugify("Pulseras de Hilo Ñandú")).toBe("pulseras-de-hilo-nandu");
+    expect(slugify("  Aretes & Topos!! ")).toBe("aretes-y-topos");
+    expect(isValidSlug(slugify("Tréboles 18K"))).toBe(true);
+  });
 });
