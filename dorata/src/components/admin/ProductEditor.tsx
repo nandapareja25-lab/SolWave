@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Check, Loader2, Plus, Sparkles, Star, Trash2 } from "lucide-react";
+import { Bold, Check, ChevronDown, ExternalLink, List, Loader2, Plus, Sparkles, Star, Trash2 } from "lucide-react";
 import { saveProduct, type ProductInput, type VariantInput } from "@/app/admin/(panel)/productos/actions";
 import { slugify } from "@/lib/slug";
 import { formatWarranty } from "@/lib/warranty";
@@ -11,6 +11,7 @@ import { Card, PageHeader, SaveBar, StatusText, areaCls, btnPrimary, btnQuiet, c
 import { formatUSD } from "@/lib/money";
 import { useUnsavedGuard } from "./useUnsavedGuard";
 import { useSaveShortcut } from "./useSaveShortcut";
+import { GooglePreview } from "./GooglePreview";
 import { ProductPhotos, type MediaItem } from "./ProductPhotos";
 import { VariantCosts, type CostInfo } from "./VariantCosts";
 
@@ -46,7 +47,19 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
   const [useComponents, setUseComponents] = useState(initial.components.length > 0);
   const [saved, setSaved] = useState(() => JSON.stringify(initial));
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [celebrate, setCelebrate] = useState(false);
   const [pending, start] = useTransition();
+  const descRef = useRef<HTMLTextAreaElement>(null);
+  /** Formato sin enseñar sintaxis: envuelve la selección en **negrita** o la convierte en lista. */
+  function format(kind: "bold" | "list") {
+    const el = descRef.current; if (!el) return;
+    const { selectionStart: a, selectionEnd: b, value } = el;
+    const sel = value.slice(a, b) || (kind === "bold" ? "texto" : "elemento");
+    const out = kind === "bold" ? `**${sel}**` : sel.split("\n").map((l) => (l.startsWith("- ") ? l : `- ${l}`)).join("\n");
+    const prefix = kind === "list" && a > 0 && value[a - 1] !== "\n" ? "\n" : "";
+    set("description_md", value.slice(0, a) + prefix + out + value.slice(b));
+    requestAnimationFrame(() => { el.focus(); el.setSelectionRange(a + prefix.length, a + prefix.length + out.length); });
+  }
   const dirty = JSON.stringify(d) !== saved;
   useUnsavedGuard(dirty);
   const formRef = useRef<HTMLFormElement>(null);
@@ -71,7 +84,9 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
       if (!r) return;
       setMsg({ ok: r.ok, text: r.message });
       if (!r.ok) return;
+      const wasActive = (JSON.parse(saved) as ProductInput).status === "active";
       setSaved(JSON.stringify(payload)); setD(payload);
+      if (payload.status === "active" && !wasActive) { setCelebrate(true); setMsg({ ok: true, text: "¡Publicado! Ya se ve en la tienda." }); setTimeout(() => setCelebrate(false), 900); }
       if (!d.id && r.id) router.replace(`/admin/productos/${r.id}`);
       router.refresh();
     });
@@ -99,10 +114,16 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
             <label className={labelCls}>Frase corta (aparece en la tarjeta y bajo el nombre)
               <textarea rows={2} maxLength={200} value={d.short_description} onChange={(e) => set("short_description", e.target.value)} placeholder="Ej: Brillo diario que no se apaga." className={`resize-none ${areaCls}`} />
             </label>
-            <label className={labelCls}>Descripción
-              <textarea maxLength={8000} value={d.description_md} onChange={(e) => set("description_md", e.target.value)} placeholder="Cuenta cómo es la pieza, cómo se siente y con qué combina." className={`min-h-32 ${areaCls}`} />
-              <span className={helpCls}>Formato simple: **negrita**, y una línea con - para listas.</span>
-            </label>
+            <div className={labelCls}>
+              <span className="flex items-end justify-between gap-2">
+                <label htmlFor="desc">Descripción</label>
+                <span className="flex gap-1">
+                  <button type="button" onClick={() => format("bold")} aria-label="Poner en negrita lo seleccionado" className="press grid size-9 place-items-center rounded-full border border-line"><Bold aria-hidden="true" size={14} /></button>
+                  <button type="button" onClick={() => format("list")} aria-label="Convertir en lista" className="press grid size-9 place-items-center rounded-full border border-line"><List aria-hidden="true" size={14} /></button>
+                </span>
+              </span>
+              <textarea id="desc" ref={descRef} maxLength={8000} value={d.description_md} onChange={(e) => set("description_md", e.target.value)} placeholder="Cuenta cómo es la pieza, cómo se siente y con qué combina." className={`min-h-32 ${areaCls}`} />
+            </div>
           </div>
         </Card>
 
@@ -112,7 +133,17 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
             {d.variants.map((v, i) => {
               const s = v.id ? data.stock[v.id] : undefined;
               return (
-                <li key={v.id || `new-${i}`} className={`grid gap-3 rounded-[4px] border p-3 ${v.is_active ? "border-line" : "border-dashed border-line opacity-70"}`}>
+                <li key={v.id || `new-${i}`} className={`rounded-[4px] border ${v.is_active ? "border-line" : "border-dashed border-line opacity-70"}`}>
+                  <details open={!v.id} className="group">
+                  <summary className="flex min-h-14 cursor-pointer list-none items-center gap-2 p-3 [&::-webkit-details-marker]:hidden">
+                    {v.is_default && <Star aria-label="Principal" size={14} className="shrink-0 fill-[var(--gold)] text-gold-deep" />}
+                    <span className="min-w-0 flex-1 truncate text-[15px] font-semibold">{v.title || `Variante ${i + 1}`}</span>
+                    <span className="shrink-0 text-[14px] tabular">{v.price ? `$${Number(v.price.replace(",", ".")).toFixed(2)}` : "sin precio"}</span>
+                    {v.id && <span className={`shrink-0 text-[13px] ${(s?.available ?? 0) === 0 ? "text-danger" : "text-ink-2"}`}>· {s?.available ?? 0} disp.</span>}
+                    {!v.is_active && <span className="shrink-0 rounded-[4px] bg-line/60 px-1.5 text-[11px] text-ink-2">Desactivada</span>}
+                    <ChevronDown aria-hidden="true" size={16} className="shrink-0 text-ink-3 transition-transform group-open:rotate-180 motion-reduce:transition-none" />
+                  </summary>
+                  <div className="grid gap-3 border-t border-line p-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="text-[13px] font-semibold text-ink-2">Variante {i + 1}{!v.is_active && " · desactivada"}</span>
                     <div className="flex items-center gap-1">
@@ -128,14 +159,14 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
                     </div>
                   </div>
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <label className={labelCls}>Nombre de la variante<input required maxLength={60} value={v.title} onChange={(e) => setV(i, { title: e.target.value })} placeholder="Ej: 45 cm, Hilo negro" className={inputCls} /></label>
-                    <label className={labelCls}>Código interno (SKU)
+                    <label className={labelCls}>Nombre de la variante<input maxLength={60} value={v.title} onChange={(e) => setV(i, { title: e.target.value })} placeholder="Ej: 45 cm, Hilo negro" className={inputCls} /></label>
+                    <label className={labelCls}>Código interno
                       <span className="flex gap-2">
-                        <input required maxLength={40} value={v.sku} onChange={(e) => setV(i, { sku: e.target.value.toUpperCase().replace(/\s/g, "-") })} placeholder="DOR-CAD-SING-01" className={`${inputCls} uppercase`} />
+                        <input maxLength={40} value={v.sku} onChange={(e) => setV(i, { sku: e.target.value.toUpperCase().replace(/\s/g, "-") })} placeholder="DOR-CAD-SING-01" className={`${inputCls} uppercase`} />
                         {!v.sku && <button type="button" onClick={() => setV(i, { sku: suggestSku(d.name, d.category_slug, i + 1) })} disabled={!d.name} className="press shrink-0 rounded-full border border-line px-3 text-[13px] disabled:opacity-40">Sugerir</button>}
                       </span>
                     </label>
-                    <label className={labelCls}>Precio<span className="relative"><span className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-3">$</span><input required inputMode="decimal" value={v.price} onChange={(e) => setV(i, { price: e.target.value })} placeholder="0.00" className={`${inputCls} pl-7 tabular`} /></span></label>
+                    <label className={labelCls}>Precio<span className="relative"><span className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-3">$</span><input inputMode="decimal" value={v.price} onChange={(e) => setV(i, { price: e.target.value })} placeholder="0.00" className={`${inputCls} pl-7 tabular`} /></span></label>
                     <label className={labelCls}>Precio antes (opcional)<span className="relative"><span className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-3">$</span><input inputMode="decimal" value={v.compare_at} onChange={(e) => setV(i, { compare_at: e.target.value })} placeholder="Sin descuento" className={`${inputCls} pl-7 tabular`} /></span>
                       <span className={helpCls}>Si lo llenas, la tienda lo muestra tachado.</span>
                     </label>
@@ -144,13 +175,15 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
                         <p className="flex h-11 items-center gap-2 text-[15px] text-ink">
                           <span className="tabular font-semibold">{s?.available ?? 0}</span> disponibles{s?.reserved ? <span className="text-[13px] text-ink-2">· {s.reserved} apartadas en compras</span> : null}
                         </p>
-                        <Link href={`/admin/inventario?sku=${encodeURIComponent(v.sku)}`} className="text-[13px] text-ink underline underline-offset-4">Ajustar en Inventario</Link>
+                        <Link href={`/admin/inventario?sku=${encodeURIComponent(v.sku)}`} target="_blank" rel="noopener" className="inline-flex items-center gap-1 text-[13px] text-ink underline underline-offset-4">Ajustar en Inventario<ExternalLink aria-hidden="true" size={12} /><span className="sr-only"> (se abre en otra pestaña)</span></Link>
                       </div>
                     ) : (
                       <label className={labelCls}>Unidades que tienes hoy<input inputMode="numeric" value={v.initial_stock} onChange={(e) => setV(i, { initial_stock: e.target.value.replace(/\D/g, "") })} placeholder="0" className={`${inputCls} tabular`} /></label>
                     )}
                     <label className={labelCls}>Avisar cuando queden (opcional)<input inputMode="numeric" value={v.low_stock_threshold} onChange={(e) => setV(i, { low_stock_threshold: e.target.value.replace(/\D/g, "") })} placeholder="Usa el aviso general" className={`${inputCls} tabular`} /></label>
                   </div>
+                  </div>
+                  </details>
                 </li>
               );
             })}
@@ -241,6 +274,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
         </Card>
         <Card title="Dirección y Google (opcional)" step={8} collapsible summary={`dorata18k.com/${d.category_slug || "categoria"}/${d.slug || "…"}`}>
           <div className="grid gap-4">
+            <GooglePreview title={d.seo_title || `${d.name || "Producto"} | D'ORATA`} url={`dorata18k.com › ${d.category_slug || "categoria"} › ${d.slug || "…"}`} description={d.seo_description || d.short_description} />
             <label className={labelCls}>Dirección en la tienda
               <span className="flex h-11 items-center overflow-hidden rounded-[4px] border border-line bg-ivory focus-within:border-gold-deep">
                 <span className="max-w-[45%] shrink-0 truncate border-r border-line bg-cream px-3 text-[14px] leading-[44px] text-ink-3">/{d.category_slug || "categoria"}/</span>
@@ -275,7 +309,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
       </div>
 
       <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : undefined}>
-        <button type="submit" disabled={pending} className={btnPrimary}>
+        <button type="submit" disabled={pending} className={`${btnPrimary} ${celebrate ? "shine" : ""}`}>
           {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}
           {d.id ? "Guardar" : "Crear producto"}
         </button>

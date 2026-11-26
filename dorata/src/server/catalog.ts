@@ -2,7 +2,7 @@ import "server-only";
 import { cache } from "react";
 import { announcementSchema, type Announcement } from "@/lib/announcement";
 import { callPublicRpc, supabasePublicConfig } from "@/server/supabase/rpc";
-import { sbCategories, sbLegalPage, sbLegalPages, sbProducts, sbSettings, sbWarranties } from "@/server/supabase/store-repo";
+import { sbCategories, sbLegalPage, sbLegalPages, sbProducts, sbSettings, sbWarranties, sbCollections } from "@/server/supabase/store-repo";
 import { DEMO_CATEGORIES, DEMO_LEGAL, DEMO_PRODUCTS, DEMO_SETTINGS, DEMO_WARRANTIES, demoAnnouncement } from "@/server/demo/catalog";
 import type { Category, LegalPage, LegalPageSummary, ProductCard, ProductDetail, ProductQuery, StoreSettings, WarrantyPolicy } from "@/server/types";
 
@@ -39,6 +39,11 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
   return (await getCategories()).find((c) => c.slug === slug) ?? null;
 }
 
+export const getCollections = cache(async (): Promise<Category[]> => (live() ? degrade("collections", sbCollections, []) : []));
+export async function getCollectionBySlug(slug: string): Promise<Category | null> {
+  return (await getCollections()).find((c) => c.slug === slug) ?? null;
+}
+
 export const getWarrantyPolicies = cache(async (): Promise<WarrantyPolicy[]> =>
   (live() ? degrade("warranties", sbWarranties, []) : DEMO_WARRANTIES));
 
@@ -59,8 +64,9 @@ export async function listProducts(q: ProductQuery = {}): Promise<ProductCard[]>
     const category = await getCategoryBySlug(q.categorySlug);
     if (category?.autoRule === "new") list = list.filter((p) => p.isNew);
     else if (category?.autoRule === "sale") list = list.filter((p) => p.isOnSale);
-    else list = list.filter((p) => p.categorySlug === q.categorySlug);
+    else list = list.filter((p) => p.categorySlug === q.categorySlug || p.extraCategorySlugs?.includes(q.categorySlug!));
   }
+  if (q.collectionSlug) list = list.filter((p) => p.collectionSlugs?.includes(q.collectionSlug!));
   if (q.filter === "new") list = list.filter((p) => p.isNew);
   if (q.filter === "sale") list = list.filter((p) => p.isOnSale);
   const byNew = (a: ProductDetail, b: ProductDetail) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt);

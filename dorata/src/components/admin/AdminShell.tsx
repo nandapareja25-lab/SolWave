@@ -27,7 +27,7 @@ export function AdminShell({ nav, email, role, signOutAction, children }: {
             className={`flex min-h-11 items-center gap-3 rounded-[4px] px-3 text-[14px] transition-colors ${active(n.href) ? "bg-gold/15 font-semibold text-on-dark" : "text-on-dark-2 hover:bg-velvet-2 hover:text-on-dark"}`}>
             <Icon aria-hidden="true" size={18} strokeWidth={1.75} className={active(n.href) ? "text-gold" : ""} />
             <span className="flex-1">{n.label}</span>
-            {n.phase && <span className="rounded-full border border-velvet-line px-2 text-[11px] text-on-dark-2">Fase {n.phase}</span>}
+            {n.phase && <span className="rounded-[4px] border border-velvet-line px-2 text-[11px] text-on-dark-2">Fase {n.phase}</span>}
           </Link>
         );
       })}

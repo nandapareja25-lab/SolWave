@@ -14,10 +14,10 @@ export function parseQuery(sp: Search): Pick<ProductQuery, "filter" | "sort"> {
 }
 
 /** Listado con filtros visibles (chips) y orden, guardados en la URL (se pueden compartir). */
-export async function CategoryView({ category, basePath, search }: { category: Category | null; basePath: string; search: Search }) {
+export async function CategoryView({ category, basePath, search, collection = false }: { category: Category | null; basePath: string; search: Search; collection?: boolean }) {
   const t = await getTranslations("category");
   const { filter, sort } = parseQuery(search);
-  const products = await listProducts({ categorySlug: category?.slug, filter, sort });
+  const products = await listProducts(collection ? { collectionSlug: category?.slug, filter, sort } : { categorySlug: category?.slug, filter, sort });
   const title = category?.name ?? t("allProducts");
   const qs = (next: Partial<Search>) => {
     const merged = { ...search, ...next };

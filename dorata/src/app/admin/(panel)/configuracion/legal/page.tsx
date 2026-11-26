@@ -35,7 +35,7 @@ export default async function LegalListPage() {
                     {live ? `Versión ${live.version_label} · vigente desde ${formatInZone(live.effective_at, tz)} · ${REVIEW[live.legal_review_status]}` : "Sin publicar: la tienda muestra “en preparación”"}
                   </span>
                 </span>
-                <span className={`hidden rounded-full px-3 py-1 text-[12px] font-semibold sm:inline ${live ? (live.legal_review_status === "approved" ? "bg-success/10 text-success" : "bg-gold/15 text-gold-deep") : "bg-line/60 text-ink-2"}`}>
+                <span className={`hidden rounded-[4px] px-2 py-1 text-[12px] font-semibold sm:inline ${live ? (live.legal_review_status === "approved" ? "bg-success/10 text-success" : "bg-gold/15 text-gold-deep") : "bg-line/60 text-ink-2"}`}>
                   {live ? (live.legal_review_status === "approved" ? "Publicada" : "Publicada · revisar") : "Borrador"}
                 </span>
                 <ChevronRight aria-hidden="true" size={18} className="shrink-0 text-ink-3" />

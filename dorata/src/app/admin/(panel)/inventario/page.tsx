@@ -46,11 +46,13 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
     <div>
       <PageHeader title="Inventario" description="Las ventas descuentan solas. Aquí registras lo que llega, los conteos y las piezas dañadas." />
       <div className="mb-6 grid grid-cols-3 gap-3">
-        {[{ n: units, l: "unidades" }, { n: low, l: "quedan pocas", c: low ? "text-gold-deep" : "" }, { n: out, l: "agotadas", c: out ? "text-danger" : "" }].map((k, i) => (
-          <div key={k.l} className="rise rounded-[4px] border border-line bg-surface p-3" style={{ animationDelay: `${i * 60}ms` }}>
+        {[{ n: units, l: units === 1 ? "pieza en total" : "piezas en total", href: "/admin/inventario" },
+          { n: low, l: low === 1 ? "variante con pocas" : "variantes con pocas", c: low ? "text-gold-deep" : "", href: "/admin/inventario?ver=pocas" },
+          { n: out, l: out === 1 ? "variante agotada" : "variantes agotadas", c: out ? "text-danger" : "", href: "/admin/inventario?ver=agotado" }].map((k, i) => (
+          <Link key={k.l} href={k.href} className="rise press rounded-[4px] border border-line bg-surface p-3 hover:border-ink-3" style={{ animationDelay: `${i * 60}ms` }}>
             <p className={`font-display text-[32px] leading-none tabular ${k.c ?? ""}`}><CountUp value={k.n} /></p>
-            <p className="mt-1 text-[12px] text-ink-2">{k.l}</p>
-          </div>
+            <p className="mt-1 text-[12px] leading-tight text-ink-2">{k.l}</p>
+          </Link>
         ))}
       </div>
       <form role="search" className="mb-3">
@@ -60,7 +62,7 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
           <input name="q" defaultValue={sp.q ?? sp.sku ?? ""} placeholder="Buscar por producto o código" className={`${inputCls} pl-9`} />
         </label>
       </form>
-      <div className="mb-4 flex flex-wrap gap-2">{chip(undefined, "Todo")}{chip("pocas", `Pocas (${low})`)}{chip("agotado", `Agotadas (${out})`)}</div>
+      <div className="mb-4 flex flex-wrap gap-2">{chip(undefined, "Todo")}{chip("pocas", `Quedan pocas (${low})`)}{chip("agotado", `Agotadas (${out})`)}</div>
 
       {all.length === 0 ? (
         <div className="filete-doble rounded-[4px] border border-line bg-surface p-6 text-center">
@@ -71,7 +73,20 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
       ) : list.length === 0 ? (
         <p className="rounded-[4px] border border-line bg-surface p-6 text-[15px]">Nada coincide con este filtro. <Link href="/admin/inventario" className="underline underline-offset-4">Ver todo</Link></p>
       ) : (
-        <ul className="grid grid-cols-[minmax(0,1fr)] gap-3">{list.map((r) => <StockRow key={r.variantId} r={r} />)}</ul>
+        <ul className="grid grid-cols-[minmax(0,1fr)] gap-3">
+          {[...new Set(list.map((r) => r.productId))].map((pid, gi) => {
+            const rows = list.filter((r) => r.productId === pid);
+            return (
+              <li key={pid} className="rise min-w-0 rounded-[4px] border border-line bg-surface" style={{ animationDelay: `${Math.min(gi, 8) * 50}ms` }}>
+                <Link href={`/admin/productos/${pid}`} className="flex min-h-12 items-center justify-between gap-2 border-b border-line px-3 text-[15px] font-semibold underline-offset-4 hover:underline">
+                  <span className="truncate">{rows[0]!.product}</span>
+                  <span className="shrink-0 text-[12px] font-normal text-ink-3">{rows.length} {rows.length === 1 ? "variante" : "variantes"}</span>
+                </Link>
+                <ul className="divide-y divide-line">{rows.map((r) => <StockRow key={r.variantId} r={r} />)}</ul>
+              </li>
+            );
+          })}
+        </ul>
       )}
 
       {(moves ?? []).length > 0 && (

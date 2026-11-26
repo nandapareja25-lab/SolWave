@@ -27,7 +27,9 @@ export function ActionForm({ action, children, submitLabel = "Guardar", classNam
     msgRef.current?.focus();
   }, [state]);
   return (
-    <form action={formAction} onChange={() => { setDirty(true); setShown(null); }} className={`grid gap-4 ${className}`}>
+    <form action={formAction} onChange={() => { setDirty(true); setShown(null); }}
+      onKeyDown={(e) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") { e.preventDefault(); e.currentTarget.requestSubmit(); } }}
+      className={`grid gap-4 ${className}`}>
       {children}
       <div className="flex flex-wrap items-center gap-3">
         <button type="submit" disabled={pending} className={btnPrimary}>

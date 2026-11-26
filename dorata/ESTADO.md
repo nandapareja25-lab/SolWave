@@ -1,10 +1,11 @@
 # ESTADO — D'ORATA (tienda online propia)
-Última actualización: 2026-11-26 | Fase actual: 2 — Supabase real conectado (falta despliegue en Cloudflare con cuentas de la dueña)
+Última actualización: 2026-11-26 | Fase actual: 3 — Panel administrativo (casi completo)
 
-⏸️ CHECKPOINT — Última acción: Fase 2 base lista — Supabase "dorata" con 8 migraciones + seed, tienda leyendo la
-base real, funciones de administración probadas, fotos (WebP en navegador), build Cloudflare OK.
-Siguiente acción exacta: la dueña crea cuenta Cloudflare + dominio + secretos (docs/08) → verificar Próximamente
-en vivo → Fase 3 (panel: modo de tienda, banner, productos con subida de fotos).
+⏸️ CHECKPOINT — Última acción: panel con Configuración (tienda, barra de anuncios, envíos, garantías, legal),
+Categorías, Productos (variantes, fotos, garantía por partes, costo y ganancia) e Inventario, todo contra la base
+real y probado de punta a punta. Ronda 2 del revisor visual en curso.
+Siguiente acción exacta: aplicar ronda 2 del revisor → Colecciones → Fase 4 (Stripe: necesita llaves de prueba).
+Decisión de la dueña: el despliegue en Cloudflare + dominio se hace cuando la tienda esté casi terminada.
 
 ## Qué es (3 líneas)
 Tienda online propia de accesorios en oro laminado 18K, marca D'ORATA (empresa legal futura: Mafer Studio LLC).
@@ -12,7 +13,7 @@ Mercado: EE. UU., español (inglés después), USD, móvil primero. Venta web + 
 Stack: Next.js 15 en Cloudflare Workers (OpenNext) · Supabase · Stripe Checkout (fase 4). Panel privado (fase 3).
 
 ## Infraestructura real
-- Supabase: proyecto "dorata" (ref rsjbhvlfqlpqethplawp, us-east-1, org Quotronex). Migraciones 1–8 aplicadas
+- Supabase: proyecto "dorata" (ref rsjbhvlfqlpqethplawp, us-east-1, org Quotronex). Migraciones 1–10 aplicadas
   vía MCP; seed aplicado; newsletter_enabled=true; redes @dorata18k (⚠ confirmar que existen las cuentas).
 - Modo actual en la base: coming_soon. Banner de lanzamiento activo (countdown 2-dic 00:00 NY → "ya disponible").
 - Entorno de trabajo "dorata" (cloud) con acceso a rsjbhvlfqlpqethplawp.supabase.co. Node necesita
@@ -60,7 +61,9 @@ Stack: Next.js 15 en Cloudflare Workers (OpenNext) · Supabase · Stripe Checkou
 - [x] 2 · Supabase real: base, repositorio, admin RPCs (categorías/productos/fotos), garantías por componente,
         políticas públicas, lista de espera (función), fotos WebP, preparación Cloudflare.
         Pendiente de fase 2: búsqueda en la tienda; verificación en vivo tras el despliegue.
-- [ ] 3 · Panel administrativo (primero: interruptor de modo de tienda y editor del banner)
+- [~] 3 · Panel: acceso con contraseña + verificación en dos pasos (TOTP) y roles · Dashboard · Configuración
+        (modo de tienda con apertura programada, contacto/redes/empaque, tasa COP, barra de anuncios con vista previa,
+        envíos, garantías, políticas versionadas) · Categorías · Productos · Inventario. Falta: Colecciones.
 - [ ] 4 · Carrito → Stripe Checkout, impuestos, envíos
 - [ ] 5 · Pedidos, clientes, garantías, certificados, emails, solicitudes de privacidad
 - [ ] 6 · Finanzas, calculadora de precio, estudio de mercado, analítica
@@ -90,6 +93,17 @@ Stack: Next.js 15 en Cloudflare Workers (OpenNext) · Supabase · Stripe Checkou
 - Aprobar FICHA-AVATAR.md. Revisión legal (docs/05 §9). Cuenta Stripe (fase 4). Dominio en Cloudflare (fase 7).
 - Antes del 2-dic: crear proyecto Supabase, aplicar migraciones, desplegar en Cloudflare (sin esto, Próximamente
   y la lista de espera no están en internet).
+
+## Panel — decisiones técnicas (fase 3)
+- Rutas /admin/* con su propio layout; middleware exige sesión; has_role exige aal2 (MFA) en la BD.
+- Escrituras por funciones seguras (admin_save_campaign, admin_upsert_category/product, media, adjust_inventory)
+  o tablas con RLS por rol. Costos y márgenes solo admin/dueña (staff no los ve).
+- Patrones compartidos: ActionForm/SaveBar con aviso de cambios sin guardar (beforeunload + enlaces), Ctrl/Cmd+S,
+  Card plegable, DateTimeField (fecha en español + zona en palabras), CountUp, loading/error por sección.
+- Prohibido <form> dentro de <form> (rompe hidratación): mini-formularios usan collectFields().
+- Fotos: WebP 400/800/1600 en el navegador → Storage → admin_register_media; al borrar se limpian archivos.
+- Usuario QA (qa-admin@dorata.test, rol owner) y producto de prueba "Cadena Singapur" (SKUs QA-…) en la base real:
+  BORRAR antes del lanzamiento. Token de vista previa local solo en .env.local (no es el de producción).
 
 ## Problemas conocidos
 - Mantenimiento responde 200 + noindex (no 503); aceptable, revisar en fase 7.

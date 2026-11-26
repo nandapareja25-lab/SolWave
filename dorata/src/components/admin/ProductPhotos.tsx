@@ -83,7 +83,7 @@ export function ProductPhotos({ productId, storageBase, items, variants, product
                   <div className="relative aspect-square overflow-hidden rounded-[4px] border border-line bg-cream">
                     {/* eslint-disable-next-line @next/next/no-img-element -- miniatura del panel */}
                     <img src={url(m.thumb)} alt={m.alt || `Foto ${i + 1}`} className="size-full object-cover" />
-                    {i === 0 && <span className="absolute left-2 top-2 rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-on-dark">Principal</span>}
+                    {i === 0 && <span className="absolute left-2 top-2 rounded-[4px] bg-ink px-2 py-0.5 text-[11px] font-semibold text-on-dark">Principal</span>}
                   </div>
                   <div className="flex items-center justify-between gap-1">
                     <button type="button" aria-label={`Mover foto ${i + 1} antes`} disabled={i === 0} onClick={() => move(i, -1)} className={iconBtn}><ArrowLeft aria-hidden="true" size={15} /></button>

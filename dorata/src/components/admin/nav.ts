@@ -7,7 +7,7 @@ export const ADMIN_NAV: NavItem[] = [
   { href: "/admin", label: "Dashboard", icon: "LayoutDashboard", min: "staff" },
   { href: "/admin/productos", label: "Productos", icon: "Gem", min: "staff" },
   { href: "/admin/categorias", label: "Categorías", icon: "Tags", min: "staff" },
-  { href: "/admin/colecciones", label: "Colecciones", icon: "Layers", min: "staff", phase: "3" },
+  { href: "/admin/colecciones", label: "Colecciones", icon: "Layers", min: "staff" },
   { href: "/admin/inventario", label: "Inventario", icon: "Boxes", min: "staff" },
   { href: "/admin/pedidos", label: "Pedidos", icon: "ShoppingBag", min: "staff", phase: "5" },
   { href: "/admin/clientes", label: "Clientes", icon: "Users", min: "staff", phase: "5" },

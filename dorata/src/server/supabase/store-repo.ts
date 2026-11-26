@@ -91,6 +91,21 @@ export async function sbCategories(): Promise<Category[]> {
   });
 }
 
+type CollectionRow = { id: string; image_path: string | null; starts_at: string | null; ends_at: string | null;
+  collection_translations: { locale: string; name: string; slug: string; description: string | null }[] };
+
+/** Colecciones visibles y dentro de sus fechas (si las tienen). Se muestran como Category para reutilizar la vista. */
+export async function sbCollections(): Promise<Category[]> {
+  const rows = await rest<CollectionRow[]>("collections?select=id,image_path,starts_at,ends_at,collection_translations(locale,name,slug,description)&is_visible=is.true&order=sort_order");
+  const now = Date.now();
+  return rows.flatMap((c) => {
+    const t = c.collection_translations.find((x) => x.locale === "es");
+    if (!t || (c.starts_at && Date.parse(c.starts_at) > now) || (c.ends_at && Date.parse(c.ends_at) <= now)) return [];
+    return [{ id: c.id, slug: t.slug, name: t.name, description: t.description, autoRule: null, showInNav: false,
+      image: { url: publicStorageUrl("category-media", c.image_path), illustration: "set" as JewelKind, alt: t.name } }];
+  });
+}
+
 export async function sbWarranties(): Promise<WarrantyPolicy[]> {
   const [policies, cats] = await Promise.all([policyRows(), categoryRows()]);
   return policies.flatMap((p) => {
@@ -112,7 +127,8 @@ type ProductRow = {
   product_media: { storage_path: string; variants: Record<string, string>; alt: Record<string, string>; position: number; kind: string }[];
   product_warranty_components: { position: number; label: Record<string, string>; warranty_policy_id: string | null }[];
   category: { id: string; default_warranty_policy_id: string | null; category_translations: { locale: string; name: string; slug: string }[] } | null;
-  product_collections: { collections: { is_set: boolean } | null }[];
+  product_collections: { collections: { is_set: boolean; is_visible: boolean; collection_translations: { locale: string; slug: string }[] } | null }[];
+  product_categories: { categories: { is_visible: boolean; category_translations: { locale: string; slug: string }[] } | null }[];
 };
 
 const PRODUCT_SELECT = [
@@ -122,7 +138,8 @@ const PRODUCT_SELECT = [
   "product_media(storage_path,variants,alt,position,kind)",
   "product_warranty_components(position,label,warranty_policy_id)",
   "category:categories!products_primary_category_id_fkey(id,default_warranty_policy_id,category_translations(locale,name,slug))",
-  "product_collections(collections(is_set))",
+  "product_collections(collections(is_set,is_visible,collection_translations(locale,slug)))",
+  "product_categories(categories(is_visible,category_translations(locale,slug)))",
 ].join(",");
 
 /** Colores de hilo para la muestra de color de la variante (solo presentación; editable en el panel en fase 3). */
@@ -180,6 +197,8 @@ export async function sbProducts(): Promise<ProductDetail[]> {
       priceCents: def.price_cents, compareAtCents: def.compare_at_cents,
       isNew: r.is_new, isOnSale: r.is_on_sale, isFeatured: r.is_featured,
       isSet: ct.slug === "sets" || r.product_collections.some((pc) => pc.collections?.is_set),
+      extraCategorySlugs: r.product_categories.flatMap((pc) => (pc.categories?.is_visible ? pc.categories.category_translations.filter((x) => x.locale === "es").map((x) => x.slug) : [])),
+      collectionSlugs: r.product_collections.flatMap((pc) => (pc.collections?.is_visible ? pc.collections.collection_translations.filter((x) => x.locale === "es").map((x) => x.slug) : [])),
       warrantyName, hasWarranty, image: cardImage, images,
       defaultVariantId: def.id, variantCount: variants.length, available: variants.some((v) => v.available),
       publishedAt: r.published_at ?? r.created_at,

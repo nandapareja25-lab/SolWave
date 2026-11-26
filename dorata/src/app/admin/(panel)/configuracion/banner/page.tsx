@@ -56,7 +56,7 @@ export default async function BannerPage() {
                       {` · prioridad ${r.priority}`}
                     </p>
                   </div>
-                  <span className={`rounded-full px-3 py-1 text-[12px] font-semibold ${st.cls}`}>{st.label}</span>
+                  <span className={`rounded-[4px] px-2 py-1 text-[12px] font-semibold ${st.cls}`}>{st.label}</span>
                 </div>
                 <CampaignRowActions id={r.id} active={r.is_active} />
               </li>

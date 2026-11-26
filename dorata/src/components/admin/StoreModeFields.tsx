@@ -39,7 +39,7 @@ export function StoreModeFields({ mode, liveAt, maintenance, timezone }: { mode:
       )}
       {m !== "maintenance" && <input type="hidden" name="maintenance_message" value={maintenance} />}
       <p className="text-[13px] text-ink-3">
-        Mientras la tienda está cerrada, tú puedes verla completa con tu enlace privado: tu dominio + <span className="whitespace-nowrap">“?vista_previa=”</span> + la frase secreta que guardaste al publicar.
+        Mientras la tienda está cerrada, tú puedes verla completa con tu enlace privado. Queda listo el día que publiquemos la tienda.
       </p>
     </>
   );

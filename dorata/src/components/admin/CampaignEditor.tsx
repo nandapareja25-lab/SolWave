@@ -5,12 +5,12 @@ import { DateTimeField } from "./DateTimeField";
 import { useUnsavedGuard } from "./useUnsavedGuard";
 import { useSaveShortcut } from "./useSaveShortcut";
 import { useRouter } from "next/navigation";
-import { Check, Clock, Loader2, Monitor, Plus, Smartphone, Trash2 } from "lucide-react";
+import { Check, Loader2, Monitor, Plus, Smartphone, Trash2 } from "lucide-react";
 import { AnnouncementBar } from "@/components/tienda/AnnouncementBar";
 import { contrastRatio, type Announcement } from "@/lib/announcement";
 import { BUSINESS_TIMEZONES, tzLabel, wallTimeToUtc } from "@/lib/tz";
 import { saveCampaign, type CampaignInput } from "@/app/admin/(panel)/configuracion/banner/actions";
-import { Card, SaveBar, StatusText, btnPrimary, helpCls, inputCls, labelCls } from "./ui";
+import { Card, SaveBar, StatusText, areaCls, btnPrimary, helpCls, inputCls, labelCls } from "./ui";
 
 const STYLES = [
   { value: "black", label: "Terciopelo oscuro" }, { value: "gold", label: "Dorado" },
@@ -95,7 +95,10 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
   const setMsgAt = (i: number, k: "text" | "link_url" | "link_label", v: string) => {
     setMsg(null); setD((x) => ({ ...x, messages: x.messages.map((m, j) => (j === i ? { ...m, [k]: v } : m)) }));
   };
-  const missingToken = d.countdown_enabled && !d.countdown_text.includes("{countdown}");
+  // El texto del contador se guarda como "antes {countdown} después"; la dueña solo ve dos campos normales.
+  const cdParts = (d.countdown_text.includes("{countdown}") ? d.countdown_text : `${d.countdown_text} {countdown}`).split("{countdown}");
+  const cdBefore = (cdParts[0] ?? "").replace(/ $/, ""), cdAfter = (cdParts[1] ?? "").replace(/^ /, "");
+  const setCountdown = (before: string, after: string) => set("countdown_text", `${before}${before ? " " : ""}{countdown}${after ? " " : ""}${after}`);
 
   const preview = useMemo(() => toPreview(d, previewNow), [d, previewNow]);
   const lowContrast = d.style === "custom" && /^#[0-9A-Fa-f]{6}$/.test(d.bg_color) && /^#[0-9A-Fa-f]{6}$/.test(d.text_color) && contrastRatio(d.bg_color, d.text_color) < 4.5;
@@ -156,7 +159,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
                   )}
                 </div>
                 <label className={labelCls}>Texto
-                  <input aria-label={`Texto del mensaje ${i + 1}`} maxLength={140} value={m.text} onChange={(e) => setMsgAt(i, "text", e.target.value)} placeholder="Ej: ✦ Envío gratis este fin de semana ✦" className={inputCls} />
+                  <textarea rows={2} aria-label={`Texto del mensaje ${i + 1}`} maxLength={140} value={m.text} onChange={(e) => setMsgAt(i, "text", e.target.value.replace(/\n/g, " "))} placeholder="Ej: ✦ Envío gratis este fin de semana ✦" className={`resize-none ${areaCls}`} />
                   <span className={`${helpCls} text-right tabular`}>{m.text.length}/140</span>
                 </label>
                 <LinkFields idPrefix={`Mensaje ${i + 1}`} pages={pages} url={m.link_url} label={m.link_label} onUrl={(v) => setMsgAt(i, "link_url", v)} onLabel={(v) => setMsgAt(i, "link_label", v)} />
@@ -180,18 +183,16 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
               <>
                 <DateTimeField label="Cuenta hasta" value={d.countdown_target_at} onChange={(v) => set("countdown_target_at", v)} timezone={d.timezone} />
                 <div className="grid gap-2">
-                  <label className={labelCls}>Texto del contador
-                    <input maxLength={140} value={d.countdown_text} onChange={(e) => set("countdown_text", e.target.value)} placeholder="Ej: Faltan {countdown}" className={inputCls} />
-                  </label>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <button type="button" onClick={() => set("countdown_text", d.countdown_text.includes("{countdown}") ? d.countdown_text : `${d.countdown_text.trimEnd()} {countdown}`.trim())}
-                      disabled={!missingToken} className="press inline-flex h-10 items-center gap-2 rounded-full border border-line px-4 text-[14px] disabled:opacity-50">
-                      <Clock aria-hidden="true" size={15} />Insertar el tiempo
-                    </button>
-                    <span className={missingToken ? "text-[13px] text-danger" : helpCls}>
-                      {missingToken ? "Falta indicar dónde va el tiempo: toca “Insertar el tiempo”." : "{countdown} es donde aparece el tiempo restante (ej: 6 días · 02:29:32)."}
-                    </span>
+                  <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-end gap-2">
+                    <label className={labelCls}>Texto antes del tiempo
+                      <input maxLength={80} value={cdBefore} onChange={(e) => setCountdown(e.target.value, cdAfter)} placeholder="Ej: Faltan" className={inputCls} />
+                    </label>
+                    <span className="mb-3 rounded-[4px] bg-gold/15 px-2 py-1 text-[12px] font-semibold text-gold-deep">tiempo</span>
+                    <label className={labelCls}>Texto después (opcional)
+                      <input maxLength={60} value={cdAfter} onChange={(e) => setCountdown(cdBefore, e.target.value)} placeholder="Ej: para el lanzamiento" className={inputCls} />
+                    </label>
                   </div>
+                  <span className={helpCls}>Se verá así: “{cdBefore || "Faltan"} 6 días · 02:29:32{cdAfter ? ` ${cdAfter}` : ""}”.</span>
                 </div>
                 <fieldset className="grid gap-2">
                   <legend className="mb-1 text-[13px] font-medium text-ink-2">Cuando llegue a cero</legend>
@@ -204,7 +205,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
                 {d.countdown_end_behavior === "swap_message" && (
                   <div className="fade-in grid gap-2 rounded-[4px] border border-line p-3">
                     <label className={labelCls}>Mensaje al llegar a cero
-                      <input aria-label="Mensaje al llegar a cero" maxLength={140} value={d.after_text} onChange={(e) => set("after_text", e.target.value)} placeholder="Ej: ✦ D'ORATA YA ESTÁ DISPONIBLE · COMPRA AHORA ✦" className={inputCls} />
+                      <textarea rows={2} aria-label="Mensaje al llegar a cero" maxLength={140} value={d.after_text} onChange={(e) => set("after_text", e.target.value.replace(/\n/g, " "))} placeholder="Ej: ✦ D'ORATA YA ESTÁ DISPONIBLE · COMPRA AHORA ✦" className={`resize-none ${areaCls}`} />
                     </label>
                     <LinkFields idPrefix="Al llegar a cero" pages={pages} url={d.after_link_url} label={d.after_link_label} onUrl={(v) => set("after_link_url", v)} onLabel={(v) => set("after_link_label", v)} labelPlaceholder="Ej: Comprar" />
                   </div>
@@ -214,7 +215,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
           </div>
         </Card>
 
-        <Card title="Estilo y movimiento" step={4}>
+        <Card title="Estilo y movimiento" step={4} collapsible summary={`${STYLES.find((x) => x.value === d.style)?.label} · ${MOTIONS.find((x) => x.value === d.motion)?.label}`}>
           <div className="grid gap-4">
             <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Estilo">
               {STYLES.map((s) => (

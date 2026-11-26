@@ -1,5 +1,5 @@
 import { requireAdmin } from "@/server/admin/auth";
-import { Card, helpCls, inputCls, labelCls } from "@/components/admin/ui";
+import { Card, areaCls, helpCls, inputCls, labelCls } from "@/components/admin/ui";
 import { ActionForm } from "@/components/admin/forms";
 import { BUSINESS_TIMEZONES, formatInZone, tzLabel, utcToWallTime } from "@/lib/tz";
 import { StoreModeFields } from "@/components/admin/StoreModeFields";
@@ -45,7 +45,7 @@ export default async function StoreConfigPage() {
           </div>
           <label className={labelCls}>
             Texto de empaque (déjalo vacío para no mencionarlo)
-            <input name="packaging_note" maxLength={160} defaultValue={(s.packaging_note as Record<string, string>)?.es ?? ""} className={inputCls} />
+            <textarea name="packaging_note" rows={2} maxLength={160} defaultValue={(s.packaging_note as Record<string, string>)?.es ?? ""} className={`resize-none ${areaCls}`} />
           </label>
           <div className="grid gap-4 sm:grid-cols-2">
             <label className={labelCls}>

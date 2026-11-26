@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Minus, Plus } from "lucide-react";
@@ -49,11 +48,11 @@ export function StockRow({ r }: { r: R }) {
   }
 
   return (
-    <li className="min-w-0 rounded-[4px] border border-line bg-surface p-3">
+    <li className="min-w-0 p-3">
       <div className="flex items-start gap-3">
         <div className="min-w-0 flex-1">
-          <Link href={`/admin/productos/${r.productId}`} className="block truncate text-[15px] font-semibold underline-offset-4 hover:underline">{r.product}</Link>
-          <p className="truncate text-[13px] text-ink-2">{r.title} · {r.sku}</p>
+          <p className="truncate text-[15px] font-medium">{r.title}</p>
+          <p className="truncate text-[12px] text-ink-3">{r.sku}</p>
           {r.reserved > 0 && <p className="text-[12px] text-ink-3">{r.onHand} en total · {r.reserved} apartadas en compras</p>}
         </div>
         <div className="text-right">

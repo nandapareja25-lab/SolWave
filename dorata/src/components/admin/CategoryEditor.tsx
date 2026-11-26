@@ -11,6 +11,7 @@ import { formatWarranty } from "@/lib/warranty";
 import { Card, PageHeader, SaveBar, StatusText, areaCls, btnPrimary, helpCls, inputCls, labelCls } from "./ui";
 import { useUnsavedGuard } from "./useUnsavedGuard";
 import { useSaveShortcut } from "./useSaveShortcut";
+import { GooglePreview } from "./GooglePreview";
 
 const IMG_ERR: Record<string, string> = {
   IMAGE_TYPE: "Usa una foto JPG, PNG, WebP o HEIC.", IMAGE_SIZE: "La foto pesa demasiado (máx. 20 MB).", IMAGE_TOO_SMALL: "La foto es muy pequeña: usa una de al menos 800 px.",
@@ -98,6 +99,7 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
                   <option value="">Sin garantía asignada</option>
                   {warranties.map((w) => <option key={w.code} value={w.code}>{w.name} ({formatWarranty(w.months)})</option>)}
                 </select>
+                <span className={helpCls}>Los productos de esta categoría usan esta garantía, salvo que les pongas otra.</span>
               </label>
               <label className={labelCls}>Dentro de (opcional)
                 <select value={d.parent_id} onChange={(e) => set("parent_id", e.target.value)} className={inputCls}>
@@ -117,6 +119,7 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
         </Card>
         <Card title="Cómo se ve en Google (opcional)" step={2}>
           <div className="grid gap-4">
+            <GooglePreview title={d.seo_title || `${d.name || "Categoría"} | D'ORATA`} url={`dorata18k.com › ${d.slug || "categoria"}`} description={d.seo_description || d.description} />
             <label className={labelCls}>Título en Google
               <input maxLength={70} value={d.seo_title} onChange={(e) => set("seo_title", e.target.value)} className={inputCls} />
               <span className={`${helpCls} flex justify-between gap-2`}><span>Vacío: “{d.name || "Categoría"} | D&apos;ORATA”.</span><span className="tabular">{d.seo_title.length}/70</span></span>

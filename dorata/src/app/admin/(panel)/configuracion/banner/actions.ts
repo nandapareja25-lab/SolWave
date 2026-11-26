@@ -54,7 +54,7 @@ export async function saveCampaign(input: CampaignInput): Promise<CampaignResult
   const messages = d.messages.filter((m) => m.text);
   if (d.countdown_enabled) {
     if (!target) return fail("Indica la fecha y hora a la que cuenta el contador.");
-    if (!d.countdown_text.includes("{countdown}")) return fail("El texto del contador debe incluir {countdown} donde va el tiempo restante.");
+    if (!d.countdown_text.includes("{countdown}")) return fail("Falta el texto del contador.");
     if (d.countdown_end_behavior === "swap_message" && !d.after_text) return fail("Escribe el mensaje que aparece cuando el contador llega a cero.");
   } else if (messages.length === 0) return fail("Escribe al menos un mensaje.");
   if (d.style === "custom") {

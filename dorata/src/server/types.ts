@@ -81,6 +81,9 @@ export type Variant = {
 
 export type ProductDetail = ProductCard & {
   categoryName: string;
+  /** Categorías extra donde también aparece (panel › "También aparece en"). */
+  extraCategorySlugs?: string[];
+  collectionSlugs?: string[];
   shortDescription: string | null;
   descriptionMd: string | null;
   material: string | null;
@@ -108,6 +111,7 @@ export type StoreModeInfo = { mode: StoreMode; liveAt: string | null; timezone: 
 
 export type ProductQuery = {
   categorySlug?: string;
+  collectionSlug?: string;
   filter?: "new" | "sale";
   sort?: "featured" | "new" | "price-asc" | "price-desc";
 };

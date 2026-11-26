@@ -41,7 +41,8 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
       price: prices.length ? (Math.min(...prices) === Math.max(...prices) ? formatUSD(prices[0]!) : `${formatUSD(Math.min(...prices))} – ${formatUSD(Math.max(...prices))}`) : "—",
       thumb: media && base ? `${base}/storage/v1/object/public/product-media/${media.variants["400"] ?? Object.values(media.variants)[0]}` : null,
       available, low: lowOnes.length > 0,
-      stockNote: available === 0 ? "Agotado" : [`${available} disponibles`, ...lowOnes.map((v) => vs.length > 1 ? `${v.title}: quedan ${v.available}` : "quedan pocas"), ...(vs.length > 1 ? outOnes.map((v) => `${v.title}: agotada`) : [])].join(" · "),
+      stockNote: available === 0 ? "Agotado" : `${available} disponibles`,
+      stockAlert: available === 0 ? null : [...lowOnes.map((v) => vs.length > 1 ? `${v.title}: quedan ${v.available}` : `Quedan ${v.available}`), ...(vs.length > 1 ? outOnes.map((v) => `${v.title}: agotada`) : [])].join(" · ") || null,
     };
   });
   const list = all.filter((p) =>
@@ -80,8 +81,8 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
         {chip({ estado: undefined, stock: undefined }, "Todos", !sp.estado && !sp.stock)}
         {chip({ estado: "active", stock: undefined }, `Activos (${counts.active})`, sp.estado === "active")}
         {chip({ estado: "draft", stock: undefined }, `Borradores (${counts.draft})`, sp.estado === "draft")}
-        {chip({ estado: undefined, stock: "pocas" }, "Quedan pocas", sp.stock === "pocas")}
-        {chip({ estado: undefined, stock: "agotado" }, "Agotados", sp.stock === "agotado")}
+        {chip({ estado: undefined, stock: "pocas" }, `Quedan pocas (${all.filter((p) => p.low && p.available > 0).length})`, sp.stock === "pocas")}
+        {chip({ estado: undefined, stock: "agotado" }, `Agotados (${all.filter((p) => p.available === 0).length})`, sp.stock === "agotado")}
       </div>
       {filtered && <p className="mb-3 text-[14px] text-ink-2">{list.length} de {all.length} productos · <Link href="/admin/productos" className="underline underline-offset-4">Quitar filtros</Link></p>}
 
@@ -98,19 +99,20 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
           {list.map((p, i) => (
             <li key={p.id} className="rise" style={{ animationDelay: `${Math.min(i, 8) * 50}ms` }}>
               <Link href={`/admin/productos/${p.id}`} className="flex items-center gap-3 p-3 hover:bg-ivory">
-                <div className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-[4px] border border-line bg-cream">
+                <div className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-[4px] border border-gold/40 bg-cream p-[2px]">
                   {/* eslint-disable-next-line @next/next/no-img-element -- miniatura del panel */}
-                  {p.thumb ? <img src={p.thumb} alt="" width={64} height={64} className="size-full object-cover" /> : <span className="text-[11px] text-ink-3">Sin foto</span>}
+                  {p.thumb ? <img src={p.thumb} alt="" width={64} height={64} className="size-full rounded-[2px] object-cover" /> : <span className="text-[11px] text-ink-3">Sin foto</span>}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-[15px] font-semibold">{p.name}</p>
                   <p className="truncate text-[13px] text-ink-2">{p.category} · {p.variants} {p.variants === 1 ? "variante" : "variantes"}</p>
                   <p className="mt-1 flex flex-wrap items-center gap-2 text-[13px]">
                     <span className="tabular font-semibold">{p.price}</span>
-                    <span className={p.available === 0 ? "text-danger" : p.low ? "text-gold-deep" : "text-ink-2"}>{p.stockNote}</span>
+                    <span className={p.available === 0 ? "text-danger" : "text-ink-2"}>{p.stockNote}</span>
                   </p>
+                  {p.stockAlert && <p className="mt-0.5 flex items-center gap-1.5 truncate text-[12px] text-gold-deep"><span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-gold" />{p.stockAlert}</p>}
                 </div>
-                <span className={`shrink-0 rounded-full px-3 py-1 text-[12px] font-semibold ${STATUS[p.status]?.cls}`}>{STATUS[p.status]?.label}</span>
+                <span className={`shrink-0 rounded-[4px] px-2 py-1 text-[12px] font-semibold ${STATUS[p.status]?.cls}`}>{STATUS[p.status]?.label}</span>
               </Link>
             </li>
           ))}
