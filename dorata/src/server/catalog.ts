@@ -1,0 +1,154 @@
+import "server-only";
+import { cache } from "react";
+import { announcementSchema, type Announcement } from "@/lib/announcement";
+import { callPublicRpc, supabasePublicConfig } from "@/server/supabase/rpc";
+import { sbCategories, sbLegalPage, sbLegalPages, sbProducts, sbSettings, sbWarranties, sbCollections } from "@/server/supabase/store-repo";
+import { DEMO_CATEGORIES, DEMO_LEGAL, DEMO_PRODUCTS, DEMO_SETTINGS, DEMO_WARRANTIES, demoAnnouncement } from "@/server/demo/catalog";
+import type { Category, LegalPage, LegalPageSummary, ProductCard, ProductDetail, ProductQuery, StoreSettings, WarrantyPolicy } from "@/server/types";
+
+/**
+ * Repositorio de la tienda. Con Supabase configurado (NEXT_PUBLIC_SUPABASE_URL + clave publicable)
+ * TODO sale de la base real; sin configuración (desarrollo local) usa los datos de demostración.
+ * Las páginas no saben de dónde vienen los datos: las firmas no cambian.
+ */
+const live = () => supabasePublicConfig() !== null;
+
+/** Valores seguros si la base no responde (sin datos inventados: sin redes, sin WhatsApp). */
+const SAFE_SETTINGS: StoreSettings = {
+  storeName: "D'ORATA", descriptor: "Oro laminado 18K", logoUrl: null, whatsappE164: null, contactEmail: null,
+  social: {}, socialHandle: null, testimonialsEnabled: false, newsletterEnabled: false, packagingNote: null, isDemo: false,
+};
+
+async function degrade<T>(label: string, fn: () => Promise<T>, fallback: T): Promise<T> {
+  try { return await fn(); } catch (e) {
+    console.error(`${label}_degraded`, e instanceof Error ? e.message : "unknown");
+    return fallback;
+  }
+}
+
+export const getStoreSettings = cache(async (): Promise<StoreSettings> =>
+  (live() ? degrade("settings", sbSettings, SAFE_SETTINGS) : DEMO_SETTINGS));
+
+export const getCategories = cache(async (): Promise<Category[]> =>
+  (live() ? degrade("categories", sbCategories, []) : DEMO_CATEGORIES));
+
+export const getNavCategories = cache(async (): Promise<Category[]> =>
+  (await getCategories()).filter((c) => c.showInNav));
+
+export async function getCategoryBySlug(slug: string): Promise<Category | null> {
+  return (await getCategories()).find((c) => c.slug === slug) ?? null;
+}
+
+export const getCollections = cache(async (): Promise<Category[]> => (live() ? degrade("collections", sbCollections, []) : []));
+export async function getCollectionBySlug(slug: string): Promise<Category | null> {
+  return (await getCollections()).find((c) => c.slug === slug) ?? null;
+}
+
+export const getWarrantyPolicies = cache(async (): Promise<WarrantyPolicy[]> =>
+  (live() ? degrade("warranties", sbWarranties, []) : DEMO_WARRANTIES));
+
+/** Catálogo activo completo (una consulta por solicitud, con caché ISR). Suficiente para cientos de piezas. */
+const loadProducts = cache(async (): Promise<ProductDetail[]> => (live() ? sbProducts() : DEMO_PRODUCTS));
+
+function toCard(p: ProductDetail): ProductCard {
+  return {
+    id: p.id, slug: p.slug, categorySlug: p.categorySlug, name: p.name, priceCents: p.priceCents, compareAtCents: p.compareAtCents,
+    isNew: p.isNew, isOnSale: p.isOnSale, isFeatured: p.isFeatured, isSet: p.isSet, warrantyName: p.warrantyName, hasWarranty: p.hasWarranty, image: p.image,
+    defaultVariantId: p.defaultVariantId, variantCount: p.variantCount, available: p.available, publishedAt: p.publishedAt,
+  };
+}
+
+export async function listProducts(q: ProductQuery = {}): Promise<ProductCard[]> {
+  let list = [...(await loadProducts())];
+  if (q.categorySlug) {
+    const category = await getCategoryBySlug(q.categorySlug);
+    if (category?.autoRule === "new") list = list.filter((p) => p.isNew);
+    else if (category?.autoRule === "sale") list = list.filter((p) => p.isOnSale);
+    else list = list.filter((p) => p.categorySlug === q.categorySlug || p.extraCategorySlugs?.includes(q.categorySlug!));
+  }
+  if (q.collectionSlug) list = list.filter((p) => p.collectionSlugs?.includes(q.collectionSlug!));
+  if (q.filter === "new") list = list.filter((p) => p.isNew);
+  if (q.filter === "sale") list = list.filter((p) => p.isOnSale);
+  const byNew = (a: ProductDetail, b: ProductDetail) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt);
+  switch (q.sort) {
+    case "new": list.sort(byNew); break;
+    case "price-asc": list.sort((a, b) => a.priceCents - b.priceCents); break;
+    case "price-desc": list.sort((a, b) => b.priceCents - a.priceCents); break;
+    default: list.sort((a, b) => Number(b.isFeatured) - Number(a.isFeatured)); // estable: respeta el orden definido en el panel
+  }
+  return list.map(toCard);
+}
+
+export async function getHome() {
+  const all = await listProducts();
+  return {
+    featured: all.filter((p) => p.isFeatured).slice(0, 4),
+    newArrivals: (await listProducts({ filter: "new", sort: "new" })).slice(0, 8),
+    setProduct: all.find((p) => p.isSet) ?? null,
+  };
+}
+
+export async function getProduct(categorySlug: string, productSlug: string): Promise<ProductDetail | null> {
+  const p = (await loadProducts()).find((x) => x.slug === productSlug);
+  void categorySlug; // la página compara y redirige a la URL canónica si no coincide
+  return p ?? null;
+}
+
+export async function getRelated(product: ProductDetail): Promise<ProductCard[]> {
+  return (await loadProducts()).filter((p) => p.id !== product.id && (p.categorySlug === product.categorySlug || p.isFeatured)).slice(0, 4).map(toCard);
+}
+
+export const getLegalPages = cache(async (): Promise<LegalPageSummary[]> =>
+  live() ? degrade("legal_pages", sbLegalPages, []) : DEMO_LEGAL.map(({ kind, slug, title }) => ({ kind, slug, title })));
+
+export async function getLegalPage(slug: string): Promise<LegalPage | null> {
+  return live() ? sbLegalPage(slug) : DEMO_LEGAL.find((p) => p.slug === slug) ?? null;
+}
+
+export async function getLegalSlugs(): Promise<string[]> {
+  return (await getLegalPages()).map((p) => p.slug);
+}
+
+/** Banner vigente. Supabase cuando está configurado (revalida cada 60 s); si no, demostración. */
+export async function getAnnouncement(locale = "es"): Promise<Announcement | null> {
+  if (!supabasePublicConfig()) return demoAnnouncement(Date.now());
+  try {
+    const raw = await callPublicRpc<unknown>("current_announcement", { p_locale: locale }, { revalidate: 60 });
+    if (raw === null) return null;
+    const parsed = announcementSchema.safeParse(raw);
+    if (!parsed.success) {
+      console.error("announcement_invalid", parsed.error.issues.map((i) => i.path.join(".")).join(","));
+      return null;
+    }
+    return parsed.data;
+  } catch (e) {
+    console.error("announcement_unavailable", e instanceof Error ? e.message : "unknown");
+    return null; // sin banner antes que romper la página
+  }
+}
+
+/** Modo de la tienda para páginas del servidor. */
+export { fetchStoreMode as getStoreModeInfo } from "@/server/store-mode";
+
+/** Versión vigente de la Política de Cookies ("0" mientras no haya una publicada → se vuelve a preguntar al publicar). */
+export async function getCookiePolicyVersion(): Promise<string> {
+  if (!supabasePublicConfig()) return "0";
+  try {
+    const v = await callPublicRpc<{ version_label: string | null } | null>("policy_version_at", { p_kind: "cookies" }, { revalidate: 300 });
+    return v?.version_label ?? "0";
+  } catch {
+    return "0";
+  }
+}
+
+export type PublicIntegration = { provider: "google_analytics" | "meta_pixel" | "tiktok_pixel" | "other"; public_id: string; category: "analytics" | "marketing" | "personalization" };
+
+/** Integraciones encendidas en el panel (solo IDs públicos). Sin Supabase: ninguna. */
+export async function getTrackingConfig(): Promise<PublicIntegration[]> {
+  if (!supabasePublicConfig()) return [];
+  try {
+    return await callPublicRpc<PublicIntegration[]>("public_tracking_config", {}, { revalidate: 300 });
+  } catch {
+    return []; // ante la duda, no se rastrea
+  }
+}
