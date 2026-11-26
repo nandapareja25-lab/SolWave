@@ -87,7 +87,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
           {(cats ?? []).filter((c) => !c.auto_rule).map((c) => <option key={c.id} value={c.id}>{catName.get(c.id)}</option>)}
         </AutoSubmitSelect>
       </form>
-      <div className="-mx-4 mb-2 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none]" aria-label="Filtros">
+      <div className="mb-2 flex flex-wrap gap-2" aria-label="Filtros">
         {chip({ estado: undefined, stock: undefined, tipo: undefined }, `Todos (${all.length})`, !sp.estado && !sp.stock && !sp.tipo)}
         {chip({ estado: "active", stock: undefined }, `Activos (${counts.active})`, sp.estado === "active")}
         {chip({ estado: "draft", stock: undefined }, `Borradores (${counts.draft})`, sp.estado === "draft")}
@@ -95,7 +95,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
         {chip({ estado: undefined, stock: "agotado" }, `Agotados (${all.filter((p) => p.available === 0).length})`, sp.stock === "agotado")}
       </div>
       {(all.some((p) => p.kit) || all.some((p) => p.review)) && (
-        <div className="-mx-4 mb-4 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none]" aria-label="Por completar">
+        <div className="mb-4 flex flex-wrap gap-2" aria-label="Por completar">
           {chip({ tipo: sp.tipo === "sinprecio" ? undefined : "sinprecio" }, `Sin precio (${all.filter((p) => p.noPrice && p.kit !== "set_component").length})`, sp.tipo === "sinprecio")}
           {chip({ tipo: sp.tipo === "sets" ? undefined : "sets" }, `Sets sin dije (${all.filter((p) => p.kit === "set_base" && !p.hasPendant).length})`, sp.tipo === "sets")}
           {chip({ tipo: sp.tipo === "dijes" ? undefined : "dijes" }, `Dijes para sets (${all.filter((p) => p.kit === "set_component").length})`, sp.tipo === "dijes")}

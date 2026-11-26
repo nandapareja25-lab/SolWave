@@ -61,7 +61,7 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
       <PageHeader title="Inventario" description="Las ventas descuentan solas. Aquí registras lo que llega, los conteos y las piezas dañadas." />
       <div className="mb-6 grid grid-cols-3 gap-3">
         {[{ n: units, l: units === 1 ? "pieza en total" : "piezas en total", href: "/admin/inventario" },
-          { n: low, l: "quedan pocas", c: low ? "text-gold-deep" : "", href: "/admin/inventario?ver=pocas" },
+          { n: low, l: "con pocas unidades", c: low ? "text-gold-deep" : "", href: "/admin/inventario?ver=pocas" },
           { n: out, l: "agotadas", c: out ? "text-danger" : "", href: "/admin/inventario?ver=agotado" }].map((k, i) => (
           <Link key={k.l} href={k.href} className="rise press rounded-[4px] border border-line bg-surface p-3 hover:border-ink-3" style={{ animationDelay: `${i * 60}ms` }}>
             <p className={`font-display text-[32px] leading-none tabular ${k.c ?? ""}`}><CountUp value={k.n} /></p>

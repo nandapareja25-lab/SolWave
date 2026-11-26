@@ -57,7 +57,7 @@ export function StockRow({ r }: { r: R }) {
         </div>
         <div className="text-right">
           <p className={`font-display text-[28px] leading-none tabular ${r.available === 0 ? "text-danger" : r.low ? "text-gold-deep" : ""}`}>{r.available}</p>
-          <p className="text-[12px] text-ink-2">{r.available === 0 ? "agotada" : r.low ? "quedan pocas" : "disponibles"}</p>
+          <p className="text-[12px] text-ink-2">{r.available === 0 ? "agotada" : r.low ? (r.available === 1 ? "queda 1" : "quedan pocas") : r.available === 1 ? "disponible" : "disponibles"}</p>
         </div>
       </div>
       {open ? (

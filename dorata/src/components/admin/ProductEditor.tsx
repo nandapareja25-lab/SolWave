@@ -186,7 +186,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
                     {v.id ? (
                       <div className={labelCls}>Unidades
                         <p className="flex h-11 items-center gap-2 text-[15px] text-ink">
-                          <span className="tabular font-semibold">{s?.available ?? 0}</span> disponibles{s?.reserved ? <span className="text-[13px] text-ink-2">· {s.reserved} apartadas en compras</span> : null}
+                          <span className="tabular font-semibold">{s?.available ?? 0}</span> {(s?.available ?? 0) === 1 ? "disponible" : "disponibles"}{s?.reserved ? <span className="text-[13px] text-ink-2">· {s.reserved} apartadas en compras</span> : null}
                         </p>
                         <Link href={`/admin/inventario?sku=${encodeURIComponent(v.sku)}`} target="_blank" rel="noopener" className="inline-flex items-center gap-1 text-[13px] text-ink underline underline-offset-4">Ajustar en Inventario<ExternalLink aria-hidden="true" size={12} /><span className="sr-only"> (se abre en otra pestaña)</span></Link>
                       </div>
