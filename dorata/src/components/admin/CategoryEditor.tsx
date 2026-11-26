@@ -10,6 +10,7 @@ import { slugify } from "@/lib/slug";
 import { formatWarranty } from "@/lib/warranty";
 import { Card, PageHeader, SaveBar, StatusText, areaCls, btnPrimary, helpCls, inputCls, labelCls } from "./ui";
 import { useUnsavedGuard } from "./useUnsavedGuard";
+import { useSaveShortcut } from "./useSaveShortcut";
 
 const IMG_ERR: Record<string, string> = {
   IMAGE_TYPE: "Usa una foto JPG, PNG, WebP o HEIC.", IMAGE_SIZE: "La foto pesa demasiado (máx. 20 MB).", IMAGE_TOO_SMALL: "La foto es muy pequeña: usa una de al menos 800 px.",
@@ -29,6 +30,8 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
   const [saved, setSaved] = useState(() => JSON.stringify(initial));
   const dirty = JSON.stringify(d) !== saved;
   useUnsavedGuard(dirty);
+  const formRef = useRef<HTMLFormElement>(null);
+  useSaveShortcut(formRef);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const set = <K extends keyof CategoryInput>(k: K, v: CategoryInput[K]) => { setMsg(null); setD((x) => ({ ...x, [k]: v })); };
@@ -66,7 +69,7 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
   }
 
   return (
-    <form onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <form ref={formRef} onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
       <div className="lg:col-span-2">
         <PageHeader eyebrow={initial.id ? "Categoría" : "Nueva categoría"} title={d.name || (initial.id ? "Sin nombre" : "Nueva categoría")}
           description={initial.id ? (!d.is_visible ? "Oculta en la tienda" : d.show_in_nav ? "Visible · en el menú y la portada" : "Visible · fuera del menú") : "Completa los datos y guarda; después podrás subir su foto."} />
@@ -168,11 +171,10 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
           </div>
         )}
       </div>
-      <SaveBar dirty={dirty && !msg}>
+      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : undefined}>
         <button type="submit" disabled={pending || uploading} className={btnPrimary}>
           {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}Guardar
         </button>
-        {msg && <StatusText ok={msg.ok}>{msg.text}</StatusText>}
       </SaveBar>
     </form>
   );

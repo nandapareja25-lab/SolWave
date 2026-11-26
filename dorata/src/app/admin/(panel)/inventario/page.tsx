@@ -3,11 +3,15 @@ import { Search } from "lucide-react";
 import { requireAdmin } from "@/server/admin/auth";
 import { PageHeader, inputCls } from "@/components/admin/ui";
 import { StockRow } from "@/components/admin/StockRow";
+import { CountUp } from "@/components/admin/CountUp";
 import { formatInZone } from "@/lib/tz";
 
 export const metadata = { title: "Inventario" };
+/** El motivo solo se muestra si agrega información (no repite el tipo ni el texto automático). */
+const AUTO_REASONS = ["Llegó mercancía", "Devolución en buen estado", "Unidades iniciales al crear la variante"];
+const extra = (type: string, reason: string | null) => (!reason || AUTO_REASONS.includes(reason) || reason === TYPE[type] ? "" : ` · ${reason}`);
 const TYPE: Record<string, string> = {
-  initial_count: "Unidades iniciales", sale: "Venta", adjustment: "Ajuste", restock: "Llegó mercancía", return: "Devolución",
+  initial_count: "Unidades iniciales", sale: "Venta", adjustment: "Dañadas o perdidas", restock: "Llegó mercancía", return: "Devolución",
   cancellation: "Pedido cancelado", manual_correction: "Corrección de conteo", warranty_replacement: "Reposición por garantía",
 };
 type Sp = { q?: string; sku?: string; ver?: string };
@@ -42,9 +46,9 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
     <div>
       <PageHeader title="Inventario" description="Las ventas descuentan solas. Aquí registras lo que llega, los conteos y las piezas dañadas." />
       <div className="mb-6 grid grid-cols-3 gap-3">
-        {[{ n: units, l: "unidades en total" }, { n: low, l: "quedan pocas", c: low ? "text-gold-deep" : "" }, { n: out, l: "agotadas", c: out ? "text-danger" : "" }].map((k, i) => (
+        {[{ n: units, l: "unidades" }, { n: low, l: "quedan pocas", c: low ? "text-gold-deep" : "" }, { n: out, l: "agotadas", c: out ? "text-danger" : "" }].map((k, i) => (
           <div key={k.l} className="rise rounded-[4px] border border-line bg-surface p-3" style={{ animationDelay: `${i * 60}ms` }}>
-            <p className={`font-display text-[32px] leading-none tabular ${k.c ?? ""}`}>{k.n}</p>
+            <p className={`font-display text-[32px] leading-none tabular ${k.c ?? ""}`}><CountUp value={k.n} /></p>
             <p className="mt-1 text-[12px] text-ink-2">{k.l}</p>
           </div>
         ))}
@@ -56,7 +60,7 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
           <input name="q" defaultValue={sp.q ?? sp.sku ?? ""} placeholder="Buscar por producto o código" className={`${inputCls} pl-9`} />
         </label>
       </form>
-      <div className="mb-4 flex flex-wrap gap-2">{chip(undefined, "Todo")}{chip("pocas", `Quedan pocas (${low})`)}{chip("agotado", `Agotadas (${out})`)}</div>
+      <div className="mb-4 flex flex-wrap gap-2">{chip(undefined, "Todo")}{chip("pocas", `Pocas (${low})`)}{chip("agotado", `Agotadas (${out})`)}</div>
 
       {all.length === 0 ? (
         <div className="filete-doble rounded-[4px] border border-line bg-surface p-6 text-center">
@@ -76,10 +80,10 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
           <ol className="divide-y divide-line rounded-[4px] border border-line bg-surface">
             {(moves ?? []).filter((m) => label.has(m.variant_id)).map((m) => (
               <li key={m.id} className="flex items-start gap-3 p-3 text-[14px]">
-                <span className={`w-12 shrink-0 text-right font-semibold tabular ${m.quantity_delta > 0 ? "text-success" : "text-danger"}`}>{m.quantity_delta > 0 ? `+${m.quantity_delta}` : m.quantity_delta}</span>
+                <span className={`w-9 shrink-0 font-semibold tabular ${m.quantity_delta > 0 ? "text-success" : "text-danger"}`}>{m.quantity_delta > 0 ? `+${m.quantity_delta}` : m.quantity_delta}</span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate font-medium">{label.get(m.variant_id)}</span>
-                  <span className="block text-[13px] text-ink-2">{TYPE[m.type] ?? m.type}{m.reason ? ` · ${m.reason}` : ""} · quedan {m.on_hand_after}</span>
+                  <span className="block text-[13px] text-ink-2">{TYPE[m.type] ?? m.type}{extra(m.type, m.reason)} · quedan {m.on_hand_after}</span>
                   <span className="block text-[12px] text-ink-3">{formatInZone(m.created_at, tz)}</span>
                 </span>
               </li>

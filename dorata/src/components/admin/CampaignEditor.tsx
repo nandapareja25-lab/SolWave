@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useMemo, useRef, useState, useTransition } from "react";
 import { DateTimeField } from "./DateTimeField";
 import { useUnsavedGuard } from "./useUnsavedGuard";
+import { useSaveShortcut } from "./useSaveShortcut";
 import { useRouter } from "next/navigation";
 import { Check, Clock, Loader2, Monitor, Plus, Smartphone, Trash2 } from "lucide-react";
 import { AnnouncementBar } from "@/components/tienda/AnnouncementBar";
@@ -88,6 +89,8 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
   const [saved, setSaved] = useState(() => JSON.stringify(initial));
   const dirty = JSON.stringify(d) !== saved;
   useUnsavedGuard(dirty);
+  const formRef = useRef<HTMLFormElement>(null);
+  useSaveShortcut(formRef);
   const set = <K extends keyof CampaignInput>(k: K, v: CampaignInput[K]) => { setMsg(null); setD((x) => ({ ...x, [k]: v })); };
   const setMsgAt = (i: number, k: "text" | "link_url" | "link_label", v: string) => {
     setMsg(null); setD((x) => ({ ...x, messages: x.messages.map((m, j) => (j === i ? { ...m, [k]: v } : m)) }));
@@ -110,7 +113,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
   }
 
   return (
-    <form onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
+    <form ref={formRef} onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
       <div className="grid min-w-0 gap-6">
         <Card title="Campaña" step={1}>
           <div className="grid gap-4">
@@ -275,12 +278,11 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
           )}
         </Card>
       </div>
-      <SaveBar dirty={dirty && !msg}>
+      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : undefined}>
         <button type="submit" disabled={pending || lowContrast} className={btnPrimary}>
           {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}
           Guardar campaña
         </button>
-        {msg && <StatusText ok={msg.ok}>{msg.text}</StatusText>}
       </SaveBar>
     </form>
   );

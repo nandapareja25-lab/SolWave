@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Loader2, Plus } from "lucide-react";
 import { saveVariantCost } from "@/app/admin/(panel)/productos/actions";
 import { formatUSD } from "@/lib/money";
-import { Card, StatusText, collectFields, helpCls, inputCls, labelCls } from "./ui";
+import { Card, StatusText, btnQuiet, collectFields, helpCls, inputCls, labelCls } from "./ui";
 
 export type CostInfo = { currency: string; amount: number; fx: number | null; totalCents: number; since: string };
 
@@ -27,9 +27,9 @@ export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: {
   }
 
   return (
-    <Card title="Costo y margen" step={3} aside={<span className={helpCls}>Solo lo ves tú</span>}>
+    <Card title="Costo y ganancia" step={3} aside={<span className={helpCls}>Solo lo ves tú</span>}>
       <p className="mb-4 text-[13px] text-ink-2">
-        {fx ? <>Tasa vigente: <strong className="tabular text-ink">{fx.toLocaleString("es-US")} COP</strong> = 1 USD (se cambia en Configuración).</> : <span className="text-gold-deep">Aún no hay tasa COP/USD: defínela en Configuración › Tienda para registrar costos en pesos.</span>}
+        {fx ? <>Tasa de cambio: <strong className="tabular text-ink">{fx.toLocaleString("es-US")} pesos</strong> por 1 dólar (se cambia en Configuración).</> : <span className="text-gold-deep">Para registrar costos en pesos colombianos, primero escribe la tasa de cambio en Configuración › Tienda. En dólares puedes registrarlos ya.</span>}
       </p>
       <ul className="grid gap-3">
         {variants.map((v) => {
@@ -50,7 +50,7 @@ export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: {
                 {margin !== null && (
                   <div className="text-right">
                     <p className={`font-display text-[28px] leading-none tabular ${minMargin !== null && margin < minMargin ? "text-danger" : targetMargin !== null && margin >= targetMargin ? "text-success" : "text-ink"}`}>{margin}%</p>
-                    <p className={helpCls}>{minMargin !== null && margin < minMargin ? `bajo tu mínimo (${minMargin}%)` : "margen bruto"}</p>
+                    <p className={helpCls}>{minMargin !== null && margin < minMargin ? `bajo tu mínimo (${minMargin}%)` : "de ganancia"}</p>
                   </div>
                 )}
               </div>
@@ -61,7 +61,7 @@ export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: {
                     <label className={labelCls}>Moneda<select name="currency" defaultValue={fx ? "COP" : "USD"} className={inputCls}><option value="COP">Pesos (COP)</option><option value="USD">Dólares</option></select></label>
                     <label className={labelCls}>Lo que pagaste por la pieza<input name="amount" inputMode="decimal" placeholder="Ej: 85.000" className={`${inputCls} tabular`} /></label>
                   </div>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid gap-3 sm:grid-cols-3">
                     <label className={labelCls}>Envío a EE. UU. (USD)<input name="intl_shipping" inputMode="decimal" placeholder="0.00" className={`${inputCls} tabular`} /></label>
                     <label className={labelCls}>Empaque (USD)<input name="packaging" inputMode="decimal" placeholder="0.00" className={`${inputCls} tabular`} /></label>
                     <label className={labelCls}>Otros (USD)<input name="other" inputMode="decimal" placeholder="0.00" className={`${inputCls} tabular`} /></label>
@@ -75,13 +75,13 @@ export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: {
                   </div>
                 </div>
               ) : (
-                <button type="button" onClick={() => { setOpen(v.id); setMsg(null); }} className="press mt-2 inline-flex h-10 items-center gap-2 text-[14px] underline underline-offset-4"><Plus aria-hidden="true" size={15} />{c ? "Registrar costo nuevo" : "Registrar costo"}</button>
+                <button type="button" onClick={() => { setOpen(v.id); setMsg(null); }} className={`${btnQuiet} mt-3`}><Plus aria-hidden="true" size={15} />{c ? "Registrar costo nuevo" : "Registrar costo"}</button>
               )}
             </li>
           );
         })}
       </ul>
-      <p className={`mt-3 ${helpCls}`}>Margen bruto = precio − costo total, antes de comisiones de pago, impuestos y envío al cliente.{minMargin === null && " Puedes definir tu margen mínimo y objetivo en Finanzas (fase 6) para que el color te avise."}</p>
+      <p className={`mt-3 ${helpCls}`}>Ganancia = lo que queda del precio después de pagar la pieza, su envío y empaque. Todavía no descuenta la comisión del pago ni el envío al cliente.</p>
       {msg && <div className="mt-2"><StatusText ok={msg.ok}>{msg.text}</StatusText></div>}
     </Card>
   );

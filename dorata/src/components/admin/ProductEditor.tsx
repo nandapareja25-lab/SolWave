@@ -1,14 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Check, Loader2, Plus, Sparkles, Star, Trash2 } from "lucide-react";
 import { saveProduct, type ProductInput, type VariantInput } from "@/app/admin/(panel)/productos/actions";
 import { slugify } from "@/lib/slug";
 import { formatWarranty } from "@/lib/warranty";
-import { Card, PageHeader, SaveBar, StatusText, areaCls, btnPrimary, helpCls, inputCls, labelCls } from "./ui";
+import { Card, PageHeader, SaveBar, StatusText, areaCls, btnPrimary, btnQuiet, chipBtn, helpCls, inputCls, labelCls } from "./ui";
+import { formatUSD } from "@/lib/money";
 import { useUnsavedGuard } from "./useUnsavedGuard";
+import { useSaveShortcut } from "./useSaveShortcut";
 import { ProductPhotos, type MediaItem } from "./ProductPhotos";
 import { VariantCosts, type CostInfo } from "./VariantCosts";
 
@@ -47,6 +49,8 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
   const [pending, start] = useTransition();
   const dirty = JSON.stringify(d) !== saved;
   useUnsavedGuard(dirty);
+  const formRef = useRef<HTMLFormElement>(null);
+  useSaveShortcut(formRef);
 
   const set = <K extends keyof ProductInput>(k: K, v: ProductInput[K]) => { setMsg(null); setD((x) => ({ ...x, [k]: v })); };
   const setV = (i: number, patch: Partial<VariantInput>) => { setMsg(null); setD((x) => ({ ...x, variants: x.variants.map((v, j) => (j === i ? { ...v, ...patch } : patch.is_default ? { ...v, is_default: false } : v)) })); };
@@ -54,6 +58,10 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
   const cat = data.categories.find((c) => c.slug === d.category_slug);
   const catWarranty = data.warranties.find((w) => w.id === cat?.warrantyId);
   const wLabel = (w: { name: string; months: number | null }) => `${w.name} (${formatWarranty(w.months)})`;
+  const prices = initial.variants.filter((v) => v.is_active && v.price).map((v) => Math.round(Number(v.price) * 100));
+  const priceText = prices.length ? (Math.min(...prices) === Math.max(...prices) ? formatUSD(prices[0]!) : `${formatUSD(Math.min(...prices))} – ${formatUSD(Math.max(...prices))}`) : null;
+  const effWarranty = d.warranty_code ? data.warranties.find((w) => w.code === d.warranty_code) : catWarranty;
+  const whereSummary = [d.is_featured && "En la portada", d.is_new && "Nuevo", d.is_on_sale && "En ofertas", d.extra_category_slugs.length > 0 && `+${d.extra_category_slugs.length} categoría(s)`].filter(Boolean).join(" · ") || "Solo en su categoría";
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -70,13 +78,13 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
   }
 
   return (
-    <form onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+    <form ref={formRef} onSubmit={submit} className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
       <div className="lg:col-span-2">
         <PageHeader eyebrow={initial.id ? "Producto" : "Nuevo producto"} title={d.name || (initial.id ? "Sin nombre" : "Nuevo producto")}
-          description={initial.id ? `${STATUS.find((s) => s.value === initial.status)?.label} · ${cat?.name ?? "sin categoría"}` : "Empieza por el nombre, la categoría y el precio. Las fotos se agregan después de guardar."} />
+          description={initial.id ? [STATUS.find((s) => s.value === initial.status)?.label, cat?.name, priceText].filter(Boolean).join(" · ") : "Empieza por el nombre, la categoría y el precio. Las fotos se agregan después de guardar."} />
       </div>
 
-      <div className="grid min-w-0 gap-6">
+      <div className="order-2 grid min-w-0 gap-6 lg:order-none">
         <Card title="Lo básico" step={1}>
           <div className="grid gap-4">
             <label className={labelCls}>Nombre
@@ -88,15 +96,8 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
                 {mainCats.map((c) => <option key={c.id} value={c.slug}>{c.name}</option>)}
               </select>
             </label>
-            <label className={labelCls}>Dirección en la tienda
-              <span className="flex h-11 items-center overflow-hidden rounded-[4px] border border-line bg-ivory focus-within:border-gold-deep">
-                <span className="max-w-[45%] shrink-0 truncate border-r border-line bg-cream px-3 text-[14px] leading-[44px] text-ink-3">/{d.category_slug || "categoria"}/</span>
-                <input required maxLength={100} value={d.slug} onChange={(e) => { setSlugTouched(true); set("slug", slugify(e.target.value) || e.target.value.toLowerCase()); }} className="h-full min-w-0 flex-1 bg-transparent px-3 text-[15px] outline-none" />
-              </span>
-              {initial.slug && (d.slug !== initial.slug || d.category_slug !== initial.category_slug) && <span className={helpCls}>La dirección anterior seguirá funcionando y llevará a la nueva.</span>}
-            </label>
             <label className={labelCls}>Frase corta (aparece en la tarjeta y bajo el nombre)
-              <input maxLength={200} value={d.short_description} onChange={(e) => set("short_description", e.target.value)} placeholder="Ej: Brillo diario que no se apaga." className={inputCls} />
+              <textarea rows={2} maxLength={200} value={d.short_description} onChange={(e) => set("short_description", e.target.value)} placeholder="Ej: Brillo diario que no se apaga." className={`resize-none ${areaCls}`} />
             </label>
             <label className={labelCls}>Descripción
               <textarea maxLength={8000} value={d.description_md} onChange={(e) => set("description_md", e.target.value)} placeholder="Cuenta cómo es la pieza, cómo se siente y con qué combina." className={`min-h-32 ${areaCls}`} />
@@ -115,12 +116,12 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="text-[13px] font-semibold text-ink-2">Variante {i + 1}{!v.is_active && " · desactivada"}</span>
                     <div className="flex items-center gap-1">
-                      <label className="press inline-flex h-10 cursor-pointer items-center gap-2 rounded-full px-3 text-[13px] has-[:checked]:bg-gold/15 has-[:checked]:font-semibold">
+                      <label className={`${chipBtn} cursor-pointer has-[:checked]:border-gold/60 has-[:checked]:bg-gold/15 has-[:checked]:font-semibold`}>
                         <input type="radio" name="default_variant" checked={v.is_default} onChange={() => setV(i, { is_default: true })} className="sr-only" />
                         <Star aria-hidden="true" size={14} className={v.is_default ? "fill-[var(--gold)] text-gold-deep" : ""} />{v.is_default ? "Principal" : "Hacer principal"}
                       </label>
                       {v.id ? (
-                        <button type="button" onClick={() => setV(i, { is_active: !v.is_active })} className="press h-10 px-3 text-[13px] underline underline-offset-4">{v.is_active ? "Desactivar" : "Activar"}</button>
+                        <button type="button" onClick={() => setV(i, { is_active: !v.is_active })} className={chipBtn}>{v.is_active ? "Desactivar" : "Activar"}</button>
                       ) : d.variants.length > 1 && (
                         <button type="button" aria-label={`Quitar variante ${i + 1}`} onClick={() => setD((x) => ({ ...x, variants: x.variants.filter((_, j) => j !== i) }))} className="press grid size-10 place-items-center text-danger"><Trash2 aria-hidden="true" size={16} /></button>
                       )}
@@ -128,7 +129,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
                   </div>
                   <div className="grid gap-3 sm:grid-cols-2">
                     <label className={labelCls}>Nombre de la variante<input required maxLength={60} value={v.title} onChange={(e) => setV(i, { title: e.target.value })} placeholder="Ej: 45 cm, Hilo negro" className={inputCls} /></label>
-                    <label className={labelCls}>Código (SKU)
+                    <label className={labelCls}>Código interno (SKU)
                       <span className="flex gap-2">
                         <input required maxLength={40} value={v.sku} onChange={(e) => setV(i, { sku: e.target.value.toUpperCase().replace(/\s/g, "-") })} placeholder="DOR-CAD-SING-01" className={`${inputCls} uppercase`} />
                         {!v.sku && <button type="button" onClick={() => setV(i, { sku: suggestSku(d.name, d.category_slug, i + 1) })} disabled={!d.name} className="press shrink-0 rounded-full border border-line px-3 text-[13px] disabled:opacity-40">Sugerir</button>}
@@ -155,7 +156,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
             })}
           </ol>
           {d.variants.length < 40 && (
-            <button type="button" onClick={() => setD((x) => ({ ...x, variants: [...x.variants, emptyVariant(x.variants.length + 1)] }))} className="press mt-3 inline-flex h-11 items-center gap-2 rounded-full border border-line px-4 text-[14px]">
+            <button type="button" onClick={() => setD((x) => ({ ...x, variants: [...x.variants, emptyVariant(x.variants.length + 1)] }))} className={`${btnQuiet} mt-3`}>
               <Plus aria-hidden="true" size={16} />Agregar variante
             </button>
           )}
@@ -167,7 +168,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
 
         <ProductPhotos productId={d.id} storageBase={data.storageBase} items={data.media} variants={d.variants.filter((v) => v.id).map((v) => ({ id: v.id, title: v.title }))} productName={d.name} />
 
-        <Card title="Garantía" step={5}>
+        <Card title="Garantía" step={5} collapsible summary={useComponents ? `Por partes: ${d.components.filter((c) => c.label).map((c) => c.label).join(", ") || "sin completar"}` : effWarranty ? wLabel(effWarranty) : "Sin garantía asignada"}>
           <div className="grid gap-4">
             <label className={labelCls}>Garantía de la pieza
               <select value={d.warranty_code} onChange={(e) => set("warranty_code", e.target.value)} className={inputCls}>
@@ -193,13 +194,13 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
                     <button type="button" aria-label={`Quitar parte ${i + 1}`} onClick={() => set("components", d.components.filter((_, j) => j !== i))} className="press grid size-11 place-items-center text-danger"><Trash2 aria-hidden="true" size={16} /></button>
                   </li>
                 ))}
-                {d.components.length < 8 && <button type="button" onClick={() => set("components", [...d.components, { label: "", warranty_code: "" }])} className="press inline-flex h-11 w-fit items-center gap-2 rounded-full border border-line px-4 text-[14px]"><Plus aria-hidden="true" size={16} />Agregar parte</button>}
+                {d.components.length < 8 && <button type="button" onClick={() => set("components", [...d.components, { label: "", warranty_code: "" }])} className={btnQuiet}><Plus aria-hidden="true" size={16} />Agregar parte</button>}
               </ol>
             )}
           </div>
         </Card>
 
-        <Card title="Detalles de la pieza" step={6}>
+        <Card title="Detalles de la pieza" step={6} collapsible summary={[d.material, d.measurements, d.weight_grams && `${d.weight_grams} g`].filter(Boolean).join(" · ") || "Material, medidas y peso"}>
           <div className="grid gap-4 sm:grid-cols-2">
             <label className={labelCls}>Material<input maxLength={80} value={d.material} onChange={(e) => set("material", e.target.value)} className={inputCls} /></label>
             <label className={labelCls}>Medidas<input maxLength={120} value={d.measurements} onChange={(e) => set("measurements", e.target.value)} placeholder="Ej: 45 cm · 3 mm" className={inputCls} /></label>
@@ -209,8 +210,45 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
           </div>
         </Card>
 
-        <Card title="Cómo se ve en Google (opcional)" step={7}>
+        <Card title="Dónde aparece" step={7} collapsible summary={whereSummary}>
+          <div className="grid gap-3">
+            <p className="text-[12px] font-semibold uppercase tracking-[.14em] text-ink-3">Destacar</p>
+            <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.is_featured} onChange={(e) => set("is_featured", e.target.checked)} className="size-5 accent-[var(--ink)]" /><Sparkles aria-hidden="true" size={16} className="text-gold-deep" />Mostrar en la portada</label>
+            <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.is_new} onChange={(e) => set("is_new", e.target.checked)} className="size-5 accent-[var(--ink)]" />Marcar como nuevo</label>
+            {d.is_new && <label className={`fade-in ${labelCls}`}>Nuevo hasta (opcional)<input type="date" value={d.new_until} onChange={(e) => set("new_until", e.target.value)} className={inputCls} /></label>}
+            <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.is_on_sale} onChange={(e) => set("is_on_sale", e.target.checked)} className="size-5 accent-[var(--ink)]" />Incluir en Ofertas</label>
+          </div>
+          {mainCats.length > 1 && (
+            <div className="mt-5 grid gap-2">
+              <p className="text-[12px] font-semibold uppercase tracking-[.14em] text-ink-3">También aparece en</p>
+              {mainCats.filter((c) => c.slug !== d.category_slug).map((c) => (
+                <label key={c.id} className="flex items-center gap-3 text-[14px]">
+                  <input type="checkbox" checked={d.extra_category_slugs.includes(c.slug)} onChange={(e) => set("extra_category_slugs", e.target.checked ? [...d.extra_category_slugs, c.slug] : d.extra_category_slugs.filter((s) => s !== c.slug))} className="size-5 accent-[var(--ink)]" />{c.name}
+                </label>
+              ))}
+            </div>
+          )}
+          {data.collections.length > 0 && (
+            <div className="mt-5 grid gap-2">
+              <p className="text-[12px] font-semibold uppercase tracking-[.14em] text-ink-3">Colecciones</p>
+              {data.collections.map((c) => (
+                <label key={c.id} className="flex items-center gap-3 text-[14px]">
+                  <input type="checkbox" checked={d.collection_slugs.includes(c.slug)} onChange={(e) => set("collection_slugs", e.target.checked ? [...d.collection_slugs, c.slug] : d.collection_slugs.filter((s) => s !== c.slug))} className="size-5 accent-[var(--ink)]" />{c.name}
+                </label>
+              ))}
+            </div>
+          )}
+        </Card>
+        <Card title="Dirección y Google (opcional)" step={8} collapsible summary={`dorata18k.com/${d.category_slug || "categoria"}/${d.slug || "…"}`}>
           <div className="grid gap-4">
+            <label className={labelCls}>Dirección en la tienda
+              <span className="flex h-11 items-center overflow-hidden rounded-[4px] border border-line bg-ivory focus-within:border-gold-deep">
+                <span className="max-w-[45%] shrink-0 truncate border-r border-line bg-cream px-3 text-[14px] leading-[44px] text-ink-3">/{d.category_slug || "categoria"}/</span>
+                <input maxLength={100} value={d.slug} onChange={(e) => { setSlugTouched(true); set("slug", slugify(e.target.value) || e.target.value.toLowerCase()); }} className="h-full min-w-0 flex-1 bg-transparent px-3 text-[15px] outline-none" />
+              </span>
+              {initial.slug && (d.slug !== initial.slug || d.category_slug !== initial.category_slug) && <span className={helpCls}>La dirección anterior seguirá funcionando y llevará a la nueva.</span>}
+            </label>
+
             <label className={labelCls}>Título en Google<input maxLength={70} value={d.seo_title} onChange={(e) => set("seo_title", e.target.value)} className={inputCls} />
               <span className={`${helpCls} flex justify-between gap-2`}><span>Vacío: “{d.name || "Producto"} | D&apos;ORATA”.</span><span className="tabular">{d.seo_title.length}/70</span></span>
             </label>
@@ -221,7 +259,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
         </Card>
       </div>
 
-      <div className="grid min-w-0 content-start gap-6 lg:sticky lg:top-6">
+      <div className="order-1 grid min-w-0 content-start gap-6 lg:order-none lg:sticky lg:top-6">
         <Card title="Estado" step={1}>
           <fieldset className="grid gap-2">
             <legend className="sr-only">Estado del producto</legend>
@@ -234,44 +272,13 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
           </fieldset>
           {d.status === "active" && data.media.length === 0 && d.id && <p className="fade-in mt-3 text-[13px] text-gold-deep">Aún no tiene fotos: en la tienda se verá una ilustración en su lugar.</p>}
         </Card>
-        <Card title="Destacar" step={2}>
-          <div className="grid gap-3">
-            <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.is_featured} onChange={(e) => set("is_featured", e.target.checked)} className="size-5 accent-[var(--ink)]" /><Sparkles aria-hidden="true" size={16} className="text-gold-deep" />Mostrar en la portada</label>
-            <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.is_new} onChange={(e) => set("is_new", e.target.checked)} className="size-5 accent-[var(--ink)]" />Marcar como nuevo</label>
-            {d.is_new && <label className={`fade-in ${labelCls}`}>Nuevo hasta (opcional)<input type="date" value={d.new_until} onChange={(e) => set("new_until", e.target.value)} className={inputCls} /></label>}
-            <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.is_on_sale} onChange={(e) => set("is_on_sale", e.target.checked)} className="size-5 accent-[var(--ink)]" />Incluir en Ofertas</label>
-          </div>
-        </Card>
-        {mainCats.length > 1 && (
-          <Card title="También aparece en" step={3}>
-            <div className="grid gap-2">
-              {mainCats.filter((c) => c.slug !== d.category_slug).map((c) => (
-                <label key={c.id} className="flex items-center gap-3 text-[14px]">
-                  <input type="checkbox" checked={d.extra_category_slugs.includes(c.slug)} onChange={(e) => set("extra_category_slugs", e.target.checked ? [...d.extra_category_slugs, c.slug] : d.extra_category_slugs.filter((s) => s !== c.slug))} className="size-5 accent-[var(--ink)]" />{c.name}
-                </label>
-              ))}
-            </div>
-          </Card>
-        )}
-        {data.collections.length > 0 && (
-          <Card title="Colecciones" step={4}>
-            <div className="grid gap-2">
-              {data.collections.map((c) => (
-                <label key={c.id} className="flex items-center gap-3 text-[14px]">
-                  <input type="checkbox" checked={d.collection_slugs.includes(c.slug)} onChange={(e) => set("collection_slugs", e.target.checked ? [...d.collection_slugs, c.slug] : d.collection_slugs.filter((s) => s !== c.slug))} className="size-5 accent-[var(--ink)]" />{c.name}
-                </label>
-              ))}
-            </div>
-          </Card>
-        )}
       </div>
 
-      <SaveBar dirty={dirty && !msg}>
+      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : undefined}>
         <button type="submit" disabled={pending} className={btnPrimary}>
           {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}
           {d.id ? "Guardar" : "Crear producto"}
         </button>
-        {msg && <StatusText ok={msg.ok}>{msg.text}</StatusText>}
       </SaveBar>
     </form>
   );

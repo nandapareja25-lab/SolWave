@@ -29,7 +29,8 @@
 - Acento SOLO en: CTA del hero, precios destacados de oferta, íconos de garantía, filetes finos.
 - Semánticos: éxito `#3F6B4A` · error `#A3392F` · aviso `#9A6A12`
 - Escala: hero 36 (móvil) / 56 (escritorio) · h1 32 · h2 de sección 28 · title 20 · body 15 · secundario 13-14 · label 12 (mayúsculas, tracking .14em)
-- Radio: SOLO dos familias → 4px en todo contenedor (cards, imágenes, avisos, badges) · píldora (999px) en botones, chips, inputs y círculos.
+- Radio: SOLO dos familias → 4px en todo contenedor (cards, imágenes, avisos, badges) · píldora (999px) en botones, chips, inputs de la tienda y círculos.
+  Panel privado (formularios largos): campos de texto, desplegables y opciones de selección en caja = 4px; botones y chips siguen en píldora.
 - Profundidad: bordes finos + elevación blanca sobre marfil; sombras solo en flotantes (drawer, FAB, cookies).
 - Dispositivo ownable: **filete dorado doble** (marco de certificado) + anillo dorado en categorías.
 - Imágenes: estudio cálido (marfil) en claro; terciopelo en oscuro.

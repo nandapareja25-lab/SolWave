@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Plus, Search } from "lucide-react";
 import { requireAdmin } from "@/server/admin/auth";
 import { PageHeader, btnPrimary, inputCls } from "@/components/admin/ui";
+import { AutoSubmitSelect } from "@/components/admin/AutoSubmitSelect";
 import { formatUSD } from "@/lib/money";
 
 export const metadata = { title: "Productos" };
@@ -17,30 +18,30 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
   const sp = await searchParams;
   const { sb } = await requireAdmin("staff");
   const [{ data: rows }, { data: cats }, { data: stock }] = await Promise.all([
-    sb.from("products").select("id,status,primary_category_id,updated_at,product_translations(locale,name,slug),product_variants(id,sku,price_cents,is_active),product_media(variants,position)").order("updated_at", { ascending: false }),
+    sb.from("products").select("id,status,primary_category_id,updated_at,product_translations(locale,name,slug),product_variants(id,sku,title,price_cents,is_active),product_media(variants,position)").order("updated_at", { ascending: false }),
     sb.from("categories").select("id,auto_rule,category_translations(locale,name)").order("sort_order"),
     sb.from("v_inventory_status").select("variant_id,product_id,available,is_low"),
   ]);
   const catName = new Map((cats ?? []).map((c) => [c.id, (c.category_translations as { locale: string; name: string }[]).find((t) => t.locale === "es")?.name ?? ""]));
-  const stockBy = new Map<string, { available: number; low: boolean }>();
-  for (const s of stock ?? []) {
-    const cur = stockBy.get(s.product_id) ?? { available: 0, low: false };
-    stockBy.set(s.product_id, { available: cur.available + (s.available ?? 0), low: cur.low || !!s.is_low });
-  }
+  const stockByVariant = new Map((stock ?? []).map((s) => [s.variant_id as string, { available: (s.available ?? 0) as number, low: !!s.is_low }]));
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const q = (sp.q ?? "").trim().toLowerCase();
   const all = (rows ?? []).map((p) => {
     const t = (p.product_translations as { locale: string; name: string; slug: string }[]).find((x) => x.locale === "es");
-    const vs = (p.product_variants as { sku: string; price_cents: number; is_active: boolean }[]).filter((v) => v.is_active);
+    const vs = (p.product_variants as { id: string; sku: string; title: string; price_cents: number; is_active: boolean }[]).filter((v) => v.is_active);
     const prices = vs.map((v) => v.price_cents);
     const media = (p.product_media as { variants: Record<string, string>; position: number }[]).sort((a, b) => a.position - b.position)[0];
-    const s = stockBy.get(p.id) ?? { available: 0, low: false };
+    const vstock = vs.map((v) => ({ title: v.title, ...(stockByVariant.get(v.id) ?? { available: 0, low: false }) }));
+    const available = vstock.reduce((n, v) => n + v.available, 0);
+    const lowOnes = vstock.filter((v) => v.low && v.available > 0);
+    const outOnes = vstock.filter((v) => v.available === 0);
     return {
       id: p.id, status: p.status as string, name: t?.name ?? "(sin nombre)", category: catName.get(p.primary_category_id) ?? "", categoryId: p.primary_category_id,
       skus: vs.map((v) => v.sku).join(" "), variants: vs.length,
       price: prices.length ? (Math.min(...prices) === Math.max(...prices) ? formatUSD(prices[0]!) : `${formatUSD(Math.min(...prices))} – ${formatUSD(Math.max(...prices))}`) : "—",
       thumb: media && base ? `${base}/storage/v1/object/public/product-media/${media.variants["400"] ?? Object.values(media.variants)[0]}` : null,
-      available: s.available, low: s.low,
+      available, low: lowOnes.length > 0,
+      stockNote: available === 0 ? "Agotado" : [`${available} disponibles`, ...lowOnes.map((v) => vs.length > 1 ? `${v.title}: quedan ${v.available}` : "quedan pocas"), ...(vs.length > 1 ? outOnes.map((v) => `${v.title}: agotada`) : [])].join(" · "),
     };
   });
   const list = all.filter((p) =>
@@ -49,29 +50,39 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
     (sp.stock !== "agotado" || p.available === 0) && (sp.stock !== "pocas" || (p.low && p.available > 0)));
   const filtered = !!(q || sp.estado || sp.categoria || sp.stock);
   const counts = { active: all.filter((p) => p.status === "active").length, draft: all.filter((p) => p.status === "draft").length };
+  const href = (patch: Partial<Sp>) => {
+    const qs = new URLSearchParams(Object.entries({ q: sp.q, categoria: sp.categoria, estado: sp.estado, stock: sp.stock, ...patch }).filter(([, v]) => v) as [string, string][]);
+    return `/admin/productos${qs.size ? `?${qs}` : ""}`;
+  };
+  const chip = (patch: Partial<Sp>, text: string, on: boolean) => (
+    <Link href={href(patch)} aria-current={on ? "page" : undefined}
+      className={`press inline-flex h-10 items-center rounded-full border px-4 text-[14px] ${on ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{text}</Link>
+  );
 
   return (
     <div>
       <PageHeader title="Productos" description={`${counts.active} activos · ${counts.draft} en borrador`}
-        actions={<Link href="/admin/productos/nuevo" className={btnPrimary}><Plus aria-hidden="true" size={16} />Nuevo producto</Link>} />
-      <form className="mb-4 grid gap-2 sm:grid-cols-[minmax(0,1fr)_repeat(3,auto)_auto]" role="search">
+        actions={<Link href="/admin/productos/nuevo" className={`${btnPrimary} w-full sm:w-auto`}><Plus aria-hidden="true" size={16} />Nuevo producto</Link>} />
+      <form className="mb-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_220px]" role="search">
+        {sp.estado && <input type="hidden" name="estado" value={sp.estado} />}
+        {sp.stock && <input type="hidden" name="stock" value={sp.stock} />}
         <label className="relative">
           <span className="sr-only">Buscar por nombre o código</span>
           <Search aria-hidden="true" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-3" />
-          <input name="q" defaultValue={sp.q ?? ""} placeholder="Buscar por nombre o código" className={`${inputCls} pl-9`} />
+          <input name="q" type="search" defaultValue={sp.q ?? ""} placeholder="Buscar por nombre o código" className={`${inputCls} pl-9`} />
         </label>
-        <select name="estado" defaultValue={sp.estado ?? ""} aria-label="Estado" className={inputCls}>
-          <option value="">Todos los estados</option><option value="active">Activos</option><option value="draft">Borradores</option><option value="archived">Archivados</option>
-        </select>
-        <select name="categoria" defaultValue={sp.categoria ?? ""} aria-label="Categoría" className={inputCls}>
+        <AutoSubmitSelect name="categoria" defaultValue={sp.categoria ?? ""} aria-label="Categoría" className={inputCls}>
           <option value="">Todas las categorías</option>
           {(cats ?? []).filter((c) => !c.auto_rule).map((c) => <option key={c.id} value={c.id}>{catName.get(c.id)}</option>)}
-        </select>
-        <select name="stock" defaultValue={sp.stock ?? ""} aria-label="Stock" className={inputCls}>
-          <option value="">Cualquier stock</option><option value="pocas">Quedan pocas</option><option value="agotado">Agotados</option>
-        </select>
-        <button type="submit" className="press h-11 rounded-full border border-ink px-5 text-[14px] font-semibold">Filtrar</button>
+        </AutoSubmitSelect>
       </form>
+      <div className="mb-4 flex flex-wrap gap-2">
+        {chip({ estado: undefined, stock: undefined }, "Todos", !sp.estado && !sp.stock)}
+        {chip({ estado: "active", stock: undefined }, `Activos (${counts.active})`, sp.estado === "active")}
+        {chip({ estado: "draft", stock: undefined }, `Borradores (${counts.draft})`, sp.estado === "draft")}
+        {chip({ estado: undefined, stock: "pocas" }, "Quedan pocas", sp.stock === "pocas")}
+        {chip({ estado: undefined, stock: "agotado" }, "Agotados", sp.stock === "agotado")}
+      </div>
       {filtered && <p className="mb-3 text-[14px] text-ink-2">{list.length} de {all.length} productos · <Link href="/admin/productos" className="underline underline-offset-4">Quitar filtros</Link></p>}
 
       {all.length === 0 ? (
@@ -81,11 +92,11 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
           <Link href="/admin/productos/nuevo" className={`${btnPrimary} mt-4`}><Plus aria-hidden="true" size={16} />Crear el primer producto</Link>
         </div>
       ) : list.length === 0 ? (
-        <p className="rounded-[4px] border border-line bg-surface p-6 text-[15px]">Ningún producto coincide con la búsqueda.</p>
+        <p className="rounded-[4px] border border-line bg-surface p-6 text-[15px]">Ningún producto coincide con la búsqueda. <Link href="/admin/productos" className="underline underline-offset-4">Ver todos</Link></p>
       ) : (
         <ul className="divide-y divide-line rounded-[4px] border border-line bg-surface">
-          {list.map((p) => (
-            <li key={p.id}>
+          {list.map((p, i) => (
+            <li key={p.id} className="rise" style={{ animationDelay: `${Math.min(i, 8) * 50}ms` }}>
               <Link href={`/admin/productos/${p.id}`} className="flex items-center gap-3 p-3 hover:bg-ivory">
                 <div className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-[4px] border border-line bg-cream">
                   {/* eslint-disable-next-line @next/next/no-img-element -- miniatura del panel */}
@@ -96,9 +107,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                   <p className="truncate text-[13px] text-ink-2">{p.category} · {p.variants} {p.variants === 1 ? "variante" : "variantes"}</p>
                   <p className="mt-1 flex flex-wrap items-center gap-2 text-[13px]">
                     <span className="tabular font-semibold">{p.price}</span>
-                    <span className={p.available === 0 ? "text-danger" : p.low ? "text-gold-deep" : "text-ink-2"}>
-                      {p.available === 0 ? "Agotado" : `${p.available} disponibles${p.low ? " · quedan pocas" : ""}`}
-                    </span>
+                    <span className={p.available === 0 ? "text-danger" : p.low ? "text-gold-deep" : "text-ink-2"}>{p.stockNote}</span>
                   </p>
                 </div>
                 <span className={`shrink-0 rounded-full px-3 py-1 text-[12px] font-semibold ${STATUS[p.status]?.cls}`}>{STATUS[p.status]?.label}</span>
