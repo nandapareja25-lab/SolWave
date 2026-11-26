@@ -76,7 +76,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
   const catWarranty = data.warranties.find((w) => w.id === cat?.warrantyId);
   const wLabel = (w: { name: string; months: number | null }) => `${w.name} (${formatWarranty(w.months)})`;
   const prices = initial.variants.filter((v) => v.is_active && v.price).map((v) => Math.round(Number(v.price) * 100));
-  const priceText = prices.length ? (Math.min(...prices) === Math.max(...prices) ? formatUSD(prices[0]!) : `${formatUSD(Math.min(...prices))} – ${formatUSD(Math.max(...prices))}`) : null;
+  const priceText = !prices.length || Math.max(...prices) === 0 ? "sin precio" : Math.min(...prices) === Math.max(...prices) ? formatUSD(prices[0]!) : `${formatUSD(Math.min(...prices))} – ${formatUSD(Math.max(...prices))}`;
   const effWarranty = d.warranty_code ? data.warranties.find((w) => w.code === d.warranty_code) : catWarranty;
   const whereSummary = [d.is_featured && "En la portada", d.is_new && "Nuevo", d.is_on_sale && "En ofertas", d.extra_category_slugs.length > 0 && `+${d.extra_category_slugs.length} categoría(s)`].filter(Boolean).join(" · ") || "Solo en su categoría";
 
@@ -103,7 +103,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
           description={initial.id ? [STATUS.find((s) => s.value === initial.status)?.label, cat?.name, priceText].filter(Boolean).join(" · ") : "Empieza por el nombre, la categoría y el precio. Las fotos se agregan después de guardar."} />
       </div>
 
-      <div className="order-2 grid min-w-0 gap-6 lg:order-none">
+      <div className="order-2 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6 lg:order-none">
         <Card title="Lo básico" step={1}>
           <div className="grid gap-4">
             <label className={labelCls}>Nombre
@@ -309,7 +309,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
         </Card>
       </div>
 
-      <div className="order-1 grid min-w-0 content-start gap-6 lg:order-none lg:sticky lg:top-6">
+      <div className="order-1 grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-6 lg:order-none lg:sticky lg:top-6">
         <Card title="Estado" step={1}>
           <fieldset className="grid gap-2">
             <legend className="sr-only">Estado del producto</legend>

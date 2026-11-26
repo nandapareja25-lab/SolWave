@@ -64,7 +64,7 @@ export function DiscountEditor({ initial, timezone, timesUsed, categories, produ
         <PageHeader eyebrow={initial.id ? "Código de descuento" : "Nuevo código"} title={d.code || "Nuevo código"}
           description={initial.id ? `${timesUsed} ${timesUsed === 1 ? "uso" : "usos"} · ${d.is_active ? "activo" : "inactivo"}` : "Elige el código, cuánto descuenta y dónde aplica."} />
       </div>
-      <div className="order-2 grid min-w-0 gap-6 lg:order-none">
+      <div className="order-2 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6 lg:order-none">
         <Card title="El código" step={1}>
           <div className="grid gap-4">
             <label className={labelCls}>Código que escribe la clienta
@@ -140,7 +140,7 @@ export function DiscountEditor({ initial, timezone, timesUsed, categories, produ
           </div>
         </Card>
       </div>
-      <div className="order-1 grid min-w-0 content-start gap-6 lg:order-none lg:sticky lg:top-6">
+      <div className="order-1 grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-6 lg:order-none lg:sticky lg:top-6">
         <Card title="Estado" step={1}>
           <label className="flex cursor-pointer items-start gap-3 text-[15px]">
             <input type="checkbox" checked={d.is_active} onChange={(e) => set("is_active", e.target.checked)} className="mt-0.5 size-5 accent-[var(--ink)]" />

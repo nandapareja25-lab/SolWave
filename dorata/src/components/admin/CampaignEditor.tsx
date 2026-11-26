@@ -119,7 +119,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
 
   return (
     <form ref={formRef} onSubmit={submit} className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
-      <div className="grid min-w-0 gap-6">
+      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6">
         <Card title="Campaña" step={1}>
           <div className="grid gap-4">
             <label className={labelCls}>Nombre interno (solo lo ves tú)
@@ -252,7 +252,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
         </Card>
       </div>
 
-      <div className="grid min-w-0 content-start gap-4 lg:sticky lg:top-6">
+      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-4 lg:sticky lg:top-6">
         <Card title="Vista previa">
           <div className="mb-3 flex gap-2" role="radiogroup" aria-label="Dispositivo">
             {([["mobile", "Celular", Smartphone], ["desktop", "Computador", Monitor]] as const).map(([v, l, Icon]) => (

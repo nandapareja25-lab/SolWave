@@ -76,7 +76,7 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
         <PageHeader eyebrow={initial.id ? "Categoría" : "Nueva categoría"} title={d.name || (initial.id ? "Sin nombre" : "Nueva categoría")}
           description={initial.id ? (!d.is_visible ? "Oculta en la tienda" : d.show_in_nav ? "Visible · en el menú y la portada" : "Visible · fuera del menú") : "Completa los datos y guarda; después podrás subir su foto."} />
       </div>
-      <div className="grid min-w-0 gap-6">
+      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6">
         <Card title="Datos" step={1}>
           <div className="grid gap-4">
             <label className={labelCls}>Nombre
@@ -133,7 +133,7 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
         </Card>
       </div>
 
-      <div className="grid min-w-0 content-start gap-6">
+      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-6">
         <Card title="Foto del círculo" step={3}>
           <div className="grid justify-items-center gap-3">
             <div className="grid size-36 place-items-center overflow-hidden rounded-full border-2 border-gold/50 bg-cream">

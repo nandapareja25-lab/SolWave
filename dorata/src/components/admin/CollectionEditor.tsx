@@ -70,7 +70,7 @@ export function CollectionEditor({ initial, timezone, products, storageBase, can
         <PageHeader eyebrow={initial.id ? "Colección" : "Nueva colección"} title={d.name || "Nueva colección"}
           description={initial.id ? `${products.length} ${products.length === 1 ? "producto" : "productos"} · ${d.is_visible ? "visible" : "oculta"}` : "Guarda y luego agrega productos desde la ficha de cada uno (sección “Dónde aparece”)."} />
       </div>
-      <div className="grid min-w-0 gap-6">
+      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6">
         <Card title="Datos" step={1}>
           <div className="grid gap-4">
             <label className={labelCls}>Nombre
@@ -102,7 +102,7 @@ export function CollectionEditor({ initial, timezone, products, storageBase, can
           {products.length > 0 && <p className={`mt-3 ${helpCls}`}>Para agregar otra pieza, ábrela y márcala en “Dónde aparece”.</p>}
         </Card>
       </div>
-      <div className="grid min-w-0 content-start gap-6">
+      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-6">
         <Card title="Foto de portada" step={2}>
           <div className="grid gap-3">
             <div className="grid aspect-[4/3] place-items-center overflow-hidden rounded-[4px] border border-gold/40 bg-cream">
