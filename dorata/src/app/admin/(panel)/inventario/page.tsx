@@ -119,8 +119,9 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
       {(moves ?? []).length > 0 && (
         <section id="movimientos" className="mt-8 scroll-mt-20">
           <h2 className="mb-3 text-[12px] font-semibold uppercase tracking-[.14em] text-ink-2">Últimos movimientos</h2>
-          <ol className="divide-y divide-line rounded-[4px] border border-line bg-surface">
-            {(moves ?? []).filter((m) => label.has(m.variant_id)).map((m) => (
+          {(() => {
+            const items = (moves ?? []).filter((m) => label.has(m.variant_id));
+            const Row = (m: (typeof items)[number]) => (
               <li key={m.id} className="flex items-start gap-3 p-3 text-[14px]">
                 <span className={`w-9 shrink-0 font-semibold tabular ${m.quantity_delta > 0 ? "text-success" : "text-danger"}`}>{m.quantity_delta > 0 ? `+${m.quantity_delta}` : m.quantity_delta}</span>
                 <span className="min-w-0 flex-1">
@@ -129,8 +130,21 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
                   <span className="block text-[12px] text-ink-3">{formatInZone(m.created_at, tz)}</span>
                 </span>
               </li>
-            ))}
-          </ol>
+            );
+            return (
+              <>
+                <ol className="divide-y divide-line rounded-[4px] border border-line bg-surface">{items.slice(0, 5).map(Row)}</ol>
+                {items.length > 5 && (
+                  <details className="group mt-2">
+                    <summary className="press inline-flex h-11 cursor-pointer list-none items-center rounded-full border border-line bg-surface px-4 text-[14px] [&::-webkit-details-marker]:hidden">
+                      <span className="group-open:hidden">Ver los {items.length} últimos</span><span className="hidden group-open:inline">Ver menos</span>
+                    </summary>
+                    <ol className="mt-2 divide-y divide-line rounded-[4px] border border-line bg-surface">{items.slice(5).map(Row)}</ol>
+                  </details>
+                )}
+              </>
+            );
+          })()}
         </section>
       )}
     </div>

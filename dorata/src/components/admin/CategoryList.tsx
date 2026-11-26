@@ -96,8 +96,8 @@ export function CategoryList({ items }: { items: CategoryItem[] }) {
                   <span className="mt-0.5 block text-[12px] leading-snug text-ink-2">
                     {c.auto ? (c.auto === "new" ? "Automática · novedades" : "Automática · ofertas") : `${c.products} ${c.products === 1 ? "producto" : "productos"} · ${c.warranty ?? "sin garantía"}`}
                     {(!c.visible || !c.nav) && (
-                      <span className={`ml-1.5 rounded-[4px] px-1.5 text-[11px] ${c.products > 0 && !c.auto ? "bg-gold/15 font-semibold text-gold-deep" : "bg-line/60 text-ink-2"}`}>
-                        {!c.visible ? (c.products > 0 && !c.auto ? `Oculta · sus ${c.products} piezas no se ven aquí` : "Oculta") : "Fuera del menú"}
+                      <span className={`mt-1 block w-fit rounded-[4px] px-1.5 text-[11px] ${c.products > 0 && !c.auto ? "bg-gold/15 font-semibold text-gold-deep" : "bg-line/60 text-ink-2"}`}>
+                        {!c.visible ? (c.products > 0 && !c.auto ? `Oculta · sus ${c.products} piezas no se ven en la tienda` : "Oculta") : "Fuera del menú"}
                       </span>
                     )}
                   </span>

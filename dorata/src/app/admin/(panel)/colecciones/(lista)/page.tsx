@@ -28,13 +28,22 @@ export default async function CollectionsPage() {
     <div>
       <PageHeader title="Colecciones" description="Agrupa piezas por tema (Navidad, Día de la Madre, Sets…) además de su categoría. Los productos se agregan desde su ficha."
         actions={list.length ? <Link href="/admin/colecciones/nueva" className={`${btnPrimary} w-full sm:w-auto`}><Plus aria-hidden="true" size={16} />Nueva colección</Link> : undefined} />
-      {list.length === 0 ? (
+      {list.length === 0 ? (<>
         <div className="filete-doble rounded-[4px] border border-line bg-surface p-6 text-center">
           <p className="font-display text-[22px]">Aún no tienes colecciones</p>
           <p className="mx-auto mt-2 max-w-md text-[14px] text-ink-2">Son opcionales. Úsalas para campañas o temas, por ejemplo “Día de la Madre” o “Navidad”: cada una tiene su propia página en la tienda.</p>
           <Link href="/admin/colecciones/nueva" className={`${btnPrimary} mt-4`}><Plus aria-hidden="true" size={16} />Crear la primera colección</Link>
         </div>
-      ) : (
+        <div aria-hidden="true" className="mt-4 grid gap-3 opacity-50">
+          <p className="text-[12px] font-semibold uppercase tracking-[.14em] text-ink-3">Así se verán</p>
+          {["Día de la Madre", "Navidad"].map((n) => (
+            <div key={n} className="flex items-center gap-3 rounded-[4px] border border-dashed border-line bg-surface p-3">
+              <span className="grid size-14 place-items-center rounded-[4px] border border-gold/40 bg-cream font-display text-[18px] text-gold-deep">{n === "Navidad" ? "NA" : "DM"}</span>
+              <span className="min-w-0 flex-1"><span className="block text-[16px] font-semibold">{n}</span><span className="block text-[13px] text-ink-2">0 productos · /colecciones/{n === "Navidad" ? "navidad" : "dia-de-la-madre"}</span></span>
+            </div>
+          ))}
+        </div>
+      </>) : (
         <ul className="grid grid-cols-[minmax(0,1fr)] gap-3">
           {list.map((c, i) => (
             <li key={c.id} className="rise min-w-0" style={{ animationDelay: `${Math.min(i, 8) * 50}ms` }}>

@@ -80,7 +80,7 @@ export function DateTimeField({ label, name, value, defaultValue, onChange, time
               <option value="am">a. m.</option><option value="pm">p. m.</option>
             </select>
             {!required && (
-              <button type="button" onClick={() => emit("")} className="press ml-auto h-11 px-2 text-[13px] text-ink-2 underline underline-offset-4">
+              <button type="button" onClick={() => emit("")} className="press ml-auto h-11 whitespace-nowrap px-2 text-[13px] text-ink-2 underline underline-offset-4">
                 Quitar fecha
               </button>
             )}

@@ -161,6 +161,8 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
             ) : <p className="text-center text-[13px] text-ink-2">Guarda la categoría para poder subir su foto.</p>}
           </div>
         </Card>
+      </div>
+      <div className="order-3 lg:col-span-2 lg:order-none">
         {d.id && canDelete && (
           <div className="border-t border-line pt-4">
             {confirmDelete ? (

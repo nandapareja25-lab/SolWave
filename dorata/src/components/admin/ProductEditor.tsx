@@ -311,7 +311,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
           <fieldset className="grid gap-2">
             <legend className="sr-only">Estado del producto</legend>
             {STATUS.map((s) => (
-              <label key={s.value} className="flex cursor-pointer gap-3 rounded-[4px] border border-line p-3 transition-colors has-[:checked]:border-ink has-[:checked]:bg-ivory">
+              <label key={s.value} className="flex cursor-pointer gap-3 rounded-[4px] border border-line p-3 transition-colors has-[:checked]:border-ink has-[:checked]:bg-ivory has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-50">
                 <input type="radio" name="status" checked={d.status === s.value} onChange={() => set("status", s.value)}
                   disabled={s.value === "active" && (data.kit?.role === "set_component" || (data.kit?.role === "set_base" && !data.kit.current))} className="mt-1 accent-[var(--ink)] disabled:opacity-40" />
                 <span><span className="block text-[15px] font-semibold">{s.label}</span><span className="block text-[13px] text-ink-2">{s.help}</span></span>

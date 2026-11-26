@@ -12,7 +12,8 @@ const STATUS: Record<string, { label: string; cls: string }> = {
   draft: { label: "Borrador", cls: "bg-gold/15 text-gold-deep" },
   archived: { label: "Archivado", cls: "bg-line/60 text-ink-2" },
 };
-type Sp = { q?: string; estado?: string; categoria?: string; stock?: string; tipo?: string };
+type Sp = { q?: string; estado?: string; categoria?: string; stock?: string; tipo?: string; p?: string };
+const PAGE = 20;
 
 export default async function ProductsPage({ searchParams }: { searchParams: Promise<Sp> }) {
   const sp = await searchParams;
@@ -55,9 +56,13 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
     (sp.tipo !== "sets" || (p.kit === "set_base" && !p.hasPendant)) && (sp.tipo !== "dijes" || p.kit === "set_component") &&
     (sp.tipo !== "revisar" || p.review) && (sp.tipo !== "sinprecio" || (p.noPrice && p.kit !== "set_component")));
   const filtered = !!(q || sp.estado || sp.categoria || sp.stock || sp.tipo);
+  const pages = Math.max(1, Math.ceil(list.length / PAGE));
+  const page = Math.min(pages, Math.max(1, Number(sp.p) || 1));
+  const shown = list.slice((page - 1) * PAGE, page * PAGE);
   const counts = { active: all.filter((p) => p.status === "active").length, draft: all.filter((p) => p.status === "draft").length };
   const href = (patch: Partial<Sp>) => {
-    const qs = new URLSearchParams(Object.entries({ q: sp.q, categoria: sp.categoria, estado: sp.estado, stock: sp.stock, tipo: sp.tipo, ...patch }).filter(([, v]) => v) as [string, string][]);
+    // Cambiar un filtro vuelve a la página 1
+    const qs = new URLSearchParams(Object.entries({ q: sp.q, categoria: sp.categoria, estado: sp.estado, stock: sp.stock, tipo: sp.tipo, p: undefined, ...patch }).filter(([, v]) => v) as [string, string][]);
     return `/admin/productos${qs.size ? `?${qs}` : ""}`;
   };
   const chip = (patch: Partial<Sp>, text: string, on: boolean) => (
@@ -109,7 +114,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
         <p className="rounded-[4px] border border-line bg-surface p-6 text-[15px]">Ningún producto coincide con la búsqueda. <Link href="/admin/productos" className="underline underline-offset-4">Ver todos</Link></p>
       ) : (
         <ul className="divide-y divide-line rounded-[4px] border border-line bg-surface">
-          {list.map((p, i) => (
+          {shown.map((p, i) => (
             <li key={p.id} className="rise" style={{ animationDelay: `${Math.min(i, 8) * 50}ms` }}>
               <Link href={`/admin/productos/${p.id}`} className="flex items-center gap-3 p-3 hover:bg-ivory">
                 <div className="grid size-[72px] shrink-0 place-items-center overflow-hidden rounded-[4px] border border-gold/40 bg-cream p-[2px]">
@@ -131,6 +136,13 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
             </li>
           ))}
         </ul>
+      )}
+      {pages > 1 && (
+        <nav aria-label="Páginas" className="mt-4 flex items-center justify-between gap-3 text-[14px]">
+          {page > 1 ? <Link href={href({ p: page > 2 ? String(page - 1) : undefined })} className="press inline-flex h-11 items-center rounded-full border border-line bg-surface px-4">← Anteriores</Link> : <span />}
+          <span className="text-ink-2 tabular">Página {page} de {pages}</span>
+          {page < pages ? <Link href={href({ p: String(page + 1) })} className="press inline-flex h-11 items-center rounded-full border border-line bg-surface px-4">Siguientes →</Link> : <span />}
+        </nav>
       )}
     </div>
   );

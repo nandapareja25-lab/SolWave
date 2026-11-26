@@ -72,7 +72,7 @@ export function DiscountEditor({ initial, timezone, timesUsed, categories, produ
               <input required maxLength={32} value={d.code} onChange={(e) => set("code", e.target.value.toUpperCase().replace(/[^A-Z0-9_-]/g, ""))} placeholder="Ej: NAVIDAD15" className={`${inputCls} uppercase tabular tracking-[.08em]`} />
               <span className={helpCls}>Letras y números, sin espacios.</span>
             </label>
-            <label className={labelCls}>Nota interna (opcional)<input maxLength={200} value={d.description} onChange={(e) => set("description", e.target.value)} placeholder="Ej: Para clientas de Instagram en diciembre" className={inputCls} /></label>
+            <label className={labelCls}>Nota interna (opcional)<input maxLength={200} value={d.description} onChange={(e) => set("description", e.target.value)} placeholder="Ej: Clientas de Instagram" className={inputCls} /></label>
           </div>
         </Card>
         <Card title="Cuánto descuenta" step={2}>
@@ -88,8 +88,8 @@ export function DiscountEditor({ initial, timezone, timesUsed, categories, produ
           {d.type !== "free_shipping" && (
             <label className={`fade-in mt-4 ${labelCls}`}>{d.type === "percentage" ? "Porcentaje" : "Monto en dólares"}
               <span className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-3">{d.type === "percentage" ? "%" : "$"}</span>
-                <input inputMode="decimal" value={d.value} onChange={(e) => set("value", e.target.value)} placeholder={d.type === "percentage" ? "15" : "10"} className={`${inputCls} pl-8 tabular`} />
+                <span className={`absolute top-1/2 -translate-y-1/2 text-ink-3 ${d.type === "percentage" ? "right-3" : "left-3"}`}>{d.type === "percentage" ? "%" : "$"}</span>
+                <input inputMode="decimal" value={d.value} onChange={(e) => set("value", e.target.value)} placeholder={d.type === "percentage" ? "15" : "10"} className={`${inputCls} ${d.type === "percentage" ? "pr-8" : "pl-8"} tabular`} />
               </span>
             </label>
           )}
