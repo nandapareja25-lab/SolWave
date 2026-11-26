@@ -96,7 +96,7 @@ export type ProductDetail = ProductCard & {
 
 export type WarrantyComponent = { label: string; policy: WarrantyPolicy | null };
 
-export type LegalPageSummary = { kind: string; slug: string; title: string };
+export type LegalPageSummary = { kind: string; slug: string; title: string; inFooter?: boolean };
 export type LegalPage = LegalPageSummary & {
   bodyMd: string;
   versionLabel: string | null;

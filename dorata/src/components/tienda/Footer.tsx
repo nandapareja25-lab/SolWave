@@ -8,7 +8,7 @@ import { getLegalPages, getNavCategories, getStoreSettings } from "@/server/cata
 export async function Footer() {
   const [t, settings, legal, categories] = await Promise.all([getTranslations("footer"), getStoreSettings(), getLegalPages(), getNavCategories()]);
   const year = new Intl.DateTimeFormat("en-US", { year: "numeric", timeZone: "America/New_York" }).format(new Date());
-  const byKind = (k: string) => legal.find((p) => p.kind === k);
+  const byKind = (k: string) => legal.find((p) => p.kind === k && p.inFooter !== false);
   const help = ["contact", "shipping", "returns", "refunds", "warranty"].map(byKind).filter(Boolean) as { slug: string; title: string }[];
   const legalLinks = ["privacy", "cookies", "terms", "site_terms"].map(byKind).filter(Boolean) as { slug: string; title: string }[];
   const short = (title: string) => title.replace(/^Política de (Cambios y )?/, "").replace("Información de contacto comercial", "Contacto").replace("Garantía D'ORATA", "Garantía");

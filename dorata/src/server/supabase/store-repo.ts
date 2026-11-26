@@ -197,7 +197,7 @@ type LegalRow = { kind: string; slug: string; title: string; body_md: string | n
 
 export async function sbLegalPages(): Promise<LegalPageSummary[]> {
   const rows = await rest<LegalListRow[]>("rpc/public_legal_pages", { method: "POST", body: { p_locale: "es" } });
-  return rows.map(({ kind, slug, title }) => ({ kind, slug, title }));
+  return rows.map(({ kind, slug, title, show_in_footer }) => ({ kind, slug, title, inFooter: show_in_footer }));
 }
 
 export async function sbLegalPage(slug: string): Promise<LegalPage | null> {

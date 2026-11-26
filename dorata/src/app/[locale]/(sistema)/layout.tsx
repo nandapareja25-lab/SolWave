@@ -8,7 +8,7 @@ import { getCookiePolicyVersion, getLegalPages, getTrackingConfig } from "@/serv
 export default async function SystemLayout({ children }: { children: React.ReactNode }) {
   const [t, legal, policyVersion, integrations] = await Promise.all([getTranslations("footer"), getLegalPages(), getCookiePolicyVersion(), getTrackingConfig()]);
   const year = new Intl.DateTimeFormat("en-US", { year: "numeric", timeZone: "America/New_York" }).format(new Date());
-  const links = legal.filter((p) => ["privacy", "cookies", "terms", "contact"].includes(p.kind));
+  const links = legal.filter((p) => p.inFooter !== false && ["privacy", "cookies", "terms", "contact"].includes(p.kind));
   return (
     <div className="velvet flex min-h-dvh flex-col">
       <main id="contenido" className="flex flex-1 flex-col">{children}</main>
