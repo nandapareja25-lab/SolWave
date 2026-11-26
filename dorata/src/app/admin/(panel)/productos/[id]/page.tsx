@@ -27,6 +27,32 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   if (!isNew && !p) notFound();
 
   const variantIds = ((p?.product_variants ?? []) as { id: string }[]).map((v) => v.id);
+  const kitRole = (p?.kit_role ?? null) as "set_base" | "set_component" | null;
+  // Sets cadena + dije: costos en pesos de la cadena y de los dijes reservados (para que la dueña elija y vea el total)
+  const curCop = async (productIds: string[]) => {
+    if (!productIds.length) return new Map<string, number>();
+    const { data } = await sb.from("product_variants").select("product_id, variant_costs(original_amount, original_currency, is_current)").in("product_id", productIds);
+    const m = new Map<string, number>();
+    for (const v of (data ?? []) as { product_id: string; variant_costs: { original_amount: number; original_currency: string; is_current: boolean }[] }[]) {
+      const c = v.variant_costs.find((x) => x.is_current && x.original_currency === "COP");
+      if (c) m.set(v.product_id, Number(c.original_amount));
+    }
+    return m;
+  };
+  let kit: EditorData["kit"] = null;
+  if (kitRole === "set_base" && p) {
+    const { data: pend } = await sb.from("products").select("id, product_translations(locale,name)").eq("kit_role", "set_component").neq("status", "archived");
+    const { data: taken } = await sb.from("products").select("id, set_pendant_product_id, product_translations(locale,name)").not("set_pendant_product_id", "is", null);
+    const costs = await curCop([p.id, ...(pend ?? []).map((x) => x.id)]);
+    const takenBy = new Map((taken ?? []).map((t) => [t.set_pendant_product_id as string, { id: t.id, name: es<Tr>(t.product_translations)?.name ?? "" }]));
+    const options = (pend ?? []).map((x) => ({ id: x.id, name: es<Tr>(x.product_translations)?.name ?? "", costCop: costs.get(x.id) ?? null, takenBy: takenBy.get(x.id) ?? null }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+    kit = { role: "set_base", chainCostCop: costs.get(p.id) ?? null, current: options.find((o) => o.id === p.set_pendant_product_id) ?? null,
+      options: options.filter((o) => !o.takenBy || o.takenBy.id === p.id).map((o) => (o.takenBy?.id === p.id ? { ...o, takenBy: null } : o)) };
+  } else if (kitRole === "set_component" && p) {
+    const { data: owner } = await sb.from("products").select("id, product_translations(locale,name)").eq("set_pendant_product_id", p.id).maybeSingle();
+    kit = { role: "set_component", partOf: owner ? { id: owner.id, name: es<Tr>(owner.product_translations)?.name ?? "" } : null };
+  }
   const [{ data: stock }, costRes, fxRes] = await Promise.all([
     variantIds.length ? sb.from("v_inventory_status").select("variant_id,on_hand,reserved,available").in("variant_id", variantIds) : Promise.resolve({ data: [] }),
     canSeeCosts && variantIds.length ? sb.from("variant_costs").select("variant_id,original_currency,original_amount,fx_cop_per_usd,intl_shipping_cents,packaging_cents,other_cents,total_unit_cost_cents,valid_from").in("variant_id", variantIds).eq("is_current", true) : Promise.resolve({ data: [] }),
@@ -66,7 +92,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     categories: catList, warranties: wList, collections: colList, canSeeCosts,
     storageBase: process.env.NEXT_PUBLIC_SUPABASE_URL ?? "",
     stock: Object.fromEntries((stock ?? []).map((s) => [s.variant_id, { onHand: s.on_hand as number, reserved: s.reserved as number, available: s.available as number }])),
-    costs: Object.fromEntries(((costRes.data ?? []) as { variant_id: string; original_currency: string; original_amount: number; fx_cop_per_usd: number | null; total_unit_cost_cents: number; valid_from: string }[])
+    kit,
+    costs: Object.fromEntries(((costRes.data ?? []) as { variant_id: string; original_currency: string; original_amount: number; fx_cop_per_usd: number | null; total_unit_cost_cents: number | null; valid_from: string }[])
       .map((c) => [c.variant_id, { currency: c.original_currency, amount: Number(c.original_amount), fx: c.fx_cop_per_usd ? Number(c.fx_cop_per_usd) : null, totalCents: c.total_unit_cost_cents, since: c.valid_from }])),
     fx: fxRes.data?.cop_per_usd ? Number(fxRes.data.cop_per_usd) : null,
     minMargin: fxRes.data?.minimum_margin_pct != null ? Number(fxRes.data.minimum_margin_pct) : null,

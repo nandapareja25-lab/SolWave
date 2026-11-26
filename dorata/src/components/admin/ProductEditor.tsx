@@ -14,6 +14,7 @@ import { useSaveShortcut } from "./useSaveShortcut";
 import { GooglePreview } from "./GooglePreview";
 import { ProductPhotos, type MediaItem } from "./ProductPhotos";
 import { VariantCosts, type CostInfo } from "./VariantCosts";
+import { SetPendantCard, type PendantOption } from "./SetPendantCard";
 
 export type EditorData = {
   categories: { id: string; auto: string | null; warrantyId: string | null; name: string; slug: string }[];
@@ -23,6 +24,9 @@ export type EditorData = {
   stock: Record<string, { onHand: number; reserved: number; available: number }>;
   costs: Record<string, CostInfo>;
   media: MediaItem[];
+  /** Sets cadena + dije: la cadena espera su dije; el dije está reservado para un set. */
+  kit: { role: "set_base"; chainCostCop: number | null; current: PendantOption | null; options: PendantOption[] }
+     | { role: "set_component"; partOf: { id: string; name: string } | null } | null;
 };
 
 const STATUS = [
@@ -126,6 +130,18 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
             </div>
           </div>
         </Card>
+
+        {data.kit?.role === "set_base" && d.id && (
+          <SetPendantCard setId={d.id} chainCostCop={data.kit.chainCostCop} current={data.kit.current} options={data.kit.options} />
+        )}
+        {data.kit?.role === "set_component" && (
+          <Card title="Dije reservado para sets" step={2}>
+            <p className="text-[14px] text-ink-2">Esta pieza no se vende sola: se usa para armar un set con una cadena.</p>
+            <p className="mt-2 text-[14px]">{data.kit.partOf
+              ? <>Asignado a <Link href={`/admin/productos/${data.kit.partOf.id}`} className="font-semibold underline underline-offset-4">{data.kit.partOf.name}</Link>.</>
+              : <span className="text-gold-deep">Todavía no está en ningún set.</span>}</p>
+          </Card>
+        )}
 
         <Card title="Precio y variantes" step={2} aside={<span className={helpCls}>Precios en USD</span>}>
           <p className="mb-4 text-[13px] text-ink-2">Si la pieza viene en un solo modelo, deja una variante “Única”. Si cambia el largo, color de hilo o talla, agrega una por opción.</p>
@@ -299,12 +315,15 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
             <legend className="sr-only">Estado del producto</legend>
             {STATUS.map((s) => (
               <label key={s.value} className="flex cursor-pointer gap-3 rounded-[4px] border border-line p-3 transition-colors has-[:checked]:border-ink has-[:checked]:bg-ivory">
-                <input type="radio" name="status" checked={d.status === s.value} onChange={() => set("status", s.value)} className="mt-1 accent-[var(--ink)]" />
+                <input type="radio" name="status" checked={d.status === s.value} onChange={() => set("status", s.value)}
+                  disabled={s.value === "active" && (data.kit?.role === "set_component" || (data.kit?.role === "set_base" && !data.kit.current))} className="mt-1 accent-[var(--ink)] disabled:opacity-40" />
                 <span><span className="block text-[15px] font-semibold">{s.label}</span><span className="block text-[13px] text-ink-2">{s.help}</span></span>
               </label>
             ))}
           </fieldset>
           {d.status === "active" && data.media.length === 0 && d.id && <p className="fade-in mt-3 text-[13px] text-gold-deep">Aún no tiene fotos: en la tienda se verá una ilustración en su lugar.</p>}
+          {data.kit?.role === "set_base" && !data.kit.current && <p className="mt-3 text-[13px] text-gold-deep">Para publicarlo, primero asígnale su dije.</p>}
+          {data.kit?.role === "set_component" && <p className="mt-3 text-[13px] text-ink-2">Los dijes reservados para sets no se publican solos.</p>}
         </Card>
       </div>
 

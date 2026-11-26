@@ -72,6 +72,9 @@ export async function saveRate(_p: ActionResult, form: FormData): Promise<Action
   const { error: e1 } = await auth.sb.from("exchange_rates").insert({ cop_per_usd: rate, note: d.data.note || null, source: "manual", created_by: auth.user.id });
   const { error: e2 } = await auth.sb.from("business_settings").update({ cop_per_usd: rate, cop_rate_updated_at: new Date().toISOString() }).eq("id", 1);
   if (e1 || e2) return fail("No se pudo guardar la tasa.");
-  revalidatePath("/admin/configuracion");
-  return done(`Tasa guardada: ${rate.toLocaleString("es-US")} COP por 1 USD.`);
+  // Los costos en pesos que esperaban una tasa se convierten con esta (los ya convertidos no cambian).
+  const { data: filled } = await auth.sb.rpc("admin_apply_fx_to_pending", { p_rate: rate });
+  revalidatePath("/admin/configuracion"); revalidatePath("/admin/productos", "layout");
+  const n = Number(filled ?? 0);
+  return done(`Tasa guardada: ${rate.toLocaleString("es-US")} COP por 1 USD.${n ? ` Se convirtieron ${n} costos que estaban pendientes.` : ""}`);
 }

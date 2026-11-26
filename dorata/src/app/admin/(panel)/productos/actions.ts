@@ -50,6 +50,8 @@ const ERR: [string, string][] = [
   ["product_variants_sku_key", "Ese código (SKU) ya lo usa otro producto. Cada variante necesita un código único."],
   ["product_translations_locale_slug_key", "Ya existe otro producto con esa dirección. Cambia la dirección."],
   ["compare_at", "El precio “antes” debe ser mayor que el precio actual."],
+  ["SET_WITHOUT_PENDANT", "Este set todavía no tiene dije: asígnalo en “Dije del set” antes de publicarlo."],
+  ["COMPONENT_NOT_SELLABLE", "Este dije está reservado para armar sets: no se publica solo."],
 ];
 
 export async function saveProduct(input: ProductInput): Promise<ProductResult> {
@@ -108,6 +110,20 @@ export async function saveProduct(input: ProductInput): Promise<ProductResult> {
   refreshStore(); revalidatePath("/admin/productos");
   const msg = d.status === "active" ? "Guardado y publicado. Se ve en la tienda en menos de un minuto." : d.status === "draft" ? "Guardado como borrador (no se ve en la tienda)." : "Guardado como archivado (no se ve en la tienda).";
   return { ok: true, message: msg, id: id as string };
+}
+
+// ---------- Sets cadena + dije (la dueña decide qué dije va con cada cadena) ----------
+export async function assignPendant(setId: string, pendantId: string): Promise<ProductResult> {
+  const auth = await adminAction("staff"); if (!auth.ok) return fail(auth.error);
+  if (!uuid.safeParse(setId).success || (pendantId && !uuid.safeParse(pendantId).success)) return fail("Datos no válidos.");
+  const { error } = await auth.sb.rpc("admin_assign_pendant", { p_set: setId, p_pendant: pendantId || null });
+  if (error) {
+    if (error.message.includes("PENDANT_TAKEN")) return fail("Ese dije ya está asignado a otro set.");
+    if (error.message.includes("SET_WITHOUT_PENDANT")) return fail("Este set está publicado: pásalo a borrador antes de quitarle el dije.");
+    return fail("No se pudo asignar el dije. Inténtalo de nuevo.");
+  }
+  revalidatePath(`/admin/productos/${setId}`); revalidatePath("/admin/productos");
+  return { ok: true, message: pendantId ? "Dije asignado. Revisa nombre, fotos y precio antes de publicar el set." : "Dije quitado: vuelve a estar disponible." };
 }
 
 // ---------- Costos (solo admin: la vendedora no ve costos ni márgenes) ----------

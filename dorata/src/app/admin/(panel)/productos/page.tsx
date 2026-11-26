@@ -12,13 +12,13 @@ const STATUS: Record<string, { label: string; cls: string }> = {
   draft: { label: "Borrador", cls: "bg-gold/15 text-gold-deep" },
   archived: { label: "Archivado", cls: "bg-line/60 text-ink-2" },
 };
-type Sp = { q?: string; estado?: string; categoria?: string; stock?: string };
+type Sp = { q?: string; estado?: string; categoria?: string; stock?: string; tipo?: string };
 
 export default async function ProductsPage({ searchParams }: { searchParams: Promise<Sp> }) {
   const sp = await searchParams;
   const { sb } = await requireAdmin("staff");
   const [{ data: rows }, { data: cats }, { data: stock }] = await Promise.all([
-    sb.from("products").select("id,status,primary_category_id,updated_at,product_translations(locale,name,slug),product_variants(id,sku,title,price_cents,is_active),product_media(variants,position)").order("updated_at", { ascending: false }),
+    sb.from("products").select("id,status,primary_category_id,updated_at,tags,kit_role,set_pendant_product_id,product_translations(locale,name,slug),product_variants(id,sku,title,price_cents,is_active),product_media(variants,position)").order("updated_at", { ascending: false }),
     sb.from("categories").select("id,auto_rule,category_translations(locale,name)").order("sort_order"),
     sb.from("v_inventory_status").select("variant_id,product_id,available,is_low"),
   ]);
@@ -38,7 +38,10 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
     return {
       id: p.id, status: p.status as string, name: t?.name ?? "(sin nombre)", category: catName.get(p.primary_category_id) ?? "", categoryId: p.primary_category_id,
       skus: vs.map((v) => v.sku).join(" "), variants: vs.length,
-      price: prices.length ? (Math.min(...prices) === Math.max(...prices) ? formatUSD(prices[0]!) : `${formatUSD(Math.min(...prices))} – ${formatUSD(Math.max(...prices))}`) : "—",
+      price: !prices.length || Math.max(...prices) === 0 ? "Sin precio" : Math.min(...prices) === Math.max(...prices) ? formatUSD(prices[0]!) : `${formatUSD(Math.min(...prices))} – ${formatUSD(Math.max(...prices))}`,
+      noPrice: !prices.length || Math.max(...prices) === 0,
+      flag: p.kit_role === "set_base" && !p.set_pendant_product_id ? "Falta dije" : p.kit_role === "set_component" ? "Dije para set" : ((p.tags ?? []) as string[]).includes("revisar") ? "Revisar" : null,
+      kit: p.kit_role as string | null, review: ((p.tags ?? []) as string[]).includes("revisar"), hasPendant: !!p.set_pendant_product_id,
       thumb: media && base ? `${base}/storage/v1/object/public/product-media/${media.variants["400"] ?? Object.values(media.variants)[0]}` : null,
       available, low: lowOnes.length > 0,
       stockNote: available === 0 ? "Agotado" : `${available} disponibles`,
@@ -48,11 +51,13 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
   const list = all.filter((p) =>
     (!q || p.name.toLowerCase().includes(q) || p.skus.toLowerCase().includes(q)) &&
     (!sp.estado || p.status === sp.estado) && (!sp.categoria || p.categoryId === sp.categoria) &&
-    (sp.stock !== "agotado" || p.available === 0) && (sp.stock !== "pocas" || (p.low && p.available > 0)));
-  const filtered = !!(q || sp.estado || sp.categoria || sp.stock);
+    (sp.stock !== "agotado" || p.available === 0) && (sp.stock !== "pocas" || (p.low && p.available > 0)) &&
+    (sp.tipo !== "sets" || (p.kit === "set_base" && !p.hasPendant)) && (sp.tipo !== "dijes" || p.kit === "set_component") &&
+    (sp.tipo !== "revisar" || p.review) && (sp.tipo !== "sinprecio" || (p.noPrice && p.kit !== "set_component")));
+  const filtered = !!(q || sp.estado || sp.categoria || sp.stock || sp.tipo);
   const counts = { active: all.filter((p) => p.status === "active").length, draft: all.filter((p) => p.status === "draft").length };
   const href = (patch: Partial<Sp>) => {
-    const qs = new URLSearchParams(Object.entries({ q: sp.q, categoria: sp.categoria, estado: sp.estado, stock: sp.stock, ...patch }).filter(([, v]) => v) as [string, string][]);
+    const qs = new URLSearchParams(Object.entries({ q: sp.q, categoria: sp.categoria, estado: sp.estado, stock: sp.stock, tipo: sp.tipo, ...patch }).filter(([, v]) => v) as [string, string][]);
     return `/admin/productos${qs.size ? `?${qs}` : ""}`;
   };
   const chip = (patch: Partial<Sp>, text: string, on: boolean) => (
@@ -78,12 +83,20 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
         </AutoSubmitSelect>
       </form>
       <div className="mb-4 flex flex-wrap gap-2">
-        {chip({ estado: undefined, stock: undefined }, "Todos", !sp.estado && !sp.stock)}
+        {chip({ estado: undefined, stock: undefined, tipo: undefined }, "Todos", !sp.estado && !sp.stock && !sp.tipo)}
         {chip({ estado: "active", stock: undefined }, `Activos (${counts.active})`, sp.estado === "active")}
         {chip({ estado: "draft", stock: undefined }, `Borradores (${counts.draft})`, sp.estado === "draft")}
         {chip({ estado: undefined, stock: "pocas" }, `Quedan pocas (${all.filter((p) => p.low && p.available > 0).length})`, sp.stock === "pocas")}
         {chip({ estado: undefined, stock: "agotado" }, `Agotados (${all.filter((p) => p.available === 0).length})`, sp.stock === "agotado")}
       </div>
+      {(all.some((p) => p.kit) || all.some((p) => p.review)) && (
+        <div className="-mt-2 mb-4 flex flex-wrap gap-2" aria-label="Por completar">
+          {chip({ tipo: sp.tipo === "sinprecio" ? undefined : "sinprecio" }, `Sin precio (${all.filter((p) => p.noPrice && p.kit !== "set_component").length})`, sp.tipo === "sinprecio")}
+          {chip({ tipo: sp.tipo === "sets" ? undefined : "sets" }, `Sets sin dije (${all.filter((p) => p.kit === "set_base" && !p.hasPendant).length})`, sp.tipo === "sets")}
+          {chip({ tipo: sp.tipo === "dijes" ? undefined : "dijes" }, `Dijes para sets (${all.filter((p) => p.kit === "set_component").length})`, sp.tipo === "dijes")}
+          {chip({ tipo: sp.tipo === "revisar" ? undefined : "revisar" }, `Por revisar (${all.filter((p) => p.review).length})`, sp.tipo === "revisar")}
+        </div>
+      )}
       {filtered && <p className="mb-3 text-[14px] text-ink-2">{list.length} de {all.length} productos · <Link href="/admin/productos" className="underline underline-offset-4">Quitar filtros</Link></p>}
 
       {all.length === 0 ? (
@@ -105,9 +118,10 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-[15px] font-semibold">{p.name}</p>
+                  {p.flag && <span className={`mt-0.5 inline-block rounded-[4px] px-1.5 text-[11px] font-semibold ${p.flag === "Dije para set" ? "bg-line/60 text-ink-2" : "bg-gold/15 text-gold-deep"}`}>{p.flag}</span>}
                   <p className="truncate text-[13px] text-ink-2">{p.category} · {p.variants} {p.variants === 1 ? "variante" : "variantes"}</p>
                   <p className="mt-1 flex flex-wrap items-center gap-2 text-[13px]">
-                    <span className="tabular font-semibold">{p.price}</span>
+                    <span className={`tabular font-semibold ${p.noPrice ? "text-gold-deep" : ""}`}>{p.price}</span>
                     <span className={p.available === 0 ? "text-danger" : "text-ink-2"}>{p.stockNote}</span>
                   </p>
                   {p.stockAlert && <p className="mt-0.5 flex items-center gap-1.5 truncate text-[12px] text-gold-deep"><span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-gold" />{p.stockAlert}</p>}

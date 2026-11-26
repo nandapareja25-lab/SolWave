@@ -7,7 +7,7 @@ import { saveVariantCost } from "@/app/admin/(panel)/productos/actions";
 import { formatUSD } from "@/lib/money";
 import { Card, StatusText, btnQuiet, collectFields, helpCls, inputCls, labelCls } from "./ui";
 
-export type CostInfo = { currency: string; amount: number; fx: number | null; totalCents: number; since: string };
+export type CostInfo = { currency: string; amount: number; fx: number | null; totalCents: number | null; since: string };
 
 /** Costo por variante (en pesos colombianos o dólares) y margen bruto. Solo lo ven dueña y administración. */
 export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: { variants: { id: string; title: string; priceCents: number }[]; costs: Record<string, CostInfo>; fx: number | null; minMargin: number | null; targetMargin: number | null }) {
@@ -34,7 +34,7 @@ export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: {
       <ul className="grid gap-3">
         {variants.map((v) => {
           const c = costs[v.id];
-          const margin = c && v.priceCents > 0 ? Math.round(((v.priceCents - c.totalCents) / v.priceCents) * 100) : null;
+          const margin = c && c.totalCents != null && v.priceCents > 0 ? Math.round(((v.priceCents - c.totalCents) / v.priceCents) * 100) : null;
           return (
             <li key={v.id} className="rounded-[4px] border border-line p-3">
               <div className="flex flex-wrap items-start justify-between gap-3">
@@ -42,8 +42,8 @@ export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: {
                   <p className="text-[15px] font-semibold">{v.title}</p>
                   {c ? (
                     <p className="text-[13px] text-ink-2">
-                      Costo total <strong className="tabular text-ink">{formatUSD(c.totalCents)}</strong>
-                      {c.currency === "COP" ? ` · ${c.amount.toLocaleString("es-US")} COP a ${c.fx?.toLocaleString("es-US")}` : ""}
+                      {c.totalCents != null ? <>Costo total <strong className="tabular text-ink">{formatUSD(c.totalCents)}</strong>{c.currency === "COP" ? ` · ${c.amount.toLocaleString("es-CO")} COP a ${c.fx?.toLocaleString("es-CO")}` : ""}</>
+                        : <>Costo <strong className="tabular text-ink">{c.amount.toLocaleString("es-CO")} COP</strong> · en dólares: pendiente de la tasa de cambio</>}
                     </p>
                   ) : <p className="text-[13px] text-gold-deep">Sin costo registrado</p>}
                 </div>
@@ -75,7 +75,7 @@ export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: {
                   </div>
                 </div>
               ) : (
-                <button type="button" onClick={() => { setOpen(v.id); setMsg(null); }} className={`${btnQuiet} mt-3`}><Plus aria-hidden="true" size={15} />{c ? "Registrar costo nuevo" : "Registrar costo"}</button>
+                <button type="button" onClick={() => { setOpen(v.id); setMsg(null); }} className={`${btnQuiet} mt-3`}><Plus aria-hidden="true" size={15} />Registrar costo</button>
               )}
             </li>
           );
