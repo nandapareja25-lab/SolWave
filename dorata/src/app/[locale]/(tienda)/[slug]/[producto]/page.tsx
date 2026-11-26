@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { BadgeCheck, MessageCircle, ShieldCheck, Truck } from "lucide-react";
+import { BadgeCheck, Gift, MessageCircle, ShieldCheck, Truck } from "lucide-react";
+import { formatWarranty } from "@/lib/warranty";
 import { Link } from "@/i18n/navigation";
 import { ProductCard } from "@/components/tienda/ProductCard";
 import { SectionHeading } from "@/components/tienda/SectionHeading";
@@ -84,7 +85,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
 
           <div className="rise rise-3 mt-6">
             <AddToCart
-              product={{ slug: p.slug, categorySlug: p.categorySlug, name: p.name, image: p.image, hasWarranty: !!p.warranty }}
+              product={{ slug: p.slug, categorySlug: p.categorySlug, name: p.name, image: p.image, hasWarranty: p.hasWarranty }}
               labels={{ variant: p.variants.some((x) => x.swatch) ? t("optionLabel") : t("variant"), soldOutShort: t("soldOut"), quantity: t("quantity"), decrease: t("decrease"), increase: t("increase"), addToCart: t("addToCart"), added: t("added"), soldOut: t("soldOut"), lowStock: t("lowStock") }}
             />
           </div>
@@ -96,7 +97,23 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
           )}
 
           {/* Garantía: tarjeta destacada solo cuando la pieza tiene garantía con nombre */}
-          {p.warranty ? (
+          {p.warrantyComponents.length > 0 ? (
+            <div className="rise rise-4 filete-doble velvet mt-6 rounded-[4px] p-5">
+              <p className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[.14em] text-gold"><ShieldCheck aria-hidden="true" size={16} strokeWidth={1.75} /> {t("components")}</p>
+              <ul className="mt-3 grid gap-3">
+                {p.warrantyComponents.map((c) => (
+                  <li key={c.label}>
+                    <p className="flex items-baseline justify-between gap-3">
+                      <span className="text-[15px] font-semibold text-on-dark">{c.label}</span>
+                      {c.policy?.months ? <span className="shrink-0 font-display text-[20px] leading-none text-gold">{formatWarranty(c.policy.months)}</span> : null}
+                    </p>
+                    <p className="mt-1 text-[13px] leading-[1.45] text-on-dark-2">{c.policy?.months ? c.policy.summary : <>{t("componentPending")}{" "}<Link href="/contacto" className="font-semibold text-on-dark underline decoration-gold underline-offset-4">{t("noWarrantyContact")}</Link></>}</p>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/garantia" className="mt-3 inline-flex min-h-11 items-center text-[15px] font-semibold text-gold underline decoration-gold/60 underline-offset-4">{t("warrantyLink")}</Link>
+            </div>
+          ) : p.warranty ? (
             <div className="rise rise-4 filete-doble velvet mt-6 rounded-[4px] p-5">
               <p className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[.14em] text-gold"><ShieldCheck aria-hidden="true" size={16} strokeWidth={1.75} /> {t("warranty")}</p>
               <p className="mt-2 font-display text-[20px] leading-tight">{p.warranty.name}</p>
@@ -107,11 +124,12 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
 
           <ul className="mt-6 grid gap-3 text-[15px] text-ink-2">
             <li className="flex gap-3"><BadgeCheck aria-hidden="true" size={18} className="shrink-0 text-gold-deep" strokeWidth={1.5} />{t("certificate")}</li>
-            {!p.warranty && (
+            {!p.warranty && p.warrantyComponents.length === 0 && (
               <li className="flex gap-3"><ShieldCheck aria-hidden="true" size={18} className="shrink-0 text-gold-deep" strokeWidth={1.5} />
                 <span>{t("noWarranty")}{" "}<Link href="/contacto" className="font-semibold text-ink underline decoration-gold underline-offset-4">{t("noWarrantyContact")}</Link></span>
               </li>
             )}
+            {settings.packagingNote && <li className="flex gap-3"><Gift aria-hidden="true" size={18} className="shrink-0 text-gold-deep" strokeWidth={1.5} />{settings.packagingNote}</li>}
             {p.shippingNotes && <li className="flex gap-3"><Truck aria-hidden="true" size={18} className="shrink-0 text-gold-deep" strokeWidth={1.5} />{p.shippingNotes}</li>}
           </ul>
 

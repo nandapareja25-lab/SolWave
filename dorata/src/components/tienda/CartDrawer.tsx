@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { BadgeCheck, Minus, Plus, ShieldCheck, Trash2, Lock } from "lucide-react";
+import { BadgeCheck, Gift, Minus, Plus, ShieldCheck, Trash2, Lock } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Sheet } from "@/components/ui/Sheet";
 import { formatUSD } from "@/lib/money";
@@ -15,7 +15,7 @@ export type CartLabels = {
   removed: string; undo: string; trustCert: string; trustWarranty: string;
 };
 
-export function CartDrawer({ labels, checkoutEnabled }: { labels: CartLabels; checkoutEnabled: boolean }) {
+export function CartDrawer({ labels, checkoutEnabled, packagingNote }: { labels: CartLabels; checkoutEnabled: boolean; packagingNote: string | null }) {
   const { lines, open, setOpen, setQty, remove, subtotalCents, lastRemoved, undoRemove, clearRemoved } = useCart();
   const close = () => setOpen(false);
   // "Deshacer" visible 5 s tras quitar una pieza
@@ -82,9 +82,10 @@ export function CartDrawer({ labels, checkoutEnabled }: { labels: CartLabels; ch
               </div>
             </li>
           ))}
-          <li className="grid gap-2 py-4 text-[13px] text-ink-2">
-            <span className="flex items-center gap-2"><BadgeCheck aria-hidden="true" size={16} className="text-gold-deep" strokeWidth={1.5} />{labels.trustCert}</span>
-            {lines.every((l) => l.hasWarranty) && <span className="flex items-center gap-2"><ShieldCheck aria-hidden="true" size={16} className="text-gold-deep" strokeWidth={1.5} />{labels.trustWarranty}</span>}
+          <li className="grid gap-2 py-4 text-[13px] leading-[1.45] text-ink-2">
+            <span className="flex items-start gap-2"><BadgeCheck aria-hidden="true" size={16} className="mt-0.5 shrink-0 text-gold-deep" strokeWidth={1.5} />{labels.trustCert}</span>
+            {packagingNote && <span className="flex items-start gap-2"><Gift aria-hidden="true" size={16} className="mt-0.5 shrink-0 text-gold-deep" strokeWidth={1.5} />{packagingNote}</span>}
+            {lines.every((l) => l.hasWarranty) && <span className="flex items-start gap-2"><ShieldCheck aria-hidden="true" size={16} className="mt-0.5 shrink-0 text-gold-deep" strokeWidth={1.5} />{labels.trustWarranty}</span>}
           </li>
         </ul>
       )}

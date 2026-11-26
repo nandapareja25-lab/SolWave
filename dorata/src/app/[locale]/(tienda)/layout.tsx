@@ -22,7 +22,7 @@ export default async function StoreLayout({ children }: { children: React.ReactN
       <Header />
       <main id="contenido" className="min-h-[60dvh]">{children}</main>
       <Footer />
-      <CartDrawer labels={await cartLabels()} checkoutEnabled={false} />
+      <CartDrawer labels={await cartLabels()} checkoutEnabled={false} packagingNote={settings.packagingNote} />
       <CookieConsent labels={await cookieLabels()} policyVersion={policyVersion} integrations={integrations} />
       <WhatsAppFab e164={settings.whatsappE164} message="Hola D'ORATA, tengo una pregunta." />
       <OfflineNotice label={tSys("offline")} />

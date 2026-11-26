@@ -19,14 +19,14 @@ begin
   r := public.current_announcement('es', timestamp '2026-11-30 18:00:00' at time zone 'America/New_York');
   assert r ->> 'mode' = 'countdown', r::text;
   assert r -> 'items' -> 0 ->> 'text' = 'Faltan {countdown}';
-  assert r -> 'items' -> 1 ->> 'text' = '✦ LANZAMIENTO D''ORATA · 02.12.26 · MUY PRONTO ✦';
+  assert r -> 'items' -> 1 ->> 'text' = '✦ LANZAMIENTO D''ORATA · 2 DE DICIEMBRE · MUY PRONTO ✦';
   assert (r ->> 'countdown_target_at')::timestamptz = timestamp '2026-12-02 00:00:00' at time zone 'America/New_York';
   assert r -> 'after' ->> 'text' = '✦ D''ORATA YA ESTÁ DISPONIBLE · COMPRA AHORA ✦', 'el navegador recibe el mensaje siguiente para cambiar sin recargar';
   r := public.current_announcement('es', timestamp '2026-12-02 00:00:00' at time zone 'America/New_York');
   assert r ->> 'mode' = 'after' and r -> 'items' -> 0 ->> 'text' = '✦ D''ORATA YA ESTÁ DISPONIBLE · COMPRA AHORA ✦', r::text;
   r := public.current_announcement('es', timestamp '2027-03-01 00:00:00' at time zone 'America/New_York');
   assert r ->> 'mode' = 'after', 'sin fecha de fin: sigue hasta que la dueña lo reemplace';
-  raise notice 'OK A0 — lanzamiento real: cuenta regresiva hasta 02.12.26 y luego "ya disponible"';
+  raise notice 'OK A0 — lanzamiento real: cuenta regresiva hasta el 2 de diciembre y luego "ya disponible"';
 end $$;
 
 -- ---------- S1: modo de la tienda ----------

@@ -6,6 +6,7 @@ import { ProductImage } from "@/components/tienda/ProductImage";
 import { BigCountdown } from "@/components/tienda/BigCountdown";
 import { NewsletterForm } from "@/components/tienda/NewsletterForm";
 import { newsletterLabels } from "@/components/tienda/labels";
+import { definedByDuration, formatWarranty } from "@/lib/warranty";
 import { getAnnouncement, getStoreModeInfo, getStoreSettings, getWarrantyPolicies } from "@/server/catalog";
 
 export const dynamic = "force-dynamic";
@@ -15,8 +16,7 @@ export default async function ComingSoonPage({ params }: { params: Promise<{ loc
   const { locale } = await params;
   setRequestLocale(locale);
   const [t, settings, announcement, mode, warranties] = await Promise.all([getTranslations("comingSoon"), getStoreSettings(), getAnnouncement(locale), getStoreModeInfo(), getWarrantyPolicies()]);
-  const ms = warranties.map((w) => w.months).sort((a, b) => a - b);
-  const yrs = (m: number) => (m % 12 === 0 ? `${m / 12} ${m / 12 === 1 ? "año" : "años"}` : `${m} meses`);
+  const defined = definedByDuration(warranties);
   // Objetivo del contador: la cuenta regresiva del banner o, si no hay, la apertura programada.
   const target = announcement?.countdown_target_at ?? mode.liveAt;
 
@@ -30,8 +30,9 @@ export default async function ComingSoonPage({ params }: { params: Promise<{ loc
       <ProductImage image={{ url: null, illustration: "chain", alt: "Cadena en oro laminado 18K" }} surface="velvet" priority className="rise rise-1 filete-doble mt-4 h-[140px] w-full rounded-[4px]" />
       <p className="rise rise-2 mt-6 text-[12px] font-semibold uppercase tracking-[.2em] text-gold">{t("eyebrow")}</p>
       <h1 className="rise rise-2 mt-2 font-display text-[32px] leading-[1.1]">{t("title")}</h1>
-      <p className="rise rise-3 mt-3 text-[15px] leading-[1.55] text-on-dark-2">{t("body", { short: yrs(ms[0] ?? 12), long: yrs(ms.at(-1) ?? 60) })}</p>
+      <p className="rise rise-3 mt-3 text-[15px] leading-[1.55] text-on-dark-2">{t("body", { short: formatWarranty(defined[0]?.months), long: formatWarranty(defined.at(-1)?.months) })}</p>
       <div className="rise rise-3 mt-6 w-full">
+        <p className="mb-3 text-[15px] text-on-dark">{t("benefit")}</p>
         <NewsletterForm labels={await newsletterLabels(true)} source="waitlist" tone="dark" />
       </div>
       {target && (

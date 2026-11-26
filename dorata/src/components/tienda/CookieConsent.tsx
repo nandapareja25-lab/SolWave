@@ -148,7 +148,7 @@ function Toggle({ k, label, body, prefs, setPrefs, locked }: {
 export function PrivacyPreferencesButton({ label, plain = false }: { label: string; plain?: boolean }) {
   return (
     <button type="button" onClick={() => window.dispatchEvent(new Event(OPEN_PRIVACY_EVENT))}
-      className={plain ? "inline-flex min-h-11 items-center hover:text-on-dark" : "min-h-11 text-left text-[14px] text-gold underline decoration-gold/60 underline-offset-[3px]"}>
+      className={plain ? "inline-flex min-h-9 items-center text-left hover:text-on-dark" : "min-h-11 text-left text-[14px] text-gold underline decoration-gold/60 underline-offset-[3px]"}>
       {label}
     </button>
   );

@@ -3,12 +3,13 @@ import { FileClock, ShieldCheck } from "lucide-react";
 import { renderMarkdown } from "@/lib/markdown";
 import { getWarrantyPolicies } from "@/server/catalog";
 import type { LegalPage } from "@/server/types";
+import { definedByDuration, formatWarranty as years } from "@/lib/warranty";
 
-const years = (m: number) => (m % 12 === 0 ? `${m / 12} ${m / 12 === 1 ? "año" : "años"}` : `${m} meses`);
 
 export async function LegalView({ page }: { page: LegalPage }) {
   const t = await getTranslations("legal");
-  const warranties = page.kind === "warranty" ? await getWarrantyPolicies() : [];
+  const all = page.kind === "warranty" ? await getWarrantyPolicies() : [];
+  const warranties = definedByDuration(all);
   const date = page.effectiveAt
     ? new Intl.DateTimeFormat("es-US", { dateStyle: "long", timeZone: "America/New_York" }).format(new Date(page.effectiveAt))
     : null;
@@ -40,6 +41,10 @@ export async function LegalView({ page }: { page: LegalPage }) {
           </div>
           {warranties[0] && (
             <div className="prose-legal">
+              <h2>{t("componentsTitle")}</h2>
+              <p>{t("componentsBody", { long: years(warranties.at(-1)?.months) })}</p>
+              <p>{t("setsNote", { short: years(warranties[0].months) })}</p>
+              <blockquote>{t("returnsSeparate")}</blockquote>
               <h2>{t("covers")}</h2>
               <div dangerouslySetInnerHTML={{ __html: renderMarkdown(warranties[0].coverageMd) }} />
               <h2>{t("excludes")}</h2>

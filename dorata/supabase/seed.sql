@@ -34,6 +34,16 @@ Según corresponda, también puede cubrir:
 Las joyas incompletas no se reciben para evaluación de garantía.$md$
 from p;
 
+-- Hilo/neopreno y armado de pulseras artesanales: SIN duración hasta que la dueña la defina (configurable).
+with p as (
+  insert into public.warranty_policies (code, duration_months, sort_order) values ('wear_components', null, 3) returning id
+)
+insert into public.warranty_policy_translations (warranty_policy_id, locale, name, summary, coverage_md, exclusions_md)
+select p.id, 'es', 'Hilo, neopreno y armado',
+  'No incluidos en la garantía de 5 años de la balinería. Condiciones por definir.',
+  '[Pendiente de definir por D''ORATA]', '[Pendiente de definir por D''ORATA]'
+from p;
+
 -- Categorías iniciales (ejemplos de la dueña). "Nuevos" y "Ofertas" son automáticas.
 with c (name, slug, sort_order, auto_rule, warranty) as (values
   ('Cadenas',           'cadenas',          1,  null, 'finished_pieces_1y'),
@@ -43,9 +53,9 @@ with c (name, slug, sort_order, auto_rule, warranty) as (values
   ('Pulseras',          'pulseras',         5,  null, 'finished_pieces_1y'),
   ('Pulseras de hilo',  'pulseras-de-hilo', 6,  null, null),
   ('Balinería',         'balineria',        7,  null, 'ball_beads_5y'),
-  ('Sets',              'sets',             8,  null, null),
-  ('Religiosos',        'religiosos',       9,  null, null),
-  ('Tréboles',          'treboles',         10, null, null),
+  ('Sets',              'sets',             8,  null, 'finished_pieces_1y'),
+  ('Religiosos',        'religiosos',       9,  null, 'finished_pieces_1y'),
+  ('Tréboles',          'treboles',         10, null, 'finished_pieces_1y'),
   ('Nuevos',            'nuevos',           11, 'new',  null),
   ('Ofertas',           'ofertas',          12, 'sale', null)
 ), ins as (
@@ -117,7 +127,7 @@ with c as (
   insert into public.announcement_messages (campaign_id, position) select c.id, 1 from c returning id
 )
 insert into public.announcement_message_translations (message_id, locale, text)
-select m.id, 'es', '✦ LANZAMIENTO D''ORATA · 02.12.26 · MUY PRONTO ✦' from m;
+select m.id, 'es', '✦ LANZAMIENTO D''ORATA · 2 DE DICIEMBRE · MUY PRONTO ✦' from m;
 
 -- Inventario de almacenamiento PROPIO conocido (los de terceros se agregan al activar cada integración).
 insert into public.cookie_declarations (name, provider, category, storage, purpose, duration) values
@@ -133,3 +143,8 @@ insert into public.tracking_integrations (provider, display_name, consent_catego
   ('google_analytics', 'Google Analytics 4', 'analytics'),
   ('meta_pixel',       'Meta Pixel',         'marketing'),
   ('tiktok_pixel',     'TikTok Pixel',       'marketing');
+
+-- Empaque (confirmado por la dueña, sin prometer modelo/color/presentación específica).
+update public.store_settings
+   set packaging_note = '{"es":"Tu pieza llega cuidadosamente presentada en estuche D''ORATA."}'::jsonb
+ where id = 1;

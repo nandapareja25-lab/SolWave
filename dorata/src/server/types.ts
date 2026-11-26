@@ -19,6 +19,8 @@ export type StoreSettings = {
   social: { instagram?: string; tiktok?: string; facebook?: string };
   socialHandle: string | null;
   testimonialsEnabled: boolean;
+  /** Texto de empaque configurable (null = no se menciona). */
+  packagingNote: string | null;
   newsletterEnabled: boolean;
   isDemo: boolean;
 };
@@ -35,7 +37,8 @@ export type Category = {
 
 export type WarrantyPolicy = {
   code: string;
-  months: number;
+  /** null = duración aún no definida por la dueña ("por definir"). */
+  months: number | null;
   name: string;
   summary: string;
   coverageMd: string;
@@ -56,6 +59,8 @@ export type ProductCard = {
   isFeatured: boolean;
   isSet: boolean;
   warrantyName: string | null;
+  /** Toda la pieza tiene garantía con duración definida (parcial o pendiente → false). */
+  hasWarranty: boolean;
   image: ImageRef;
   defaultVariantId: string;
   variantCount: number;
@@ -85,7 +90,11 @@ export type ProductDetail = ProductCard & {
   images: ImageRef[];
   variants: Variant[];
   warranty: WarrantyPolicy | null;
+  /** Si hay componentes, mandan sobre `warranty` (p. ej. balines 5 años + hilo por definir). */
+  warrantyComponents: WarrantyComponent[];
 };
+
+export type WarrantyComponent = { label: string; policy: WarrantyPolicy | null };
 
 export type LegalPageSummary = { kind: string; slug: string; title: string };
 export type LegalPage = LegalPageSummary & {

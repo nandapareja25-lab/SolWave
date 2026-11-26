@@ -33,7 +33,7 @@ export async function ProductCard({ product, priority }: { product: Card; priori
           <QuickAdd
             label={t("quickAdd", { name: product.name })}
             addedLabel={t("added")}
-            line={{ variantId: product.defaultVariantId, productSlug: product.slug, categorySlug: product.categorySlug, name: product.name, variantTitle: null, priceCents: product.priceCents, image: product.image, hasWarranty: !!product.warrantyName }}
+            line={{ variantId: product.defaultVariantId, productSlug: product.slug, categorySlug: product.categorySlug, name: product.name, variantTitle: null, priceCents: product.priceCents, image: product.image, hasWarranty: product.hasWarranty }}
           />
         </div>
       )}

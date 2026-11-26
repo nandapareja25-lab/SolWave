@@ -50,7 +50,7 @@
     "benefitCertTitle": "Certificado de autenticidad",
     "benefitCertBody": "Cada compra incluye su tarjeta física con tu número de orden.",
     "benefitWarrantyTitle": "Garantía de color",
-    "benefitWarrantyBody": "{short} en piezas terminadas, {long} en balinería.",
+    "benefitWarrantyBody": "{short} en piezas terminadas, {long} en balinería de oro laminado.",
     "benefitWhatsTitle": "Te asesoramos por WhatsApp",
     "benefitWhatsBody": "Medidas, combinaciones y regalos.",
     "benefitPayTitle": "Pago seguro",
@@ -62,7 +62,8 @@
     "warrantyCertificate": "Certificado de autenticidad con tu número de orden",
     "heroTrust": "Garantía por escrito · Certificado de autenticidad · Envíos en EE. UU.",
     "benefitShipTitle": "Envíos en Estados Unidos",
-    "benefitShipBody": "Ves el costo y el tiempo de entrega antes de pagar."
+    "benefitShipBody": "Ves el costo y el tiempo de entrega antes de pagar.",
+    "benefitPackTitle": "Presentación cuidada"
   },
   "product": {
     "new": "Nuevo",
@@ -96,7 +97,9 @@
     "home": "Inicio",
     "noWarrantyContact": "Escríbenos",
     "metalColor": "Color del metal",
-    "optionLabel": "Color del hilo"
+    "optionLabel": "Color del hilo",
+    "components": "Garantía por componente",
+    "componentPending": "No entra en la garantía de los balines. Te confirmamos sus condiciones antes de comprar."
   },
   "category": {
     "count": "{count, plural, one {# pieza} other {# piezas}}",
@@ -164,9 +167,9 @@
     "placeholder": "tucorreo@ejemplo.com",
     "submit": "Unirme",
     "submitting": "Enviando…",
-    "waitlistSubmit": "Avísame del lanzamiento",
+    "waitlistSubmit": "Quiero acceso al lanzamiento",
     "success": "Listo. Te escribiremos con las novedades.",
-    "waitlistSuccess": "Listo. Te avisaremos el día de la apertura, antes que a nadie.",
+    "waitlistSuccess": "Listo. Recibirás el acceso al lanzamiento y las novedades de D'ORATA.",
     "invalid": "Revisa el correo: parece incompleto.",
     "unavailable": "No pudimos guardar tu correo en este momento. Inténtalo en unos minutos o escríbenos por Instagram.",
     "legal": "Recibirás novedades de D'ORATA. Puedes darte de baja en cualquier correo. Ver Privacidad.",
@@ -175,13 +178,14 @@
   "comingSoon": {
     "eyebrow": "Muy pronto",
     "title": "Oro laminado 18K con garantía de color por escrito",
-    "body": "¿Piezas doradas que se ponen negras en semanas? Las nuestras tienen garantía de color por escrito: {short}, y {long} en balinería.",
+    "body": "¿Piezas doradas que se ponen negras en semanas? Las nuestras tienen garantía de color por escrito: {short} en piezas terminadas y {long} en balinería.",
     "launch": "Abrimos el {date}",
     "days": "días",
     "hours": "horas",
     "minutes": "minutos",
     "seconds": "segundos",
-    "arrived": "Estamos abriendo las puertas."
+    "arrived": "Estamos abriendo las puertas.",
+    "benefit": "Sé de las primeras en descubrir D'ORATA"
   },
   "maintenance": {
     "title": "Volvemos en un momento",
@@ -193,7 +197,11 @@
     "inReview": "Documento en preparación. Su texto final está en revisión.",
     "warrantyIntro": "Así protegemos el color de tus piezas.",
     "covers": "Qué cubre",
-    "excludes": "Qué no cubre"
+    "excludes": "Qué no cubre",
+    "componentsTitle": "Piezas con componentes distintos",
+    "componentsBody": "En las pulseras artesanales D'ORATA, la balinería de oro laminado conserva su garantía de color de {long}. El hilo, el neopreno y el armado no tienen esa misma garantía: sus condiciones se publicarán aquí cuando estén definidas.",
+    "setsNote": "Los sets compuestos por piezas terminadas llevan {short} de garantía, salvo que un componente tenga expresamente otra.",
+    "returnsSeparate": "La garantía cubre el color y el proceso de laminado. Los cambios y devoluciones se rigen por su propia política."
   },
   "system": {
     "offline": "Sin conexión. Algunas acciones esperarán a que vuelvas a estar en línea.",

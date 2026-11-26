@@ -58,7 +58,7 @@ export async function Footer() {
               {legalLinks.map((p) => (
                 <li key={p.slug}><Link href={`/${p.slug}`} className="flex min-h-9 items-center text-[14px] text-on-dark-2 hover:text-on-dark">{short(p.title)}</Link></li>
               ))}
-              <li className="col-span-2 md:col-span-1"><PrivacyPreferencesButton label={t("privacyPrefs")} /></li>
+              <li className="col-span-2 text-[14px] text-on-dark-2 md:col-span-1"><PrivacyPreferencesButton label={t("privacyPrefs")} plain /></li>
             </ul>
           </nav>
         </div>

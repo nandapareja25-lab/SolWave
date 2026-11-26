@@ -47,7 +47,7 @@ describe("banner de anuncios", () => {
     expect(v.kind).toBe("visible");
     if (v.kind === "visible") {
       expect(v.countdownTarget).toBe(a.countdown_target_at);
-      expect(v.items.map((i) => i.text)).toEqual(["Faltan {countdown}", "✦ LANZAMIENTO D'ORATA · 02.12.26 · MUY PRONTO ✦"]);
+      expect(v.items.map((i) => i.text)).toEqual(["Faltan {countdown}", "✦ LANZAMIENTO D'ORATA · 2 DE DICIEMBRE · MUY PRONTO ✦"]);
     }
   });
   it("al llegar a cero cambia solo a 'ya disponible'", () => {
@@ -140,5 +140,19 @@ describe("WhatsApp", () => {
       "https://wa.me/13055550100?text=Hola%2C%20me%20interesa%20la%20Cadena%20Singapur");
     expect(whatsappLink("305-555", "x")).toBeNull();
     expect(whatsappLink(null)).toBeNull();
+  });
+});
+
+import { definedByDuration, formatWarranty } from "@/lib/warranty";
+describe("garantías", () => {
+  it("formatea duración y 'por definir'", () => {
+    expect(formatWarranty(12)).toBe("1 año");
+    expect(formatWarranty(60)).toBe("5 años");
+    expect(formatWarranty(6)).toBe("6 meses");
+    expect(formatWarranty(null)).toBe("por definir");
+  });
+  it("solo políticas definidas, ordenadas", () => {
+    const r = definedByDuration([{ months: 60 }, { months: null }, { months: 12 }]);
+    expect(r.map((p) => p.months)).toEqual([12, 60]);
   });
 });

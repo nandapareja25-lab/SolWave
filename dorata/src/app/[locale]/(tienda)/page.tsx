@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowRight, BadgeCheck, Check, Lock, MessageCircle, ShieldCheck, Truck } from "lucide-react";
+import { ArrowRight, BadgeCheck, Check, Gift, Lock, MessageCircle, ShieldCheck, Truck } from "lucide-react";
 import { InstagramIcon as Instagram, TikTokIcon as Music2 } from "@/components/brand/SocialIcons";
 import { Link } from "@/i18n/navigation";
 import { ProductImage } from "@/components/tienda/ProductImage";
@@ -9,11 +9,11 @@ import { NewsletterForm } from "@/components/tienda/NewsletterForm";
 import { newsletterLabels } from "@/components/tienda/labels";
 import { getCategories, getHome, getStoreSettings, getWarrantyPolicies } from "@/server/catalog";
 import { formatUSD } from "@/lib/money";
+import { definedByDuration, formatWarranty as years } from "@/lib/warranty";
 import { Reveal } from "@/components/tienda/Reveal";
 
 export const revalidate = 60;
 
-const years = (months: number) => (months % 12 === 0 ? `${months / 12} ${months / 12 === 1 ? "año" : "años"}` : `${months} meses`);
 const joinEs = (xs: string[]) => (xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} y ${xs.at(-1)}`).toLowerCase();
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -24,7 +24,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   ]);
   const hero = home.featured[0];
   const stories = categories.filter((c) => !c.autoRule);
-  const sorted = [...warranties].sort((a, b) => a.months - b.months);
+  const sorted = definedByDuration(warranties);
   const shortW = sorted[0];
   const longW = sorted.at(-1);
 
@@ -160,6 +160,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             settings.whatsappE164
               ? { Icon: MessageCircle, title: t("benefitWhatsTitle"), body: t("benefitWhatsBody") }
               : { Icon: Truck, title: t("benefitShipTitle"), body: t("benefitShipBody") },
+            ...(settings.packagingNote ? [{ Icon: Gift, title: t("benefitPackTitle"), body: settings.packagingNote }] : []),
             { Icon: Lock, title: t("benefitPayTitle"), body: t("benefitPayBody") },
           ].map(({ Icon, title, body }) => (
             <li key={title} className="flex items-center gap-4 rounded-[4px] border border-line bg-surface p-4">

@@ -27,7 +27,7 @@ export const getWarrantyPolicies = cache(async (): Promise<WarrantyPolicy[]> => 
 function toCard(p: ProductDetail): ProductCard {
   return {
     id: p.id, slug: p.slug, categorySlug: p.categorySlug, name: p.name, priceCents: p.priceCents, compareAtCents: p.compareAtCents,
-    isNew: p.isNew, isOnSale: p.isOnSale, isFeatured: p.isFeatured, isSet: p.isSet, warrantyName: p.warrantyName, image: p.image,
+    isNew: p.isNew, isOnSale: p.isOnSale, isFeatured: p.isFeatured, isSet: p.isSet, warrantyName: p.warrantyName, hasWarranty: p.hasWarranty, image: p.image,
     defaultVariantId: p.defaultVariantId, variantCount: p.variantCount, available: p.available, publishedAt: p.publishedAt,
   };
 }
