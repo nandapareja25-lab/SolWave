@@ -189,7 +189,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
                     <label className={labelCls}>Texto antes del tiempo
                       <input maxLength={80} value={cdBefore} onChange={(e) => setCountdown(e.target.value, cdAfter)} placeholder="Ej: Faltan" className={inputCls} />
                     </label>
-                    <span className="w-fit rounded-[4px] bg-gold/15 px-2 py-1 text-[12px] font-semibold text-gold-deep">+ el tiempo restante</span>
+                    <span className={helpCls}>Aquí va el tiempo restante (ej: 6 días · 02:29:32).</span>
                     <label className={labelCls}>Texto después del tiempo (opcional)
                       <input maxLength={60} value={cdAfter} onChange={(e) => setCountdown(cdBefore, e.target.value)} placeholder="Ej: y contando" className={inputCls} />
                     </label>
@@ -281,7 +281,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
           )}
         </Card>
       </div>
-      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : undefined}>
+      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : !d.id ? <span className="text-ink-3">Aún no está creada</span> : undefined}>
         <button type="submit" disabled={pending || lowContrast} className={btnPrimary}>
           {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}
           Guardar campaña

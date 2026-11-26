@@ -19,13 +19,13 @@ Estado: **preparado y verificado** (26-nov-2026). Falta solo lo que requiere TUS
    - Build command: `npx opennextjs-cloudflare build`
    - Deploy command: `npx opennextjs-cloudflare deploy`
    - Rama de producción: la que acordemos (hoy el trabajo está en `claude/dorata-ecommerce-platform-qu0ubx`).
-4. **Secretos** (Cloudflare → Workers → `dorata-web` → *Settings* → *Variables and Secrets* → tipo **Secret**). Nunca los pegues en el chat:
+4. **Secretos** (Cloudflare → Workers → `mafer-studio` → *Settings* → *Variables and Secrets* → tipo **Secret**). Nunca los pegues en el chat:
    | Nombre | De dónde sale | Para qué |
    |---|---|---|
    | `SUPABASE_SECRET_KEY` | Supabase → proyecto dorata → *Project Settings* → *API Keys* → **Secret key** (`sb_secret_…`) | Guardar correos de la lista de espera y registros de cookies |
    | `STORE_PREVIEW_TOKEN` | Inventa una frase larga (≥ 24 caracteres) | Tu enlace privado: `dorata18k.com/?vista_previa=TU_FRASE` para ver la tienda real mientras está en Próximamente |
    | `TURNSTILE_SECRET_KEY` + variable `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare → *Turnstile* → *Add site* (gratis) | Anti-bots en la lista de espera (opcional el día 1, recomendado) |
-5. **Dominio del Worker:** Workers → `dorata-web` → *Settings* → *Domains & Routes* → *Add* → `dorata18k.com` y `www.dorata18k.com`.
+5. **Dominio del Worker:** Workers → `mafer-studio` → *Settings* → *Domains & Routes* → *Add* → `dorata18k.com` y `www.dorata18k.com`.
 6. Escríbeme "listo" y verifico en vivo: Próximamente, cuenta regresiva, lista de espera guardando correos, cookies, políticas, y que la tienda NO se vea sin tu enlace.
 
 ## Si el despliegue falla con "error 10181" o menciona `env.DB` / D1
@@ -38,8 +38,8 @@ Cloudflare › *Settings* › *Build*:
    no tiene la tienda).
 3. **Build command** `npx opennextjs-cloudflare build` · **Deploy command** `npx opennextjs-cloudflare deploy`.
 4. *Settings* › *Bindings*: si aparece un binding `DB` de tipo D1, elimínalo. No hace falta crear ninguna base D1.
-5. El nombre del Worker en Cloudflare debe coincidir con `"name"` de `wrangler.jsonc` (hoy `dorata-web`).
-   Si tu Worker se llama distinto, dime el nombre y lo ajusto en el archivo.
+5. El nombre del Worker debe coincidir con `"name"` de `wrangler.jsonc`: ya está ajustado a **`mafer-studio`**, el Worker
+   que existe en tu cuenta (verificado el 26-nov: un solo Worker y ninguna base D1). No hace falta crear otro.
 
 ## El 2 de diciembre: tres opciones, sin tocar código
 - **Abrir la tienda:** Supabase → *Table Editor* → `store_settings` → `store_mode` = `live`. (En la fase 3 será un botón en el panel.)

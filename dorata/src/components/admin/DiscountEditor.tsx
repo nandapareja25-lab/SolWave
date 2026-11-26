@@ -20,6 +20,7 @@ const SCOPES = [
 
 /** Resumen en una frase de lo que hace el código (para revisar antes de guardar). */
 function summary(d: DiscountInput, cats: number, prods: number) {
+  if (!d.code || (d.type !== "free_shipping" && !d.value)) return "Escribe el código y cuánto descuenta para ver aquí el resumen.";
   const v = d.type === "percentage" ? `${d.value || "?"}% de descuento` : d.type === "fixed_amount" ? `$${d.value || "?"} de descuento` : "Envío gratis";
   const where = d.scope === "all" ? "en toda la tienda" : d.scope === "categories" ? `en ${cats} categoría(s)` : `en ${prods} producto(s)`;
   const extra = [d.min_subtotal && `con compras desde $${d.min_subtotal}`, d.first_order_only && "solo en la primera compra", d.usage_limit_per_customer && `máximo ${d.usage_limit_per_customer} vez/veces por clienta`].filter(Boolean).join(", ");
@@ -61,14 +62,14 @@ export function DiscountEditor({ initial, timezone, timesUsed, categories, produ
   return (
     <form ref={formRef} onSubmit={submit} className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
       <div className="lg:col-span-2">
-        <PageHeader eyebrow={initial.id ? "Código de descuento" : "Nuevo código"} title={d.code || "Nuevo código"}
+        <PageHeader eyebrow="Descuentos" title={d.code || "Nuevo código"}
           description={initial.id ? `${timesUsed} ${timesUsed === 1 ? "uso" : "usos"} · ${d.is_active ? "activo" : "inactivo"}` : "Elige el código, cuánto descuenta y dónde aplica."} />
       </div>
       <div className="order-2 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6 lg:order-none">
         <Card title="El código" step={1}>
           <div className="grid gap-4">
             <label className={labelCls}>Código que escribe la clienta
-              <input required maxLength={32} value={d.code} onChange={(e) => set("code", e.target.value.toUpperCase().replace(/[^A-Z0-9_-]/g, ""))} placeholder="Ej: NAVIDAD15" className={`${inputCls} font-mono uppercase tracking-wide`} />
+              <input required maxLength={32} value={d.code} onChange={(e) => set("code", e.target.value.toUpperCase().replace(/[^A-Z0-9_-]/g, ""))} placeholder="Ej: NAVIDAD15" className={`${inputCls} uppercase tabular tracking-[.08em]`} />
               <span className={helpCls}>Letras y números, sin espacios.</span>
             </label>
             <label className={labelCls}>Nota interna (opcional)<input maxLength={200} value={d.description} onChange={(e) => set("description", e.target.value)} placeholder="Ej: Para clientas de Instagram en diciembre" className={inputCls} /></label>
@@ -160,9 +161,9 @@ export function DiscountEditor({ initial, timezone, timesUsed, categories, produ
           ) : <button type="button" onClick={() => setConfirmDelete(true)} className="press inline-flex h-11 w-fit items-center gap-2 text-[14px] text-danger"><Trash2 aria-hidden="true" size={15} />Eliminar código</button>
         )}
       </div>
-      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : undefined}>
+      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : !d.id ? <span className="text-ink-3">Aún no está creado</span> : undefined}>
         <button type="submit" disabled={pending} className={btnPrimary}>
-          {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}{d.id ? "Guardar" : "Crear código"}
+          {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}{d.id ? "Guardar código" : d.is_active ? "Crear código" : "Crear código (inactivo)"}
         </button>
       </SaveBar>
     </form>

@@ -62,7 +62,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
   };
   const chip = (patch: Partial<Sp>, text: string, on: boolean) => (
     <Link href={href(patch)} aria-current={on ? "page" : undefined}
-      className={`press inline-flex h-9 items-center rounded-full border px-3 text-[13px] ${on ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{text}</Link>
+      className={`press inline-flex h-9 shrink-0 items-center whitespace-nowrap rounded-full border px-3 text-[13px] ${on ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{text}</Link>
   );
 
   return (
@@ -82,15 +82,15 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
           {(cats ?? []).filter((c) => !c.auto_rule).map((c) => <option key={c.id} value={c.id}>{catName.get(c.id)}</option>)}
         </AutoSubmitSelect>
       </form>
-      <div className="mb-4 flex flex-wrap gap-2">
-        {chip({ estado: undefined, stock: undefined, tipo: undefined }, "Todos", !sp.estado && !sp.stock && !sp.tipo)}
+      <div className="-mx-4 mb-2 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none]" aria-label="Filtros">
+        {chip({ estado: undefined, stock: undefined, tipo: undefined }, `Todos (${all.length})`, !sp.estado && !sp.stock && !sp.tipo)}
         {chip({ estado: "active", stock: undefined }, `Activos (${counts.active})`, sp.estado === "active")}
         {chip({ estado: "draft", stock: undefined }, `Borradores (${counts.draft})`, sp.estado === "draft")}
         {chip({ estado: undefined, stock: "pocas" }, `Quedan pocas (${all.filter((p) => p.low && p.available > 0).length})`, sp.stock === "pocas")}
         {chip({ estado: undefined, stock: "agotado" }, `Agotados (${all.filter((p) => p.available === 0).length})`, sp.stock === "agotado")}
       </div>
       {(all.some((p) => p.kit) || all.some((p) => p.review)) && (
-        <div className="-mt-2 mb-4 flex flex-wrap gap-2" aria-label="Por completar">
+        <div className="-mx-4 mb-4 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none]" aria-label="Por completar">
           {chip({ tipo: sp.tipo === "sinprecio" ? undefined : "sinprecio" }, `Sin precio (${all.filter((p) => p.noPrice && p.kit !== "set_component").length})`, sp.tipo === "sinprecio")}
           {chip({ tipo: sp.tipo === "sets" ? undefined : "sets" }, `Sets sin dije (${all.filter((p) => p.kit === "set_base" && !p.hasPendant).length})`, sp.tipo === "sets")}
           {chip({ tipo: sp.tipo === "dijes" ? undefined : "dijes" }, `Dijes para sets (${all.filter((p) => p.kit === "set_component").length})`, sp.tipo === "dijes")}
@@ -117,7 +117,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                   {p.thumb ? <img src={p.thumb} alt="" width={72} height={72} className="size-full rounded-[2px] object-cover" /> : <span className="text-[11px] text-ink-3">Sin foto</span>}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-[15px] font-semibold">{p.name}</p>
+                  <p className="line-clamp-2 text-[15px] font-semibold leading-snug">{p.name}</p>
                   {p.flag && <span className={`mt-0.5 inline-block rounded-[4px] px-1.5 text-[11px] font-semibold ${p.flag === "Dije para set" ? "bg-line/60 text-ink-2" : "bg-gold/15 text-gold-deep"}`}>{p.flag}</span>}
                   <p className="truncate text-[13px] text-ink-2">{p.category} · {p.variants} {p.variants === 1 ? "variante" : "variantes"}</p>
                   <p className="mt-1 flex flex-wrap items-center gap-2 text-[13px]">
@@ -126,7 +126,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                   </p>
                   {p.stockAlert && <p className="mt-0.5 flex items-center gap-1.5 truncate text-[12px] text-gold-deep"><span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-gold" />{p.stockAlert}</p>}
                 </div>
-                <span className={`shrink-0 self-start rounded-[4px] px-2 py-1 text-[12px] font-semibold ${STATUS[p.status]?.cls}`}>{STATUS[p.status]?.label}</span>
+                {p.status !== "draft" && <span className={`shrink-0 self-start rounded-[4px] px-2 py-1 text-[12px] font-semibold ${STATUS[p.status]?.cls}`}>{STATUS[p.status]?.label}</span>}
               </Link>
             </li>
           ))}

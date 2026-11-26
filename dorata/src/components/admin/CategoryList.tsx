@@ -70,16 +70,15 @@ export function CategoryList({ items }: { items: CategoryItem[] }) {
           <button type="button" onClick={() => setSorting(false)} className="press inline-flex h-10 shrink-0 items-center gap-1.5 rounded-full bg-ink px-4 text-[14px] font-semibold text-on-dark"><Check aria-hidden="true" size={15} />Listo</button>
         </div>
       ) : (
-        <div className="mb-4 flex flex-wrap items-center gap-2">
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar categorías">
-            {([["all", `Todas (${list.length})`], ["nav", `En el menú (${list.filter((c) => c.visible && c.nav).length})`], ["hidden", `Ocultas (${list.filter((c) => !c.visible || !c.nav).length})`], ["auto", `Automáticas (${list.filter((c) => c.auto).length})`]] as [Filter, string][]).map(([k, label]) => (
-              <button key={k} type="button" aria-pressed={filter === k} onClick={() => setFilter(k)}
-                className={`press inline-flex h-9 items-center rounded-full border px-3 text-[13px] ${filter === k ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{label}</button>
-            ))}
-          </div>
-          <button type="button" onClick={() => { setFilter("all"); setSorting(true); }} className="press ml-auto inline-flex h-9 items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-[13px]">
+        <div className="-mx-4 mb-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none]">
+          <button type="button" onClick={() => { setFilter("all"); setSorting(true); }} className="press inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-[13px]">
             <ArrowUpDown aria-hidden="true" size={14} />Ordenar
           </button>
+          <span aria-hidden="true" className="h-6 w-px shrink-0 bg-line" />
+          {([["all", `Todas (${list.length})`], ["nav", `En el menú (${list.filter((c) => c.visible && c.nav).length})`], ["hidden", `Ocultas (${list.filter((c) => !c.visible || !c.nav).length})`]] as [Filter, string][]).map(([k, label]) => (
+            <button key={k} type="button" aria-pressed={filter === k} onClick={() => setFilter(k)}
+              className={`press inline-flex h-9 shrink-0 items-center whitespace-nowrap rounded-full border px-3 text-[13px] ${filter === k ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{label}</button>
+          ))}
         </div>
       )}
       <ol className="grid grid-cols-[minmax(0,1fr)] gap-2">
@@ -95,8 +94,12 @@ export function CategoryList({ items }: { items: CategoryItem[] }) {
                 <span className="line-clamp-2 text-[15px] font-semibold leading-snug">{c.name}</span>
                 {!sorting && (
                   <span className="mt-0.5 block text-[12px] leading-snug text-ink-2">
-                    {c.auto ? (c.auto === "new" ? "Automática: novedades" : "Automática: ofertas") : `${c.products} ${c.products === 1 ? "producto" : "productos"}`} · {c.warranty ?? "sin garantía"}
-                    {(!c.visible || !c.nav) && <span className="ml-1.5 rounded-[4px] bg-line/60 px-1.5 text-[11px] text-ink-2">{!c.visible ? "Oculta" : "Fuera del menú"}</span>}
+                    {c.auto ? (c.auto === "new" ? "Automática · novedades" : "Automática · ofertas") : `${c.products} ${c.products === 1 ? "producto" : "productos"} · ${c.warranty ?? "sin garantía"}`}
+                    {(!c.visible || !c.nav) && (
+                      <span className={`ml-1.5 rounded-[4px] px-1.5 text-[11px] ${c.products > 0 && !c.auto ? "bg-gold/15 font-semibold text-gold-deep" : "bg-line/60 text-ink-2"}`}>
+                        {!c.visible ? (c.products > 0 && !c.auto ? `Oculta · sus ${c.products} piezas no se ven aquí` : "Oculta") : "Fuera del menú"}
+                      </span>
+                    )}
                   </span>
                 )}
               </span>

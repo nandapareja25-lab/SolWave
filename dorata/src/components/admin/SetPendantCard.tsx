@@ -7,8 +7,9 @@ import { Link2, Link2Off, Loader2 } from "lucide-react";
 import { assignPendant } from "@/app/admin/(panel)/productos/actions";
 import { Card, StatusText, btnQuiet, helpCls, inputCls, labelCls } from "./ui";
 
+import { formatCOP as cop } from "@/lib/cop";
+
 export type PendantOption = { id: string; name: string; costCop: number | null; takenBy: { id: string; name: string } | null };
-const cop = (n: number | null) => (n == null ? "sin costo" : `${Math.round(n).toLocaleString("es-CO")} COP`);
 
 /**
  * Cadena que espera su dije: la dueña elige cuál dije va con ella. Nunca se asigna sola.

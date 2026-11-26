@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "dorata-web",
+  "name": "mafer-studio", // mismo nombre que el Worker que ya existe en la cuenta de Cloudflare (no crear otro)
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
@@ -15,5 +15,5 @@
     "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_cGUFaUFw59_9-s2-87fmNw_l4ka8GTx"
   }
   // SECRETOS (nunca aquí): SUPABASE_SECRET_KEY, STORE_PREVIEW_TOKEN, TURNSTILE_SECRET_KEY
-  // → Cloudflare › Workers › dorata-web › Settings › Variables and Secrets (tipo "Secret").
+  // → Cloudflare › Workers › mafer-studio › Settings › Variables and Secrets (tipo "Secret").
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { X } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import { readableWallTime, tzLabel } from "@/lib/tz";
 import { helpCls } from "./ui";
 
@@ -80,8 +80,8 @@ export function DateTimeField({ label, name, value, defaultValue, onChange, time
               <option value="am">a. m.</option><option value="pm">p. m.</option>
             </select>
             {!required && (
-              <button type="button" onClick={() => emit("")} aria-label={`Quitar ${label.toLowerCase()}`} className="press ml-auto grid size-11 place-items-center rounded-full border border-line text-ink-2">
-                <X aria-hidden="true" size={16} />
+              <button type="button" onClick={() => emit("")} className="press ml-auto h-11 px-2 text-[13px] text-ink-2 underline underline-offset-4">
+                Quitar fecha
               </button>
             )}
           </div>
@@ -89,8 +89,8 @@ export function DateTimeField({ label, name, value, defaultValue, onChange, time
         </div>
       ) : (
         <div className="grid gap-1">
-          <button type="button" onClick={() => emit(join(defaultParts()))} className="press inline-flex h-11 w-fit items-center rounded-full border border-line bg-surface px-4 text-[14px]">
-            Elegir fecha y hora
+          <button type="button" onClick={() => emit(join(defaultParts()))} className="press flex h-11 w-full items-center justify-between rounded-[4px] border border-line bg-ivory px-3 text-left text-[15px] text-ink-3 hover:border-ink-3">
+            Elegir fecha y hora<CalendarDays aria-hidden="true" size={18} className="text-ink-2" />
           </button>
           <span className={helpCls}>{emptyText ?? `Sin fecha · ${tzLabel(timezone)}`}</span>
         </div>

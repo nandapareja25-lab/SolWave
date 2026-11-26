@@ -131,9 +131,6 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
           </div>
         </Card>
 
-        {data.kit?.role === "set_base" && d.id && (
-          <SetPendantCard setId={d.id} chainCostCop={data.kit.chainCostCop} current={data.kit.current} options={data.kit.options} />
-        )}
         {data.kit?.role === "set_component" && (
           <Card title="Dije reservado para sets" step={2}>
             <p className="text-[14px] text-ink-2">Esta pieza no se vende sola: se usa para armar un set con una cadena.</p>
@@ -154,7 +151,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
                   <summary className="flex min-h-14 cursor-pointer list-none items-center gap-2 p-3 [&::-webkit-details-marker]:hidden">
                     {v.is_default && <Star aria-label="Principal" size={14} className="shrink-0 fill-[var(--gold)] text-gold-deep" />}
                     <span className="min-w-0 flex-1 truncate text-[15px] font-semibold">{v.title || `Variante ${i + 1}`}</span>
-                    <span className="shrink-0 text-[14px] tabular">{v.price ? `$${Number(v.price.replace(",", ".")).toFixed(2)}` : "sin precio"}</span>
+                    <span className={`shrink-0 text-[14px] tabular ${!Number(v.price.replace(",", ".")) ? "text-gold-deep" : ""}`}>{Number(v.price.replace(",", ".")) ? `$${Number(v.price.replace(",", ".")).toFixed(2)}` : "Sin precio"}</span>
                     {v.id && <span className={`shrink-0 text-[13px] ${(s?.available ?? 0) === 0 ? "text-danger" : "text-ink-2"}`}>· {s?.available ?? 0} disp.</span>}
                     {!v.is_active && <span className="shrink-0 rounded-[4px] bg-line/60 px-1.5 text-[11px] text-ink-2">Desactivada</span>}
                     <ChevronDown aria-hidden="true" size={16} className="shrink-0 text-ink-3 transition-transform group-open:rotate-180 motion-reduce:transition-none" />
@@ -322,12 +319,15 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
             ))}
           </fieldset>
           {d.status === "active" && data.media.length === 0 && d.id && <p className="fade-in mt-3 text-[13px] text-gold-deep">Aún no tiene fotos: en la tienda se verá una ilustración en su lugar.</p>}
-          {data.kit?.role === "set_base" && !data.kit.current && <p className="mt-3 text-[13px] text-gold-deep">Para publicarlo, primero asígnale su dije.</p>}
+          {data.kit?.role === "set_base" && !data.kit.current && <p className="mt-3 text-[13px] text-gold-deep">Para publicarlo, primero asígnale su dije (justo abajo).</p>}
           {data.kit?.role === "set_component" && <p className="mt-3 text-[13px] text-ink-2">Los dijes reservados para sets no se publican solos.</p>}
         </Card>
+        {data.kit?.role === "set_base" && d.id && (
+          <SetPendantCard setId={d.id} chainCostCop={data.kit.chainCostCop} current={data.kit.current} options={data.kit.options} />
+        )}
       </div>
 
-      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : undefined}>
+      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : !d.id ? <span className="text-ink-3">Aún no está creado</span> : undefined}>
         <button type="submit" disabled={pending} className={`${btnPrimary} ${celebrate ? "shine" : ""}`}>
           {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}
           {d.id ? "Guardar" : "Crear producto"}

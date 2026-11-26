@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef, useState } from "react";
-import { Check, Loader2 } from "lucide-react";
+import { Check, Loader2, Save } from "lucide-react";
 import { btnPrimary, btnSecondary } from "./ui";
 import { useUnsavedGuard } from "./useUnsavedGuard";
 
@@ -38,7 +38,7 @@ export function ActionForm({ action, children, submitLabel = "Guardar", classNam
       {children}
       <div className="flex flex-wrap items-center gap-3">
         <button type="submit" disabled={pending} className={dirty || primary ? btnPrimary : btnSecondary.replace("border-ink", "border-line")}>
-          {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}
+          {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : dirty || primary ? <Save aria-hidden="true" size={16} /> : <Check aria-hidden="true" size={16} />}
           {submitLabel}
         </button>
         {shown ? (

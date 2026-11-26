@@ -44,7 +44,7 @@ export default async function DiscountsPage() {
               <Link href={`/admin/descuentos/${d.id}`} className="flex items-center gap-3 rounded-[4px] border border-line bg-surface p-3 hover:bg-ivory">
                 <span className="min-w-0 flex-1">
                   <span className="flex items-center gap-2">
-                    <span className="truncate font-mono text-[16px] font-semibold tracking-wide">{d.code}</span>
+                    <span className="truncate text-[16px] font-semibold tabular tracking-[.08em]">{d.code}</span>
                     <span className={`shrink-0 rounded-[4px] px-2 py-0.5 text-[12px] font-semibold ${d.on ? "bg-success/10 text-success" : "bg-line/60 text-ink-2"}`}>{d.state}</span>
                   </span>
                   <span className="block truncate text-[14px]">{d.value}</span>

@@ -76,8 +76,8 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
         <PageHeader eyebrow={initial.id ? "Categoría" : "Nueva categoría"} title={d.name || (initial.id ? "Sin nombre" : "Nueva categoría")}
           description={initial.id ? (!d.is_visible ? "Oculta en la tienda" : d.show_in_nav ? "Visible · en el menú y la portada" : "Visible · fuera del menú") : "Completa los datos y guarda; después podrás subir su foto."} />
       </div>
-      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6">
-        <Card title="Datos" step={1}>
+      <div className="order-2 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6 lg:order-none">
+        <Card title="Datos" step={2}>
           <div className="grid gap-4">
             <label className={labelCls}>Nombre
               <input required maxLength={60} value={d.name} onChange={(e) => { const v = e.target.value; setD((x) => ({ ...x, name: v, slug: slugTouched ? x.slug : slugify(v) })); }} placeholder="Ej: Pulseras de hilo" className={inputCls} />
@@ -133,7 +133,16 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
         </Card>
       </div>
 
-      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-6">
+      <div className="order-1 grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-6 lg:order-none">
+        <Card title="Visibilidad" step={1}>
+          <div className="grid gap-3">
+            <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.is_visible} onChange={(e) => set("is_visible", e.target.checked)} className="size-5 accent-[var(--ink)]" />Visible en la tienda</label>
+            <label className={`flex items-start gap-3 text-[15px] ${d.is_visible ? "" : "text-ink-3"}`}>
+              <input type="checkbox" checked={d.is_visible && d.show_in_nav} disabled={!d.is_visible} onChange={(e) => set("show_in_nav", e.target.checked)} className="mt-0.5 size-5 accent-[var(--ink)]" />
+              <span>Mostrar en el menú y la portada{!d.is_visible && <span className={`block ${helpCls}`}>Primero activa “Visible en la tienda”.</span>}</span>
+            </label>
+          </div>
+        </Card>
         <Card title="Foto del círculo" step={3}>
           <div className="grid justify-items-center gap-3">
             <div className="grid size-36 place-items-center overflow-hidden rounded-full border-2 border-gold/50 bg-cream">
@@ -150,12 +159,6 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
                 {photoMsg ? <StatusText ok={photoMsg.ok}>{photoMsg.text}</StatusText> : <p className="text-center text-[12px] text-ink-3">Cuadrada, con la pieza centrada. Se optimiza sola.</p>}
               </>
             ) : <p className="text-center text-[13px] text-ink-2">Guarda la categoría para poder subir su foto.</p>}
-          </div>
-        </Card>
-        <Card title="Visibilidad" step={4}>
-          <div className="grid gap-3">
-            <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.is_visible} onChange={(e) => set("is_visible", e.target.checked)} className="size-5 accent-[var(--ink)]" />Visible en la tienda</label>
-            <label className="flex items-center gap-3 text-[15px]"><input type="checkbox" checked={d.show_in_nav} disabled={!d.is_visible} onChange={(e) => set("show_in_nav", e.target.checked)} className="size-5 accent-[var(--ink)]" />Mostrar en el menú y la portada</label>
           </div>
         </Card>
         {d.id && canDelete && (
@@ -175,9 +178,9 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
           </div>
         )}
       </div>
-      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : undefined}>
+      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : !d.id ? <span className="text-ink-3">Aún no está creada</span> : undefined}>
         <button type="submit" disabled={pending || uploading} className={btnPrimary}>
-          {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}Guardar
+          {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}{d.id ? "Guardar categoría" : "Crear categoría"}
         </button>
       </SaveBar>
     </form>

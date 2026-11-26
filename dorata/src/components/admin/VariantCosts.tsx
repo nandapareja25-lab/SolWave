@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Loader2, Plus } from "lucide-react";
 import { saveVariantCost } from "@/app/admin/(panel)/productos/actions";
 import { formatUSD } from "@/lib/money";
+import { formatCOP } from "@/lib/cop";
 import { Card, StatusText, btnQuiet, collectFields, helpCls, inputCls, labelCls } from "./ui";
 
 export type CostInfo = { currency: string; amount: number; fx: number | null; totalCents: number | null; since: string };
@@ -30,7 +31,7 @@ export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: {
   return (
     <Card title="Costo y ganancia" step={3} aside={<span className={helpCls}>Solo lo ves tú</span>}>
       <p className="mb-4 text-[13px] text-ink-2">
-        {fx ? <>Tasa de cambio: <strong className="tabular text-ink">{fx.toLocaleString("es-US")} pesos</strong> por 1 dólar (se cambia en Configuración).</> : <span className="text-gold-deep">Tus costos en pesos quedan guardados; para verlos en dólares y calcular la ganancia, escribe la tasa de cambio en <Link href="/admin/configuracion" className="font-semibold underline underline-offset-4">Configuración › Tienda</Link>.</span>}
+        {fx ? <>Tasa de cambio: <strong className="tabular text-ink">{fx.toLocaleString("es-US")} pesos</strong> por 1 dólar (se cambia en Configuración).</> : !Object.values(costs).some((c) => c.totalCents == null) ? <>Costos en dólares.</> : <span className="text-gold-deep">Tus costos en pesos quedan guardados; para verlos en dólares y calcular la ganancia, escribe la tasa de cambio en <Link href="/admin/configuracion" className="font-semibold underline underline-offset-4">Configuración › Tienda</Link>.</span>}
       </p>
       <ul className="grid gap-3">
         {variants.map((v) => {
@@ -43,14 +44,14 @@ export function VariantCosts({ variants, costs, fx, minMargin, targetMargin }: {
                   <p className="text-[15px] font-semibold">{v.title}</p>
                   {c ? (
                     <p className="text-[13px] text-ink-2">
-                      {c.totalCents != null ? <>Costo total <strong className="tabular text-ink">{formatUSD(c.totalCents)}</strong>{c.currency === "COP" ? ` · ${c.amount.toLocaleString("es-CO")} COP a ${c.fx?.toLocaleString("es-CO")}` : ""}</>
-                        : <>Costo <strong className="tabular text-ink">{c.amount.toLocaleString("es-CO")} COP</strong> · en dólares: pendiente de la tasa de cambio</>}
+                      {c.totalCents != null ? <>Costo total <strong className="tabular text-ink">{formatUSD(c.totalCents)}</strong>{c.currency === "COP" ? ` · ${formatCOP(c.amount)} a ${c.fx?.toLocaleString("es-CO")}` : ""}</>
+                        : <>Costo <strong className="tabular text-ink">{formatCOP(c.amount)}</strong> · en dólares: pendiente de la tasa de cambio</>}
                     </p>
                   ) : <p className="text-[13px] text-gold-deep">Sin costo registrado</p>}
                 </div>
                 {margin !== null && (
                   <div className="text-right">
-                    <p className={`font-display text-[28px] leading-none tabular ${minMargin !== null && margin < minMargin ? "text-danger" : targetMargin !== null && margin >= targetMargin ? "text-success" : "text-ink"}`}>{margin}%</p>
+                    <p className={`text-[20px] font-semibold leading-none tabular ${minMargin !== null && margin < minMargin ? "text-danger" : targetMargin !== null && margin >= targetMargin ? "text-success" : "text-ink"}`}>{margin}%</p>
                     <p className={helpCls}>{minMargin !== null && margin < minMargin ? `bajo tu mínimo (${minMargin}%)` : "de ganancia"}</p>
                   </div>
                 )}

@@ -86,9 +86,9 @@ export function ProductPhotos({ productId, storageBase, items, variants, product
                     {i === 0 && <span className="absolute left-2 top-2 rounded-[4px] bg-ink px-2 py-0.5 text-[11px] font-semibold text-on-dark">Principal</span>}
                   </div>
                   <div className="flex items-center justify-between gap-1">
-                    <button type="button" aria-label={`Mover foto ${i + 1} antes`} disabled={i === 0} onClick={() => move(i, -1)} className={iconBtn}><ArrowLeft aria-hidden="true" size={15} /></button>
-                    <button type="button" aria-label={`Mover foto ${i + 1} después`} disabled={i === list.length - 1} onClick={() => move(i, 1)} className={iconBtn}><ArrowRight aria-hidden="true" size={15} /></button>
-                    <button type="button" aria-label={`Eliminar foto ${i + 1}`} onClick={() => setConfirmId(m.id)} className={`${iconBtn} text-danger`}><Trash2 aria-hidden="true" size={15} /></button>
+                    <button type="button" title="Mover a la izquierda" aria-label={`Mover foto ${i + 1} antes`} disabled={i === 0} onClick={() => move(i, -1)} className={iconBtn}><ArrowLeft aria-hidden="true" size={15} /></button>
+                    <button type="button" title="Mover a la derecha" aria-label={`Mover foto ${i + 1} después`} disabled={i === list.length - 1} onClick={() => move(i, 1)} className={iconBtn}><ArrowRight aria-hidden="true" size={15} /></button>
+                    <button type="button" title="Eliminar foto" aria-label={`Eliminar foto ${i + 1}`} onClick={() => setConfirmId(m.id)} className={`${iconBtn} text-danger`}><Trash2 aria-hidden="true" size={15} /></button>
                   </div>
                   {confirmId === m.id && (
                     <div className="fade-in grid gap-2 rounded-[4px] border border-danger/40 p-2 text-[13px]">
