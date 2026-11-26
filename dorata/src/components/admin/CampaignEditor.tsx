@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { DateTimeField } from "./DateTimeField";
 import { useUnsavedGuard } from "./useUnsavedGuard";
 import { useSaveShortcut } from "./useSaveShortcut";
@@ -85,7 +85,10 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
   const router = useRouter();
   const [d, setD] = useState<CampaignInput>(initial);
   const [device, setDevice] = useState<"mobile" | "desktop">("mobile");
-  const [previewNow, setPreviewNow] = useState(() => Date.now());
+  // La hora de la vista previa se toma en el navegador (si se tomara al dibujar en el servidor, el contador
+  // mostraría otros segundos al cargar y React avisaría de una diferencia).
+  const [previewNow, setPreviewNow] = useState<number | null>(null);
+  useEffect(() => { setPreviewNow(Date.now()); }, []);
   const [pending, start] = useTransition();
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [saved, setSaved] = useState(() => JSON.stringify(initial));
@@ -102,7 +105,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
   const cdBefore = (cdParts[0] ?? "").replace(/ $/, ""), cdAfter = (cdParts[1] ?? "").replace(/^ /, "");
   const setCountdown = (before: string, after: string) => set("countdown_text", `${before}${before ? " " : ""}{countdown}${after ? " " : ""}${after}`);
 
-  const preview = useMemo(() => toPreview(d, previewNow), [d, previewNow]);
+  const preview = useMemo(() => (previewNow === null ? null : toPreview(d, previewNow)), [d, previewNow]);
   const lowContrast = d.style === "custom" && /^#[0-9A-Fa-f]{6}$/.test(d.bg_color) && /^#[0-9A-Fa-f]{6}$/.test(d.text_color) && contrastRatio(d.bg_color, d.text_color) < 4.5;
 
   function submit(e: React.FormEvent) {
@@ -265,7 +268,9 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
           <div className="overflow-hidden rounded-[4px] border border-line bg-ivory">
             <div className={device === "mobile" ? "mx-auto w-[320px] max-w-full" : "w-full"}>
               {preview ? (
-                <AnnouncementBar key={JSON.stringify(preview) + device} announcement={preview} serverNow={previewNow} labels={{ region: "Anuncio", pause: "Pausar", play: "Reanudar" }} />
+                <AnnouncementBar key={JSON.stringify(preview) + device} announcement={preview} serverNow={previewNow ?? 0} labels={{ region: "Anuncio", pause: "Pausar", play: "Reanudar" }} />
+              ) : previewNow === null ? (
+                <div aria-hidden="true" className="skeleton h-9" />
               ) : (
                 <p className="p-4 text-[13px] text-ink-2">Sin barra: escribe un mensaje{d.countdown_enabled ? " o revisa el contador" : ""}.</p>
               )}
@@ -276,7 +281,7 @@ export function CampaignEditor({ initial, pages }: { initial: CampaignInput; pag
             <button type="button" onClick={() => { const t = wallTimeToUtc(d.countdown_target_at, d.timezone); if (t) setPreviewNow(Date.parse(t) + 1000); }}
               className="press mt-3 h-10 text-[14px] underline underline-offset-4">Ver cómo queda al llegar a cero</button>
           )}
-          {previewNow > Date.now() + 5000 && (
+          {previewNow !== null && previewNow > Date.now() + 5000 && (
             <button type="button" onClick={() => setPreviewNow(Date.now())} className="press ml-3 mt-3 h-10 text-[14px] underline underline-offset-4">Volver a ahora</button>
           )}
         </Card>
