@@ -12,7 +12,7 @@ export const ADMIN_NAV: NavItem[] = [
   { href: "/admin/pedidos", label: "Pedidos", icon: "ShoppingBag", min: "staff", phase: "5" },
   { href: "/admin/clientes", label: "Clientes", icon: "Users", min: "staff", phase: "5" },
   { href: "/admin/garantias", label: "Garantías", icon: "ShieldCheck", min: "staff", phase: "5" },
-  { href: "/admin/descuentos", label: "Descuentos", icon: "Percent", min: "admin", phase: "4" },
+  { href: "/admin/descuentos", label: "Descuentos", icon: "Percent", min: "admin" },
   { href: "/admin/finanzas", label: "Finanzas", icon: "Wallet", min: "admin", phase: "6" },
   { href: "/admin/analitica", label: "Analítica", icon: "LineChart", min: "admin", phase: "6" },
   { href: "/admin/configuracion", label: "Configuración", icon: "Settings", min: "admin" },

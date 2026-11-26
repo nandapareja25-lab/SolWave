@@ -6,6 +6,7 @@
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
   "observability": { "enabled": true },
+  // SIN base de datos D1 ni bindings "DB": todos los datos viven en Supabase. No agregar d1_databases.
   // Variables públicas (no secretas). Los secretos se cargan con: npx wrangler secret put NOMBRE
   "vars": {
     "NEXT_PUBLIC_SITE_URL": "https://dorata18k.com",

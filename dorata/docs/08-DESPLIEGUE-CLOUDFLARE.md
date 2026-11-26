@@ -28,6 +28,19 @@ Estado: **preparado y verificado** (26-nov-2026). Falta solo lo que requiere TUS
 5. **Dominio del Worker:** Workers → `dorata-web` → *Settings* → *Domains & Routes* → *Add* → `dorata18k.com` y `www.dorata18k.com`.
 6. Escríbeme "listo" y verifico en vivo: Próximamente, cuenta regresiva, lista de espera guardando correos, cookies, políticas, y que la tienda NO se vea sin tu enlace.
 
+## Si el despliegue falla con "error 10181" o menciona `env.DB` / D1
+La tienda **no usa D1** (base de datos de Cloudflare): todos los datos están en Supabase. El código nunca usa `env.DB`
+y `dorata/wrangler.jsonc` no declara ninguna base D1. Si Cloudflare intenta crear un binding `DB` (por ejemplo
+`mafer-studio-db` con id `00000000-…`), está usando **otra configuración**, no la de la tienda. Revisa en el proyecto de
+Cloudflare › *Settings* › *Build*:
+1. **Root directory** = `dorata` (si está vacío, Cloudflare no encuentra nuestro `wrangler.jsonc` y genera uno propio).
+2. **Rama de producción** = la rama donde está la tienda (hoy `claude/dorata-ecommerce-platform-qu0ubx`; `main` todavía
+   no tiene la tienda).
+3. **Build command** `npx opennextjs-cloudflare build` · **Deploy command** `npx opennextjs-cloudflare deploy`.
+4. *Settings* › *Bindings*: si aparece un binding `DB` de tipo D1, elimínalo. No hace falta crear ninguna base D1.
+5. El nombre del Worker en Cloudflare debe coincidir con `"name"` de `wrangler.jsonc` (hoy `dorata-web`).
+   Si tu Worker se llama distinto, dime el nombre y lo ajusto en el archivo.
+
 ## El 2 de diciembre: tres opciones, sin tocar código
 - **Abrir la tienda:** Supabase → *Table Editor* → `store_settings` → `store_mode` = `live`. (En la fase 3 será un botón en el panel.)
 - **Abrir sola a una hora:** poner `live_at` = `2026-12-02 00:00` (Nueva York) y dejar `store_mode` = `coming_soon`.
