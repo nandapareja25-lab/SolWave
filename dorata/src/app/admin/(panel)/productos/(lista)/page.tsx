@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Plus, Search } from "lucide-react";
+import { ImagePlus, Plus, Search } from "lucide-react";
 import { requireAdmin } from "@/server/admin/auth";
 import { PageHeader, btnPrimary, inputCls } from "@/components/admin/ui";
 import { AutoSubmitSelect } from "@/components/admin/AutoSubmitSelect";
@@ -118,14 +118,14 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
         <ul className="divide-y divide-line rounded-[4px] border border-line bg-surface">
           {shown.map((p, i) => (
             <li key={p.id} className="rise" style={{ animationDelay: `${Math.min(i, 8) * 50}ms` }}>
-              <Link href={`/admin/productos/${p.id}`} className="flex items-center gap-3 p-3 hover:bg-ivory">
+              <Link href={`/admin/productos/${p.id}`} className="press flex items-center gap-3 p-3 hover:bg-ivory active:bg-ivory">
                 <div className={`grid size-[72px] shrink-0 place-items-center overflow-hidden rounded-[4px] border bg-cream p-[2px] ${p.thumb ? "border-gold/40" : "border-line"}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element -- miniatura del panel */}
-                  {p.thumb ? <img src={p.thumb} alt="" width={72} height={72} className="size-full rounded-[2px] object-cover" /> : <span className="px-1 text-center text-[12px] font-semibold leading-tight text-gold-deep">Agregar foto</span>}
+                  {p.thumb ? <img src={p.thumb} alt="" width={72} height={72} className="size-full rounded-[2px] object-cover" /> : <span className="grid justify-items-center gap-1 px-1 text-center text-[12px] leading-tight text-ink-3"><ImagePlus aria-hidden="true" size={20} />Agregar foto</span>}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="line-clamp-2 text-[15px] font-semibold leading-snug">{p.name}</p>
-                  {p.flag && <span className={`mt-0.5 inline-block rounded-[4px] px-1.5 text-[11px] font-semibold ${p.flag === "Dije para set" ? "bg-line/60 text-ink-2" : "bg-gold/15 text-gold-deep"}`}>{p.flag}</span>}
+                  {p.flag && <span className={`mt-0.5 inline-block rounded-[4px] px-1.5 py-0.5 text-[11px] font-semibold ${p.flag === "Dije para set" ? "bg-line/60 text-ink-2" : "bg-gold/15 text-gold-deep"}`}>{p.flag}</span>}
                   <p className="truncate text-[13px] text-ink-2">{p.category}{p.variants > 1 ? ` · ${p.variants} variantes` : ""}</p>
                   <p className="mt-1 flex flex-wrap items-center gap-2 text-[13px]">
                     <span className={`tabular font-semibold ${p.noPrice ? "text-gold-deep" : ""}`}>{p.price}</span>
