@@ -2,18 +2,21 @@ import "server-only";
 import { cache } from "react";
 import { announcementSchema, type Announcement } from "@/lib/announcement";
 import { callPublicRpc, supabasePublicConfig } from "@/server/supabase/rpc";
+import { sbCategories, sbLegalPage, sbLegalPages, sbProducts, sbSettings, sbWarranties } from "@/server/supabase/store-repo";
 import { DEMO_CATEGORIES, DEMO_LEGAL, DEMO_PRODUCTS, DEMO_SETTINGS, DEMO_WARRANTIES, demoAnnouncement } from "@/server/demo/catalog";
 import type { Category, LegalPage, LegalPageSummary, ProductCard, ProductDetail, ProductQuery, StoreSettings, WarrantyPolicy } from "@/server/types";
 
 /**
- * Repositorio de la tienda. FASE 1: catálogo, ajustes y políticas desde datos de demostración;
- * banner y modo de tienda ya leen Supabase cuando está configurado.
- * FASE 2 reemplaza el resto de funciones por consultas a Supabase sin cambiar estas firmas.
+ * Repositorio de la tienda. Con Supabase configurado (NEXT_PUBLIC_SUPABASE_URL + clave publicable)
+ * TODO sale de la base real; sin configuración (desarrollo local) usa los datos de demostración.
+ * Las páginas no saben de dónde vienen los datos: las firmas no cambian.
  */
+const live = () => supabasePublicConfig() !== null;
 
-export const getStoreSettings = cache(async (): Promise<StoreSettings> => DEMO_SETTINGS);
+export const getStoreSettings = cache(async (): Promise<StoreSettings> => (live() ? sbSettings() : DEMO_SETTINGS));
 
-export const getCategories = cache(async (): Promise<Category[]> => DEMO_CATEGORIES);
+export const getCategories = cache(async (): Promise<Category[]> =>
+  (live() ? sbCategories() : DEMO_CATEGORIES));
 
 export const getNavCategories = cache(async (): Promise<Category[]> =>
   (await getCategories()).filter((c) => c.showInNav));
@@ -22,7 +25,10 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
   return (await getCategories()).find((c) => c.slug === slug) ?? null;
 }
 
-export const getWarrantyPolicies = cache(async (): Promise<WarrantyPolicy[]> => DEMO_WARRANTIES);
+export const getWarrantyPolicies = cache(async (): Promise<WarrantyPolicy[]> => (live() ? sbWarranties() : DEMO_WARRANTIES));
+
+/** Catálogo activo completo (una consulta por solicitud, con caché ISR). Suficiente para cientos de piezas. */
+const loadProducts = cache(async (): Promise<ProductDetail[]> => (live() ? sbProducts() : DEMO_PRODUCTS));
 
 function toCard(p: ProductDetail): ProductCard {
   return {
@@ -33,7 +39,7 @@ function toCard(p: ProductDetail): ProductCard {
 }
 
 export async function listProducts(q: ProductQuery = {}): Promise<ProductCard[]> {
-  let list = [...DEMO_PRODUCTS];
+  let list = [...(await loadProducts())];
   if (q.categorySlug) {
     const category = await getCategoryBySlug(q.categorySlug);
     if (category?.autoRule === "new") list = list.filter((p) => p.isNew);
@@ -62,20 +68,20 @@ export async function getHome() {
 }
 
 export async function getProduct(categorySlug: string, productSlug: string): Promise<ProductDetail | null> {
-  const p = DEMO_PRODUCTS.find((x) => x.slug === productSlug);
-  if (!p) return null;
-  return p.categorySlug === categorySlug ? p : { ...p, categorySlug: p.categorySlug }; // la página redirige a la URL canónica
+  const p = (await loadProducts()).find((x) => x.slug === productSlug);
+  void categorySlug; // la página compara y redirige a la URL canónica si no coincide
+  return p ?? null;
 }
 
 export async function getRelated(product: ProductDetail): Promise<ProductCard[]> {
-  return DEMO_PRODUCTS.filter((p) => p.id !== product.id && (p.categorySlug === product.categorySlug || p.isFeatured)).slice(0, 4).map(toCard);
+  return (await loadProducts()).filter((p) => p.id !== product.id && (p.categorySlug === product.categorySlug || p.isFeatured)).slice(0, 4).map(toCard);
 }
 
 export const getLegalPages = cache(async (): Promise<LegalPageSummary[]> =>
-  DEMO_LEGAL.map(({ kind, slug, title }) => ({ kind, slug, title })));
+  live() ? sbLegalPages() : DEMO_LEGAL.map(({ kind, slug, title }) => ({ kind, slug, title })));
 
 export async function getLegalPage(slug: string): Promise<LegalPage | null> {
-  return DEMO_LEGAL.find((p) => p.slug === slug) ?? null;
+  return live() ? sbLegalPage(slug) : DEMO_LEGAL.find((p) => p.slug === slug) ?? null;
 }
 
 export async function getLegalSlugs(): Promise<string[]> {

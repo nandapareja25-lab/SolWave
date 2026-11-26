@@ -74,12 +74,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* ───────── 3 · DESTACADOS (claro) ───────── */}
+      {home.featured.length > 0 && (
       <section data-reveal aria-labelledby="featured-title" className="mx-auto max-w-6xl px-4 pt-12">
         <SectionHeading id="featured-title" kicker={t("featuredKicker")} title={t("featuredTitle")} href="/tienda" linkLabel={t("seeAll")} />
         <div className="grid grid-cols-2 gap-x-3 gap-y-8 md:grid-cols-4 md:gap-x-6">
           {home.featured.map((p, i) => <div key={p.id} data-reveal-item><ProductCard product={p} priority={i < 2} /></div>)}
         </div>
       </section>
+      )}
 
       {/* ───────── 4 · GARANTÍA 1 / 5 años (oscuro, "estuche") ───────── */}
       {shortW && longW && (
