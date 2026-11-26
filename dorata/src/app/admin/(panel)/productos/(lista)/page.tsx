@@ -119,9 +119,9 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
           {shown.map((p, i) => (
             <li key={p.id} className="rise" style={{ animationDelay: `${Math.min(i, 8) * 50}ms` }}>
               <Link href={`/admin/productos/${p.id}`} className="flex items-center gap-3 p-3 hover:bg-ivory">
-                <div className="grid size-[72px] shrink-0 place-items-center overflow-hidden rounded-[4px] border border-gold/40 bg-cream p-[2px]">
+                <div className={`grid size-[72px] shrink-0 place-items-center overflow-hidden rounded-[4px] border bg-cream p-[2px] ${p.thumb ? "border-gold/40" : "border-line"}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element -- miniatura del panel */}
-                  {p.thumb ? <img src={p.thumb} alt="" width={72} height={72} className="size-full rounded-[2px] bg-cream object-contain p-1" /> : <span className="px-1 text-center text-[11px] font-semibold leading-tight text-gold-deep">Agregar foto</span>}
+                  {p.thumb ? <img src={p.thumb} alt="" width={72} height={72} className="size-full rounded-[2px] object-cover" /> : <span className="px-1 text-center text-[12px] font-semibold leading-tight text-gold-deep">Agregar foto</span>}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="line-clamp-2 text-[15px] font-semibold leading-snug">{p.name}</p>

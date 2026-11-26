@@ -63,7 +63,7 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
         {[{ n: units, l: units === 1 ? "pieza en total" : "piezas en total", href: "/admin/inventario" },
           { n: low, l: "con pocas unidades", c: low ? "text-gold-deep" : "", href: "/admin/inventario?ver=pocas" },
           { n: out, l: "agotadas", c: out ? "text-danger" : "", href: "/admin/inventario?ver=agotado" }].map((k, i) => (
-          <Link key={k.l} href={k.href} className={`rise press rounded-[4px] border border-line bg-surface p-3 hover:border-ink-3 ${i === 0 ? "filete-doble p-4" : ""}`} style={{ animationDelay: `${i * 60}ms` }}>
+          <Link key={k.l} href={k.href} className={`rise press rounded-[4px] border border-line bg-surface p-3 hover:border-ink-3 ${i === 0 ? "filete-doble" : ""}`} style={{ animationDelay: `${i * 60}ms` }}>
             <p className={`font-display text-[32px] leading-none tabular ${k.c ?? ""}`}><CountUp value={k.n} /></p>
             <p className="mt-1 text-[12px] leading-tight text-ink-2">{k.l}</p>
           </Link>
