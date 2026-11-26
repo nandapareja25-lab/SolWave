@@ -56,8 +56,8 @@ export function StockRow({ r, single = false }: { r: R; single?: boolean }) {
           {r.reserved > 0 && <p className="text-[12px] text-ink-3">{r.onHand} en total · {r.reserved} apartadas en compras</p>}
         </div>
         {!open && <button type="button" aria-label={`Ajustar unidades de ${r.product}${r.title === "Única" ? "" : ` (${r.title})`}`} onClick={() => setOpen(true)} className="press inline-flex h-11 shrink-0 items-center rounded-full border border-line px-4 text-[14px]">Ajustar</button>}
-        <div className="text-right">
-          <p className={`font-display text-[28px] leading-none tabular ${r.available === 0 ? "text-danger" : r.low ? "text-gold-deep" : ""}`}>{r.available}</p>
+        <div className="w-[92px] shrink-0 text-right">
+          <p className={`font-display text-[22px] leading-none tabular ${r.available === 0 ? "text-danger" : r.low ? "text-gold-deep" : ""}`}>{r.available}</p>
           <p className="text-[12px] text-ink-2">{r.available === 0 ? "agotada" : r.low ? (r.available === 1 ? "queda 1" : "quedan pocas") : r.available === 1 ? "disponible" : "disponibles"}</p>
         </div>
       </div>

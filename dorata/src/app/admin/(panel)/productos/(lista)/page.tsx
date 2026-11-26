@@ -54,7 +54,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
     (!sp.estado || p.status === sp.estado) && (!sp.categoria || p.categoryId === sp.categoria) &&
     (sp.stock !== "agotado" || p.available === 0) && (sp.stock !== "pocas" || (p.low && p.available > 0)) &&
     (sp.tipo !== "sets" || (p.kit === "set_base" && !p.hasPendant)) && (sp.tipo !== "dijes" || p.kit === "set_component") &&
-    (sp.tipo !== "revisar" || p.review) && (sp.tipo !== "sinprecio" || (p.noPrice && p.kit !== "set_component")));
+    (sp.tipo !== "revisar" || p.review) && (sp.tipo !== "sinfoto" || (!p.thumb && p.kit !== "set_component")) && (sp.tipo !== "sinprecio" || (p.noPrice && p.kit !== "set_component")));
   const filtered = !!(q || sp.estado || sp.categoria || sp.stock || sp.tipo);
   const pages = Math.max(1, Math.ceil(list.length / PAGE));
   const page = Math.min(pages, Math.max(1, Number(sp.p) || 1));
@@ -93,6 +93,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
             <option value="sets">Sets sin dije ({all.filter((p) => p.kit === "set_base" && !p.hasPendant).length})</option>
             <option value="dijes">Dijes para sets ({all.filter((p) => p.kit === "set_component").length})</option>
             <option value="revisar">Por revisar ({all.filter((p) => p.review).length})</option>
+            <option value="sinfoto">Sin foto ({all.filter((p) => !p.thumb && p.kit !== "set_component").length})</option>
           </AutoSubmitSelect>
         )}
       </form>
@@ -120,7 +121,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
               <Link href={`/admin/productos/${p.id}`} className="flex items-center gap-3 p-3 hover:bg-ivory">
                 <div className="grid size-[72px] shrink-0 place-items-center overflow-hidden rounded-[4px] border border-gold/40 bg-cream p-[2px]">
                   {/* eslint-disable-next-line @next/next/no-img-element -- miniatura del panel */}
-                  {p.thumb ? <img src={p.thumb} alt="" width={72} height={72} className="size-full rounded-[2px] object-cover" /> : <span className="text-[11px] text-ink-3">Sin foto</span>}
+                  {p.thumb ? <img src={p.thumb} alt="" width={72} height={72} className="size-full rounded-[2px] bg-cream object-contain p-1" /> : <span className="px-1 text-center text-[11px] font-semibold leading-tight text-gold-deep">Agregar foto</span>}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="line-clamp-2 text-[15px] font-semibold leading-snug">{p.name}</p>
