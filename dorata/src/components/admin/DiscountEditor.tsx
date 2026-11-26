@@ -89,7 +89,7 @@ export function DiscountEditor({ initial, timezone, timesUsed, categories, produ
             <label className={`fade-in mt-4 ${labelCls}`}>{d.type === "percentage" ? "Porcentaje" : "Monto en dólares"}
               <span className="relative">
                 <span className={`absolute top-1/2 -translate-y-1/2 text-ink-3 ${d.type === "percentage" ? "right-3" : "left-3"}`}>{d.type === "percentage" ? "%" : "$"}</span>
-                <input inputMode="decimal" value={d.value} onChange={(e) => set("value", e.target.value)} placeholder={d.type === "percentage" ? "15" : "10"} className={`${inputCls} ${d.type === "percentage" ? "pr-8" : "pl-8"} tabular`} />
+                <input inputMode="decimal" value={d.value} onChange={(e) => set("value", e.target.value)} placeholder={d.type === "percentage" ? "Ej: 15" : "Ej: 10"} className={`${inputCls} ${d.type === "percentage" ? "pr-8" : "pl-8"} tabular`} />
               </span>
             </label>
           )}
@@ -161,7 +161,7 @@ export function DiscountEditor({ initial, timezone, timesUsed, categories, produ
           ) : <button type="button" onClick={() => setConfirmDelete(true)} className="press inline-flex h-11 w-fit items-center gap-2 text-[14px] text-danger"><Trash2 aria-hidden="true" size={15} />Eliminar código</button>
         )}
       </div>
-      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : !d.id ? <span className="text-ink-3">Aún no está creado</span> : undefined}>
+      <SaveBar dirty={dirty} quiet={!dirty && !!d.id} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : !d.id ? <span className="text-ink-3">Aún no está creado</span> : undefined}>
         <button type="submit" disabled={pending} className={btnPrimary}>
           {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}{d.id ? "Guardar código" : d.is_active ? "Crear código" : "Crear código (inactivo)"}
         </button>

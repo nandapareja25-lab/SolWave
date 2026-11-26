@@ -39,7 +39,7 @@ export default async function CollectionsPage() {
           {["Día de la Madre", "Navidad"].map((n) => (
             <div key={n} className="flex items-center gap-3 rounded-[4px] border border-dashed border-line bg-surface p-3">
               <span className="grid size-14 place-items-center rounded-[4px] border border-gold/40 bg-cream font-display text-[18px] text-gold-deep">{n === "Navidad" ? "NA" : "DM"}</span>
-              <span className="min-w-0 flex-1"><span className="block text-[16px] font-semibold">{n}</span><span className="block text-[13px] text-ink-2">0 productos · /colecciones/{n === "Navidad" ? "navidad" : "dia-de-la-madre"}</span></span>
+              <span className="min-w-0 flex-1"><span className="block text-[16px] font-semibold">{n}</span><span className="block text-[13px] text-ink-2">0 productos · su propia página en la tienda</span></span>
             </div>
           ))}
         </div>

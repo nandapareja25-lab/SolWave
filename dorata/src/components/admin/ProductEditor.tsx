@@ -327,7 +327,7 @@ export function ProductEditor({ initial, data }: { initial: ProductInput; data: 
         )}
       </div>
 
-      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : !d.id ? <span className="text-ink-3">Aún no está creado</span> : undefined}>
+      <SaveBar dirty={dirty} quiet={!dirty && !!d.id} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : !d.id ? <span className="text-ink-3">Aún no está creado</span> : undefined}>
         <button type="submit" disabled={pending} className={`${btnPrimary} ${celebrate ? "shine" : ""}`}>
           {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}
           {d.id ? "Guardar" : "Crear producto"}

@@ -45,8 +45,8 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
       kit: p.kit_role as string | null, review: ((p.tags ?? []) as string[]).includes("revisar"), hasPendant: !!p.set_pendant_product_id,
       thumb: media && base ? `${base}/storage/v1/object/public/product-media/${media.variants["400"] ?? Object.values(media.variants)[0]}` : null,
       available, low: lowOnes.length > 0,
-      stockNote: available === 0 ? "Agotado" : `${available} disponibles`,
-      stockAlert: available === 0 ? null : [...lowOnes.map((v) => vs.length > 1 ? `${v.title}: quedan ${v.available}` : `Quedan ${v.available}`), ...(vs.length > 1 ? outOnes.map((v) => `${v.title}: agotada`) : [])].join(" · ") || null,
+      stockNote: available === 0 ? "Agotado" : available === 1 ? "1 disponible" : `${available} disponibles`,
+      stockAlert: available === 0 ? null : [...lowOnes.filter(() => vs.length > 1 || available > 1).map((v) => `${v.title}: ${v.available === 1 ? "queda 1" : `quedan ${v.available}`}`), ...(vs.length > 1 ? outOnes.map((v) => `${v.title}: agotada`) : [])].join(" · ") || null,
     };
   });
   const list = all.filter((p) =>

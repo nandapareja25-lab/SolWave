@@ -111,7 +111,7 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
       {pages > 1 && (
         <nav aria-label="Páginas" className="mt-4 flex items-center justify-between gap-3 text-[14px]">
           {page > 1 ? <Link href={pageHref(page - 1)} className="press inline-flex h-11 items-center rounded-full border border-line bg-surface px-4">← Anteriores</Link> : <span />}
-          <span className="text-ink-2 tabular">Página {page} de {pages} · {groups.length} piezas</span>
+          <span className="text-ink-2 tabular">Página {page} de {pages} · {groups.length} {groups.length === 1 ? "producto" : "productos"}</span>
           {page < pages ? <Link href={pageHref(page + 1)} className="press inline-flex h-11 items-center rounded-full border border-line bg-surface px-4">Siguientes →</Link> : <span />}
         </nav>
       )}
@@ -126,7 +126,7 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
                 <span className={`w-9 shrink-0 font-semibold tabular ${m.quantity_delta > 0 ? "text-success" : "text-danger"}`}>{m.quantity_delta > 0 ? `+${m.quantity_delta}` : m.quantity_delta}</span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate font-medium">{label.get(m.variant_id)}</span>
-                  <span className="block text-[13px] text-ink-2">{m.reason === UNDO_REASON ? "Ajuste deshecho" : TYPE[m.type] ?? m.type}{extra(m.type, m.reason)} · quedan {m.on_hand_after}</span>
+                  <span className="block text-[13px] text-ink-2">{m.reason === UNDO_REASON ? "Ajuste deshecho" : TYPE[m.type] ?? m.type}{extra(m.type, m.reason)} · {m.on_hand_after === 1 ? "queda 1" : `quedan ${m.on_hand_after}`}</span>
                   <span className="block text-[12px] text-ink-3">{formatInZone(m.created_at, tz)}</span>
                 </span>
               </li>

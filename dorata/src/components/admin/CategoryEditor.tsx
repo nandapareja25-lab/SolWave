@@ -180,7 +180,7 @@ export function CategoryEditor({ initial, parents, warranties, storageBase, canD
           </div>
         )}
       </div>
-      <SaveBar dirty={dirty} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : !d.id ? <span className="text-ink-3">Aún no está creada</span> : undefined}>
+      <SaveBar dirty={dirty} quiet={!dirty && !!d.id} status={msg ? <StatusText ok={msg.ok}>{msg.text}</StatusText> : !d.id ? <span className="text-ink-3">Aún no está creada</span> : undefined}>
         <button type="submit" disabled={pending || uploading} className={btnPrimary}>
           {pending ? <Loader2 aria-hidden="true" size={16} className="animate-spin motion-reduce:animate-none" /> : <Check aria-hidden="true" size={16} />}{d.id ? "Guardar categoría" : "Crear categoría"}
         </button>

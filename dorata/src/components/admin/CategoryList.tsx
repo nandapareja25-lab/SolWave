@@ -70,7 +70,7 @@ export function CategoryList({ items }: { items: CategoryItem[] }) {
           <button type="button" onClick={() => setSorting(false)} className="press inline-flex h-10 shrink-0 items-center gap-1.5 rounded-full bg-ink px-4 text-[14px] font-semibold text-on-dark"><Check aria-hidden="true" size={15} />Listo</button>
         </div>
       ) : (
-        <div className="-mx-4 mb-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none]">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
           <button type="button" onClick={() => { setFilter("all"); setSorting(true); }} className="press inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-[13px]">
             <ArrowUpDown aria-hidden="true" size={14} />Ordenar
           </button>

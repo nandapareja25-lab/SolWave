@@ -52,7 +52,7 @@ export function DateTimeField({ label, name, value, defaultValue, onChange, time
   }
 
   return (
-    <fieldset className="grid gap-1" disabled={disabled}>
+    <fieldset className="grid min-w-0 gap-1" disabled={disabled}>
       <legend className="mb-1 text-[13px] font-medium text-ink-2">{label}</legend>
       <input ref={hiddenRef} type="hidden" name={name} value={v} />
       {p ? (
@@ -79,13 +79,15 @@ export function DateTimeField({ label, name, value, defaultValue, onChange, time
             <select aria-label={`${label}: mañana o tarde`} value={p.ap} onChange={(e) => update({ ap: e.target.value as "am" | "pm" })} className={`${sel} w-20`}>
               <option value="am">a. m.</option><option value="pm">p. m.</option>
             </select>
+          </div>
+          <div className="flex items-start justify-between gap-3">
+            <span className={helpCls}>{readableWallTime(v)} · {tzLabel(timezone)}</span>
             {!required && (
-              <button type="button" onClick={() => emit("")} className="press ml-auto h-11 whitespace-nowrap px-2 text-[13px] text-ink-2 underline underline-offset-4">
+              <button type="button" onClick={() => emit("")} className="press -mt-1 shrink-0 whitespace-nowrap py-1 text-[13px] text-ink-2 underline underline-offset-4">
                 Quitar fecha
               </button>
             )}
           </div>
-          <span className={helpCls}>{readableWallTime(v)} · {tzLabel(timezone)}</span>
         </div>
       ) : (
         <div className="grid gap-1">

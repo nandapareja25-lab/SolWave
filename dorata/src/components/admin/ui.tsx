@@ -4,7 +4,7 @@ export function PageHeader({ title, description, actions, eyebrow }: { title: st
     <div className="rise mb-6 flex flex-wrap items-end justify-between gap-4">
       <div className="min-w-0">
         {eyebrow && <p className="mb-1 text-[12px] font-semibold uppercase tracking-[.14em] text-gold-deep">{eyebrow}</p>}
-        <h1 className="font-display text-[32px] leading-[1.1]">{title}</h1>
+        <h1 className="font-display text-[32px] leading-[1.1]">{title.split(" + ").map((part, i) => <span key={i}>{i > 0 && <span className="font-sans font-medium"> + </span>}{part}</span>)}</h1>
         <span aria-hidden="true" className="mt-3 block h-[5px] w-16 border-y border-gold/70" />
         {description && <p className="mt-3 max-w-2xl text-[14px] text-ink-2">{description}</p>}
       </div>
@@ -65,9 +65,11 @@ export function StatusText({ ok, children }: { ok: boolean; children: React.Reac
  * Barra de guardado fija abajo: el botón siempre a mano y el estado siempre visible.
  * Debe ser hija directa del <form>. Ctrl/Cmd+S guarda (ver useSaveShortcut).
  */
-export function SaveBar({ children, dirty, status }: { children: React.ReactNode; dirty?: boolean; status?: React.ReactNode }) {
+export function SaveBar({ children, dirty, status, quiet }: { children: React.ReactNode; dirty?: boolean; status?: React.ReactNode;
+  /** true = no hay nada que guardar: el botón se ve con contorno (como en las tarjetas de Configuración). */
+  quiet?: boolean }) {
   return (
-    <div className="sticky bottom-0 z-20 order-last -mx-4 grid gap-2 border-t border-line bg-ivory/95 px-4 py-3 backdrop-blur lg:col-span-full lg:-mx-8 lg:flex lg:items-center lg:px-8 [&>button]:w-full lg:[&>button]:w-auto">
+    <div className={`sticky bottom-0 z-20 order-last -mx-4 grid gap-2 border-t border-line bg-ivory/95 px-4 py-3 backdrop-blur lg:col-span-full lg:-mx-8 lg:flex lg:items-center lg:px-8 [&>button]:w-full lg:[&>button]:w-auto ${quiet ? "[&>button]:border [&>button]:border-line [&>button]:bg-surface [&>button]:text-ink" : ""}`}>
       <div className="min-h-5 text-[13px] lg:order-2" aria-live="polite">
         {status ?? (dirty ? <span className="fade-in text-gold-deep">Cambios sin guardar</span> : <span className="text-ink-3">Todo guardado</span>)}
       </div>
