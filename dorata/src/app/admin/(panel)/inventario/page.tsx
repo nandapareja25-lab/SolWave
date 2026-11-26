@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { requireAdmin } from "@/server/admin/auth";
 import { PageHeader, inputCls } from "@/components/admin/ui";
 import { StockRow } from "@/components/admin/StockRow";
@@ -110,9 +110,9 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
       )}
       {pages > 1 && (
         <nav aria-label="Páginas" className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3 text-[14px]">
-          {page > 1 ? <Link href={pageHref(page - 1)} className="press inline-flex h-11 items-center justify-self-start rounded-full border border-line bg-surface px-4">← Anteriores</Link> : <span />}
+          {page > 1 ? <Link href={pageHref(page - 1)} className="press inline-flex h-11 items-center gap-1 justify-self-start whitespace-nowrap rounded-full border border-line bg-surface px-3"><ChevronLeft aria-hidden="true" size={16} />Anterior</Link> : <span />}
           <span className="text-center text-ink-2 tabular">Página {page} de {pages} · {groups.length} {groups.length === 1 ? "producto" : "productos"}</span>
-          {page < pages ? <Link href={pageHref(page + 1)} className="press inline-flex h-11 items-center justify-self-end rounded-full border border-line bg-surface px-4">Siguientes →</Link> : <span />}
+          {page < pages ? <Link href={pageHref(page + 1)} className="press inline-flex h-11 items-center gap-1 justify-self-end whitespace-nowrap rounded-full border border-line bg-surface px-3">Siguiente<ChevronRight aria-hidden="true" size={16} /></Link> : <span />}
         </nav>
       )}
 

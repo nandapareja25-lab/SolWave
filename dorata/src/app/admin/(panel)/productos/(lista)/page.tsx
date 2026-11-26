@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ImagePlus, Plus, Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, ImagePlus, Plus, Search } from "lucide-react";
 import { requireAdmin } from "@/server/admin/auth";
 import { PageHeader, btnPrimary, inputCls } from "@/components/admin/ui";
 import { AutoSubmitSelect } from "@/components/admin/AutoSubmitSelect";
@@ -42,6 +42,8 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
       price: !prices.length || Math.max(...prices) === 0 ? "Sin precio" : Math.min(...prices) === Math.max(...prices) ? formatUSD(prices[0]!) : `${formatUSD(Math.min(...prices))} – ${formatUSD(Math.max(...prices))}`,
       noPrice: !prices.length || Math.max(...prices) === 0,
       flag: p.kit_role === "set_base" && !p.set_pendant_product_id ? "Falta dije" : p.kit_role === "set_component" ? "Dije para set" : ((p.tags ?? []) as string[]).includes("revisar") ? "Revisar" : null,
+      // Borrador que ya puede activarse: tiene precio, unidades y (si es set) su dije
+      ready: !(!prices.length || Math.max(...prices) === 0) && available > 0 && p.kit_role !== "set_component" && !(p.kit_role === "set_base" && !p.set_pendant_product_id),
       kit: p.kit_role as string | null, review: ((p.tags ?? []) as string[]).includes("revisar"), hasPendant: !!p.set_pendant_product_id,
       thumb: media && base ? `${base}/storage/v1/object/public/product-media/${media.variants["400"] ?? Object.values(media.variants)[0]}` : null,
       available, low: lowOnes.length > 0,
@@ -133,7 +135,8 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                   </p>
                   {p.stockAlert && <p className="mt-0.5 flex items-center gap-1.5 truncate text-[12px] text-gold-deep"><span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-gold" />{p.stockAlert}</p>}
                 </div>
-                {p.status !== "draft" && <span className={`shrink-0 self-start rounded-[4px] px-2 py-1 text-[12px] font-semibold ${STATUS[p.status]?.cls}`}>{STATUS[p.status]?.label}</span>}
+                {p.status !== "draft" ? <span className={`shrink-0 self-start rounded-[4px] px-2 py-1 text-[12px] font-semibold ${STATUS[p.status]?.cls}`}>{STATUS[p.status]?.label}</span>
+                  : p.ready && <span className="shrink-0 self-start rounded-[4px] bg-success/10 px-2 py-1 text-[12px] font-semibold text-success">Listo para publicar</span>}
               </Link>
             </li>
           ))}
@@ -141,9 +144,9 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
       )}
       {pages > 1 && (
         <nav aria-label="Páginas" className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3 text-[14px]">
-          {page > 1 ? <Link href={href({ p: page > 2 ? String(page - 1) : undefined })} className="press inline-flex h-11 items-center justify-self-start rounded-full border border-line bg-surface px-4">← Anteriores</Link> : <span />}
+          {page > 1 ? <Link href={href({ p: page > 2 ? String(page - 1) : undefined })} className="press inline-flex h-11 items-center gap-1 justify-self-start whitespace-nowrap rounded-full border border-line bg-surface px-3"><ChevronLeft aria-hidden="true" size={16} />Anterior</Link> : <span />}
           <span className="text-center text-ink-2 tabular">Página {page} de {pages}</span>
-          {page < pages ? <Link href={href({ p: String(page + 1) })} className="press inline-flex h-11 items-center justify-self-end rounded-full border border-line bg-surface px-4">Siguientes →</Link> : <span />}
+          {page < pages ? <Link href={href({ p: String(page + 1) })} className="press inline-flex h-11 items-center gap-1 justify-self-end whitespace-nowrap rounded-full border border-line bg-surface px-3">Siguiente<ChevronRight aria-hidden="true" size={16} /></Link> : <span />}
         </nav>
       )}
     </div>
