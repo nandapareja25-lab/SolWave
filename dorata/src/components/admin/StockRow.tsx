@@ -14,7 +14,7 @@ const KINDS = [
   { value: "return", label: "Devolución que se puede vender", qty: "¿Cuántas vuelven?", reason: false },
 ] as const;
 
-export function StockRow({ r }: { r: R }) {
+export function StockRow({ r, single = false }: { r: R; single?: boolean }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [kind, setKind] = useState<(typeof KINDS)[number]["value"]>("restock");
@@ -51,8 +51,8 @@ export function StockRow({ r }: { r: R }) {
     <li className="min-w-0 p-3">
       <div className="flex items-start gap-3">
         <div className="min-w-0 flex-1">
-          <p className="truncate text-[15px] font-medium">{r.title}</p>
-          <p className="truncate text-[12px] text-ink-3">{r.sku}</p>
+          {!single && <p className="truncate text-[15px] font-medium">{r.title}</p>}
+          <p className="truncate text-[12px] text-ink-3">{single ? `Código ${r.sku}` : r.sku}</p>
           {r.reserved > 0 && <p className="text-[12px] text-ink-3">{r.onHand} en total · {r.reserved} apartadas en compras</p>}
         </div>
         <div className="text-right">
@@ -92,9 +92,9 @@ export function StockRow({ r }: { r: R }) {
         </div>
       ) : (
         <div className="mt-2 flex flex-wrap items-center gap-3">
-          <button type="button" onClick={() => setOpen(true)} className="press inline-flex h-10 items-center rounded-full border border-line px-4 text-[14px]">Ajustar unidades</button>
+          <button type="button" onClick={() => setOpen(true)} className="press inline-flex h-11 items-center rounded-full border border-line px-4 text-[14px]">Ajustar unidades</button>
           {msg && <StatusText ok={msg.ok}>{msg.text}</StatusText>}
-          {undo && <button type="button" onClick={revert} className="press h-10 rounded-full px-3 text-[14px] font-semibold text-ink underline underline-offset-4">Deshacer</button>}
+          {undo && <button type="button" onClick={revert} className="press h-11 rounded-full px-3 text-[14px] font-semibold text-ink underline underline-offset-4">Deshacer</button>}
         </div>
       )}
     </li>

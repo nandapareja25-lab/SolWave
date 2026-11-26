@@ -74,10 +74,10 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
     <div>
       <PageHeader title="Productos" description={`${counts.active} activos · ${counts.draft} en borrador`}
         actions={<Link href="/admin/productos/nuevo" className={`${btnPrimary} w-full sm:w-auto`}><Plus aria-hidden="true" size={16} />Nuevo producto</Link>} />
-      <form className="mb-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_220px]" role="search">
+      <form className="mb-3 grid grid-cols-2 gap-2 sm:grid-cols-[minmax(0,1fr)_200px_200px]" role="search">
         {sp.estado && <input type="hidden" name="estado" value={sp.estado} />}
         {sp.stock && <input type="hidden" name="stock" value={sp.stock} />}
-        <label className="relative">
+        <label className="relative col-span-2 sm:col-span-1">
           <span className="sr-only">Buscar por nombre o código</span>
           <Search aria-hidden="true" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-3" />
           <input name="q" type="search" defaultValue={sp.q ?? ""} placeholder="Buscar por nombre o código" className={`${inputCls} pl-9`} />
@@ -86,22 +86,23 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
           <option value="">Todas las categorías</option>
           {(cats ?? []).filter((c) => !c.auto_rule).map((c) => <option key={c.id} value={c.id}>{catName.get(c.id)}</option>)}
         </AutoSubmitSelect>
+        {(all.some((p) => p.kit) || all.some((p) => p.review)) && (
+          <AutoSubmitSelect name="tipo" defaultValue={sp.tipo ?? ""} aria-label="Por completar" className={inputCls}>
+            <option value="">Por completar</option>
+            <option value="sinprecio">Sin precio ({all.filter((p) => p.noPrice && p.kit !== "set_component").length})</option>
+            <option value="sets">Sets sin dije ({all.filter((p) => p.kit === "set_base" && !p.hasPendant).length})</option>
+            <option value="dijes">Dijes para sets ({all.filter((p) => p.kit === "set_component").length})</option>
+            <option value="revisar">Por revisar ({all.filter((p) => p.review).length})</option>
+          </AutoSubmitSelect>
+        )}
       </form>
-      <div className="mb-2 flex flex-wrap gap-2" aria-label="Filtros">
+      <div className="mb-4 flex flex-wrap gap-2" aria-label="Filtros">
         {chip({ estado: undefined, stock: undefined, tipo: undefined }, `Todos (${all.length})`, !sp.estado && !sp.stock && !sp.tipo)}
         {chip({ estado: "active", stock: undefined }, `Activos (${counts.active})`, sp.estado === "active")}
         {chip({ estado: "draft", stock: undefined }, `Borradores (${counts.draft})`, sp.estado === "draft")}
         {chip({ estado: undefined, stock: "pocas" }, `Quedan pocas (${all.filter((p) => p.low && p.available > 0).length})`, sp.stock === "pocas")}
         {chip({ estado: undefined, stock: "agotado" }, `Agotados (${all.filter((p) => p.available === 0).length})`, sp.stock === "agotado")}
       </div>
-      {(all.some((p) => p.kit) || all.some((p) => p.review)) && (
-        <div className="mb-4 flex flex-wrap gap-2" aria-label="Por completar">
-          {chip({ tipo: sp.tipo === "sinprecio" ? undefined : "sinprecio" }, `Sin precio (${all.filter((p) => p.noPrice && p.kit !== "set_component").length})`, sp.tipo === "sinprecio")}
-          {chip({ tipo: sp.tipo === "sets" ? undefined : "sets" }, `Sets sin dije (${all.filter((p) => p.kit === "set_base" && !p.hasPendant).length})`, sp.tipo === "sets")}
-          {chip({ tipo: sp.tipo === "dijes" ? undefined : "dijes" }, `Dijes para sets (${all.filter((p) => p.kit === "set_component").length})`, sp.tipo === "dijes")}
-          {chip({ tipo: sp.tipo === "revisar" ? undefined : "revisar" }, `Por revisar (${all.filter((p) => p.review).length})`, sp.tipo === "revisar")}
-        </div>
-      )}
       {filtered && <p className="mb-3 text-[14px] text-ink-2">{list.length} de {all.length} productos · <Link href="/admin/productos" className="underline underline-offset-4">Quitar filtros</Link></p>}
 
       {all.length === 0 ? (

@@ -63,7 +63,7 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
         {[{ n: units, l: units === 1 ? "pieza en total" : "piezas en total", href: "/admin/inventario" },
           { n: low, l: "con pocas unidades", c: low ? "text-gold-deep" : "", href: "/admin/inventario?ver=pocas" },
           { n: out, l: "agotadas", c: out ? "text-danger" : "", href: "/admin/inventario?ver=agotado" }].map((k, i) => (
-          <Link key={k.l} href={k.href} className="rise press rounded-[4px] border border-line bg-surface p-3 hover:border-ink-3" style={{ animationDelay: `${i * 60}ms` }}>
+          <Link key={k.l} href={k.href} className={`rise press rounded-[4px] border border-line bg-surface p-3 hover:border-ink-3 ${i === 0 ? "filete-doble p-4" : ""}`} style={{ animationDelay: `${i * 60}ms` }}>
             <p className={`font-display text-[32px] leading-none tabular ${k.c ?? ""}`}><CountUp value={k.n} /></p>
             <p className="mt-1 text-[12px] leading-tight text-ink-2">{k.l}</p>
           </Link>
@@ -100,9 +100,9 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
               <li key={pid} className="rise min-w-0 rounded-[4px] border border-line bg-surface" style={{ animationDelay: `${Math.min(gi, 8) * 50}ms` }}>
                 <Link href={`/admin/productos/${pid}`} className="flex min-h-12 items-center justify-between gap-2 border-b border-line px-3 text-[15px] font-semibold underline-offset-4 hover:underline">
                   <span className="line-clamp-2 py-2 leading-snug">{rows[0]!.product}</span>
-                  <span className="shrink-0 text-[12px] font-normal text-ink-3">{rows.length} {rows.length === 1 ? "variante" : "variantes"}</span>
+                  {rows.length > 1 && <span className="shrink-0 text-[12px] font-normal text-ink-3">{rows.length} variantes</span>}
                 </Link>
-                <ul className="divide-y divide-line">{rows.map((r) => <StockRow key={r.variantId} r={r} />)}</ul>
+                <ul className="divide-y divide-line">{rows.map((r) => <StockRow key={r.variantId} r={r} single={rows.length === 1 && r.title === "Única"} />)}</ul>
               </li>
             );
           })}
