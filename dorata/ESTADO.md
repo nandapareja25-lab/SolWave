@@ -119,11 +119,12 @@ Stack: Next.js 15 en Cloudflare Workers (OpenNext) · Supabase · Stripe Checkou
   El token guardado para api.cloudflare.com es inválido ("Invalid API Token"): la dueña puede crear uno nuevo
   ("Edit Cloudflare Workers") y volver a cargarlo, o hacer esos 2 ajustes ella misma.
 
-## Revisión visual del panel (gate 36/40 · 16/20) — ronda 3
-Config 31·15 · Banner 31·15 · Categorías 30·14 · Editor categoría 32·15 · Productos 32·14 · Editor producto 31·15 ·
-Inventario 33·15 · Colecciones 31·15. NO SUPERADO todavía (subió desde 24-28·10-12). Pendientes ronda 4: fecha en
-español dentro del campo (selector propio), guardar por pestaña en Configuración, categorías sin flechas en la fila
-(modo "Ordenar"), monograma compartido, tipo "Ajuste deshecho" en inventario, chips de una fila.
+## Revisión visual del panel (gate 36/40 · 16/20) — SUPERADO (26-nov)
+10/10 pantallas LISTAS tras 16 rondas del subagente revisor-visual (capturas docs/capturas/fase3/r16-*):
+Configuración 37·16 · Barra de anuncios 36·16 · Categorías 37·16 · Editor categoría 37·16 · Productos 36·16 ·
+Set cadena+dije 36·16 · Editor producto 37·17 · Inventario 36·16 · Colecciones 36·16 · Descuento 37·16.
+Pendientes no bloqueantes: foto de prueba de "Cadena Singapur" (se borra con los datos QA); enlace "N listos para
+publicar" bajo el título de Productos.
 
 ## Panel — decisiones técnicas (fase 3)
 - Rutas /admin/* con su propio layout; middleware exige sesión; has_role exige aal2 (MFA) en la BD.
