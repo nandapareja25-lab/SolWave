@@ -212,8 +212,8 @@ describe("slugify", () => {
 describe("fechas legibles", () => {
   it("muestra la hora de pared en español sin moverla de zona", async () => {
     const { readableWallTime, tzLabel } = await import("@/lib/tz");
-    expect(readableWallTime("2026-12-02T00:00")).toMatch(/miércoles, 2 de diciembre de 2026|miércoles 2 de diciembre de 2026/);
-    expect(readableWallTime("2026-12-02T00:00")).toMatch(/12:00/);
+    expect(readableWallTime("2026-12-02T00:00")).toBe("miércoles, 2 de diciembre de 2026, 12:00 a. m.");
+    expect(readableWallTime("2026-03-08T14:05")).toBe("domingo, 8 de marzo de 2026, 2:05 p. m.");
     expect(readableWallTime("")).toBe("");
     expect(tzLabel("America/New_York")).toContain("Este");
   });

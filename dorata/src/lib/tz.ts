@@ -48,10 +48,17 @@ export const TZ_LABELS: Record<string, string> = {
 };
 export const tzLabel = (tz: string) => TZ_LABELS[tz] ?? tz.replace(/_/g, " ");
 
-/** "2026-12-02T00:00" (hora de pared) → "miércoles 2 de diciembre de 2026, 12:00 a. m." */
+const WEEKDAYS = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+const MONTH_NAMES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+/**
+ * "2026-12-02T00:00" (hora de pared) → "miércoles, 2 de diciembre de 2026, 12:00 a. m.".
+ * Formato hecho a mano (no Intl) para que servidor y navegador escriban exactamente lo mismo.
+ */
 export function readableWallTime(local: string): string {
   const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(local);
   if (!m) return "";
-  const d = new Date(Date.UTC(+m[1]!, +m[2]! - 1, +m[3]!, +m[4]!, +m[5]!));
-  return new Intl.DateTimeFormat("es-US", { weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(d);
+  const [y, mo, d, h, mi] = [+m[1]!, +m[2]!, +m[3]!, +m[4]!, m[5]!];
+  const wd = new Date(Date.UTC(y, mo - 1, d)).getUTCDay();
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return `${WEEKDAYS[wd]}, ${d} de ${MONTH_NAMES[mo - 1]} de ${y}, ${h12}:${mi} ${h < 12 ? "a. m." : "p. m."}`;
 }
