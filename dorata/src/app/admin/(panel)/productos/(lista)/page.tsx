@@ -127,16 +127,16 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="line-clamp-2 text-[15px] font-semibold leading-snug">{p.name}</p>
-                  {p.flag && <span className={`mt-0.5 inline-block rounded-[4px] px-1.5 py-0.5 text-[12px] font-semibold ${p.flag === "Dije para set" ? "bg-line/60 text-ink-2" : "bg-gold/15 text-gold-deep"}`}>{p.flag}</span>}
+                  {p.flag ? <span className={`mt-0.5 inline-block rounded-[4px] px-1.5 py-0.5 text-[12px] font-semibold ${p.flag === "Dije para set" ? "bg-line/60 text-ink-2" : "bg-gold/15 text-gold-deep"}`}>{p.flag}</span> : p.status === "draft" && p.ready && <span className="mt-0.5 inline-block rounded-[4px] bg-success/10 px-1.5 py-0.5 text-[12px] font-semibold text-success">Listo para publicar</span>}
                   <p className="truncate text-[13px] text-ink-2">{p.category}{p.variants > 1 ? ` · ${p.variants} variantes` : ""}</p>
                   <p className="mt-1 flex flex-wrap items-center gap-2 text-[13px]">
                     <span className={`tabular font-semibold ${p.noPrice ? "text-gold-deep" : ""}`}>{p.price}</span>
                     <span className={p.available === 0 ? "text-danger" : "text-ink-2"}>{p.stockNote}</span>
                   </p>
-                  {p.stockAlert && <p className="mt-0.5 flex items-center gap-1.5 truncate text-[12px] text-gold-deep"><span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-gold" />{p.stockAlert}</p>}
+                  {p.stockAlert && <p className="mt-0.5 flex items-start gap-1.5 text-[12px] text-gold-deep"><span aria-hidden="true" className="mt-1.5 size-1.5 shrink-0 rounded-full bg-gold" /><span className="min-w-0 line-clamp-2">{p.stockAlert}</span></p>}
                 </div>
                 {p.status !== "draft" ? <span className={`shrink-0 self-start rounded-[4px] px-2 py-1 text-[12px] font-semibold ${STATUS[p.status]?.cls}`}>{STATUS[p.status]?.label}</span>
-                  : p.ready && <span className="shrink-0 self-start rounded-[4px] bg-success/10 px-2 py-1 text-[12px] font-semibold text-success">Listo para publicar</span>}
+ : null}
               </Link>
             </li>
           ))}
