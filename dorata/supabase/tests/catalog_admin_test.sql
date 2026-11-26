@@ -91,6 +91,22 @@ begin
 end $$;
 reset role;
 
+-- ---------- C7: sin el código de dos pasos (aal1) no se administra nada ----------
+set local role authenticated;
+select set_config('request.jwt.claim.sub', '00000000-0000-0000-0000-0000000000b2', true);
+select set_config('request.jwt.claim.aal', 'aal1', true);
+do $$
+begin
+  assert not public.is_staff(), 'con solo contraseña no es staff';
+  assert public.my_admin_role() = 'staff', 'pero el panel sabe su rol para pedirle el código';
+  begin perform public.admin_upsert_category('{"name":"X","slug":"x-aal1"}'); raise exception 'debió fallar';
+  exception when insufficient_privilege then null; end;
+  assert (select count(*) from public.variant_costs) = 0 and (select count(*) from public.orders) = 0;
+  raise notice 'OK C7 — sin verificación en dos pasos no se administra ni se leen datos internos';
+end $$;
+select set_config('request.jwt.claim.aal', '', true);
+reset role;
+
 -- ---------- C6: el público no administra y no ve borradores legales ----------
 set local role anon;
 select set_config('request.jwt.claim.sub', '', true);

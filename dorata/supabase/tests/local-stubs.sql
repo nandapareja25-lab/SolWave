@@ -11,6 +11,11 @@ create table auth.users (id uuid primary key default gen_random_uuid(), email te
 create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid $$;
 grant usage on schema auth to anon, authenticated, service_role;
 grant execute on function auth.uid() to anon, authenticated, service_role;
+-- auth.jwt(): por defecto aal2 en pruebas; una prueba fija request.jwt.claim.aal = 'aal1' para verificar el bloqueo.
+create function auth.jwt() returns jsonb language sql stable as $$
+  select jsonb_build_object('sub', nullif(current_setting('request.jwt.claim.sub', true), ''),
+                            'aal', coalesce(nullif(current_setting('request.jwt.claim.aal', true), ''), 'aal2')) $$;
+grant execute on function auth.jwt() to anon, authenticated, service_role;
 create schema storage;
 create table storage.buckets (id text primary key, name text, public boolean, file_size_limit bigint, allowed_mime_types text[]);
 create table storage.objects (id uuid primary key default gen_random_uuid(), bucket_id text references storage.buckets(id), name text);
