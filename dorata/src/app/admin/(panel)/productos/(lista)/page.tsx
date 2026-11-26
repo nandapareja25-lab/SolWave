@@ -83,7 +83,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
           <input name="q" type="search" defaultValue={sp.q ?? ""} placeholder="Buscar por nombre o código" className={`${inputCls} pl-9`} />
         </label>
         <AutoSubmitSelect name="categoria" defaultValue={sp.categoria ?? ""} aria-label="Categoría" className={inputCls}>
-          <option value="">Todas las categorías</option>
+          <option value="">Categoría: todas</option>
           {(cats ?? []).filter((c) => !c.auto_rule).map((c) => <option key={c.id} value={c.id}>{catName.get(c.id)}</option>)}
         </AutoSubmitSelect>
         {(all.some((p) => p.kit) || all.some((p) => p.review)) && (
@@ -125,7 +125,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                 <div className="min-w-0 flex-1">
                   <p className="line-clamp-2 text-[15px] font-semibold leading-snug">{p.name}</p>
                   {p.flag && <span className={`mt-0.5 inline-block rounded-[4px] px-1.5 text-[11px] font-semibold ${p.flag === "Dije para set" ? "bg-line/60 text-ink-2" : "bg-gold/15 text-gold-deep"}`}>{p.flag}</span>}
-                  <p className="truncate text-[13px] text-ink-2">{p.category} · {p.variants} {p.variants === 1 ? "variante" : "variantes"}</p>
+                  <p className="truncate text-[13px] text-ink-2">{p.category}{p.variants > 1 ? ` · ${p.variants} variantes` : ""}</p>
                   <p className="mt-1 flex flex-wrap items-center gap-2 text-[13px]">
                     <span className={`tabular font-semibold ${p.noPrice ? "text-gold-deep" : ""}`}>{p.price}</span>
                     <span className={p.available === 0 ? "text-danger" : "text-ink-2"}>{p.stockNote}</span>

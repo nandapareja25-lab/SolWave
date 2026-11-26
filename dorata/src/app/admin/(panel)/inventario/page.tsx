@@ -50,7 +50,7 @@ export default async function InventoryPage({ searchParams }: { searchParams: Pr
   const pageHref = (n: number) => link({ p: n > 1 ? String(n) : undefined });
   const out = all.filter((r) => r.available === 0).length, low = all.filter((r) => r.low && r.available > 0).length;
   const units = all.reduce((n, r) => n + r.onHand, 0);
-  const label = new Map(all.map((r) => [r.variantId, `${r.product} · ${r.title}`]));
+  const label = new Map(all.map((r) => [r.variantId, r.title === "Única" ? r.product : `${r.product} · ${r.title}`]));
   const chip = (v: string | undefined, text: string) => (
     <Link href={link({ ver: v, p: undefined })} aria-current={sp.ver === v ? "page" : undefined}
       className={`press inline-flex h-9 items-center rounded-full border px-3 text-[13px] ${sp.ver === v ? "border-ink bg-ink font-semibold text-on-dark" : "border-line bg-surface"}`}>{text}</Link>

@@ -49,12 +49,13 @@ export function StockRow({ r, single = false }: { r: R; single?: boolean }) {
 
   return (
     <li className="min-w-0 p-3">
-      <div className="flex items-start gap-3">
+      <div className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
           {!single && <p className="truncate text-[15px] font-medium">{r.title}</p>}
           <p className="truncate text-[12px] text-ink-3">{single ? `Código ${r.sku}` : r.sku}</p>
           {r.reserved > 0 && <p className="text-[12px] text-ink-3">{r.onHand} en total · {r.reserved} apartadas en compras</p>}
         </div>
+        {!open && <button type="button" aria-label={`Ajustar unidades de ${r.product}${r.title === "Única" ? "" : ` (${r.title})`}`} onClick={() => setOpen(true)} className="press inline-flex h-11 shrink-0 items-center rounded-full border border-line px-4 text-[14px]">Ajustar</button>}
         <div className="text-right">
           <p className={`font-display text-[28px] leading-none tabular ${r.available === 0 ? "text-danger" : r.low ? "text-gold-deep" : ""}`}>{r.available}</p>
           <p className="text-[12px] text-ink-2">{r.available === 0 ? "agotada" : r.low ? (r.available === 1 ? "queda 1" : "quedan pocas") : r.available === 1 ? "disponible" : "disponibles"}</p>
@@ -91,11 +92,12 @@ export function StockRow({ r, single = false }: { r: R; single?: boolean }) {
           {msg && !msg.ok && <StatusText ok={false}>{msg.text}</StatusText>}
         </div>
       ) : (
-        <div className="mt-2 flex flex-wrap items-center gap-3">
-          <button type="button" onClick={() => setOpen(true)} className="press inline-flex h-11 items-center rounded-full border border-line px-4 text-[14px]">Ajustar unidades</button>
-          {msg && <StatusText ok={msg.ok}>{msg.text}</StatusText>}
-          {undo && <button type="button" onClick={revert} className="press h-11 rounded-full px-3 text-[14px] font-semibold text-ink underline underline-offset-4">Deshacer</button>}
-        </div>
+        (msg || undo) ? (
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            {msg && <StatusText ok={msg.ok}>{msg.text}</StatusText>}
+            {undo && <button type="button" onClick={revert} className="press h-11 rounded-full px-3 text-[14px] font-semibold text-ink underline underline-offset-4">Deshacer</button>}
+          </div>
+        ) : null
       )}
     </li>
   );
