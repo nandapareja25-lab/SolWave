@@ -1,11 +1,11 @@
 # ESTADO — D'ORATA (tienda online propia)
 Última actualización: 2026-11-26 | Fase actual: 3 — Panel administrativo (casi completo)
 
-⏸️ CHECKPOINT — Última acción: panel con Configuración (tienda, barra de anuncios, envíos, garantías, legal),
-Categorías, Productos (variantes, fotos, garantía por partes, costo y ganancia) e Inventario, todo contra la base
-real y probado de punta a punta. + Colecciones (panel y página /colecciones/…) y Códigos de descuento.
-Siguiente acción exacta: ronda 4 de ajustes del revisor → Fase 4 (Stripe: necesita llaves de prueba).
-Decisión de la dueña: el despliegue en Cloudflare + dominio se hace cuando la tienda esté casi terminada.
+⏸️ CHECKPOINT — Última acción: factura DLJ-1202 importada (41 piezas en borrador con costo real), sets cadena+dije
+asignables desde el panel, ronda 6 de ajustes visuales del panel, Worker de Cloudflare alineado (mafer-studio, sin D1).
+Siguiente acción exacta: cerrar revisión visual → despliegue Cloudflare (falta token válido o 2 ajustes de la dueña en el
+panel de Cloudflare) → Fase 4 (Stripe, impuestos, envíos).
+Decisión de la dueña: no agregar funciones fuera del alcance hasta cerrar estas tareas.
 
 ## Qué es (3 líneas)
 Tienda online propia de accesorios en oro laminado 18K, marca D'ORATA (empresa legal futura: Mafer Studio LLC).
@@ -94,12 +94,30 @@ Stack: Next.js 15 en Cloudflare Workers (OpenNext) · Supabase · Stripe Checkou
 - Antes del 2-dic: crear proyecto Supabase, aplicar migraciones, desplegar en Cloudflare (sin esto, Próximamente
   y la lista de espera no están en internet).
 
+## Catálogo real (factura DLUJO Joyería DLJ-1202, 25-nov-2026) — supabase/imports/2026-11-26_factura_DLJ-1202.sql
+- Importado SOLO lo terminado, todo en BORRADOR y sin precio de venta (lo define la dueña). Costo = total neto / unidades
+  (incluye IVA 19% y 50% de descuento), en COP, tasa a USD PENDIENTE (no se inventa; al guardar la tasa en Configuración
+  se convierten solos los costos pendientes). Proveedor creado. Piezas terminadas ≈ $1.292.500 COP; insumos ≈ $1.247.500.
+- Aretes 13 (incluye set candongas 2 pares → marcado "revisar"), Pulsera 1 ("P tipo trébol 18+5 cm" → "revisar"),
+  2 sets ya armados por el proveedor (San Benito, Guadalupe → "revisar"), 13 cadenas sueltas = 13 sets "cadena + dije por
+  asignar" (⚠ la dueña habló de 12; la factura suma 13: 1+3 caracol, 3 cubanita, 3 cart 3x1, 3 singapur), 12 dijes en la
+  categoría oculta "Dijes" reservados para sets (no se venden solos).
+- NO importado (insumos): balines, neoprenos, bolas de neopreno, herrajes (ítems 1-13, 19-25).
+- Material vacío a propósito (la factura no dice "oro laminado 18K"): confirmar con la dueña.
+- Visibles en la tienda: solo Pulseras, Cadenas y Aretes.
+- Sets: products.kit_role (set_base/set_component) + set_pendant_product_id; la BD impide publicar un set sin dije, vender
+  un dije solo o usar un dije en dos sets. Pendiente fase 5: al vender un set, descontar también el dije.
+
 ## Despliegue Cloudflare — sin D1
 - La tienda NO usa D1: todo dato vive en Supabase; el código no usa env.DB. wrangler.jsonc sin d1_databases
   (verificado con `wrangler deploy --dry-run`: solo ASSETS + 3 variables públicas).
 - Error 10181 (binding DB "mafer-studio-db" con id 0000…): viene de una configuración de Cloudflare ajena al repo
   (root directory vacío o rama main sin la tienda → Cloudflare genera su propio wrangler). Pasos en docs/08.
-  ⚠ Pendiente de la dueña: root directory = dorata, rama de producción, borrar binding DB, nombre del Worker.
+  La cuenta tiene 1 Worker ("mafer-studio") y 0 bases D1 (verificado con el conector). wrangler.jsonc ahora usa
+  name = "mafer-studio" para no crear otro Worker.
+  ⚠ Pendiente: en Cloudflare › mafer-studio › Settings › Build: Root directory = dorata y rama de producción con la tienda.
+  El token guardado para api.cloudflare.com es inválido ("Invalid API Token"): la dueña puede crear uno nuevo
+  ("Edit Cloudflare Workers") y volver a cargarlo, o hacer esos 2 ajustes ella misma.
 
 ## Revisión visual del panel (gate 36/40 · 16/20) — ronda 3
 Config 31·15 · Banner 31·15 · Categorías 30·14 · Editor categoría 32·15 · Productos 32·14 · Editor producto 31·15 ·
