@@ -3,8 +3,8 @@
 
 ⏸️ CHECKPOINT — Última acción: panel con Configuración (tienda, barra de anuncios, envíos, garantías, legal),
 Categorías, Productos (variantes, fotos, garantía por partes, costo y ganancia) e Inventario, todo contra la base
-real y probado de punta a punta. Ronda 2 del revisor visual en curso.
-Siguiente acción exacta: aplicar ronda 2 del revisor → Colecciones → Fase 4 (Stripe: necesita llaves de prueba).
+real y probado de punta a punta. + Colecciones (panel y página /colecciones/…) y Códigos de descuento.
+Siguiente acción exacta: ronda 4 de ajustes del revisor → Fase 4 (Stripe: necesita llaves de prueba).
 Decisión de la dueña: el despliegue en Cloudflare + dominio se hace cuando la tienda esté casi terminada.
 
 ## Qué es (3 líneas)
@@ -93,6 +93,19 @@ Stack: Next.js 15 en Cloudflare Workers (OpenNext) · Supabase · Stripe Checkou
 - Aprobar FICHA-AVATAR.md. Revisión legal (docs/05 §9). Cuenta Stripe (fase 4). Dominio en Cloudflare (fase 7).
 - Antes del 2-dic: crear proyecto Supabase, aplicar migraciones, desplegar en Cloudflare (sin esto, Próximamente
   y la lista de espera no están en internet).
+
+## Despliegue Cloudflare — sin D1
+- La tienda NO usa D1: todo dato vive en Supabase; el código no usa env.DB. wrangler.jsonc sin d1_databases
+  (verificado con `wrangler deploy --dry-run`: solo ASSETS + 3 variables públicas).
+- Error 10181 (binding DB "mafer-studio-db" con id 0000…): viene de una configuración de Cloudflare ajena al repo
+  (root directory vacío o rama main sin la tienda → Cloudflare genera su propio wrangler). Pasos en docs/08.
+  ⚠ Pendiente de la dueña: root directory = dorata, rama de producción, borrar binding DB, nombre del Worker.
+
+## Revisión visual del panel (gate 36/40 · 16/20) — ronda 3
+Config 31·15 · Banner 31·15 · Categorías 30·14 · Editor categoría 32·15 · Productos 32·14 · Editor producto 31·15 ·
+Inventario 33·15 · Colecciones 31·15. NO SUPERADO todavía (subió desde 24-28·10-12). Pendientes ronda 4: fecha en
+español dentro del campo (selector propio), guardar por pestaña en Configuración, categorías sin flechas en la fila
+(modo "Ordenar"), monograma compartido, tipo "Ajuste deshecho" en inventario, chips de una fila.
 
 ## Panel — decisiones técnicas (fase 3)
 - Rutas /admin/* con su propio layout; middleware exige sesión; has_role exige aal2 (MFA) en la BD.
