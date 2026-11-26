@@ -57,3 +57,10 @@ export const labelCls = "grid gap-1 text-[13px] font-medium text-ink-2";
 export const helpCls = "text-[12px] font-normal text-ink-3";
 export const btnPrimary = "press inline-flex h-11 items-center justify-center gap-2 rounded-full bg-ink px-5 text-[14px] font-semibold text-on-dark disabled:opacity-60";
 export const btnSecondary = "press inline-flex h-11 items-center justify-center gap-2 rounded-full border border-ink px-5 text-[14px] font-semibold text-ink disabled:opacity-60";
+
+/** Lee los campos con `name` dentro de un contenedor (para mini-formularios dentro de otro <form>, donde un <form> anidado no es válido). */
+export function collectFields(el: Element | null): Record<string, string> {
+  const out: Record<string, string> = {};
+  el?.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>("input[name],select[name],textarea[name]").forEach((f) => { out[f.name] = f.value; });
+  return out;
+}
